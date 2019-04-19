@@ -989,7 +989,7 @@ adjust_zdr_for_measured_xmit_power = FALSE;
 // Type: boolean
 //
 
-check_for_missing_pulses = FALSE;
+check_for_missing_pulses = TRUE;
 
 ///////////// discard_beams_with_missing_pulses ///////
 //
@@ -1002,7 +1002,7 @@ check_for_missing_pulses = FALSE;
 // Type: boolean
 //
 
-discard_beams_with_missing_pulses = FALSE;
+discard_beams_with_missing_pulses = TRUE;
 
 ///////////// correct_for_system_phidp ////////////////
 //
@@ -1548,7 +1548,7 @@ use_polynomial_regression_clutter_filter = TRUE;
 // Type: int
 //
 
-regression_filter_polynomial_order = 3;
+regression_filter_polynomial_order = 9;
 
 ///////////// regression_filter_interp_across_notch ///
 //

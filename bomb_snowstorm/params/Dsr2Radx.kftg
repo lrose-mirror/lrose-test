@@ -1431,7 +1431,7 @@ vol_starts_at_bottom = TRUE;
 // Type: double
 //
 
-elev_change_for_end_of_vol = 1.5;
+elev_change_for_end_of_vol = 0.5;
 
 ///////////// nrays_history ///////////////////////////
 //
