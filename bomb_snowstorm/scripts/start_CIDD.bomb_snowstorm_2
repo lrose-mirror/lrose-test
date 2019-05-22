@@ -25,5 +25,5 @@ xset fp= /usr/X11R6/lib/X11/fonts/misc/,/usr/X11R6/lib/X11/fonts/75dpi/,/usr/X11
 
 # start CIDD
 
-/opt/local/lrose/bin/CIDD -font fixed -p /opt/local/git/lrose-test/bomb_snowstorm/params/CIDD.bomb_snowstorm -t 20190313220500 >& /dev/null &
+/opt/local/lrose/bin/CIDD -font fixed -p /opt/local/git/lrose-test/bomb_snowstorm/params/CIDD.bomb_snowstorm_2 >& /dev/null &
 
