@@ -827,7 +827,7 @@ moments_params = {
     indexed_resolution = 0.75,
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_RECT,
-    switching_receiver = TRUE,
+    switching_receiver = FALSE,
     xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
     apply_clutter_filter = TRUE,
     apply_sz = FALSE,
@@ -898,7 +898,7 @@ control_n_samples_from_time_series = FALSE;
 // Type: boolean
 //
 
-control_xmit_rcv_mode_from_time_series = TRUE;
+control_xmit_rcv_mode_from_time_series = FALSE;
 
 ///////////// control_beam_indexing_from_time_series //
 //

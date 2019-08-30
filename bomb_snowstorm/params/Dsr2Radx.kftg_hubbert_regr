@@ -1876,7 +1876,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/hubbert_clutter/cfradial/kftg_regr6",
+    output_dir = "$(HOME)/data/hubbert_clutter/cfradial/kftg_regr9",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
