@@ -1838,6 +1838,24 @@ output_fields = {
     output_units = "none",
     output_encoding = OUTPUT_SHORT
   }
+  ,
+  {
+    dsr_name = "CSR_REGR3",
+    output_name = "CSR_REGR3",
+    long_name = "clutter_to_signal_ratio_regr3",
+    standard_name = "clutter_to_signal_ratio_regr3",
+    output_units = "dB",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "REGR_ORDER",
+    output_name = "REGR_ORDER",
+    long_name = "order_of_polynomial_for_regression_filter",
+    standard_name = "order_of_polynomial_for_regression_filter",
+    output_units = "",
+    output_encoding = OUTPUT_FLOAT
+  }
 };
 
 //======================================================================
