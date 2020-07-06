@@ -1856,6 +1856,15 @@ output_fields = {
     output_units = "",
     output_encoding = OUTPUT_FLOAT
   }
+  ,
+  {
+    dsr_name = "REGR_INTERP_RATIO",
+    output_name = "REGR_INTERP_RATIO",
+    long_name = "power_ratio_after_interoplation_for_regression_filter",
+    standard_name = "power_ratio_after_interoplation_for_regression_filter",
+    output_units = "dB",
+    output_encoding = OUTPUT_FLOAT
+  }
 };
 
 //======================================================================

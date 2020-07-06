@@ -1848,19 +1848,6 @@ atmos_atten_db_per_km = 0.012;
 //
 //======================================================================
  
-///////////// use_cmd_to_control_clutter_filter ///////
-//
-// Option to use CMD to control the application of the filter.
-//
-// If true, we use the parameter 'cmd_threshold_for_clutter' to 
-//   determine whether to apply the filter at a gate.
-//
-//
-// Type: boolean
-//
-
-use_cmd_to_control_clutter_filter = TRUE;
-
 ///////////// apply_residue_correction_in_adaptive_filter 
 //
 // Option to apply residue correction to adaptive filter.
@@ -1929,6 +1916,38 @@ regression_filter_polynomial_order = 5;
 //
 
 regression_filter_determine_order_from_CSR = TRUE;
+
+///////////// regression_filter_notch_edge_power_ratio_threshold_db 
+//
+// Power ratio threshold to determine the edge of the filtered notch 
+//   (dB).
+//
+// After the initial application of the regression filter, a notch is 
+//   formed around 0. In order to determine the width of this notch, we 
+//   compute the ratio of the filtered power to the original unfiltered 
+//   power. This is the threshold used to determine where the edge of the 
+//   notch occurs.
+//
+//
+// Type: double
+//
+
+regression_filter_notch_edge_power_ratio_threshold_db = -45;
+
+///////////// regression_filter_min_csr_db ////////////
+//
+// Min valid CSR - Clutter-to-Signal-Ratio - for applying the filter 
+//   (dB).
+//
+// As a first step, we compute the CSR using a 3rd order regression fit. 
+//   If the CSR is below this threshold, we do not apply the filter at 
+//   all, and simply return the unfiltered spectrum.
+//
+//
+// Type: double
+//
+
+regression_filter_min_csr_db = -5;
 
 ///////////// regression_filter_interp_across_notch ///
 //
@@ -3020,7 +3039,7 @@ cpa_compute_using_alternative = TRUE;
 // Type: double
 //
 
-cmd_threshold_for_clutter = 0.5;
+cmd_threshold_for_clutter = 0.0;
 
 ///////////// cmd_check_for_offzero_weather ///////////
 //
@@ -4665,6 +4684,16 @@ output_fields = {
     scale = 0.01,
     bias = -320,
     write_unfiltered = FALSE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST3,
+    name = "REGR_INTERP_RATIO",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
     write_filtered = FALSE
   }
   ,
