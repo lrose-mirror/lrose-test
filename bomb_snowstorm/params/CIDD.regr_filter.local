@@ -77,46 +77,46 @@
 
 # SPOL MOMENTS - adaptive filter 32-samples each H and V
 
-ADAPT32_DBZ_F   ADAPT32_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-ADAPT32_DBZ     ADAPT32_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-ADAPT32_VEL_F   ADAPT32_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-ADAPT32_VEL     ADAPT32_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-ADAPT32_WIDTH_F ADAPT32_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-ADAPT32_WIDTH   ADAPT32_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+ADAPT32_DBZ_F   ADAPT32_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+ADAPT32_DBZ     ADAPT32_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+ADAPT32_VEL_F   ADAPT32_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+ADAPT32_VEL     ADAPT32_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+ADAPT32_WIDTH_F ADAPT32_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+ADAPT32_WIDTH   ADAPT32_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-ADAPT32_ZDR_F   ADAPT32_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-ADAPT32_ZDR     ADAPT32_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-ADAPT32_PHIDP_F ADAPT32_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-ADAPT32_PHIDP   ADAPT32_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-ADAPT32_RHOHV_F ADAPT32_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-ADAPT32_RHOHV   ADAPT32_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+ADAPT32_ZDR_F   ADAPT32_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT32_ZDR     ADAPT32_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT32_PHIDP_F ADAPT32_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+ADAPT32_PHIDP   ADAPT32_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+ADAPT32_RHOHV_F ADAPT32_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+ADAPT32_RHOHV   ADAPT32_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-ADAPT32_CPA      ADAPT32_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-ADAPT32_NCP      ADAPT32_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-ADAPT32_CMD      ADAPT32_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-ADAPT32_CMD_FLAG ADAPT32_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-ADAPT32_CLUT     ADAPT32_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-32/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
+ADAPT32_CPA      ADAPT32_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+ADAPT32_NCP      ADAPT32_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+ADAPT32_CMD      ADAPT32_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+ADAPT32_CMD_FLAG ADAPT32_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT32_CLUT     ADAPT32_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-32/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
-ADAPT64_DBZ_F   ADAPT64_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-ADAPT64_DBZ     ADAPT64_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-ADAPT64_VEL_F   ADAPT64_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-ADAPT64_VEL     ADAPT64_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-ADAPT64_WIDTH_F ADAPT64_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-ADAPT64_WIDTH   ADAPT64_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+ADAPT64_DBZ_F   ADAPT64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+ADAPT64_DBZ     ADAPT64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+ADAPT64_VEL_F   ADAPT64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+ADAPT64_VEL     ADAPT64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+ADAPT64_WIDTH_F ADAPT64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+ADAPT64_WIDTH   ADAPT64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-ADAPT64_ZDR_F   ADAPT64_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-ADAPT64_ZDR     ADAPT64_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-ADAPT64_PHIDP_F ADAPT64_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-ADAPT64_PHIDP   ADAPT64_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-ADAPT64_RHOHV_F ADAPT64_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-ADAPT64_RHOHV   ADAPT64_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+ADAPT64_ZDR_F   ADAPT64_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT64_ZDR     ADAPT64_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+ADAPT64_PHIDP_F ADAPT64_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+ADAPT64_PHIDP   ADAPT64_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+ADAPT64_RHOHV_F ADAPT64_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+ADAPT64_RHOHV   ADAPT64_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-ADAPT64_CPA      ADAPT64_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-ADAPT64_NCP      ADAPT64_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-ADAPT64_CMD      ADAPT64_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-ADAPT64_CMD_FLAG ADAPT64_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-ADAPT64_CLUT     ADAPT64_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_adapt-64/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
+ADAPT64_CPA      ADAPT64_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+ADAPT64_NCP      ADAPT64_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+ADAPT64_CMD      ADAPT64_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+ADAPT64_CMD_FLAG ADAPT64_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+ADAPT64_CLUT     ADAPT64_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -128,47 +128,47 @@ ADAPT64_CLUT     ADAPT64_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cf
 
 # SPOL MOMENTS - regression order auto
 
-RAUTO32_DBZ_F   RAUTO32_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-RAUTO32_DBZ     RAUTO32_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-RAUTO32_VEL_F   RAUTO32_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-RAUTO32_VEL     RAUTO32_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-RAUTO32_WIDTH_F RAUTO32_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-RAUTO32_WIDTH   RAUTO32_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+RAUTO32_DBZ_F   RAUTO32_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+RAUTO32_DBZ     RAUTO32_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+RAUTO32_VEL_F   RAUTO32_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+RAUTO32_VEL     RAUTO32_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+RAUTO32_WIDTH_F RAUTO32_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+RAUTO32_WIDTH   RAUTO32_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-RAUTO32_ZDR_F   RAUTO32_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-RAUTO32_ZDR     RAUTO32_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-RAUTO32_PHIDP_F RAUTO32_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-RAUTO32_PHIDP   RAUTO32_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-RAUTO32_RHOHV_F RAUTO32_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-RAUTO32_RHOHV   RAUTO32_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+RAUTO32_ZDR_F   RAUTO32_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+RAUTO32_ZDR     RAUTO32_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+RAUTO32_PHIDP_F RAUTO32_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+RAUTO32_PHIDP   RAUTO32_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+RAUTO32_RHOHV_F RAUTO32_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+RAUTO32_RHOHV   RAUTO32_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-RAUTO32_CPA      RAUTO32_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-RAUTO32_CMD_FLAG RAUTO32_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-RAUTO32_CLUT     RAUTO32_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-RAUTO32_CNR      RAUTO32_CNR   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&CSR_REGR3 dbz.colors dB -5 80 5 radial 1 0
-RAUTO32_ORDER    RAUTO32_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
-RAUTO32_IRATIO   RAUTO32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
+RAUTO32_CPA      RAUTO32_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+RAUTO32_CMD_FLAG RAUTO32_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+RAUTO32_CLUT     RAUTO32_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+RAUTO32_CNR      RAUTO32_CNR   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&CSR_REGR3 dbz.colors dB -5 80 5 radial 1 0
+RAUTO32_ORDER    RAUTO32_ORDER  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
+RAUTO32_IRATIO   RAUTO32_IRATIO mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-32/sur&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 
-RAUTO64_DBZ_F   RAUTO64_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-RAUTO64_DBZ     RAUTO64_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-RAUTO64_VEL_F   RAUTO64_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-RAUTO64_VEL     RAUTO64_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-RAUTO64_WIDTH_F RAUTO64_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-RAUTO64_WIDTH   RAUTO64_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+RAUTO64_DBZ_F   RAUTO64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+RAUTO64_DBZ     RAUTO64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+RAUTO64_VEL_F   RAUTO64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+RAUTO64_VEL     RAUTO64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+RAUTO64_WIDTH_F RAUTO64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+RAUTO64_WIDTH   RAUTO64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-RAUTO64_ZDR_F   RAUTO64_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-RAUTO64_ZDR     RAUTO64_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-RAUTO64_PHIDP_F RAUTO64_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-RAUTO64_PHIDP   RAUTO64_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-RAUTO64_RHOHV_F RAUTO64_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-RAUTO64_RHOHV   RAUTO64_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+RAUTO64_ZDR_F   RAUTO64_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+RAUTO64_ZDR     RAUTO64_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+RAUTO64_PHIDP_F RAUTO64_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+RAUTO64_PHIDP   RAUTO64_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+RAUTO64_RHOHV_F RAUTO64_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+RAUTO64_RHOHV   RAUTO64_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-RAUTO64_CPA      RAUTO64_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-RAUTO64_CMD_FLAG RAUTO64_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-RAUTO64_CLUT     RAUTO64_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-RAUTO64_CNR      RAUTO64_CNR   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&CSR_REGR3 dbz.colors dB -5 80 5 radial 1 0
-RAUTO64_ORDER    RAUTO64_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
-RAUTO64_IRATIO  RAUTO64_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
+RAUTO64_CPA      RAUTO64_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+RAUTO64_CMD_FLAG RAUTO64_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+RAUTO64_CLUT     RAUTO64_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+RAUTO64_CNR      RAUTO64_CNR   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&CSR_REGR3 dbz.colors dB -5 80 5 radial 1 0
+RAUTO64_ORDER    RAUTO64_ORDER  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
+RAUTO64_IRATIO  RAUTO64_IRATIO mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64/sur&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -179,47 +179,47 @@ RAUTO64_IRATIO  RAUTO64_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cf
 
 # SPOL MOMENTS - regression order 5
 
-REGR5-32_DBZ_F   REGR5-32_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-REGR5-32_DBZ     REGR5-32_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-REGR5-32_VEL_F   REGR5-32_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-REGR5-32_VEL     REGR5-32_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-REGR5-32_WIDTH_F REGR5-32_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-REGR5-32_WIDTH   REGR5-32_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR5-32_DBZ_F   REGR5-32_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR5-32_DBZ     REGR5-32_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR5-32_VEL_F   REGR5-32_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR5-32_VEL     REGR5-32_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR5-32_WIDTH_F REGR5-32_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR5-32_WIDTH   REGR5-32_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-REGR5-32_ZDR_F   REGR5-32_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-REGR5-32_ZDR     REGR5-32_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-REGR5-32_PHIDP_F REGR5-32_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-REGR5-32_PHIDP   REGR5-32_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-REGR5-32_RHOHV_F REGR5-32_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-REGR5-32_RHOHV   REGR5-32_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR5-32_ZDR_F   REGR5-32_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR5-32_ZDR     REGR5-32_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR5-32_PHIDP_F REGR5-32_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR5-32_PHIDP   REGR5-32_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR5-32_RHOHV_F REGR5-32_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR5-32_RHOHV   REGR5-32_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-REGR5-32_CPA      REGR5-32_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-REGR5-32_NCP      REGR5-32_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-REGR5-32_CMD      REGR5-32_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-REGR5-32_CMD_FLAG REGR5-32_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-REGR5-32_CLUT     REGR5-32_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-REGR5-32_REGR_ORDER REGR5-32_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-32/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+REGR5-32_CPA      REGR5-32_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR5-32_NCP      REGR5-32_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR5-32_CMD      REGR5-32_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR5-32_CMD_FLAG REGR5-32_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR5-32_CLUT     REGR5-32_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR5-32_REGR_ORDER REGR5-32_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-32/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 
-REGR5-64_DBZ_F   REGR5-64_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-REGR5-64_DBZ     REGR5-64_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-REGR5-64_VEL_F   REGR5-64_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-REGR5-64_VEL     REGR5-64_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-REGR5-64_WIDTH_F REGR5-64_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-REGR5-64_WIDTH   REGR5-64_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR5-64_DBZ_F   REGR5-64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR5-64_DBZ     REGR5-64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR5-64_VEL_F   REGR5-64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR5-64_VEL     REGR5-64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR5-64_WIDTH_F REGR5-64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR5-64_WIDTH   REGR5-64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-REGR5-64_ZDR_F   REGR5-64_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-REGR5-64_ZDR     REGR5-64_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-REGR5-64_PHIDP_F REGR5-64_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-REGR5-64_PHIDP   REGR5-64_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-REGR5-64_RHOHV_F REGR5-64_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-REGR5-64_RHOHV   REGR5-64_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR5-64_ZDR_F   REGR5-64_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR5-64_ZDR     REGR5-64_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR5-64_PHIDP_F REGR5-64_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR5-64_PHIDP   REGR5-64_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR5-64_RHOHV_F REGR5-64_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR5-64_RHOHV   REGR5-64_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-REGR5-64_CPA      REGR5-64_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-REGR5-64_NCP      REGR5-64_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-REGR5-64_CMD      REGR5-64_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-REGR5-64_CMD_FLAG REGR5-64_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-REGR5-64_CLUT     REGR5-64_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-REGR5-64_REGR_ORDER REGR5-64_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr5-64/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+REGR5-64_CPA      REGR5-64_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR5-64_NCP      REGR5-64_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR5-64_CMD      REGR5-64_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR5-64_CMD_FLAG REGR5-64_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR5-64_CLUT     REGR5-64_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR5-64_REGR_ORDER REGR5-64_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr5-64/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -230,47 +230,47 @@ REGR5-64_REGR_ORDER REGR5-64_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_sno
 
 # SPOL MOMENTS - regression order 7
 
-REGR7-32_DBZ_F   REGR7-32_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-REGR7-32_DBZ     REGR7-32_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-REGR7-32_VEL_F   REGR7-32_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-REGR7-32_VEL     REGR7-32_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-REGR7-32_WIDTH_F REGR7-32_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-REGR7-32_WIDTH   REGR7-32_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR7-32_DBZ_F   REGR7-32_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR7-32_DBZ     REGR7-32_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR7-32_VEL_F   REGR7-32_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR7-32_VEL     REGR7-32_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR7-32_WIDTH_F REGR7-32_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR7-32_WIDTH   REGR7-32_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-REGR7-32_ZDR_F   REGR7-32_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-REGR7-32_ZDR     REGR7-32_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-REGR7-32_PHIDP_F REGR7-32_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-REGR7-32_PHIDP   REGR7-32_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-REGR7-32_RHOHV_F REGR7-32_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-REGR7-32_RHOHV   REGR7-32_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR7-32_ZDR_F   REGR7-32_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR7-32_ZDR     REGR7-32_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR7-32_PHIDP_F REGR7-32_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR7-32_PHIDP   REGR7-32_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR7-32_RHOHV_F REGR7-32_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR7-32_RHOHV   REGR7-32_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-REGR7-32_CPA      REGR7-32_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-REGR7-32_NCP      REGR7-32_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-REGR7-32_CMD      REGR7-32_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-REGR7-32_CMD_FLAG REGR7-32_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-REGR7-32_CLUT     REGR7-32_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-REGR7-32_REGR_ORDER REGR7-32_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-32/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+REGR7-32_CPA      REGR7-32_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR7-32_NCP      REGR7-32_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR7-32_CMD      REGR7-32_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR7-32_CMD_FLAG REGR7-32_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR7-32_CLUT     REGR7-32_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR7-32_REGR_ORDER REGR7-32_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-32/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 
-REGR7-64_DBZ_F   REGR7-64_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-REGR7-64_DBZ     REGR7-64_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-REGR7-64_VEL_F   REGR7-64_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-REGR7-64_VEL     REGR7-64_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-REGR7-64_WIDTH_F REGR7-64_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-REGR7-64_WIDTH   REGR7-64_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR7-64_DBZ_F   REGR7-64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR7-64_DBZ     REGR7-64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR7-64_VEL_F   REGR7-64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR7-64_VEL     REGR7-64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR7-64_WIDTH_F REGR7-64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR7-64_WIDTH   REGR7-64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-REGR7-64_ZDR_F   REGR7-64_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-REGR7-64_ZDR     REGR7-64_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-REGR7-64_PHIDP_F REGR7-64_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-REGR7-64_PHIDP   REGR7-64_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-REGR7-64_RHOHV_F REGR7-64_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-REGR7-64_RHOHV   REGR7-64_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR7-64_ZDR_F   REGR7-64_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR7-64_ZDR     REGR7-64_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR7-64_PHIDP_F REGR7-64_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR7-64_PHIDP   REGR7-64_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR7-64_RHOHV_F REGR7-64_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR7-64_RHOHV   REGR7-64_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-REGR7-64_CPA      REGR7-64_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-REGR7-64_NCP      REGR7-64_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-REGR7-64_CMD      REGR7-64_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-REGR7-64_CMD_FLAG REGR7-64_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-REGR7-64_CLUT     REGR7-64_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-REGR7-64_REGR_ORDER REGR7-64_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr7-64/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+REGR7-64_CPA      REGR7-64_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR7-64_NCP      REGR7-64_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR7-64_CMD      REGR7-64_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR7-64_CMD_FLAG REGR7-64_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR7-64_CLUT     REGR7-64_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR7-64_REGR_ORDER REGR7-64_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr7-64/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -281,47 +281,47 @@ REGR7-64_REGR_ORDER REGR7-64_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_sno
 
 # SPOL MOMENTS - regression order 9
 
-REGR9-32_DBZ_F   REGR9-32_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-REGR9-32_DBZ     REGR9-32_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-REGR9-32_VEL_F   REGR9-32_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-REGR9-32_VEL     REGR9-32_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-REGR9-32_WIDTH_F REGR9-32_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-REGR9-32_WIDTH   REGR9-32_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR9-32_DBZ_F   REGR9-32_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR9-32_DBZ     REGR9-32_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR9-32_VEL_F   REGR9-32_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR9-32_VEL     REGR9-32_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR9-32_WIDTH_F REGR9-32_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR9-32_WIDTH   REGR9-32_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-REGR9-32_ZDR_F   REGR9-32_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-REGR9-32_ZDR     REGR9-32_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-REGR9-32_PHIDP_F REGR9-32_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-REGR9-32_PHIDP   REGR9-32_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-REGR9-32_RHOHV_F REGR9-32_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-REGR9-32_RHOHV   REGR9-32_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR9-32_ZDR_F   REGR9-32_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR9-32_ZDR     REGR9-32_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR9-32_PHIDP_F REGR9-32_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR9-32_PHIDP   REGR9-32_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR9-32_RHOHV_F REGR9-32_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR9-32_RHOHV   REGR9-32_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-REGR9-32_CPA      REGR9-32_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-REGR9-32_NCP      REGR9-32_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-REGR9-32_CMD      REGR9-32_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-REGR9-32_CMD_FLAG REGR9-32_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-REGR9-32_CLUT     REGR9-32_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-REGR9-32_REGR_ORDER REGR9-32_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-32/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+REGR9-32_CPA      REGR9-32_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR9-32_NCP      REGR9-32_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR9-32_CMD      REGR9-32_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR9-32_CMD_FLAG REGR9-32_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR9-32_CLUT     REGR9-32_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR9-32_REGR_ORDER REGR9-32_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-32/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 
-REGR9-64_DBZ_F   REGR9-64_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
-REGR9-64_DBZ     REGR9-64_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-REGR9-64_VEL_F   REGR9-64_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
-REGR9-64_VEL     REGR9-64_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
-REGR9-64_WIDTH_F REGR9-64_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
-REGR9-64_WIDTH   REGR9-64_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+REGR9-64_DBZ_F   REGR9-64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+REGR9-64_DBZ     REGR9-64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+REGR9-64_VEL_F   REGR9-64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+REGR9-64_VEL     REGR9-64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+REGR9-64_WIDTH_F REGR9-64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+REGR9-64_WIDTH   REGR9-64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
-REGR9-64_ZDR_F   REGR9-64_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
-REGR9-64_ZDR     REGR9-64_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
-REGR9-64_PHIDP_F REGR9-64_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
-REGR9-64_PHIDP   REGR9-64_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
-REGR9-64_RHOHV_F REGR9-64_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
-REGR9-64_RHOHV   REGR9-64_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+REGR9-64_ZDR_F   REGR9-64_ZDR_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+REGR9-64_ZDR     REGR9-64_ZDR     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+REGR9-64_PHIDP_F REGR9-64_PHIDP_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+REGR9-64_PHIDP   REGR9-64_PHIDP   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+REGR9-64_RHOHV_F REGR9-64_RHOHV_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+REGR9-64_RHOHV   REGR9-64_RHOHV   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
 
-REGR9-64_CPA      REGR9-64_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
-REGR9-64_NCP      REGR9-64_NCP    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&NCP  ncp.colors  dB   -5   80  5  radial   1 0
-REGR9-64_CMD      REGR9-64_CMD       mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&CMD      cmd.colors  none -5 80 5 radial 1 0
-REGR9-64_CMD_FLAG REGR9-64_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
-REGR9-64_CLUT     REGR9-64_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
-REGR9-64_REGR_ORDER REGR9-64_REGR_ORDER mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regr9-64/sur?use_http=true&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
+REGR9-64_CPA      REGR9-64_CPA    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&CPA  cpa.colors  - -5 80 5 radial 1 0
+REGR9-64_NCP      REGR9-64_NCP    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&NCP  ncp.colors  dB   -5   80  5  radial   1 0
+REGR9-64_CMD      REGR9-64_CMD       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&CMD      cmd.colors  none -5 80 5 radial 1 0
+REGR9-64_CMD_FLAG REGR9-64_CMD_FLAG  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+REGR9-64_CLUT     REGR9-64_CLUT  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&CLUT  dbz.colors dB -5 80 5 radial 1 0
+REGR9-64_REGR_ORDER REGR9-64_REGR_ORDER mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regr9-64/sur&REGR_ORDER  poly_order.colors dB -5 80 5 radial 1 0
 
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
 ======== ========  mdvp::static//$(DATA_HOST)::/spacer&Elevation  none.colors   m   -5   80  5  dcont   1 0
@@ -948,7 +948,7 @@ cidd.max_adeg:               360.0
 
 # List of comma delimited local directories or HTTP URLs to search
 # Searchs . then each directory/URL in order 
-cidd.color_file_subdir:   http://front.eol.ucar.edu/color_scales
+cidd.color_file_subdir:   $(HOME)/git/lrose-displays/color_scales,http://front.eol.ucar.edu/color_scales
 cidd.map_file_subdir:     http://front.eol.ucar.edu/maps
 
 #
