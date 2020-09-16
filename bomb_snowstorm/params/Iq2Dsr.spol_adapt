@@ -75,7 +75,7 @@ instance = "spol";
 // Type: boolean
 //
 
-use_multiple_threads = TRUE;
+use_multiple_threads = FALSE;
 
 ///////////// n_compute_threads ///////////////////////
 //
