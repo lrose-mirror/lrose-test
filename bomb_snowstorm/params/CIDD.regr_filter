@@ -582,7 +582,7 @@ ALL-REGR9-32_IRATIO   ALL-REGR9-32_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_s
 
 #Counties     Counties     us_counties.map    0      0.0      10000.0     blue 
 States       States       usa.map            0      0.0      10000.0     white
-#ncar         ncar         ncar.map           0      0.0      10000.0     white
+ncar         ncar         ncar.map           0      0.0      10000.0     white
 #dia          dia          DIA_all.map        0      0.0      10000.0     white
 #BAO          BAO          bao_tower.map      0      0.0      10000.0     white
 #SPOL         SPOL         spol_firestone.map 0      0.0      10000.0    yellow
