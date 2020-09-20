@@ -897,7 +897,7 @@ moments_params = {
     antenna_rate_lower_limit = 0,
     antenna_rate_upper_limit = 90,
     beam_method = BEAM_SPECIFY_N_SAMPLES,
-    beam_n_samples = 32,
+    beam_n_samples = 64,
     beam_angle_deg = 1,
     index_the_beams = TRUE,
     indexed_resolution = 0.75,
@@ -1507,7 +1507,7 @@ override_cal_system_phidp = TRUE;
 // Type: double
 //
 
-system_phidp_deg = 70;
+system_phidp_deg = 90;
 
 ///////////// change_phidp_sign ///////////////////////
 //
