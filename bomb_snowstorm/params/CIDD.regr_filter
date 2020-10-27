@@ -180,6 +180,27 @@ ALL-RAUTO64_CNR      ALL-RAUTO64_CNR   mdvp:://front.eol.ucar.edu:8080:bomb_snow
 ALL-RAUTO64_ORDER    ALL-RAUTO64_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all/sur?use_http=true&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
 ALL-RAUTO64_IRATIO  ALL-RAUTO64_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
 
+NOI-RAUTO64_DBZ_F   NOI-RAUTO64_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
+NOI-RAUTO64_DBZ     NOI-RAUTO64_DBZ     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
+NOI-RAUTO64_VEL_F   NOI-RAUTO64_VEL_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+NOI-RAUTO64_VEL     NOI-RAUTO64_VEL     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&VEL     vel.colors   m/s -5 80 5 radial 1 0
+NOI-RAUTO64_WIDTH_F NOI-RAUTO64_WIDTH_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
+NOI-RAUTO64_WIDTH   NOI-RAUTO64_WIDTH   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&WIDTH    width.colors m/s -5 80 5 radial 1 0
+
+NOI-RAUTO64_ZDR_F   NOI-RAUTO64_ZDR_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&ZDR_F zdr.colors   dB  -5 80 5 radial 1 0
+NOI-RAUTO64_ZDR     NOI-RAUTO64_ZDR     mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&ZDR   zdr.colors   dB  -5 80 5 radial 1 0
+NOI-RAUTO64_PHIDP_F NOI-RAUTO64_PHIDP_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&PHIDP_F phidp.colors deg -5 80 5 radial 1 0
+NOI-RAUTO64_PHIDP   NOI-RAUTO64_PHIDP   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&PHIDP   phidp.colors deg -5 80 5 radial 1 0
+NOI-RAUTO64_RHOHV_F NOI-RAUTO64_RHOHV_F mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&RHOHV_F rhohv.colors _   -5 80 5 radial 1 0
+NOI-RAUTO64_RHOHV   NOI-RAUTO64_RHOHV   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&RHOHV   rhohv.colors _   -5 80 5 radial 1 0
+
+NOI-RAUTO64_CPA      NOI-RAUTO64_CPA    mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&CPA  cpa.colors  - -5 80 5 radial 1 0
+NOI-RAUTO64_CMD_FLAG NOI-RAUTO64_CMD_FLAG  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-cmd/sur?use_http=true&CMD_FLAG cmd_flag.colors  none -5 80 5 radial 1 0
+NOI-RAUTO64_CLUT NOI-RAUTO64_CLUT  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-cmd/sur?use_http=true&CLUT  dbz.colors dB -5 80 5 radial 1 0
+NOI-RAUTO64_CNR      NOI-RAUTO64_CNR   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&CSR_REGR3 dbz.colors dB -5 80 5 radial 1 0
+NOI-RAUTO64_ORDER    NOI-RAUTO64_ORDER  mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&REGR_ORDER poly_order.colors - -5 80 5 radial 1 0
+NOI-RAUTO64_IRATIO  NOI-RAUTO64_IRATIO mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-64-all-noi/sur?use_http=true&REGR_INTERP_RATIO interp_ratio.colors dB -5 80 5 radial 1 0
+
 # regression auto selection, 32 samples each H and V
 
 CMD-RAUTO32_DBZ_F   CMD-RAUTO32_DBZ_F   mdvp:://front.eol.ucar.edu:8080:bomb_snowstorm/cfradial/spol_regra-32-cmd/sur?use_http=true&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
