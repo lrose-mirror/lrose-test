@@ -1961,7 +1961,7 @@ regression_filter_min_csr_db = -6;
 // Type: boolean
 //
 
-regression_filter_interp_across_notch = FALSE;
+regression_filter_interp_across_notch = TRUE;
 
 ///////////// use_simple_notch_clutter_filter /////////
 //

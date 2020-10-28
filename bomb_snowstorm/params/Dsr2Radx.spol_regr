@@ -1606,6 +1606,42 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "VEL_ALT",
+    output_name = "VEL_ALT",
+    long_name = "doppler_velocity",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_ALT_F",
+    output_name = "VEL_ALT_F",
+    long_name = "doppler_velocity_filtered",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_HV",
+    output_name = "VEL_HV",
+    long_name = "doppler_velocity",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_HV_F",
+    output_name = "VEL_HV_F",
+    long_name = "doppler_velocity_filtered",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "WIDTH",
     output_name = "WIDTH",
     long_name = "spectrum_width",
@@ -1903,7 +1939,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all-noi",
+    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
