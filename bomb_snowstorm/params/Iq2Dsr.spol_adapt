@@ -75,7 +75,7 @@ instance = "spol";
 // Type: boolean
 //
 
-use_multiple_threads = FALSE;
+use_multiple_threads = TRUE;
 
 ///////////// n_compute_threads ///////////////////////
 //
@@ -89,7 +89,7 @@ use_multiple_threads = FALSE;
 // Type: int
 //
 
-n_compute_threads = 8;
+n_compute_threads = 12;
 
 //======================================================================
 //
@@ -3039,7 +3039,7 @@ cpa_compute_using_alternative = TRUE;
 // Type: double
 //
 
-cmd_threshold_for_clutter = 0.5;
+cmd_threshold_for_clutter = 0.0;
 
 ///////////// cmd_check_for_offzero_weather ///////////
 //
@@ -3963,6 +3963,26 @@ output_fields = {
     units = "m/s",
     scale = 0.01,
     bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = VEL_ALT_FOLD_INTERVAL,
+    name = "VEL_FOLD_INT",
+    units = "",
+    scale = 1,
+    bias = -100,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = VEL_ALT_FOLD_CONFIDENCE,
+    name = "VEL_FOLD_CONF",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
     write_unfiltered = TRUE,
     write_filtered = TRUE
   }

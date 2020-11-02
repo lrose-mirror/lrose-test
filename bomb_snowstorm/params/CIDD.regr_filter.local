@@ -100,8 +100,16 @@ CMD-ADAPT64_CLUT     CMD-ADAPT64_CLUT     mdvp:://localhost::$(HOME)/data/bomb_s
 
 ALL-ADAPT64_DBZ_F   ALL-ADAPT64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
 ALL-ADAPT64_DBZ     ALL-ADAPT64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-ALL-ADAPT64_VEL_F   ALL-ADAPT64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
-ALL-ADAPT64_VEL     ALL-ADAPT64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_F   ALL-ADAPT64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+ALL-ADAPT64_VEL     ALL-ADAPT64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_ALT_F   ALL-ADAPT64_VEL_ALT_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_ALT     ALL-ADAPT64_VEL_ALT     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_HV_F   ALL-ADAPT64_VEL_HV_F     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_HV_F   vel.colors   m/s -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_HV     ALL-ADAPT64_VEL_HV       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_HV     vel.colors   m/s -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_FOLD_INT_F ALL-ADAPT64_VEL_FOLD_INT_F  mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_FOLD_INT_F   fold_interval.colors   - -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_FOLD_INT   ALL-ADAPT64_VEL_FOLD_INT    mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_FOLD_INT     fold_interval.colors   - -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_FOLD_CONF_F ALL-ADAPT64_VEL_FOLD_CONF_F     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_FOLD_CONF_F   cmd.colors - -5 80 5 radial 1 0
+ALL-ADAPT64_VEL_FOLD_CONF   ALL-ADAPT64_VEL_FOLD_CONF       mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&VEL_FOLD_CONF     cmd.colors - -5 80 5 radial 1 0
 ALL-ADAPT64_WIDTH_F ALL-ADAPT64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 ALL-ADAPT64_WIDTH   ALL-ADAPT64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
@@ -183,8 +191,14 @@ CMD-RAUTO64_IRATIO   CMD-RAUTO64_IRATIO   mdvp:://localhost::$(HOME)/data/bomb_s
 
 ALL-RAUTO64_DBZ_F   ALL-RAUTO64_DBZ_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&DBZ_F   dbz.colors   dBZ -5 80 5 radial 1 0
 ALL-RAUTO64_DBZ     ALL-RAUTO64_DBZ     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&DBZ     dbz.colors   dBZ -5 80 5 radial 1 0
-ALL-RAUTO64_VEL_F   ALL-RAUTO64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
-ALL-RAUTO64_VEL     ALL-RAUTO64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
+
+ALL-RAUTO64_VEL_ALT_F   ALL-RAUTO64_VEL_ALT_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&VEL_ALT_F   vel.colors   m/s -5 80 5 radial 1 0
+ALL-RAUTO64_VEL_ALT     ALL-RAUTO64_VEL_ALT     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&VEL_ALT     vel.colors   m/s -5 80 5 radial 1 0
+
+ALL-RAUTO64_VEL_F   ALL-RAUTO64_VEL_F   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&VEL_F   vel.colors   m/s -5 80 5 radial 1 0
+ALL-RAUTO64_VEL     ALL-RAUTO64_VEL     mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&VEL     vel.colors   m/s -5 80 5 radial 1 0
+
+
 ALL-RAUTO64_WIDTH_F ALL-RAUTO64_WIDTH_F mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&WIDTH_F  width.colors m/s -5 80 5 radial 1 0
 ALL-RAUTO64_WIDTH   ALL-RAUTO64_WIDTH   mdvp:://localhost::$(HOME)/data/bomb_snowstorm/cfradial/spol_regra-64-all/sur&WIDTH    width.colors m/s -5 80 5 radial 1 0
 
