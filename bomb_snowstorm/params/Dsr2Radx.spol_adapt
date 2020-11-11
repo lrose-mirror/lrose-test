@@ -1624,6 +1624,24 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "VEL_UNFOLDED",
+    output_name = "VEL_UNFOLDED",
+    long_name = "doppler_velocity",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_UNFOLDED_F",
+    output_name = "VEL_UNFOLDED_F",
+    long_name = "doppler_velocity_filtered",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "VEL_HV",
     output_name = "VEL_HV",
     long_name = "doppler_velocity",
@@ -1660,6 +1678,24 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "VEL_UNFOLD_INT",
+    output_name = "VEL_UNFOLD_INT",
+    long_name = "vel_unfold_int",
+    standard_name = "vel_alt_unfold_interval",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_UNFOLD_INT_F",
+    output_name = "VEL_UNFOLD_INT_F",
+    long_name = "vel_unfold_int",
+    standard_name = "vel_alt_unfold_interval",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "VEL_FOLD_CONF",
     output_name = "VEL_FOLD_CONF",
     long_name = "vel_alt_fold_confidence",
@@ -1673,6 +1709,60 @@ output_fields = {
     output_name = "VEL_FOLD_CONF_F",
     long_name = "vel_alt_fold_confidence",
     standard_name = "vel_alt_fold_confidence",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_MEAN_CONF",
+    output_name = "VEL_MEAN_CONF",
+    long_name = "vel_alt_mean_confidence",
+    standard_name = "vel_alt_mean_confidence",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_MEAN_CONF_F",
+    output_name = "VEL_MEAN_CONF_F",
+    long_name = "vel_alt_mean_confidence",
+    standard_name = "vel_alt_mean_confidence",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_MIN_RUN",
+    output_name = "VEL_MIN_RUN",
+    long_name = "vel_min_run",
+    standard_name = "vel_alt_min_run",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_MIN_RUN_F",
+    output_name = "VEL_MIN_RUN_F",
+    long_name = "vel_min_run",
+    standard_name = "vel_alt_min_run",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_MAX_RUN",
+    output_name = "VEL_MAX_RUN",
+    long_name = "vel_max_run",
+    standard_name = "vel_alt_max_run",
+    output_units = "",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_MAX_RUN_F",
+    output_name = "VEL_MAX_RUN_F",
+    long_name = "vel_max_run",
+    standard_name = "vel_alt_max_run",
     output_units = "",
     output_encoding = OUTPUT_SHORT
   }
@@ -1907,6 +1997,15 @@ output_fields = {
     output_name = "CMD_FLAG",
     long_name = "clutter_mitigation_interest_flag",
     standard_name = "clutter_mitigation_decision_flag",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "NOISE_FLAG",
+    output_name = "NOISE_FLAG",
+    long_name = "location_of_noise_flag",
+    standard_name = "location_of_noise_flag",
     output_units = "none",
     output_encoding = OUTPUT_SHORT
   }

@@ -1993,7 +1993,7 @@ simple_notch_filter_width_mps = 3;
 ///////////// use_h_only_for_alt_mode_clutter_vel /////
 //
 // Option to use H only pulses for computing clutter velocity in 
-//   alternation dual pol mode.
+//   alternating dual pol mode.
 //
 // If false, the normal phidp-based method is used everywhere in 
 //   alternating dual pol mode. If true, the H-only pulses are used to 
@@ -2004,6 +2004,21 @@ simple_notch_filter_width_mps = 3;
 //
 
 use_h_only_for_alt_mode_clutter_vel = TRUE;
+
+///////////// write_alt_mode_vel_debug_fields /////////
+//
+// Option to write out debug fields for alternating mode velocity.
+//
+// If true the following fields are written out: test2=meanConfidence, 
+//   test3=minVelRun, test4=maxVelRun, test5=unfolded, vel=velAlt, 
+//   vel_alt_fold_interval, vel_alt_fold_confidence, vel_diff, 
+//   vel_unfold_interval.
+//
+//
+// Type: boolean
+//
+
+write_alt_mode_vel_debug_fields = TRUE;
 
 //======================================================================
 //
@@ -3039,7 +3054,7 @@ cpa_compute_using_alternative = TRUE;
 // Type: double
 //
 
-cmd_threshold_for_clutter = 0.0;
+cmd_threshold_for_clutter = 0;
 
 ///////////// cmd_check_for_offzero_weather ///////////
 //
@@ -3978,11 +3993,61 @@ output_fields = {
   }
   ,
   {
+    id = VEL_UNFOLD_INTERVAL,
+    name = "VEL_UNFOLD_INT",
+    units = "",
+    scale = 1,
+    bias = -100,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
     id = VEL_ALT_FOLD_CONFIDENCE,
     name = "VEL_FOLD_CONF",
     units = "",
     scale = 0.001,
     bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST2,
+    name = "VEL_MEAN_CONF",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST3,
+    name = "VEL_MIN_RUN",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST4,
+    name = "VEL_MAX_RUN",
+    units = "",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST5,
+    name = "VEL_UNFOLDED",
+    units = "m/s",
+    scale = 0.01,
+    bias = -320,
     write_unfiltered = TRUE,
     write_filtered = TRUE
   }
@@ -4350,6 +4415,26 @@ output_fields = {
   {
     id = CMD_FLAG,
     name = "CMD_FLAG",
+    units = "",
+    scale = 1,
+    bias = -100,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = NOISE_FLAG,
+    name = "NOISE_FLAG",
+    units = "",
+    scale = 1,
+    bias = -100,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = SIGNAL_FLAG,
+    name = "SIGNAL_FLAG",
     units = "",
     scale = 1,
     bias = -100,
