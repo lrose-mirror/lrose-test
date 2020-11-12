@@ -1,12 +1,12 @@
 /**********************************************************************
- * TDRP params for StratFinder
+ * TDRP params for ConvStrat
  **********************************************************************/
 
 //======================================================================
 //
-// Program name: StratFinder.
+// Program name: ConvStrat.
 //
-// StratFinder finds stratiform/convective regions within a Cartesian 
+// ConvStrat finds convective and stratiform regions within a Cartesian 
 //   radar volume.
 //
 //======================================================================
@@ -151,18 +151,55 @@ min_valid_dbz = 10;
 
 dbz_threshold_for_definite_convection = 53;
 
-///////////// convective_radius_km ////////////////////
+//======================================================================
 //
-// Radius of convective influence (km).
+// COMPUTING THE CONVECTIVE RADIUS.
 //
-// Given definite convection at a point (see above), we set all points 
-//   within this radius to be convective.
+// The convective radius is the distance by which identified convection 
+//   will be expanded around the convective point. A linear function is 
+//   used to compute the radius from the background reflectivity.
+//
+//======================================================================
+ 
+///////////// background_dbz_radius_km ////////////////
+//
+// Radius for computing background reflectivity (km).
+//
+// The background dbz at a point is the mean within this specified 
+//   radius of the point.
 //
 //
 // Type: double
 //
 
-convective_radius_km = 5;
+background_dbz_radius_km = 11;
+
+///////////// conv_radius_function ////////////////////
+//
+// End points of the linear function to compute the radius from the 
+//   background reflectivity.
+//
+// The radius function varies linearly between the min and max dbz. For 
+//   dbz below the min, the min radius applies. For dbz above the max, the 
+//   max radius applies.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double min_dbz;
+//      double max_dbz;
+//      double min_radius_km;
+//      double max_radius_km;
+//   }
+//
+//
+
+conv_radius_function = {
+    min_dbz = 22.5,
+    max_dbz = 42.5,
+    min_radius_km = 1,
+    max_radius_km = 5
+};
 
 //======================================================================
 //
