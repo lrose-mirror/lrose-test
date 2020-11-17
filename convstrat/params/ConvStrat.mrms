@@ -351,7 +351,7 @@ texture_radius_km = 7;
 // Type: double
 //
 
-min_valid_fraction_for_texture = 0.33;
+min_valid_fraction_for_texture = 0.25;
 
 ///////////// min_texture_for_convection //////////////
 //
@@ -359,13 +359,27 @@ min_valid_fraction_for_texture = 0.33;
 //
 // If the texture at a point exceeds this value, we set the convective 
 //   flag at this point. We then expand the convective influence around 
-//   the point using convetive_radius_km.
+//   the point using a computed radius that depends on the strength of the 
+//   background reflectivity.
 //
 //
 // Type: double
 //
 
 min_texture_for_convection = 15;
+
+///////////// max_texture_for_stratiform //////////////
+//
+// Maximum texture for stratiform at a point.
+//
+// If the texture at a point is less than this value, we set the 
+//   stratiform flag at this point.
+//
+//
+// Type: double
+//
+
+max_texture_for_stratiform = 11;
 
 //======================================================================
 //
