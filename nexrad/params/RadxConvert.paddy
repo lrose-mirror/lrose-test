@@ -42,7 +42,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "$(radar_name)";
+instance = "KLGX";
 
 //======================================================================
 //
@@ -60,7 +60,7 @@ instance = "$(radar_name)";
 // Type: string
 //
 
-input_dir = "/net/ldm/data/gempak/nexrad/craft/$(RADAR_NAME)";
+input_dir = "$(HOME)/git/lrose-test/nexrad/data/raw";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -82,7 +82,7 @@ input_dir = "/net/ldm/data/gempak/nexrad/craft/$(RADAR_NAME)";
 //     FILELIST
 //
 
-mode = REALTIME;
+mode = ARCHIVE;
 
 ///////////// max_realtime_data_age_secs //////////////
 //
@@ -1555,6 +1555,18 @@ output_fields = {
     output_scale = 0.01,
     output_offset = 0
   }
+  ,
+  {
+    input_field_name = "PURPLE_HAZE",
+    output_field_name = "PURPLE_HAZE",
+    long_name = "vel_censored_flag_aka_purple_haze",
+    standard_name = "vel_censored_flag",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_ASIS,
+    output_scaling = SCALING_SPECIFIED,
+    output_scale = 1,
+    output_offset = 0
+  }
 };
 
 ///////////// write_other_fields_unchanged ////////////
@@ -1568,7 +1580,7 @@ output_fields = {
 // Type: boolean
 //
 
-write_other_fields_unchanged = FALSE;
+write_other_fields_unchanged = TRUE;
 
 ///////////// exclude_specified_fields ////////////////
 //
@@ -1978,7 +1990,7 @@ compression_level = 4;
 // Type: string
 //
 
-output_dir = "/data/mdtest/Downloads/paddy/cfradial/$(RADAR_NAME)2";
+output_dir = "$(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX";
 
 ///////////// output_filename_mode ////////////////////
 //

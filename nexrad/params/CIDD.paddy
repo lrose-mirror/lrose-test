@@ -73,11 +73,13 @@
 # Front Range
 #
 
-DBZ   DBZ   /data/mdtest/Downloads/paddy/cfradial/KLGX&DBZ dbz.colors m/s -5 80 5 radial 1 0
-VEL   VEL   /data/mdtest/Downloads/paddy/cfradial/KLGX&VEL vel.colors m/s -5 80 5 radial 1 0
+DBZ   DBZ   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&DBZ dbz.colors m/s -5 80 5 radial 1 0
+VEL   VEL   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&VEL vel.colors m/s -5 80 5 radial 1 0
+WIDTH WIDTH $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&WIDTH width.colors m/s -5 80 5 radial 1 0
 
-DBZ2   DBZ2   /data/mdtest/Downloads/paddy/cfradial/KLGX2&DBZ dbz.colors m/s -5 80 5 radial 1 0
-VEL2   VEL2   /data/mdtest/Downloads/paddy/cfradial/KLGX2&VEL vel.colors m/s -5 80 5 radial 1 0
+ZDR   ZDR   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&ZDR zdr.colors m/s -5 80 5 radial 1 0
+PHIDP   PHIDP   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&PHIDP phidp.colors m/s -5 80 5 radial 1 0
+RHOHV   RHOHV   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&RHOHV rhohv.colors m/s -5 80 5 radial 1 0
 
 </GRIDS>
 
