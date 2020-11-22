@@ -73,14 +73,15 @@
 # Front Range
 #
 
-DBZ   DBZ   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&DBZ dbz.colors m/s -5 80 5 radial 1 0
-VEL   VEL   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&VEL vel.colors m/s -5 80 5 radial 1 0
-PURP  PURP  $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&PURPLE_HAZE purple_haze.colors m/s -5 80 5 radial 1 0
-WIDTH WIDTH $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&WIDTH width.colors m/s -5 80 5 radial 1 0
+CENSOR  CENSOR $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&PURPLE_HAZE purple_haze.colors m/s -5 80 5 radial 1 1
+VEL   VEL   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&VEL vel.colors m/s -5 80 5 radial 1 1
 
-ZDR   ZDR   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&ZDR zdr.colors m/s -5 80 5 radial 1 0
-PHIDP   PHIDP   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&PHIDP phidp.colors m/s -5 80 5 radial 1 0
-RHOHV   RHOHV   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&RHOHV rhohv.colors m/s -5 80 5 radial 1 0
+#DBZ   DBZ   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&DBZ dbz.colors m/s -5 80 5 radial 1 0
+#WIDTH WIDTH $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&WIDTH width.colors m/s -5 80 5 radial 1 0
+
+#ZDR   ZDR   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&ZDR zdr.colors m/s -5 80 5 radial 1 0
+#PHIDP   PHIDP   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&PHIDP phidp.colors m/s -5 80 5 radial 1 0
+#RHOHV   RHOHV   $(HOME)/git/lrose-test/nexrad/data/cfradial/KLGX&RHOHV rhohv.colors m/s -5 80 5 radial 1 0
 
 </GRIDS>
 
@@ -284,11 +285,27 @@ cidd.idle_reset_seconds: 0
 
 # HTML Mode - Set this to 1 to put CIDD into the automatic HTML output mode.
 # Note: cidd.image_dir MUST be set.
-cidd.html_mode: 0
+cidd.html_mode: 1
+
+# Set tranparency of generated images.
+# If 0, the normal background color is used.
+# Set to 1 for tranparent background.
+cidd.transparent_images: 0
 
 # Image Generation related resources
-# Set this to a value to get cidd to output imagery as XWD in this directory
-cidd.image_dir: /tmp
+# Set this to a value to get cidd to output imagery in this directory
+cidd.image_dir: /tmp/images/cidd
+cidd.save_images_to_day_subdir: 1
+# CATALOG NOTE: horiz prefix is used as category in catalog
+cidd.image_horiz_prefix: SUR
+cidd.image_vert_prefix: RHI
+
+# The separator used in the image file names
+cidd.image_name_separator: .
+
+# Image extension - Sets the output image types
+# Legal image types are png,jpg,xpm,pgm,ppm,eim
+cidd.image_ext: png
 
 # Set to 1 if one wants CIDD to run once through it's HTML output
 # plot list and then exit - Currently all fields at each zoom level
@@ -296,19 +313,25 @@ cidd.run_once_and_exit: 0
 
 # The HTML MODE Output file name is built from parts:
 # 'cidd' + fieldname + zoom_level + [height] +
-#  frame_time + [data_generation_time] + [data_valid_time] + .'xwd'
+#  frame_time + [data_generation_time] + [data_valid_time] + .'cidd.image_ext'
 
 # When set to 1 forces the output filename to contain height
 # information in it's file name.  See the comment above on the order
-cidd.add_height_to_filename: 1
+cidd.add_frame_num_to_filename: 0
+cidd.add_frame_time_to_filename: 0
+cidd.add_height_to_filename: 0
 
-# When set to 1 forces the output filename to contain the data's generataion
+# When set to 1 forces the output filename to contain the data's generation
 # time in it's file name.  See the comment above on the order
 cidd.add_gen_time_to_filename: 0
 
 # When set to 1 forces the output filename to contain  the data's valid
 # time in it's file name.  See the comment above on the order
-cidd.add_valid_time_to_filename: 0
+cidd.add_valid_time_to_filename: 1
+
+# When set to 1 forces the output filename to contain the button_name
+# See the comment above on the order.
+cidd.add_button_name_to_filename: 0
 
 # Set the format for the time fields in the names of output xwd images.
 # See strftime(3) for options.  Default is: %H%M
@@ -400,7 +423,7 @@ cidd.xsect_start_page:      1
 
 #
 # The Outer most domain:
-cidd.num_zoom_levels:       4
+cidd.num_zoom_levels:       1
 cidd.start_zoom_level:      1
 
 # The number of Cached images for zooms.
@@ -519,14 +542,14 @@ cidd.locator_margin_km:   50
 cidd.foreground_color: white
 
 # Background of Images use this color
-cidd.background_color: black
+cidd.background_color: transparent
 
 # Background of margins will be this color
 cidd.margin_color: black
 
 # Render values outside the data range of the color scale in this color
 # 'transparent' is the default
-cidd.out_of_range_color: gray20
+cidd.out_of_range_color: transparent
 
 # Color of the cross section reference line 
 cidd.route_path_color: yellow
@@ -770,12 +793,12 @@ cidd.map_missing_to_min_value: 0
 #
 # Uncomment the following lines to set up fields on startup that will
 # appear as overlaid fields. Layers are on by default unless the
-optional "off" string appears last. 
-cidd.layer5_field:  KCYS-DBZ 
-cidd.layer4_field:  KPUX-DBZ
-cidd.layer3_field:  KGJX-DBZ
+# optional "off" string appears last. 
+cidd.layer5_field:  KCYS-DBZ off
+cidd.layer4_field:  KPUX-DBZ off
+cidd.layer3_field:  KGJX-DBZ off
 cidd.layer2_field:  KGLD-DBZ off
-cidd.layer1_field:  KLNX-DBZ off
+cidd.layer1_field:  VEL on
 
 # Rendering order for layers:
 #  0: render main field first then layers
@@ -796,18 +819,18 @@ cidd.latest_client_mark_size: 11
 # highest font number that will fit in a given screen space.
 # Pick a nice spectrum of font sizes, with all of them readable.
 # CIDD currently accepts up to 16 different fonts
-cidd.num_fonts: 8
+cidd.num_fonts: 4
 #
 cidd.font1: 6x9
 cidd.font2: -*-courier-medium-r-normal-*-10-*-*-*-*-*-*-*
 cidd.font3: -*-courier-medium-r-normal-*-12-*-*-*-*-*-*-*
 cidd.font4: -*-courier-bold-r-normal-*-12-*-*-*-*-*-*-*
-cidd.font5: -*-courier-bold-r-normal-*-14-*-*-*-*-*-*-*
-cidd.font6: -*-courier-bold-r-normal-*-15-*-*-*-*-*-*-*
-cidd.font7: -*-courier-bold-r-normal-*-16-*-*-*-*-*-*-*
-cidd.font8: -*-courier-bold-r-normal-*-18-*-*-*-*-*-*-*
-cidd.font9: -*-courier-bold-r-normal-*-24-*-*-*-*-*-*-*
-cidd.font10: -*-courier-bold-r-normal-*-30-*-*-*-*-*-*-*
+#cidd.font5: -*-courier-bold-r-normal-*-14-*-*-*-*-*-*-*
+#cidd.font6: -*-courier-bold-r-normal-*-15-*-*-*-*-*-*-*
+#cidd.font7: -*-courier-bold-r-normal-*-16-*-*-*-*-*-*-*
+#cidd.font8: -*-courier-bold-r-normal-*-18-*-*-*-*-*-*-*
+#cidd.font9: -*-courier-bold-r-normal-*-24-*-*-*-*-*-*-*
+#cidd.font10: -*-courier-bold-r-normal-*-30-*-*-*-*-*-*-*
 
 # font_display_mode = 1 - Clears background behind label text., 0 - No
 cidd.font_display_mode: 0 
@@ -895,7 +918,7 @@ not be availible.  For research/ post analysis most of them should be enabled.
 # 
 #
 #####################################################################################
-cidd.num_menu_bar_cells: 9
+cidd.num_menu_bar_cells: 10
 #
 cidd.menu_bar_label1: Fields...
 cidd.menu_bar_funct1: SHOW_DPD_MENU
@@ -979,8 +1002,8 @@ cidd.menu_bar_funct7: EXIT_BUTTON
 #cidd.menu_bar_label27: Commands
 #cidd.menu_bar_funct27: SHOW_CMD_MENU
 #
-#cidd.menu_bar_label28: Snapshot
-#cidd.menu_bar_funct28: SNAP_IMAGE
+cidd.menu_bar_label10: Snapshot
+cidd.menu_bar_funct10: SNAP_IMAGE
 #
 #cidd.menu_bar_label29: Base Map
 #cidd.menu_bar_funct29: LANDUSE_ONOFF
