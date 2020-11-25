@@ -397,7 +397,7 @@ max_texture_for_stratiform = 11;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat";
+output_url = "$(HOME)/data/convstrat/mdv/conv_strat2";
 
 ///////////// write_partition_field ///////////////////
 //

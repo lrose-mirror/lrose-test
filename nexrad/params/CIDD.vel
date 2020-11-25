@@ -790,6 +790,7 @@ cidd.special_contour_value: 0.25
 #
 cidd.map_bad_to_min_value: 0
 cidd.map_missing_to_min_value: 0
+
 #
 # Uncomment the following lines to set up fields on startup that will
 # appear as overlaid fields. Layers are on by default unless the

@@ -328,11 +328,11 @@ cidd.movieframe_time_format:  %H%M
 
 # This script will be exec'd if set whenever an html_mode image is output.
 # The full path name of the xwd image will be sent as the script argument
-cidd.image_convert_script: convert_image.csh
+#cidd.image_convert_script: convert_image.csh
 
 # This script will be exec'd if set whenever a print command is issued.
 # The full path name of the xwd image will be sent as the script argument
-cidd.print_script: convert_image_print.csh
+#cidd.print_script: convert_image_print.csh
 
 # This script will be exec'd if set whenever the user selects the Output Loop
 # Button, after the last image has output. The arguments will be a list
