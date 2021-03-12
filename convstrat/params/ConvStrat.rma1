@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "mrms";
+instance = "rma1";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -63,7 +63,7 @@ instance = "mrms";
 //     FILELIST
 //
 
-mode = REALTIME;
+mode = ARCHIVE;
 
 //======================================================================
 //
@@ -82,7 +82,7 @@ mode = REALTIME;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/mrms_3d";
+input_url = "$(HOME)/data/convstrat/mdv/rma1/moments";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -135,7 +135,7 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
+temp_profile_url = "$(HOME)/data/convstrat/mdv/gfs/relampago";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -456,7 +456,7 @@ max_interest_for_stratiform = 0.4;
 // Type: int
 //
 
-min_overlap_for_convective_clumps = 1;
+min_overlap_for_convective_clumps = 3;
 
 //======================================================================
 //
@@ -474,7 +474,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat";
+output_url = "$(HOME)/data/convstrat/mdv/rma1/conv_strat";
 
 ///////////// write_partition_field ///////////////////
 //
