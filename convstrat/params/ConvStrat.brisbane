@@ -82,7 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/bom/BrisMerge";
+input_url = "$(HOME)/data/convstrat/mdv/bom/BrisMerge/mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
