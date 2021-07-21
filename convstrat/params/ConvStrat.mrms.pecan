@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "mrms";
+instance = "mrms.pecan";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -397,7 +397,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/conv_strat/mrms";
+output_url = "$(HOME)/data/convstrat/mdv/conv_strat/pecan/mrms";
 
 ///////////// write_partition /////////////////////////
 //
