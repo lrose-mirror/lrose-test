@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "mrms_mosaic.pecan";
+instance = "kftg";
 
 //======================================================================
 //
@@ -161,7 +161,7 @@ restart_overlap_period = 3600;
 // Type: string
 //
 
-input_url = "/scr/snow1/rsfdata/projects/pecan/mdv/radarCart/mrms_mosaic";
+input_url = "$(HOME)/data/denCart/mdv";
 
 ///////////// max_realtime_valid_age //////////////////
 //
@@ -284,7 +284,7 @@ negate_dbz_field = FALSE;
 // Type: boolean
 //
 
-vel_available = FALSE;
+vel_available = TRUE;
 
 ///////////// vel_field ///////////////////////////////
 //
@@ -345,7 +345,7 @@ vel_to_m_per_sec_scale = 1;
 // Type: boolean
 //
 
-remap_z_to_constant_grid = TRUE;
+remap_z_to_constant_grid = FALSE;
 
 ///////////// remap_z_grid ////////////////////////////
 //
@@ -553,7 +553,7 @@ dual_threshold_url = "mdv/dual_threshold";
 // Type: double
 //
 
-base_threshold = 0;
+base_threshold = 2;
 
 ///////////// top_threshold ///////////////////////////
 //
@@ -631,7 +631,7 @@ check_range_limits = FALSE;
 // Type: boolean
 //
 
-check_second_trip = FALSE;
+check_second_trip = TRUE;
 
 ///////////// sectrip_vert_aspect /////////////////////
 //
@@ -936,7 +936,7 @@ convection_finder_output_url = "mdv/convection";
 // Type: double
 //
 
-hail_dbz_threshold = 55;
+hail_dbz_threshold = 53;
 
 ///////////// ZR //////////////////////////////////////
 //
@@ -1019,7 +1019,7 @@ precip_computation_mode = PRECIP_FROM_COLUMN_MAX;
 // Type: double
 //
 
-precip_min_ht = 0;
+precip_min_ht = 3;
 
 ///////////// precip_max_ht ///////////////////////////
 //
@@ -1465,7 +1465,7 @@ FOKR_cat4_zmax_thresh = 65;
 // Type: string
 //
 
-storm_data_dir = "$(HOME)/data/titan_test/storms11";
+storm_data_dir = "$(HOME)/data/titan_test/storms_kftg_11";
 
 ///////////// store_storm_runs ////////////////////////
 //
