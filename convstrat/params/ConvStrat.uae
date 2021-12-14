@@ -213,7 +213,7 @@ deep_threshold_ht = 7.7; // 2017/03/25
 // Type: double
 //
 
-deep_threshold_temp = -30;
+deep_threshold_temp = -25;
 
 //======================================================================
 //
