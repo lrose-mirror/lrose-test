@@ -82,7 +82,7 @@ mode = REALTIME;
 // Type: string
 //
 
-input_url = "/scr/rain2/rsfdata/projects/pecan/mdv/radarCart/mrms_mosaic";
+input_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/radarCart/mrms_mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -135,7 +135,7 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "/scr/rain2/rsfdata/projects/pecan/mdv/ruc/";
+temp_profile_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/ruc/";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -512,7 +512,7 @@ dual_threshold = {
 // Type: string
 //
 
-output_url = "/scr/rain2/rsfdata/projects/pecan/mdv/conv_strat/latest";
+output_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/latest";
 
 ///////////// write_partition /////////////////////////
 //
