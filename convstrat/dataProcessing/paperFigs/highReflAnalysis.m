@@ -8,10 +8,12 @@ addpath(genpath('~/git/lrose-test/convstrat/dataProcessing/'));
 indir=['/scr/cirrus1/rsfdata/projects/convstrat/analysis/highRefl/'];
 figdir=['/scr/cirrus1/rsfdata/projects/convstrat/analysis/paperFigs/'];
 
+thresh='45';
+
 %% Plot conv vs dbz
 
-load([indir,'convectivity_20150601_0000_to_20150717_0000.mat']);
-load([indir,'dbz_20150601_0000_to_20150717_0000.mat']);
+load([indir,'convectivity_',thresh,'dBZ_20150601_0000_to_20150717_0000.mat']);
+load([indir,'dbz_',thresh,'dBZ_20150601_0000_to_20150717_0000.mat']);
 
 lfReflConv=cat(2,dbzAll,convectivityAll);
 lfReflConv(any(isnan(lfReflConv),2),:)=[];
@@ -64,15 +66,15 @@ ylim([0.5 10.5])
 colorbar
 xlabel('Reflectivity (dBZ)');
 ylabel('Convectivity');
-title('Convectivity vs reflectivity of >42 dBZ echo')
+title(['Convectivity vs reflectivity of >',thresh,' dBZ echo'])
 grid on
 box on
 
-print([figdir,'convVSdbz.png'],'-dpng','-r0')
+print([figdir,'convVSdbz_',thresh,'dBZ.png'],'-dpng','-r0')
 
 %% Plot conv vs dbz
 
-load([indir,'part_20150601_0000_to_20150717_0000.mat']);
+load([indir,'part_',thresh,'dBZ_20150601_0000_to_20150717_0000.mat']);
 part3dAll(isnan(part3dAll))=[];
 
 edges=[13,15,17,20,30,33,35,37,39];
@@ -129,9 +131,9 @@ xlim([0.5,8.5]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title('Distribution of >42 dBZ echo per category');
+title(['Distribution of >',thresh,' dBZ echo per category']);
 
 box on
 
-print([figdir,'highReflCats.png'],'-dpng','-r0')
+print([figdir,'highReflCats_',thresh,'dBZ.png'],'-dpng','-r0')
 

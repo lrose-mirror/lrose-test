@@ -65,7 +65,7 @@ set(fig1,'color','w');
 s1=subplot(3,1,1);
 
 b=bar(catCountsStrat./size(stratPart,1).*100,1,'FaceColor','flat');
-set(gca,'XTickLabel',categories);
+set(gca,'XTickLabel','');
 set(gca,'YTick',0:10:100);
 for kk = 1:8
     b.CData(kk,:)=colmapPart(kk,:);
@@ -76,13 +76,13 @@ xlim([0.5,8.5]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title('Stratiform');
+title('(a) Distribution of GPM stratiform echo');
 box on
 
 s2=subplot(3,1,2);
 
 b=bar(catCountsConv./size(convPart,1).*100,1,'FaceColor','flat');
-set(gca,'XTickLabel',categories);
+set(gca,'XTickLabel','');
 set(gca,'YTick',0:10:100);
 for kk = 1:8
     b.CData(kk,:)=colmapPart(kk,:);
@@ -93,10 +93,10 @@ xlim([0.5,8.5]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title('Convective');
+title('(b) Distribution of GPM convective echo');
 box on
 
-s2=subplot(3,1,3);
+s3=subplot(3,1,3);
 
 b=bar(catCountsOther./size(otherPart,1).*100,1,'FaceColor','flat');
 set(gca,'XTickLabel',categories);
@@ -106,12 +106,16 @@ for kk = 1:8
 end
 xtickangle(45);
 xlim([0.5,8.5]);
-%ylim([0,35]);
+ylim([0,55]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title('Other');
+title('(c) Distribution of GPM other echo');
 box on
+
+s1.Position=[0.11 0.71 0.87 0.265];
+s2.Position=[0.11 0.405 0.87 0.265];
+s3.Position=[0.11 0.1 0.87 0.265];
 
 print([figdir,'gpmVSgpm.png'],'-dpng','-r0')
 
