@@ -31,3 +31,7 @@ OPERA MDV input:
 OPERA output:
 /scr/cirrus1/rsfdata/projects/convstrat/mdv/opera/conv_strat
 
+CONUS input:
+/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/mosaic
+CONUS output:
+/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/conv_strat
