@@ -8,7 +8,7 @@ addpath(genpath('~/git/lrose-test/convstrat/dataProcessing/'));
 indir=['/scr/cirrus1/rsfdata/projects/convstrat/analysis/highRefl/'];
 figdir=['/scr/cirrus1/rsfdata/projects/convstrat/analysis/paperFigs/'];
 
-thresh='45';
+thresh='42';
 
 %% Plot conv vs dbz
 
@@ -103,8 +103,8 @@ tickLabelX={'42','44','46','48','50','52','54','56','58',...
 
 close all
 
-wi=10;
-hi=7.5;
+wi=5;
+hi=4;
 
 fig1=figure('DefaultAxesFontSize',11,'DefaultFigurePaperType','<custom>','units','inch','position',[3,100,wi,hi]);
 fig1.PaperPositionMode = 'manual';
@@ -119,7 +119,8 @@ set(fig1,'color','w');
 
 s1=subplot(1,1,1);
 
-b=bar(catCounts./length(part3dAll).*100,1,'FaceColor','flat');
+percOut=catCounts./length(part3dAll).*100;
+b=bar(percOut,1,'FaceColor','flat');
 set(gca,'XTickLabel',categories);
 set(gca,'YTick',0:10:100);
 for kk = 1:8
@@ -130,10 +131,15 @@ xlim([0.5,8.5]);
 %ylim([0,35]);
 set(gca, 'YGrid', 'on');
 
-ylabel('Percent of data points (%)')
-title(['Distribution of >',thresh,' dBZ echo per category']);
+ylabel('Percent of >42 dBZ reflectivities (%)')
+%title(['Distribution of >',thresh,' dBZ echo per category']);
 
 box on
 
+s1.Position=[0.11 0.224 0.87 0.75];
+
 print([figdir,'highReflCats_',thresh,'dBZ.png'],'-dpng','-r0')
 
+disp(['Stratiform: ',num2str(sum(percOut(1:3)))]);
+disp(['Mixed: ',num2str(sum(percOut(4)))]);
+disp(['Convective: ',num2str(sum(percOut(5:8)))]);

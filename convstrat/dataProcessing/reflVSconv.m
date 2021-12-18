@@ -11,7 +11,7 @@ endTime=datetime(2015,7,17,0,0,0);
 % startTime=datetime(2015,6,1,0,0,0);
 % endTime=datetime(2015,6,1,3,0,0);
 
-reflThresh=45;
+reflThresh=50;
 
 saveData=1;
 

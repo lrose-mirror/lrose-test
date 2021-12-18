@@ -63,8 +63,9 @@ fig1.InvertHardcopy = 'off';
 set(fig1,'color','w');
 
 s1=subplot(3,1,1);
+stratPerc=catCountsStrat./size(stratPart,1).*100;
 
-b=bar(catCountsStrat./size(stratPart,1).*100,1,'FaceColor','flat');
+b=bar(stratPerc,1,'FaceColor','flat');
 set(gca,'XTickLabel','');
 set(gca,'YTick',0:10:100);
 for kk = 1:8
@@ -76,12 +77,13 @@ xlim([0.5,8.5]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title('(a) Distribution of GPM stratiform echo');
+title(['(a) ',num2str(size(stratPart,1)),' GPM stratiform points']);
 box on
 
 s2=subplot(3,1,2);
+convPerc=catCountsConv./size(convPart,1).*100;
 
-b=bar(catCountsConv./size(convPart,1).*100,1,'FaceColor','flat');
+b=bar(convPerc,1,'FaceColor','flat');
 set(gca,'XTickLabel','');
 set(gca,'YTick',0:10:100);
 for kk = 1:8
@@ -93,12 +95,13 @@ xlim([0.5,8.5]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title('(b) Distribution of GPM convective echo');
+title(['(b) ',num2str(size(convPart,1)),' GPM convective points']);
 box on
 
 s3=subplot(3,1,3);
+otherPerc=catCountsOther./size(otherPart,1).*100;
 
-b=bar(catCountsOther./size(otherPart,1).*100,1,'FaceColor','flat');
+b=bar(otherPerc,1,'FaceColor','flat');
 set(gca,'XTickLabel',categories);
 set(gca,'YTick',0:10:100);
 for kk = 1:8
@@ -110,7 +113,7 @@ ylim([0,55]);
 set(gca, 'YGrid', 'on');
 
 ylabel('Percent of data points (%)')
-title('(c) Distribution of GPM other echo');
+title(['(c) ',num2str(size(otherPart,1)),' GPM other points']);
 box on
 
 s1.Position=[0.11 0.71 0.87 0.265];

@@ -8,7 +8,7 @@ addpath(genpath('~/git/lrose-test/convstrat/dataProcessing/'));
 figdir=['/scr/cirrus1/rsfdata/projects/convstrat/analysis/paperFigs/'];
 
 lonBounds1=[-99 -91];
-latBounds1=[37 44];
+latBounds1=[36.99 44.01];
 
 latDisp1=[41.93];%41.35
 lineBounds1=[-96 -93.8];
@@ -82,6 +82,8 @@ in3D.part3D(in3D.part3Din==38)=-1; % conv deep
 
 %% Plot
 
+titleLargeXY=[-98.8,43.6];
+
 [minLat latInd]=min(abs(latDisp1-lat));
 
 colmapPart=[0,0.1,0.6;
@@ -126,15 +128,16 @@ caxis([0 55]);
 %title(['Reflectivity']);
 grid on
 box on
-%ax1.YTick=(24:26);
+ax1.YTick=(37:44);
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 plot(lineBounds1,[latDisp1,latDisp1],'-k','linewidth',2);
 
-text(51.1,26.6,'(a)','Fontsize',11,'fontweight','bold');
+text(titleLargeXY(1),titleLargeXY(2),'(a) Ground Based Reflectivity',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
-text(54.5,23.3,'A','Fontsize',11,'fontweight','bold');
-text(54.3,26.7,'B','Fontsize',11,'fontweight','bold');
+text(-96.4,41.9,'A','Fontsize',11,'fontweight','bold');
+text(-93.7,41.9,'B','Fontsize',11,'fontweight','bold');
 ax1.SortMethod = 'childorder';
 
 ax2=subplot(4,2,3);
@@ -151,10 +154,12 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(10,17,'(c)','Fontsize',11,'fontweight','bold');
+text(-95.93,11.5,'(c) Ground Based reflectivity',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
-text(10,1,'A','Fontsize',11,'fontweight','bold');
-text(340,1,'B','Fontsize',11,'fontweight','bold');
+text(-95.95,1,'A','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+text(-93.9,1,'B','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+ax2.SortMethod = 'childorder';
 
 ax3=subplot(4,2,5);
 
@@ -173,7 +178,8 @@ box on
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 
-text(51.1,26.6,'(e)','Fontsize',11,'fontweight','bold');
+text(titleLargeXY(1),titleLargeXY(2),'(f) Ground Based 2D Classification',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 ax3.SortMethod = 'childorder';
 
 ax4=subplot(4,2,7);
@@ -190,10 +196,12 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(10,17,'(c)','Fontsize',11,'fontweight','bold');
+text(-95.93,11.5,'(h) Ground Based Classification',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
-text(10,1,'A','Fontsize',11,'fontweight','bold');
-text(340,1,'B','Fontsize',11,'fontweight','bold');
+text(-95.95,1,'A','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+text(-93.9,1,'B','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+ax4.SortMethod = 'childorder';
 
 %title('3D Classification');
 grid on
@@ -291,10 +299,11 @@ xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
 plot(lineBounds1,[latDisp1,latDisp1],'-k','linewidth',2);
 
-text(51.1,26.6,'(a)','Fontsize',11,'fontweight','bold');
+text(titleLargeXY(1),titleLargeXY(2),'(b) GPM DPR Reflectivity',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
-text(54.5,23.3,'A','Fontsize',11,'fontweight','bold');
-text(54.3,26.7,'B','Fontsize',11,'fontweight','bold');
+text(-95.4,41.9,'C','Fontsize',11,'fontweight','bold');
+text(-93.7,41.9,'D','Fontsize',11,'fontweight','bold');
 ax5.SortMethod = 'childorder';
 
 cb1=colorbar;
@@ -314,10 +323,12 @@ grid on
 box on
 ylabel('Altitude (km)');
 
-text(10,17,'(c)','Fontsize',11,'fontweight','bold');
+text(-94.94,11.7,'(d) GPM Refl.',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
-text(10,1,'A','Fontsize',11,'fontweight','bold');
-text(340,1,'B','Fontsize',11,'fontweight','bold');
+text(-94.95,1,'C','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+text(-93.95,1,'D','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+ax61.SortMethod = 'childorder';
 
 ax62=subplot(4,4,8);
 
@@ -333,12 +344,13 @@ ax62.YTickLabel='';
 grid on
 box on
 
-text(10,17,'(c)','Fontsize',11,'fontweight','bold');
+text(-94.94,11.7,'(e) GPM Class.',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 
-text(10,1,'A','Fontsize',11,'fontweight','bold');
-text(340,1,'B','Fontsize',11,'fontweight','bold');
+text(-94.95,1,'C','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+text(-93.95,1,'D','Fontsize',11,'fontweight','bold','BackgroundColor','w','Margin',0.5);
+ax62.SortMethod = 'childorder';
 
-%title('3D Classification');
 grid on
 box on
 
@@ -358,7 +370,9 @@ box on
 %ax3.YTick=(24:26);
 ylabel('Latitude (deg)');
 
-text(51.1,26.6,'(e)','Fontsize',11,'fontweight','bold');
+text(titleLargeXY(1),titleLargeXY(2),'(g) GPM 2D Classification',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
+
 ax7.SortMethod = 'childorder';
 ax7.XTickLabel='';
 
@@ -366,7 +380,7 @@ cb7=colorbar;
 cb7.Ticks=[-7.5,-6.5,-5.5,-4.5,-3.5,-2.5,-1.5,-0.5];
 cb7.TickLabels=categories;
 
-ax8=subplot(4,2,8);
+ax8=subplot('Position',[0.49 0.045 0.38 0.23]);
 
 hold on
 surf(lon,lat,in2D.part2DorigIn(:,:)','edgecolor','none');
@@ -385,7 +399,8 @@ ylabel('Latitude (deg)');
 
 ax8.YTick=37:43;
 
-text(51.1,26.6,'(e)','Fontsize',11,'fontweight','bold');
+text(titleLargeXY(1),titleLargeXY(2),'(i) GPM Precipitation Type',...
+    'Fontsize',11,'fontweight','bold','BackgroundColor','w');
 ax8.SortMethod = 'childorder';
 
 cb8=colorbar;
