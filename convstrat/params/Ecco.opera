@@ -1,13 +1,13 @@
 /**********************************************************************
- * TDRP params for ConvStrat
+ * TDRP params for Ecco
  **********************************************************************/
 
 //======================================================================
 //
-// Program name: ConvStrat.
+// Program name: Ecco.
 //
-// ConvStrat finds convective and stratiform regions within a Cartesian 
-//   radar volume.
+// Ecco finds convective and stratiform regions within a Cartesian radar 
+//   volume.
 //
 //======================================================================
  
@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "brisbane";
+instance = "opera";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -82,7 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "$(HOME)/data/convstrat/mdv/bom/BrisMerge/mosaic";
+input_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/opera/lambert";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -135,7 +135,7 @@ vert_levels_type = VERT_LEVELS_BY_HT;
 // Type: string
 //
 
-temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
+temp_profile_url = "mdv/model";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -146,7 +146,7 @@ temp_profile_url = "$(HOME)/data/convstrat/mdv/ruc";
 // Type: string
 //
 
-temp_profile_field_name = "TMP";
+temp_profile_field_name = "Temp";
 
 ///////////// temp_profile_search_margin //////////////
 //
@@ -172,8 +172,7 @@ temp_profile_search_margin = 21600;
 // Type: double
 //
 
-// shallow_threshold_ht = 4.450; // 2021/02/20
-shallow_threshold_ht = 4.080; // 2021/02/23
+shallow_threshold_ht = -1;
 
 ///////////// shallow_threshold_temp //////////////////
 //
@@ -199,8 +198,7 @@ shallow_threshold_temp = 0;
 // Type: double
 //
 
-// deep_threshold_ht = 8.077; // 2021/02/20
-deep_threshold_ht = 7.450; // 2021/02/23
+deep_threshold_ht = 1;
 
 ///////////// deep_threshold_temp /////////////////////
 //
@@ -213,7 +211,7 @@ deep_threshold_ht = 7.450; // 2021/02/23
 // Type: double
 //
 
-deep_threshold_temp = -30;
+deep_threshold_temp = -12;
 
 //======================================================================
 //
@@ -231,7 +229,7 @@ deep_threshold_temp = -30;
 // Type: double
 //
 
-min_valid_height = 0;
+min_valid_height = -1;
 
 ///////////// max_valid_height ////////////////////////
 //
@@ -267,7 +265,7 @@ min_valid_dbz = 0;
 // Type: double
 //
 
-min_valid_volume_for_convective = 20;
+min_valid_volume_for_convective = 30;
 
 ///////////// min_vert_extent_for_convective //////////
 //
@@ -284,7 +282,7 @@ min_valid_volume_for_convective = 20;
 // Type: double
 //
 
-min_vert_extent_for_convective = 1;
+min_vert_extent_for_convective = 0;
 
 ///////////// dbz_for_echo_tops ///////////////////////
 //
@@ -350,6 +348,44 @@ min_valid_fraction_for_fit = 0.67;
 
 //======================================================================
 //
+// CONVERTING REFLECTIVITY TEXTURE TO CONVECTIVITY.
+//
+// Convectivity ranges from 0 to 1. To convert texture to convectivity, 
+//   we apply a piece-wise linear transfer function. This section defines 
+//   the lower texture limit and the upper texture limit. At or below the 
+//   lower limit convectivity is set to 0. At or above the upper limit 
+//   convectivity is set to 1. Between these two limits convectivity 
+//   varies linearly with texture.
+//
+//======================================================================
+ 
+///////////// texture_limit_low ///////////////////////
+//
+// Lower limit for texture.
+//
+// Below this texture the convectivity is set to 0.
+//
+//
+// Type: double
+//
+
+texture_limit_low = 0;
+
+///////////// texture_limit_high //////////////////////
+//
+// Upper limit for texture.
+//
+// Above this texture the convectivity is set to 1. Between the limits 
+//   convectivity varies linearly with texture.
+//
+//
+// Type: double
+//
+
+texture_limit_high = 27;
+
+//======================================================================
+//
 // SETTING CONVECTIVE OR STRATIFORM FLAGS BASED ON CONVECTIVITY.
 //
 // If neither is set, we flag the point as MIXED.
@@ -383,20 +419,107 @@ min_convectivity_for_convective = 0.5;
 
 max_convectivity_for_stratiform = 0.4;
 
-///////////// min_overlap_for_convective_clumps ///////
+//======================================================================
 //
-// Minimum grid overlap in convective regions.
+// CLUMPING.
 //
-// A convective region is identified as a series of adjacent 'runs' of 
-//   grid cells data in the EW direction. When testing for overlap, some 
-//   minimum number of overlap grids must be used. This is that minimum 
-//   overlap in grid units.
+// We performing clumping on the convectivity field to identify 
+//   convective entities as objects. The main threshold used for the 
+//   clumping is min_convectivity_for_convective. By default a secondary 
+//   threshold is also used - see below.
+//
+//======================================================================
+ 
+///////////// clumping_use_dual_thresholds ////////////
+//
+// Option to use dual thresholds to better identify convective clumps.
+//
+// NOTE: this step is performed in 2D. If set, the clumping is performed 
+//   in two stages. First, an outer convectivity envelope is computed, 
+//   using min_convectivity_for_convective. Then, using the parameters 
+//   below, for each clump a search is performed for sub-clumps within the 
+//   envelope of the main clump, suing the secondary threshold. If there 
+//   is only one sub-clump, the original clump is used unchanged. If there 
+//   are two or more valid sub-clumps, based on the parameters below, 
+//   these sub-clumps are progrresively grown to where they meet, or to 
+//   the original clump envelope. The final 3D clumps are computed by 
+//   breaking the original clump into regions based upon these secondary 
+//   2D areas.
 //
 //
-// Type: int
+// Type: boolean
 //
 
-min_overlap_for_convective_clumps = 1;
+clumping_use_dual_thresholds = TRUE;
+
+///////////// clumping_secondary_convectivity /////////
+//
+// Secondary convectivity threshold for clumping.
+//
+// We use the secondary threshold to find sub-clumps within the envelope 
+//   of each original clump.
+//
+//
+// Type: double
+//
+
+clumping_secondary_convectivity = 0.65;
+
+///////////// all_subclumps_min_area_fraction /////////
+//
+// Min area of all sub-clumps, as a fraction of the original clump area.
+//
+// We sum the areas of the sub-clumps, and compute the fraction relative 
+//   to the area of the original clump. For the sub-clumps to be valid, 
+//   the computed fraction must exceed this parameter.
+//
+//
+// Type: double
+//
+
+all_subclumps_min_area_fraction = 0.33;
+
+///////////// each_subclump_min_area_fraction /////////
+//
+// Min area of each valid sub-clump, as a fraction of the original 
+//   clump.
+//
+// We compute the area of each sub-clump, and compute the fraction 
+//   relative to the area of the original clump. For a subclump to be 
+//   valid, the area fraction must exceed this parameter.
+//
+//
+// Type: double
+//
+
+each_subclump_min_area_fraction = 0.02;
+
+///////////// each_subclump_min_area_km2 //////////////
+//
+// Min area of each valid sub-clump (km2).
+//
+// We compute the area of each sub-clump. For a subclump to be valid, 
+//   the area must exceed this parameter.
+//
+//
+// Type: double
+//
+
+each_subclump_min_area_km2 = 2;
+
+///////////// clumping_write_debug_fields /////////////
+//
+// Option to write fields to the output files for debugging the dual 
+//   threshold clumping.
+//
+// If this is set, the following debug fields are written to the output 
+//   files: .
+//
+//
+// Type: boolean
+//
+
+clumping_write_debug_fields = FALSE;
 
 //======================================================================
 //
@@ -414,7 +537,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "$(HOME)/data/convstrat/mdv/bom/BrisMerge/conv_strat";
+output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/opera/conv_strat";
 
 ///////////// write_partition /////////////////////////
 //
@@ -462,7 +585,7 @@ write_convectivity = TRUE;
 // Type: boolean
 //
 
-write_3D_dbz = TRUE;
+write_3D_dbz = FALSE;
 
 ///////////// write_convective_dbz ////////////////////
 //
@@ -474,7 +597,7 @@ write_3D_dbz = TRUE;
 // Type: boolean
 //
 
-write_convective_dbz = TRUE;
+write_convective_dbz = FALSE;
 
 ///////////// write_col_max_dbz ///////////////////////
 //
@@ -486,7 +609,7 @@ write_convective_dbz = TRUE;
 // Type: boolean
 //
 
-write_col_max_dbz = TRUE;
+write_col_max_dbz = FALSE;
 
 ///////////// write_tops //////////////////////////////
 //
@@ -498,7 +621,7 @@ write_col_max_dbz = TRUE;
 // Type: boolean
 //
 
-write_tops = TRUE;
+write_tops = FALSE;
 
 ///////////// write_fraction_active ///////////////////
 //

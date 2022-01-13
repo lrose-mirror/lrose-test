@@ -1,13 +1,13 @@
 /**********************************************************************
- * TDRP params for ConvStrat
+ * TDRP params for Ecco
  **********************************************************************/
 
 //======================================================================
 //
-// Program name: ConvStrat.
+// Program name: Ecco.
 //
-// ConvStrat finds convective and stratiform regions within a Cartesian 
-//   radar volume.
+// Ecco finds convective and stratiform regions within a Cartesian radar 
+//   volume.
 //
 //======================================================================
  
@@ -32,7 +32,7 @@
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_OFF;
+debug = DEBUG_VERBOSE;
 
 ///////////// instance ////////////////////////////////
 //
@@ -44,7 +44,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "wrf.relampago";
+instance = "mrms.conus3D";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -82,7 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-input_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen";
+input_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -135,7 +135,7 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen";
+temp_profile_url = "/scr/sleet1/rsfdata/projects/eolbase/mdv/ruc";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -146,7 +146,7 @@ temp_profile_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen";
 // Type: string
 //
 
-temp_profile_field_name = "Temp";
+temp_profile_field_name = "TMP";
 
 ///////////// temp_profile_search_margin //////////////
 //
@@ -159,7 +159,7 @@ temp_profile_field_name = "Temp";
 // Type: int
 //
 
-temp_profile_search_margin = 60;
+temp_profile_search_margin = 21600;
 
 ///////////// shallow_threshold_ht ////////////////////
 //
@@ -519,7 +519,7 @@ each_subclump_min_area_km2 = 2;
 // Type: boolean
 //
 
-clumping_write_debug_fields = TRUE;
+clumping_write_debug_fields = FALSE;
 
 //======================================================================
 //
@@ -537,7 +537,7 @@ clumping_write_debug_fields = TRUE;
 // Type: string
 //
 
-output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago";
+output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/conv_strat";
 
 ///////////// write_partition /////////////////////////
 //

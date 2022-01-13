@@ -100,14 +100,55 @@ field_list = {
 # RELAMPAGO
 #
 
-WRF-DBZ      WRF-DBZ     /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&DBZ   dbz.colors   dBZ  -5 80 5 cart 1 0
-WRF-Temp     WRF-Temp    /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&Temp  temp.colors  C    -5 80 5 cart 1 0
-WRF-RH       WRF-RH      /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen&RH    rh.colors    %    -5 80 5 cart 1 0
+WRF-DBZ      WRF-DBZ     /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&DBZ   dbz.colors   dBZ  -5 80 5 cart 1 0
+WRF-Temp     WRF-Temp    /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Temp  temp.colors  C    -5 80 5 cart 1 0
+WRF-RH       WRF-RH      /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&RH    rh.colors    %    -5 80 5 cart 1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+Dbz3DMax Dbz3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+FractionActive  FractionActive  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&FractionActive  fraction.colors - -5 80 5 cart 1 0
+DbzTexture3DMax DbzTexture3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D     DbzTexture3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
+DbzTexture2D     DbzTexture2D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzTexture2D dbz.colors - -5 80 5 cart 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+Convectivity3DMax  Convectivity3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D      Convectivity3D      /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+Convectivity2D      Convectivity2D      /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Convectivity2D convectivity.colors - -5 80 5 cart,comp 1 0
+DbzConvMax     DbzConvMax     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzConv         dbz.colors - -5 80 5 cart,comp 1 0
+DbzConv         DbzConv         /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzConv         dbz.colors - -5 80 5 cart 1 0
+Part3DMax Part3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3DMax Part3DMax  mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3D    Part3D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
+Part2D    Part2D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+
+ShallowHt ShallowHt /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ShallowHt number.colors km -5 80 5 cart 1 0
+DeepHt    DeepHt    /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DeepHt    number.colors km -5 80 5 cart 1 0
+Temp      Temp      /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Temp       temp.colors C -5 80 5 cart 1 0
+ConvTops   ConvTops  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ConvTops     heightkm.colors km -5 80 5 cart 1 0
+StratTops  StratTops /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&StratTops    heightkm.colors km -5 80 5 cart 1 0
+EchoTops   EchoTops  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoTops     heightkm.colors km -5 80 5 cart 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+AllSubClumps AllSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&All sub_clump.colors - -5 80 5 cart 1 0
+ValidSubClumps ValidSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Valid sub_clump.colors - -5 80 5 cart 1 0
+GrownSubClumps GrownSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Grown sub_clump.colors - -5 80 5 cart 1 0
+CompDbzForClumps CompDbzForClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&CompDbz dbz.colors - -5 80 5 cart 1 0
+CompFlagClumps CompFlagClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&CompDbz dbz_flag.colors - -5 80 5 cart 1 0
+ConvThresh   ConvThresh  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Convectivity3D convectivity_thresholded.colors - -5 80 5 cart,comp 1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 ############################
 # Satellite data
@@ -508,7 +549,7 @@ WRF-3D    mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=tr
 WRF-10m   mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true&  U10   V10   None m/s -1 yellow
 Surf      mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true&   Uwind Vwind None m/s -1 orange
 
-WRF-Kristen WRF-Kristen /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/kristen& U V None m/s 1 cyan
+WRF-Kristen WRF-Kristen /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago& U V None m/s 1 cyan
 
 </WINDS>
 
@@ -849,8 +890,8 @@ cidd.max_adeg:               360.0
 # List of comma delimited local directories or HTTP URLs to search
 # Searchs . then each directory/URL in order 
 
-cidd.color_file_subdir:   http://front.eol.ucar.edu/color_scales
-cidd.map_file_subdir:     http://front.eol.ucar.edu/maps
+cidd.color_file_subdir:   $(HOME)/git/lrose-displays/color_scales,http://front.eol.ucar.edu/color_scales
+cidd.map_file_subdir:     $(HOME)/git/lrose-displays/maps,http://front.eol.ucar.edu/maps
 
 #
 # Station locator features

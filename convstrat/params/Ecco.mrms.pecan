@@ -1,13 +1,13 @@
 /**********************************************************************
- * TDRP params for ConvStrat
+ * TDRP params for Ecco
  **********************************************************************/
 
 //======================================================================
 //
-// Program name: ConvStrat.
+// Program name: Ecco.
 //
-// ConvStrat finds convective and stratiform regions within a Cartesian 
-//   radar volume.
+// Ecco finds convective and stratiform regions within a Cartesian radar 
+//   volume.
 //
 //======================================================================
  
@@ -32,7 +32,7 @@
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_VERBOSE;
+debug = DEBUG_OFF;
 
 ///////////// instance ////////////////////////////////
 //
@@ -44,7 +44,7 @@ debug = DEBUG_VERBOSE;
 // Type: string
 //
 
-instance = "mrms.conus3D";
+instance = "mrms.pecan";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -82,8 +82,7 @@ mode = ARCHIVE;
 // Type: string
 //
 
-// input_url = "/scr/sleet1/rsfdata/projects/eolbase/mdv/mrms3D/conus3D";
-input_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/mosaic";
+input_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/radarCart/mrms_mosaic";
 
 ///////////// dbz_field_name //////////////////////////
 //
@@ -136,7 +135,7 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "/scr/sleet1/rsfdata/projects/eolbase/mdv/ruc";
+temp_profile_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/ruc/";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -212,7 +211,7 @@ deep_threshold_ht = 9;
 // Type: double
 //
 
-deep_threshold_temp = -25;
+deep_threshold_temp = -30;
 
 //======================================================================
 //
@@ -349,6 +348,44 @@ min_valid_fraction_for_fit = 0.67;
 
 //======================================================================
 //
+// CONVERTING REFLECTIVITY TEXTURE TO CONVECTIVITY.
+//
+// Convectivity ranges from 0 to 1. To convert texture to convectivity, 
+//   we apply a piece-wise linear transfer function. This section defines 
+//   the lower texture limit and the upper texture limit. At or below the 
+//   lower limit convectivity is set to 0. At or above the upper limit 
+//   convectivity is set to 1. Between these two limits convectivity 
+//   varies linearly with texture.
+//
+//======================================================================
+ 
+///////////// texture_limit_low ///////////////////////
+//
+// Lower limit for texture.
+//
+// Below this texture the convectivity is set to 0.
+//
+//
+// Type: double
+//
+
+texture_limit_low = 0;
+
+///////////// texture_limit_high //////////////////////
+//
+// Upper limit for texture.
+//
+// Above this texture the convectivity is set to 1. Between the limits 
+//   convectivity varies linearly with texture.
+//
+//
+// Type: double
+//
+
+texture_limit_high = 30;
+
+//======================================================================
+//
 // SETTING CONVECTIVE OR STRATIFORM FLAGS BASED ON CONVECTIVITY.
 //
 // If neither is set, we flag the point as MIXED.
@@ -382,20 +419,107 @@ min_convectivity_for_convective = 0.5;
 
 max_convectivity_for_stratiform = 0.4;
 
-///////////// min_overlap_for_convective_clumps ///////
+//======================================================================
 //
-// Minimum grid overlap in convective regions.
+// CLUMPING.
 //
-// A convective region is identified as a series of adjacent 'runs' of 
-//   grid cells data in the EW direction. When testing for overlap, some 
-//   minimum number of overlap grids must be used. This is that minimum 
-//   overlap in grid units.
+// We performing clumping on the convectivity field to identify 
+//   convective entities as objects. The main threshold used for the 
+//   clumping is min_convectivity_for_convective. By default a secondary 
+//   threshold is also used - see below.
+//
+//======================================================================
+ 
+///////////// clumping_use_dual_thresholds ////////////
+//
+// Option to use dual thresholds to better identify convective clumps.
+//
+// NOTE: this step is performed in 2D. If set, the clumping is performed 
+//   in two stages. First, an outer convectivity envelope is computed, 
+//   using min_convectivity_for_convective. Then, using the parameters 
+//   below, for each clump a search is performed for sub-clumps within the 
+//   envelope of the main clump, suing the secondary threshold. If there 
+//   is only one sub-clump, the original clump is used unchanged. If there 
+//   are two or more valid sub-clumps, based on the parameters below, 
+//   these sub-clumps are progrresively grown to where they meet, or to 
+//   the original clump envelope. The final 3D clumps are computed by 
+//   breaking the original clump into regions based upon these secondary 
+//   2D areas.
 //
 //
-// Type: int
+// Type: boolean
 //
 
-min_overlap_for_convective_clumps = 1;
+clumping_use_dual_thresholds = TRUE;
+
+///////////// clumping_secondary_convectivity /////////
+//
+// Secondary convectivity threshold for clumping.
+//
+// We use the secondary threshold to find sub-clumps within the envelope 
+//   of each original clump.
+//
+//
+// Type: double
+//
+
+clumping_secondary_convectivity = 0.65;
+
+///////////// all_subclumps_min_area_fraction /////////
+//
+// Min area of all sub-clumps, as a fraction of the original clump area.
+//
+// We sum the areas of the sub-clumps, and compute the fraction relative 
+//   to the area of the original clump. For the sub-clumps to be valid, 
+//   the computed fraction must exceed this parameter.
+//
+//
+// Type: double
+//
+
+all_subclumps_min_area_fraction = 0.33;
+
+///////////// each_subclump_min_area_fraction /////////
+//
+// Min area of each valid sub-clump, as a fraction of the original 
+//   clump.
+//
+// We compute the area of each sub-clump, and compute the fraction 
+//   relative to the area of the original clump. For a subclump to be 
+//   valid, the area fraction must exceed this parameter.
+//
+//
+// Type: double
+//
+
+each_subclump_min_area_fraction = 0.02;
+
+///////////// each_subclump_min_area_km2 //////////////
+//
+// Min area of each valid sub-clump (km2).
+//
+// We compute the area of each sub-clump. For a subclump to be valid, 
+//   the area must exceed this parameter.
+//
+//
+// Type: double
+//
+
+each_subclump_min_area_km2 = 2;
+
+///////////// clumping_write_debug_fields /////////////
+//
+// Option to write fields to the output files for debugging the dual 
+//   threshold clumping.
+//
+// If this is set, the following debug fields are written to the output 
+//   files: .
+//
+//
+// Type: boolean
+//
+
+clumping_write_debug_fields = TRUE;
 
 //======================================================================
 //
@@ -413,7 +537,7 @@ min_overlap_for_convective_clumps = 1;
 // Type: string
 //
 
-output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/conv_strat";
+output_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh";
 
 ///////////// write_partition /////////////////////////
 //
