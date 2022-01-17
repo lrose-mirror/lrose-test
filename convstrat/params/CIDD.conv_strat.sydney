@@ -113,9 +113,9 @@ DbzConvMax     DbzConvMax     mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfd
 DbzConv         DbzConv         mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&DbzConv         dbz.colors - -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-Part3DMax-Dual Part3DMax-Dual  mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D-Dual     Part3D-Dual      mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2D-Dual     Part2D-Dual      mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+Part3DMax-Dual Part3DMax-Dual  mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3D-Dual     Part3D-Dual      mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Part2D-Dual     Part2D-Dual      mdvp::no_interp//cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
 ConvTops   ConvTops  mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&ConvTops     heightkm.colors km -5 80 5 cart 1 0
 StratTops  StratTops mdvp:://cirrus.eol.ucar.edu:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/bom/SydneyMerge/conv_strat?use_http=true&StratTops    heightkm.colors km -5 80 5 cart 1 0

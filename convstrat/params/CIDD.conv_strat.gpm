@@ -113,9 +113,9 @@ Conv2DGpm      Conv2DGpm      mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/con
 #DbzConvGpm        DbzConvGpm         mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&DbzConv         dbz.colors - -5 80 5 cart 1 0
 #========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-Part3DMaxGpm  Part3DMaxGpm  mdvp::no_interp//cirrus.eol.ucar.edu:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3DGpm     Part3DGpm      mdvp::no_interp//cirrus.eol.ucar.edu:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2DGpm     Part2DGpm      mdvp::no_interp//cirrus.eol.ucar.edu:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+Part3DMaxGpm  Part3DMaxGpm  mdvp::no_interp//cirrus.eol.ucar.edu:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3DGpm     Part3DGpm      mdvp::no_interp//cirrus.eol.ucar.edu:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Part2DGpm     Part2DGpm      mdvp::no_interp//cirrus.eol.ucar.edu:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
 ShallowHtGpm ShallowHtGpm mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&ShallowHt number.colors km -5 80 5 cart 1 0
 DeepHtGpm    DeepHtGpm    mdvp:://cirrus:0:/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat&DeepHt    number.colors km -5 80 5 cart 1 0
@@ -147,13 +147,13 @@ DbzConvMax     DbzConvMax     mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_str
 DbzConv         DbzConv         mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&DbzConv         dbz.colors - -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-Part3DMax-Dual Part3DMax-Dual  mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D-Dual     Part3D-Dual      mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2D-Dual     Part2D-Dual      mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+Part3DMax-Dual Part3DMax-Dual  mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3D-Dual     Part3D-Dual      mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Part2D-Dual     Part2D-Dual      mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
-Part3DMax-Single Part3DMax-Single  mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_single_thresh?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D-Single    Part3D-Single     mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_single_thresh?use_http=true&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2D-Single    Part2D-Single     mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_single_thresh?use_http=true&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+Part3DMax-Single Part3DMax-Single  mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_single_thresh?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3D-Single    Part3D-Single     mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_single_thresh?use_http=true&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Part2D-Single    Part2D-Single     mdvp::no_interp//front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_single_thresh?use_http=true&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
 ShallowHt ShallowHt mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&ShallowHt number.colors km -5 80 5 cart 1 0
 DeepHt    DeepHt    mdvp:://front.eol.ucar.edu:8080:pecan/mdv/conv_strat/mrms_dual_thresh?use_http=true&DeepHt    number.colors km -5 80 5 cart 1 0

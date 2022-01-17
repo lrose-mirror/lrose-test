@@ -125,9 +125,9 @@ DbzConv         DbzConv         /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 ========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
 
-Part3DMax Part3DMax  mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D    Part3D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2D    Part2D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+Part3DMax Part3DMax  mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+Part3D    Part3D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+Part2D    Part2D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
 ShallowHt ShallowHt /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ShallowHt number.colors km -5 80 5 cart 1 0
 DeepHt    DeepHt    /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DeepHt    number.colors km -5 80 5 cart 1 0

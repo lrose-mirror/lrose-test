@@ -117,9 +117,9 @@ Convectivity3D      Convectivity3D      $(HOME)/data/convstrat/mdv/conv_strat&Co
 Convectivity2D      Convectivity2D      $(HOME)/data/convstrat/mdv/conv_strat&Convectivity2D convectivity.colors - -5 80 5 cart,comp 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart,comp 1 0
-Partition3D     Partition3D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart 1 0
-Partition2D     Partition2D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&Partition2D conv_strat3.colors - -5 80 5 cart 1 0
+EchoType3DComp EchoType3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&EchoType3D conv_strat3.colors - -5 80 5 cart,comp 1 0
+EchoType3D     EchoType3D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&EchoType3D conv_strat3.colors - -5 80 5 cart 1 0
+EchoTypeComp     EchoTypeComp      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat&EchoTypeComp conv_strat3.colors - -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/conv_strat&DbzColMax       dbz.colors - -5 80 5 cart 1 0
@@ -157,9 +157,9 @@ Convectivity3D      Convectivity3D      $(HOME)/data/convstrat/mdv/conv_strat1&C
 Convectivity2D      Convectivity2D      $(HOME)/data/convstrat/mdv/conv_strat1&Convectivity2D convectivity.colors - -5 80 5 cart,comp 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&Partition3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Partition3D     Partition3D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&Partition3D conv_strat4.colors - -5 80 5 cart 1 0
-Partition2D     Partition2D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&Partition2D conv_strat4.colors - -5 80 5 cart 1 0
+EchoType3DComp EchoType3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType3D     EchoType3D      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
+EchoTypeComp     EchoTypeComp      mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/conv_strat1&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/conv_strat1&DbzColMax       dbz.colors - -5 80 5 cart 1 0
