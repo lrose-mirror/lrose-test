@@ -523,7 +523,7 @@ each_subclump_min_area_km2 = 2;
 // Type: string
 //
 
-output_url = "/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh";
+output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsPecan/conv_strat";
 
 ///////////// write_partition /////////////////////////
 //
@@ -657,5 +657,5 @@ write_temperature = TRUE;
 // Type: boolean
 //
 
-write_clumping_debug_fields = FALSE;
+write_clumping_debug_fields = TRUE;
 
