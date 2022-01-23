@@ -1,4 +1,4 @@
-#####################################################################################
+<#####################################################################################
 #  CIDD.master
 #  Configurable Interactive Data Display Master Params
 #
@@ -94,60 +94,124 @@ field_list = {
 #Legend   Button                                                             Rendering
 #Label    Label       URL           Colorscale Units Cont-lo-hi-interv Format Display_in_menu Bkgnd_Render
 #----------------------------------------------------------------------------------------------------------
-# RELAMPAGO
-#
 
-WRF-DBZ      WRF-DBZ     /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&DBZ   dbz.colors   dBZ  -5 80 5 cart 1 0
-WRF-Temp     WRF-Temp    /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&Temp  temp.colors  C    -5 80 5 cart 1 0
-WRF-RH       WRF-RH      /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago&RH    rh.colors    %    -5 80 5 cart 1 0
+# ConvStrat for PECAN
 
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+Dbz3DMax Dbz3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+FractionActive  FractionActive  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&FractionActive  fraction.colors - -5 80 5 cart 1 0
 
-Dbz3DMax Dbz3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
-Dbz3D     Dbz3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
-FractionActive  FractionActive  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&FractionActive  fraction.colors - -5 80 5 cart 1 0
+====1====      ====1=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====1====      ====1=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====1====      ====1=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-DbzTexture3DMax DbzTexture3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
-DbzTexture3D     DbzTexture3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzTexture3D dbz.colors - -5 80 5 cart 1 0
-DbzTexture2D     DbzTexture2D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzTexture2D dbz.colors - -5 80 5 cart 1 0
+DbzTexture3DMax DbzTexture3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&DbzTexture3D   dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D    DbzTexture3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&DbzTexture3D   dbz.colors - -5 80 5 cart 1 0
+DbzTextureComp  DbzTextureComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&DbzTextureComp dbz.colors - -5 80 5 cart 1 0
 
-Convectivity3DMax  Convectivity3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
-Convectivity3D      Convectivity3D      /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
-Convectivity2D      Convectivity2D      /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Convectivity2D convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3DMax Convectivity3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&Convectivity3D   convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D    Convectivity3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&Convectivity3D   convectivity.colors - -5 80 5 cart 1 0
+ConvectivityComp  ConvectivityComp   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&ConvectivityComp convectivity.colors - -5 80 5 cart,comp 1 0
 
-DbzConvMax     DbzConvMax     /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzConv         dbz.colors - -5 80 5 cart,comp 1 0
-DbzConv         DbzConv         /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DbzConv         dbz.colors - -5 80 5 cart 1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+EchoType3DMax EchoType3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&EchoType3D   conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType3D    EchoType3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&EchoType3D   conv_strat4.colors - -5 80 5 cart 1 0
+EchoTypeComp  EchoTypeComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_1.00&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+====2====      ====2=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====2====      ====2=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====2====      ====2=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-Part3DMax Part3DMax  mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart,comp 1 0
-Part3D    Part3D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
-Part2D    Part2D     mdvp::no_interp//cirrus:5440:/scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
+Dbz3DMax Dbz3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+FractionActive  FractionActive  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&FractionActive  fraction.colors - -5 80 5 cart 1 0
 
-ShallowHt ShallowHt /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ShallowHt number.colors km -5 80 5 cart 1 0
-DeepHt    DeepHt    /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&DeepHt    number.colors km -5 80 5 cart 1 0
-Temp      Temp      /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&Temp       temp.colors C -5 80 5 cart 1 0
+DbzTexture3DMax DbzTexture3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&DbzTexture3D   dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D    DbzTexture3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&DbzTexture3D   dbz.colors - -5 80 5 cart 1 0
+DbzTextureComp  DbzTextureComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&DbzTextureComp dbz.colors - -5 80 5 cart 1 0
 
-ConvTops   ConvTops  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ConvTops     heightkm.colors km -5 80 5 cart 1 0
-StratTops  StratTops /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&StratTops    heightkm.colors km -5 80 5 cart 1 0
-EchoTops   EchoTops  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&EchoTops     heightkm.colors km -5 80 5 cart 1 0
+Convectivity3DMax Convectivity3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&Convectivity3D   convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D    Convectivity3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&Convectivity3D   convectivity.colors - -5 80 5 cart 1 0
+ConvectivityComp  ConvectivityComp   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&ConvectivityComp convectivity.colors - -5 80 5 cart,comp 1 0
 
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
-========   ========    mdvp::static//front.eol.ucar.edu:8080:/spacer/moments&Elevation       none.colors  m   -5 80 5 cont  1 0
+EchoType3DMax EchoType3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&EchoType3D   conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType3D    EchoType3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&EchoType3D   conv_strat4.colors - -5 80 5 cart 1 0
+EchoTypeComp  EchoTypeComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
 
-AllSubClumps AllSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&AllClumps sub_clump.colors - -5 80 5 cart 1 0
-ValidSubClumps ValidSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ValidClumps sub_clump.colors - -5 80 5 cart 1 0
-GrownSubClumps GrownSubClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&GrownClumps sub_clump.colors - -5 80 5 cart 1 0
+kernel        kernel     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_2.00&DBZ  dbz.colors   dBZ -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
-CompDbzForClumps CompDbzForClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ClumpsCompDbz dbz.colors - -5 80 5 cart 1 0
-CompFlagClumps CompFlagClumps  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/wrf/relampago&ClumpsCompDbz dbz_flag.colors - -5 80 5 cart 1 0
-ConvThresh   ConvThresh  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/conv_strat/wrf/relampago&Convectivity3D convectivity_thresholded.colors - -5 80 5 cart,comp 1 0
+====3====      ====3=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====3====      ====3=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====3====      ====3=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+Dbz3DMax Dbz3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+FractionActive  FractionActive  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&FractionActive  fraction.colors - -5 80 5 cart 1 0
+
+DbzTexture3DMax DbzTexture3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&DbzTexture3D   dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D    DbzTexture3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&DbzTexture3D   dbz.colors - -5 80 5 cart 1 0
+DbzTextureComp  DbzTextureComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&DbzTextureComp dbz.colors - -5 80 5 cart 1 0
+
+Convectivity3DMax Convectivity3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&Convectivity3D   convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D    Convectivity3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&Convectivity3D   convectivity.colors - -5 80 5 cart 1 0
+ConvectivityComp  ConvectivityComp   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&ConvectivityComp convectivity.colors - -5 80 5 cart,comp 1 0
+
+EchoType3DMax EchoType3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&EchoType3D   conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType3D    EchoType3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&EchoType3D   conv_strat4.colors - -5 80 5 cart 1 0
+EchoTypeComp  EchoTypeComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
+
+kernel        kernel     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_3.00&DBZ  dbz.colors   dBZ -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+====4====      ====4=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====4====      ====4=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====4====      ====4=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+Dbz3DMax Dbz3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+FractionActive  FractionActive  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&FractionActive  fraction.colors - -5 80 5 cart 1 0
+
+DbzTexture3DMax DbzTexture3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&DbzTexture3D   dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D    DbzTexture3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&DbzTexture3D   dbz.colors - -5 80 5 cart 1 0
+DbzTextureComp  DbzTextureComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&DbzTextureComp dbz.colors - -5 80 5 cart 1 0
+
+Convectivity3DMax Convectivity3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&Convectivity3D   convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D    Convectivity3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&Convectivity3D   convectivity.colors - -5 80 5 cart 1 0
+ConvectivityComp  ConvectivityComp   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&ConvectivityComp convectivity.colors - -5 80 5 cart,comp 1 0
+
+EchoType3DMax EchoType3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&EchoType3D   conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType3D    EchoType3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&EchoType3D   conv_strat4.colors - -5 80 5 cart 1 0
+EchoTypeComp  EchoTypeComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
+
+kernel        kernel     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_4.00&DBZ  dbz.colors   dBZ -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+====5.0====      ====5.0=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====5.0====      ====5.0=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+====5.0====      ====5.0=====  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+
+Dbz3DMax Dbz3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart,comp 1 0
+Dbz3D     Dbz3D   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&Dbz3D  dbz.colors   dBZ -5 80 5 cart 1 0
+FractionActive  FractionActive  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&FractionActive  fraction.colors - -5 80 5 cart 1 0
+
+DbzTexture3DMax DbzTexture3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&DbzTexture3D   dbz.colors - -5 80 5 cart,comp 1 0
+DbzTexture3D    DbzTexture3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&DbzTexture3D   dbz.colors - -5 80 5 cart 1 0
+DbzTextureComp  DbzTextureComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&DbzTextureComp dbz.colors - -5 80 5 cart 1 0
+
+Convectivity3DMax Convectivity3DMax  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&Convectivity3D   convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity3D    Convectivity3D     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&Convectivity3D   convectivity.colors - -5 80 5 cart 1 0
+ConvectivityComp  ConvectivityComp   /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&ConvectivityComp convectivity.colors - -5 80 5 cart,comp 1 0
+
+EchoType3DMax EchoType3DMax /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&EchoType3D   conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType3D    EchoType3D    /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&EchoType3D   conv_strat4.colors - -5 80 5 cart 1 0
+EchoTypeComp  EchoTypeComp  /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&EchoTypeComp conv_strat4.colors - -5 80 5 cart 1 0
+
+kernel        kernel     /scr/cirrus1/rsfdata/projects/convstrat/mdv/ResTestEcco/pecan/res_factor_5.00&DBZ  dbz.colors   dBZ -5 80 5 cart 1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
+========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
@@ -166,28 +230,15 @@ ConvThresh   ConvThresh  /scr/cirrus1/rsfdata/projects/convstrat/mdv/conv_strat/
 # MAP_CODE Control_Label   Map_File_Name   On/OFF Detail__min Detail_max Color     
 #------------------------------------------------------------------------------------------
 
-Countries      Countries      world_states.map            1  0.0 1000000.0  white
+PECAN        PECAN        pecan_domain.map  0  0.0 1000000.0  orange
+Counties     Counties     us_counties.map   0      0.0      10000.0     brown4
+States       States       usa.map           1      0.0      10000.0     blue
+ihwys        ihwys        conus_interstates.map    1      0.0      10000.0     gray
+ushwys       ushwys       conus_ushwys.map    0      0.0      10000.0     darkblue
+SPOL         SPOL         spol_pecan.map      0      0.0      10000.0     white
+NEXRADS      NEXRADS      nexrads.map       1      0.0      10000.0     white
 
-States         States         ARG_adm1.map                1  0.0 1000000.0  brown
-Counties       Counties       ARG_adm2.map                0  0.0 1000000.0  pink
-
-Roads          Roads          ARG_roads.map               0  0.0 1000000.0  gray25
-Rivers         Rivers         ARG_water_lines_dcw.map     0  0.0 1000000.0  blue
-Lakes          Lakes          ARG_water_areas_dcw.map     0  0.0 1000000.0  blue
-#Admin0        Admin0         ARG_adm0.map                0  0.0 1000000.0  orange
-
-RMA1Rings      RMA1Rings      rma1_rings.map              0  0.0 1000000.0  white
-RMA2Rings      RMA2Rings      rma2_rings.map              0  0.0 1000000.0  white
-AngRings       AngRings       ang_rings.map               0  0.0 1000000.0  white
-ParRings       ParRings       par_rings.map               0  0.0 1000000.0  white
-PerRings       PerRings       per_rings.map               0  0.0 1000000.0  white
-SanMartinRings SanMartinRings san_martin_rings.map        0  0.0 1000000.0  white
-SanRafaelRings SanRafaelRings san_rafael_rings.map        0  0.0 1000000.0  white
-
-Points         Points         relampago_points.map        1  0.0 1000000.0  yellow
-
-HailPads1      HailPads1      hailpads_1.map              0  0.0 1000000.0  red
-LTG_CU         LTG_CU         ltg_cu.map                  0  0.0 1000000.0  yellow
+RADARS_CIRC  RADAR_CIRC   radar_circles.map 0      0.0      10000.0     orange
 
 </MAPS>
 
@@ -236,14 +287,6 @@ LTG_CU         LTG_CU         ltg_cu.map                  0  0.0 1000000.0  yell
 #
 # Legend_label  URL U V W_fieldnames units  Style [Color]
 #----------------------------------------------------------------------------
-
-GFS-3D    mdvp:://front.eol.ucar.edu:8080:relampago/mdv/gfs/relampago?use_http=true& UGRD  VGRD  None m/s -1 darkgreen
-WRF-3D    mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true&  U     V     None m/s 1  blue
-WRF-10m   mdvp:://front.eol.ucar.edu:8080:relampago/mdv/wrf/illinois?use_http=true&  U10   V10   None m/s -1 yellow
-Surf      mdvp:://front.eol.ucar.edu:8080:relampago/mdv/surf_interp?use_http=true&   Uwind Vwind None m/s -1 orange
-
-WRF-Kristen WRF-Kristen /scr/cirrus1/rsfdata/projects/convstrat/mdv/wrf/relampago& U V None m/s 1 cyan
-
 </WINDS>
 
 ######################################################################################
@@ -273,7 +316,8 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  20:00 12/13/2018
+cidd.demo_time:  00:00 06/26/2015
+#cidd.demo_time:  23:50 06/14/2015
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -284,12 +328,12 @@ cidd.movie_frame_dir: /tmp
 
 #  This determines how many movie frames are in the loop to start with
 #  Setting this high will cause the X server to hog memory.
-cidd.starting_movie_frames:  10
+cidd.starting_movie_frames:  24
 
 # minutes per movie frame on startup
 # The display will atomatically update every this interval, throwing away its
 # oldest movie frame and creating and drawing a new one.
-cidd.time_interval:  10
+cidd.time_interval:  5
 
 # This parameter sets the maximum number of hours in the future a user can select
 # from the quick forecast menu. See SHOW_FORECAST_MENU menu bar button
@@ -337,14 +381,14 @@ cidd.redraw_interval:     100
 # Setting this below 3 seconds is not advised.  interacts with the Data
 # Mapper Host parameter: cidd.datamap_host:
 
-cidd.update_interval:      30
+cidd.update_interval:      60
 
 # Data Mapper Host
 #cidd.datamap_host:  venus
 
 #  Number of seconds to wait for data to come in before giving up
 #  On very slow networks this may need to go as high as 180 seconds!
-cidd.data_timeout_secs: 40
+cidd.data_timeout_secs: 30
 
 # Length of time to wait before killing simple external commands
 # Used When running single image convert scripts and driving
@@ -432,8 +476,7 @@ cidd.request_compressed_data: 1
 #
 # Sets the projection for cidd's plan view - Current valid choices are:
 # CARTESIAN, LAT_LON, LAMBERT,  STEREOGRAPHIC
-#cidd.projection_type:    CARTESIAN
-cidd.projection_type:    LAT_LON
+cidd.projection_type: LAT_LON
 
 # These must be set if using a Lambert conformal projection - Ignored otherwise
 cidd.lambert_lat1: 20.0
@@ -464,7 +507,7 @@ cidd.always_get_full_domain:  0
 cidd.aspect_ratio:   1.0
 
 # Switch to enable the status window. 0 = off
-cidd.enable_status_window: 1
+cidd.enable_status_window: 0
  
 # Switch to enable the single middle button click save image feature
 # Warning - WiLL allow users shell access, or to write to other dirs.
@@ -472,8 +515,8 @@ cidd.enable_save_image_panel: 1
  
 # On startup and each time the reset button is pressed, the display
 # will indicate a click at this point, as if the user had clicked..
-cidd.reset_click_longitude:  -157.18
-cidd.reset_click_latitude:   21.1328
+cidd.reset_click_longitude:  -99.535739
+cidd.reset_click_latitude:   38.553164
 #
 # The Outer most domain: Overlays are clipped to this domain and 
 # pan/moves cannot exceed these edge limits.
@@ -484,8 +527,8 @@ cidd.domain_limit_max_y:         5000
  
 # The Lat, Long of the center of the display. Internal range rings
 # are relative to this point.
-cidd.origin_longitude:       -65.0
-cidd.origin_latitude:        -32.5
+cidd.origin_longitude:       -99.535739
+cidd.origin_latitude:        38.553164
 
 #
 #
@@ -496,8 +539,8 @@ cidd.xsect_start_page:      1
 
 #
 # The Outer most domain:
-cidd.num_zoom_levels:       8
-cidd.start_zoom_level:      1
+cidd.num_zoom_levels:       7
+cidd.start_zoom_level:      4
 
 # The number of Cached images for zooms.
 cidd.num_cache_zooms:       0
@@ -506,56 +549,51 @@ cidd.num_cache_zooms:       0
 # It's suggested that names without spaces be used when running
 # in.
 #
-cidd.level1_label:                  WRF
-cidd.level1_min_xkm:                -69
-cidd.level1_min_ykm:                -36
-cidd.level1_max_xkm:                -60
-cidd.level1_max_ykm:                -27.5
+cidd.level1_label:                  SPOL-150km
+cidd.level1_min_xkm:                -101.27
+cidd.level1_min_ykm:                37.18
+cidd.level1_max_xkm:                -97.80
+cidd.level1_max_ykm:                39.90
 #
-cidd.level2_label:                  400km
-cidd.level2_min_xkm:                -69
-cidd.level2_min_ykm:                -36
-cidd.level2_max_xkm:                -61
-cidd.level2_max_ykm:                -29
-#
-#
-cidd.level3_label:                  600km
-cidd.level3_min_xkm:                -71
-cidd.level3_min_ykm:                -37.5
-cidd.level3_max_xkm:                -59
-cidd.level3_max_ykm:                -27.5
+cidd.level2_label:                  PECAN-DOMAIN
+cidd.level2_min_xkm:                -103.7
+cidd.level2_min_ykm:                35.45
+cidd.level2_max_xkm:                -95.2
+cidd.level2_max_ykm:                41.6
 #
 #
-cidd.level4_label:                  800km
-cidd.level4_min_xkm:                -73.5
-cidd.level4_min_ykm:                -40
-cidd.level4_max_xkm:                -56.5
-cidd.level4_max_ykm:                -25
+cidd.level3_label:                  WIDE
+cidd.level3_min_xkm:                -107.0
+cidd.level3_min_ykm:                33.5
+cidd.level3_max_xkm:                -92.0
+cidd.level3_max_ykm:                43.5
 #
 #
-cidd.level5_label:                  1500km
-cidd.level5_min_xkm:                -80
-cidd.level5_min_ykm:                -45
-cidd.level5_max_xkm:                -50
-cidd.level5_max_ykm:                -20
+cidd.level4_label:                  REGIONAL
+cidd.level4_min_xkm:                -110
+cidd.level4_min_ykm:                29
+cidd.level4_max_xkm:                -90
+cidd.level4_max_ykm:                46
 #
-cidd.level6_label:                  3000km
-cidd.level6_min_xkm:                -95
-cidd.level6_min_ykm:                -60
-cidd.level6_max_xkm:                -35
-cidd.level6_max_ykm:                -5
 #
-cidd.level7_label:                  6000km
-cidd.level7_min_xkm:                -120
-cidd.level7_min_ykm:                -72.5
-cidd.level7_max_xkm:                -10
-cidd.level7_max_ykm:                7.5
+cidd.level5_label:                  CONUS
+cidd.level5_min_xkm:                -125
+cidd.level5_min_ykm:                25
+cidd.level5_max_xkm:                -70
+cidd.level5_max_ykm:                50
 #
-cidd.level8_label:                  World
-cidd.level8_min_xkm:                -180
-cidd.level8_min_ykm:                -89
-cidd.level8_max_xkm:                180
-cidd.level8_max_ykm:                89
+cidd.level6_label:                  WORLD
+cidd.level6_min_xkm:                -180
+cidd.level6_min_ykm:                -90
+cidd.level6_max_xkm:                180
+cidd.level6_max_ykm:                90
+#
+cidd.level6_label:                  SAMPLE
+cidd.level6_min_xkm:                -101.926
+cidd.level6_min_ykm:                40.5
+cidd.level6_max_xkm:                -100.079
+cidd.level6_max_ykm:                41.907.
+#
 
 # Vertical Range and Resolution - Establishes a vertical coordinate system
 # for the cross sectional imagery.
@@ -572,7 +610,7 @@ cidd.level8_max_ykm:                89
 #  
 cidd.min_ht:               0.0
 cidd.max_ht:               20.0
-cidd.start_ht:             2.5
+cidd.start_ht:             1.7
 
 # Radial data Limits
 cidd.min_rkm:                0.0
@@ -593,7 +631,7 @@ cidd.map_file_subdir:     $(HOME)/git/lrose-displays/maps,http://front.eol.ucar.
 cidd.locator_margin_km:   50
 # Full Path File name or http URL to a station data file.
 # The format of each line is:  ID, LAT, LON, ALT(m), TYPE
-#cidd.station_loc_url: http://front.eol.ucar.edu/content/htdocs/maps/Taiwan_stations.dat 
+#cidd.station_loc_url: http://front.eol.ucar.edu/maps/world_stations.dat
 
 #
 # FMQ Type URL for Receiving Remote commands
@@ -639,7 +677,7 @@ cidd.locator_margin_km:   50
 #  Plan View and Cross Section COLORS
 #
 # Legends, scales, etc use this color
-cidd.foreground_color: white 
+cidd.foreground_color: white
 
 # Background of Images use this color
 cidd.background_color: black
@@ -673,10 +711,9 @@ cidd.range_ring_color: gray
 # Set the follwing colors to 'transparent' to avoid having these
 # plotted. (This is the default) Otherwise, these data will be
 # plotted in the indicated color
+cidd.missing_data_color: grey20
 
-cidd.missing_data_color: black
-cidd.bad_data_color: black
-
+cidd.bad_data_color: grey20
 #
 # Time Control (Movie) Popup Colors
 cidd.epoch_indicator_color: orange
@@ -776,7 +813,7 @@ cidd.horiz_default_y_pos:     0
 cidd.horiz_top_margin:        30
 cidd.horiz_bot_margin:        20
 cidd.horiz_left_margin:       20
-cidd.horiz_right_margin:      80
+cidd.horiz_right_margin:      60
 
 cidd.vert_min_height:        120
 cidd.vert_min_width:         120
@@ -790,11 +827,14 @@ cidd.vert_right_margin:      30
 
 
 # Set range_ring_spacing to a negative value to dynamically determing spacing.
-cidd.range_ring_spacing:     50.0
-cidd.max_ring_range:        250.0
+cidd.range_ring_spacing:     25.0
+cidd.max_ring_range:     150.0
 
 #  Render Range rings at the origin of the data, instead of the origin of the display.
 cidd.range_ring_follows_data: 1
+
+#  Render Range rings only for radar type data.
+cidd.range_ring_for_radar_only: 1
 
 #  Shift the Domain if the data shifts.
 cidd.domain_follows_data: 0
@@ -802,12 +842,11 @@ cidd.domain_follows_data: 0
 # x_space, y_space in pixels determine allowable space for range ring labels
 cidd.range_ring_x_space:    40
 cidd.range_ring_y_space:    13
-cidd.azmith_interval:       45.0
-cidd.azmith_radius:         250.0
+cidd.azmith_interval:       30.0
+cidd.azmith_radius:         200.0
 
 # Toggles to turn on/off  Extras features on startup
 cidd.range_rings:             1
-cidd.range_ring_for_radar_only: 1
 cidd.azmith_lines:            1
 
 # Starting state of the All Winds ON/OFF feature
@@ -1044,45 +1083,42 @@ cidd.menu_bar_funct6: LOOP_ONOFF
 #  
 cidd.menu_bar_label7: Now
 cidd.menu_bar_funct7: SET_TO_NOW
-#  
-cidd.menu_bar_label8: Forecast
-cidd.menu_bar_funct8: SHOW_FORECAST_MENU
 #
-cidd.menu_bar_label9: Products
-cidd.menu_bar_funct9: SHOW_PRODUCT_MENU
+cidd.menu_bar_label8: Products
+cidd.menu_bar_funct8: SHOW_PRODUCT_MENU
 #
-cidd.menu_bar_label10: All-Prods
-cidd.menu_bar_funct10: SYMPRODS_ONOFF
+cidd.menu_bar_label9: All-Prods
+cidd.menu_bar_funct9: SYMPRODS_ONOFF
 #
-cidd.menu_bar_label11: Vsection
-cidd.menu_bar_funct11: SHOW_XSECT_PANEL
+cidd.menu_bar_label10: Vsection
+cidd.menu_bar_funct10: SHOW_XSECT_PANEL
+#
+cidd.menu_bar_label11: Reset
+cidd.menu_bar_funct11: RESET
 #
 cidd.menu_bar_label12: Reload
 cidd.menu_bar_funct12: RELOAD
 #
-cidd.menu_bar_label13: Overlays
-cidd.menu_bar_funct13: SHOW_DPD_PANEL
+cidd.menu_bar_label13: Value
+cidd.menu_bar_funct13: REPORT_MODE_ONOFF
 #
-cidd.menu_bar_label14: Config
-cidd.menu_bar_funct14: SHOW_GRID_PANEL
+cidd.menu_bar_label14: Overlays
+cidd.menu_bar_funct14: SHOW_DPD_PANEL
 #
-cidd.menu_bar_label15: Status
-cidd.menu_bar_funct15: SHOW_STATUS_PANEL
+cidd.menu_bar_label15: Config
+cidd.menu_bar_funct15: SHOW_GRID_PANEL
 #
-cidd.menu_bar_label16: Winds
-cidd.menu_bar_funct16: WINDS_ONOFF
+cidd.menu_bar_label16: Status
+cidd.menu_bar_funct16: SHOW_STATUS_PANEL
 #
-cidd.menu_bar_label17: Value
-cidd.menu_bar_funct17: REPORT_MODE_ONOFF
+cidd.menu_bar_label17: Help
+cidd.menu_bar_funct17: HELP_BUTTON
 #
-cidd.menu_bar_label18: Reset
-cidd.menu_bar_funct18: RESET
+cidd.menu_bar_label18: Winds
+cidd.menu_bar_funct18: WINDS_ONOFF
 #
 cidd.menu_bar_label19: Exit
 cidd.menu_bar_funct19: EXIT_BUTTON
-#
-#cidd.menu_bar_label17: Help
-#cidd.menu_bar_funct17: HELP_BUTTON
 #
 #cidd.menu_bar_label7: URL...
 #cidd.menu_bar_funct7: SHOW_BOOKMARK_MENU
@@ -1116,9 +1152,10 @@ cidd.menu_bar_funct19: EXIT_BUTTON
 #cidd.menu_bar_funct29: LANDUSE_ONOFF
 #
 
+
 ##########################################
 
-cidd.horiz_frame_label: RELAMPAGO
+cidd.horiz_frame_label: PECAN 2015
 
 # Set the message to display when no data is availible
 cidd.no_data_message:     NO DATA FOUND (in this area at the selected time)
@@ -1304,12 +1341,38 @@ short_requests = TRUE;
 //         Note: scale_constant set in MAIN_PARAM section.      
 
 prod_info = {
+  // {
+  //   menu_label = "RHI-spol",
+  //   url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:pecan/spdb/spol/rhi/sband?use_http=true",
+  //   data_type = 0,
+  //   render_type = RENDER_ALL_VALID,
+  //   on_by_default = TRUE,
+  //   minutes_allow_before = 20,
+  //   minutes_allow_after = 10,
+  //   text_off_threshold = 0.4,
+  //   request_data_on_zoom = FALSE,
+  //   request_data_on_vert_change = FALSE
+  // }
+  // , 
+  // {
+  //   menu_label = "RHI-label",
+  //   url = "spdbp:Rhi2Symprod:label//front.eol.ucar.edu:8080:pecan/spdb/spol/rhi/sband?use_http=true",
+  //   data_type = 0,
+  //   render_type = RENDER_ALL_VALID,
+  //   on_by_default = FALSE,
+  //   minutes_allow_before = 20,
+  //   minutes_allow_after = 10,
+  //   text_off_threshold = 0.4,
+  //   request_data_on_zoom = FALSE,
+  //   request_data_on_vert_change = FALSE
+  // }
+  //,
   {
     menu_label = "METARS-simple",
-    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:relampago/spdb/metar?use_http=true",
+    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:pecan/spdb/metar?use_http=true",
     data_type = 0,
     render_type = RENDER_LATEST_IN_FRAME,
-    on_by_default = TRUE,
+    on_by_default = FALSE,
     minutes_allow_before = 90.0,
     minutes_allow_after = 0.0,
     text_off_threshold = 0.0,
@@ -1319,7 +1382,7 @@ prod_info = {
   ,
   {
     menu_label = "METARS-full",
-    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:relampago/spdb/metar?use_http=true",
+    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:pecan/spdb/metar?use_http=true",
     data_type = 0,
     render_type = RENDER_LATEST_IN_FRAME,
     on_by_default = FALSE,
@@ -1331,8 +1394,8 @@ prod_info = {
   }
   ,
   {
-    menu_label = "AWS-simple",
-    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:relampago/spdb/aws?use_http=true",
+    menu_label = "MADIS-simple",
+    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:pecan/spdb/madis?use_http=true",
     data_type = 0,
     render_type = RENDER_LATEST_IN_FRAME,
     on_by_default = FALSE,
@@ -1344,8 +1407,8 @@ prod_info = {
   }
   ,
   {
-    menu_label = "AWS-full",
-    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:relampago/spdb/aws?use_http=true",
+    menu_label = "MADIS-full",
+    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:pecan/spdb/madis?use_http=true",
     data_type = 0,
     render_type = RENDER_LATEST_IN_FRAME,
     on_by_default = FALSE,
@@ -1357,13 +1420,12 @@ prod_info = {
   }
   ,
   {
-    menu_label = "GLM" ,
-    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:relampago/spdb/ltg/glm?use_http=true",
+    menu_label = "KSMeso-simple",
+    url = "spdbp:Metar2Symprod:simple//front.eol.ucar.edu:8080:pecan/spdb/KSMeso?use_http=true",
     data_type = 0,
-    render_type = RENDER_ALL_VALID,
-    // render_type = RENDER_ALL_BEFORE_DATA_TIME,
+    render_type = RENDER_LATEST_IN_FRAME,
     on_by_default = FALSE,
-    minutes_allow_before = 20.0,
+    minutes_allow_before = 90.0,
     minutes_allow_after = 0.0,
     text_off_threshold = 0.0,
     request_data_on_zoom = FALSE,
@@ -1371,13 +1433,12 @@ prod_info = {
   }
   ,
   {
-    menu_label = "WWLLN" ,
-    url = "spdbp:Ltg2Symprod:wwlln//front.eol.ucar.edu:8080:relampago/spdb/ltg/wwlln?use_http=true",
+    menu_label = "KSMeso-full",
+    url = "spdbp:Metar2Symprod:labels//front.eol.ucar.edu:8080:pecan/spdb/KSMeso?use_http=true",
     data_type = 0,
-    render_type = RENDER_ALL_VALID,
-    // render_type = RENDER_ALL_BEFORE_DATA_TIME,
+    render_type = RENDER_LATEST_IN_FRAME,
     on_by_default = FALSE,
-    minutes_allow_before = 20.0,
+    minutes_allow_before = 90.0,
     minutes_allow_after = 0.0,
     text_off_threshold = 0.0,
     request_data_on_zoom = FALSE,
@@ -1385,22 +1446,21 @@ prod_info = {
   }
   ,
   {
-    menu_label = "STARNET" ,
-    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:relampago/spdb/ltg/starnet?use_http=true",
+    menu_label = "NLDN-15" ,
+    url = "spdbp:Ltg2Symprod://front.eol.ucar.edu:8080:pecan/spdb/ltg/nldn?use_http=true",
     data_type = 0,
-    render_type = RENDER_ALL_VALID,
-    // render_type = RENDER_ALL_BEFORE_DATA_TIME,
+    render_type = RENDER_ALL_BEFORE_DATA_TIME,
     on_by_default = FALSE,
-    minutes_allow_before = 20.0,
+    minutes_allow_before = 15.0,
     minutes_allow_after = 0.0,
     text_off_threshold = 0.0,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
+    FALSE,
+    FALSE
   }
   ,                        
   {
-    menu_label = "G1-5min",
-    url = "spdbp:AcTrack2Symprod:05_min//front.eol.ucar.edu:8080:relampago/spdb/ac_posn?use_http=true",
+    menu_label = "AcPosn 10-min",
+    url = "spdbp:AcTrack2Symprod:10_min//front.eol.ucar.edu:8080:pecan/spdb/ac_posn?use_http=true",
     data_type = 0,
     render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
     on_by_default = FALSE,
@@ -1412,11 +1472,11 @@ prod_info = {
   }
   ,                        
   {
-    menu_label = "G1-10min",
-    url = "spdbp:AcTrack2Symprod:10_min//front.eol.ucar.edu:8080:relampago/spdb/ac_posn?use_http=true",
+    menu_label = "AcPosn 20-min",
+    url = "spdbp:AcTrack2Symprod:20_min//front.eol.ucar.edu:8080:pecan/spdb/ac_posn?use_http=true",
     data_type = 0,
     render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
-    on_by_default = TRUE,
+    on_by_default = FALSE,
     minutes_allow_before = 15.0,
     minutes_allow_after = 15.0,
     text_off_threshold = 0.4,
@@ -1425,8 +1485,8 @@ prod_info = {
   }
   ,                        
   {
-    menu_label = "G1-20min",
-    url = "spdbp:AcTrack2Symprod:20_min//front.eol.ucar.edu:8080:relampago/spdb/ac_posn?use_http=true",
+    menu_label = "AcPosn 30-min",
+    url = "spdbp:AcTrack2Symprod:30_min//front.eol.ucar.edu:8080:pecan/spdb/ac_posn?use_http=true",
     data_type = 0,
     render_type = RENDER_FIRST_BEFORE_FRAME_TIME,
     on_by_default = FALSE,
@@ -1439,54 +1499,67 @@ prod_info = {
   ,                        
   {
     menu_label = "MobilePosn",
-    url = "spdbp:AcTrack2Symprod://front.eol.ucar.edu:8080:relampago/spdb/mobile_assets?use_http=true",
+    url = "spdbp:AcTrack2Symprod:mobile//front.eol.ucar.edu:8080:pecan/spdb/mobile_posn?use_http=true",
     data_type = 0,
     render_type = RENDER_ALL_BEFORE_DATA_TIME,
     on_by_default = FALSE,
-    minutes_allow_before = 120.0,
-    minutes_allow_after = 120.0,
-    text_off_threshold = 0.4,
-    FALSE,
-    FALSE
-  }
-  ,                        
-  {
-    menu_label = "HailDrone",
-    url = "spdbp:AcTrack2Symprod://front.eol.ucar.edu:8080:relampago/spdb/hail_drone?use_http=true",
-    data_type = 0,
-    render_type = RENDER_ALL_BEFORE_DATA_TIME,
-    on_by_default = FALSE,
-    minutes_allow_before = 120.0,
-    minutes_allow_after = 120.0,
+    minutes_allow_before = 60.0,
+    minutes_allow_after = 60.0,
     text_off_threshold = 0.4,
     FALSE,
     FALSE
   }
   ,
   {
-    menu_label = "RHI-CSU",
-    url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:relampago/spdb/rhi/csu?use_http=true",
+    menu_label = "titan-forecast 60-min",
+    url = "spdbp:Tstorms2Symprod:60min//front.eol.ucar.edu:8080:pecan/spdb/tstorms/mrms_conv?use_http=true",
     data_type = 0,
-    render_type = RENDER_ALL,
+    render_type = RENDER_LATEST_IN_FRAME,
     on_by_default = FALSE,
-    minutes_allow_before = 7.5,
-    minutes_allow_after = 7.5,
-    text_off_threshold = 0.4,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
+    minutes_allow_before = 20.0,
+    minutes_allow_after = 0.0,
+    text_off_threshold = 0,
+    FALSE,
+    FALSE
   }
   ,
   {
-    menu_label = "RHI-CSAPR",
-    url = "spdbp:Rhi2Symprod:ticks//front.eol.ucar.edu:8080:relampago/spdb/rhi/csapr?use_http=true",
+    menu_label = "titan-forecast 120-min",
+    url = "spdbp:Tstorms2Symprod:120min//front.eol.ucar.edu:8080:pecan/spdb/tstorms/mrms_conv?use_http=true",
     data_type = 0,
-    render_type = RENDER_ALL,
+    render_type = RENDER_LATEST_IN_FRAME,
     on_by_default = FALSE,
-    minutes_allow_before = 7.5,
-    minutes_allow_after = 7.5,
-    text_off_threshold = 0.4,
-    request_data_on_zoom = FALSE,
-    request_data_on_vert_change = FALSE
+    minutes_allow_before = 20.0,
+    minutes_allow_after = 0.0,
+    text_off_threshold = 0,
+    FALSE,
+    FALSE
+  }
+  ,
+  {
+    menu_label = "precip_front_range",
+    url = "spdbp:Metar2Symprod://front.eol.ucar.edu:8080:pecan/spdb/precip/front_range?use_http=true",
+    data_type = 0,
+    render_type = RENDER_ALL_VALID,
+    on_by_default = FALSE,
+    minutes_allow_before = 300.0,
+    minutes_allow_after = 300.0,
+    text_off_threshold = 0,
+    FALSE,
+    FALSE
+  }
+  ,
+  {
+    menu_label = "precip_ncdc",
+    url = "spdbp:Metar2Symprod://front.eol.ucar.edu:8080:pecan/spdb/precip/ncdc?use_http=true",
+    data_type = 0,
+    render_type = RENDER_ALL_VALID,
+    on_by_default = FALSE,
+    minutes_allow_before = 300.0,
+    minutes_allow_after = 300.0,
+    text_off_threshold = 0,
+    FALSE,
+    FALSE
   }
 };
 
@@ -1514,8 +1587,8 @@ id_label = "Terrain";
 // Type: string
 //
 
-terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:relampago/mdv/terrain?use_http=true&Elevation";
-// terrain_url = "";
+// terrain_url = "mdvp::terrain//front.eol.ucar.edu:8080:pecan/mdv/terrain?use_http=true&Elevation";
+terrain_url = "";
 
 ///////////// height_scaler ///////////////////////////
 //
