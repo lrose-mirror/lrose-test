@@ -33,10 +33,10 @@ alt=ncread(file,'z2');
 in3D.texture3D=ncread(file,'DbzTexture3D');
 in3D.Convectivity3D=ncread(file,'Convectivity3D');
 in3D.refl=ncread(file,'Dbz3D');
-in3D.part3Din=ncread(file,'Partition3D');
+in3D.part3Din=ncread(file,'EchoType3D');
 
 % 2D
-in2D.part2Din=ncread(file,'Partition2D');
+in2D.part2Din=ncread(file,'EchoTypeComp');
 
 %% Cut out sub region
 
@@ -232,10 +232,10 @@ alt=ncread(file,'z2');
 in3D.texture3D=ncread(file,'DbzTexture3D');
 in3D.Convectivity3D=ncread(file,'Convectivity3D');
 in3D.refl=ncread(file,'Dbz3D');
-in3D.part3Din=ncread(file,'Partition3D');
+in3D.part3Din=ncread(file,'EchoType3D');
 
 % 2D
-in2D.part2Din=ncread(file,'Partition2D');
+in2D.part2Din=ncread(file,'EchoTypeComp');
 in2D.part2DorigIn=ncread(file2,'PID');
 in2D.part2DorigIn(in2D.part2DorigIn==-1111)=nan;
 in2D.part2DorigIn=round(in2D.part2DorigIn./10000000);

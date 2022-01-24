@@ -14,7 +14,7 @@ endTime=datetime(2015,7,17,0,0,0);
 saveData=1;
 
 indir1='/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/input/';
-indir2=['/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/gpm/'];
+indir2=['/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/conv_strat/'];
 
 outdir=['/scr/cirrus1/rsfdata/projects/convstrat/analysis/gpmPECAN/'];
 
@@ -31,7 +31,7 @@ for ii = 1:length(flist)
     disp(file2);
 
     partOrigIn=ncread(file1,'PID');
-    partIn=ncread(file2,'Partition2D');
+    partIn=ncread(file2,'EchoTypeComp');
 
     partOrigIn(partOrigIn==-1111)=nan;
     partOrigIn=round(partOrigIn./10000000);

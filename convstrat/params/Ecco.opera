@@ -32,7 +32,7 @@
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_OFF;
+debug = DEBUG_NORM;
 
 ///////////// instance ////////////////////////////////
 //
@@ -64,6 +64,22 @@ instance = "opera";
 //
 
 mode = ARCHIVE;
+
+///////////// use_multiple_threads ////////////////////
+//
+// Option to use multiple threads for speed.
+//
+// Computing the texture is the most time consuming step. If this is 
+//   true, then the texture will be computer for each vertical level in a 
+//   separate thread, in parallel. This speeds up the processing. If this 
+//   is false, the threads will be called serially. This is useful for 
+//   debugging.
+//
+//
+// Type: boolean
+//
+
+use_multiple_threads = TRUE;
 
 //======================================================================
 //
@@ -255,6 +271,22 @@ max_valid_height = 25;
 
 min_valid_dbz = 0;
 
+///////////// base_dbz ////////////////////////////////
+//
+// Set base DBZ value.
+//
+// Before computing the texture, we subtract the baseDBZ from the 
+//   measured DBZ. This adjusts the DBZ values into the positive range. 
+//   For S-, C- and X-band radars, this can be set to 0 dBZ, which is the 
+//   default. For Ka-band radars this should be around -10 dBZ. For W-band 
+//   radars -20 dBZ is appropriate.
+//
+//
+// Type: double
+//
+
+base_dbz = 0;
+
 ///////////// min_valid_volume_for_convective /////////
 //
 // Min volume of a convective region (km3).
@@ -316,7 +348,7 @@ dbz_for_echo_tops = 18;
 // Type: double
 //
 
-texture_radius_km = 7;
+texture_radius_km = 8.5;
 
 ///////////// min_valid_fraction_for_texture //////////
 //
@@ -382,7 +414,7 @@ texture_limit_low = 0;
 // Type: double
 //
 
-texture_limit_high = 27;
+texture_limit_high = 30;
 
 //======================================================================
 //
@@ -507,20 +539,6 @@ each_subclump_min_area_fraction = 0.02;
 
 each_subclump_min_area_km2 = 2;
 
-///////////// clumping_write_debug_fields /////////////
-//
-// Option to write fields to the output files for debugging the dual 
-//   threshold clumping.
-//
-// If this is set, the following debug fields are written to the output 
-//   files: .
-//
-//
-// Type: boolean
-//
-
-clumping_write_debug_fields = FALSE;
-
 //======================================================================
 //
 // DATA OUTPUT.
@@ -587,18 +605,6 @@ write_convectivity = TRUE;
 
 write_3D_dbz = FALSE;
 
-///////////// write_convective_dbz ////////////////////
-//
-// Write out convective dbz field.
-//
-// This will write out the 3D convective DBZ field.
-//
-//
-// Type: boolean
-//
-
-write_convective_dbz = FALSE;
-
 ///////////// write_col_max_dbz ///////////////////////
 //
 // Write out column maximum dbz field.
@@ -610,6 +616,18 @@ write_convective_dbz = FALSE;
 //
 
 write_col_max_dbz = FALSE;
+
+///////////// write_convective_dbz ////////////////////
+//
+// Write out convective dbz field.
+//
+// This will write out the 3D convective DBZ field.
+//
+//
+// Type: boolean
+//
+
+write_convective_dbz = FALSE;
 
 ///////////// write_tops //////////////////////////////
 //
@@ -658,4 +676,18 @@ write_height_grids = FALSE;
 //
 
 write_temperature = FALSE;
+
+///////////// write_clumping_debug_fields /////////////
+//
+// Option to write fields to the output files for debugging the dual 
+//   threshold clumping.
+//
+// If this is set, the following debug fields are written to the output 
+//   files: .
+//
+//
+// Type: boolean
+//
+
+write_clumping_debug_fields = FALSE;
 
