@@ -37,10 +37,10 @@ alt=ncread(file,'z2');
 in3D.texture3D=ncread(file,'DbzTexture3D');
 in3D.Convectivity3D=ncread(file,'Convectivity3D');
 in3D.refl=ncread(file,'Dbz3D');
-in3D.part3Din=ncread(file,'Partition3D');
+in3D.part3Din=ncread(file,'EchoType3D');
 
 % 2D
-in2D.part2Din=ncread(file,'Partition2D');
+in2D.part2Din=ncread(file,'EchoTypeComp');
 
 %% Cut out sub region
 
@@ -156,7 +156,7 @@ ylim([lat(1),lat(end)]);
 caxis([0 1]);
 ax3.YTick=(35:2:43);
 
-title(['(c) TdBZ/Convectivity at ',num2str(alt(altInd)),' km']);
+title(['(c) TDBZ/Convectivity at ',num2str(alt(altInd)),' km']);
 grid on
 xlabel('Longitude (deg)');
 ylabel('Latitude (deg)');
@@ -174,7 +174,7 @@ xlim([lineBounds(1),lineBounds(2)]);
 ylim([0,altLim]);
 caxis([0 1]);
 
-title(['(d) TdBZ/Convectivity']);
+title(['(d) TDBZ/Convectivity']);
 grid on
 
 cb=colorbar;

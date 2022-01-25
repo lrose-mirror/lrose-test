@@ -149,12 +149,12 @@ ax1.SortMethod = 'childorder';
 
 text(-125,51,'(a)','Fontsize',11,'FontWeight','bold');
 
-text(-104,38,'A','Fontsize',10,'FontWeight','bold');
-text(-100,38,'B','Fontsize',10,'FontWeight','bold');
-text(-87.3,33.2,'C','Fontsize',10,'FontWeight','bold');
-text(-87.3,41.6,'D','Fontsize',10,'FontWeight','bold');
-text(-114.3,36,'E','Fontsize',10,'FontWeight','bold');
-text(-114.3,38.5,'F','Fontsize',10,'FontWeight','bold');
+text(-104,38,'A','Fontsize',12,'FontWeight','bold','BackgroundColor','w','Margin',0.5);
+text(-100,38,'B','Fontsize',12,'FontWeight','bold','BackgroundColor','w','Margin',0.5);
+text(-87.3,33.2,'C','Fontsize',12,'FontWeight','bold','BackgroundColor','w','Margin',0.5);
+text(-87.3,41.6,'D','Fontsize',12,'FontWeight','bold','BackgroundColor','w','Margin',0.5);
+text(-114.3,36,'E','Fontsize',12,'FontWeight','bold','BackgroundColor','w','Margin',0.5);
+text(-114.3,38.5,'F','Fontsize',12,'FontWeight','bold','BackgroundColor','w','Margin',0.5);
 
 ax2=subplot(2,2,3);
 
