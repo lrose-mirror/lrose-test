@@ -10,7 +10,7 @@ figdir=['/scr/cirrus1/rsfdata/projects/convstrat/analysis/paperFigs/'];
 lonBounds=[-101.926 -100.079];
 latBounds=[40.5 41.907];
 
-indir=['/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_dual_thresh/20150614/'];
+indir=['/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsPecan/conv_strat/20150614/'];
 indir2=['/scr/cirrus1/rsfdata/projects/pecan/mdv/conv_strat/mrms_single_thresh/20150614/'];
 infile='20150614_235039.mdv.cf.nc';
 
@@ -29,10 +29,10 @@ lat=ncread(file,'y0');
 % 2D
 in2D.partS2Din=ncread(file2,'Partition2D');
 in2D.refl2Din=ncread(file2,'DbzColMax');
-in2D.part2Din=ncread(file,'Partition2D');
-in2D.conv2Din=ncread(file,'Convectivity2D');
-in2D.vc2Din=ncread(file,'ValidClumps');
-in2D.gc2Din=ncread(file,'GrownClumps');
+in2D.part2Din=ncread(file,'EchoTypeComp');
+in2D.conv2Din=ncread(file,'ConvectivityComp');
+in2D.vc2Din=ncread(file,'SmallSubclumps');
+in2D.gc2Din=ncread(file,'GrownSubclumps');
 
 %% Cut out sub region
 
@@ -209,7 +209,7 @@ ylim([lat(1),lat(end)]);
 ax5.Colormap=colmapPart;
 ax5.YTick=(35:0.5:43);
 
-title(['(e) Precip type single thresh']);
+title(['(e) Echo type single thresh']);
 grid on
 box on
 xlabel('Longitude (deg)');
@@ -226,7 +226,7 @@ ylim([lat(1),lat(end)]);
 ax6.Colormap=colmapPart;
 ax6.YTick=(35:0.5:43);
 
-title(['(f) Precip type dual thresh']);
+title(['(f) Echo type dual thresh']);
 grid on
 box on
 xlabel('Longitude (deg)');

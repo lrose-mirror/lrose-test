@@ -35,8 +35,8 @@ lat=ncread(file,'y0');
 
 % 2D
 in2D.refl=ncread(file2,'DBZ');
-in2D.conv=ncread(file,'Convectivity2D');
-in2D.part2Din=ncread(file,'Partition2D');
+in2D.conv=ncread(file,'ConvectivityComp');
+in2D.part2Din=ncread(file,'EchoTypeComp');
 
 countries = shaperead('/scr/cirrus1/rsfdata/projects/convstrat/analysis/opera/ne_50m_admin_0_countries.shp',...
     'UseGeoCoords',true,'BoundingBox',[double(min(min(lonReal))-10),double(min(min(latReal))-10);...

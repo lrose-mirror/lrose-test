@@ -134,7 +134,7 @@ xlim([lonReal(1,1),lonReal(end,1)]);
 ylim([latReal(1,1),latReal(1,end)]);
 caxis([0 55]);
 
-title(['Reflectivity']);
+title(['UAE                                                  Reflectivity                                    Australia']);
 grid on
 box on
 ax1.YTick=(24:26);
@@ -220,7 +220,7 @@ text(340,1,'B','Fontsize',11,'fontweight','bold');
 yBounds1=[-110 95];
 xBounds1=[-220 -10];
 
-lonDisp1=[-53];
+lonDisp1=[-61];
 lineBounds1=[-90 -10];
 altLim1=14;
 
@@ -325,8 +325,8 @@ plot([lonReal(x1,y1(1)),lonReal(x1,y1(1))],[latReal(x1,y1(1)),latReal(x1,y2)],'-
 
 text(148.8,-33.3,'(b)','Fontsize',11,'fontweight','bold');
 
-text(150.5,-34.8,'A','Fontsize',11,'fontweight','bold');
-text(150.5,-34.,'B','Fontsize',11,'fontweight','bold');
+text(150.4,-34.8,'A','Fontsize',11,'fontweight','bold');
+text(150.4,-34.,'B','Fontsize',11,'fontweight','bold');
 ax5.SortMethod = 'childorder';
 
 ax6=subplot(4,2,4);

@@ -108,8 +108,8 @@ DbzTexture3D DbzTexture3D $(HOME)/data/convstrat/mdv/rma1/conv_strat&DbzTexture3
 DbzTexture3DComp DbzTexture3DComp $(HOME)/data/convstrat/mdv/rma1/conv_strat&DbzTexture3D dbz.colors - -5 80 5 cart,comp 1 0
 Convectivity3D  Convectivity3D  $(HOME)/data/convstrat/mdv/rma1/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
 Convectivity3DComp  Convectivity3DComp  $(HOME)/data/convstrat/mdv/rma1/conv_strat&Convectivity3D convectivity.colors - -5 80 5 cart,comp 1 0
-Partition3D     Partition3D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/rma1/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart 1 0
-Partition3DComp Partition3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/rma1/conv_strat&Partition3D conv_strat3.colors - -5 80 5 cart,comp 1 0
+EchoType3D     EchoType3D  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/rma1/conv_strat&EchoType3D conv_strat3.colors - -5 80 5 cart 1 0
+EchoType3DComp EchoType3DComp  mdvp::no_interp//localhost:0:$(HOME)/data/convstrat/mdv/rma1/conv_strat&EchoType3D conv_strat3.colors - -5 80 5 cart,comp 1 0
 
 FractionActive FractionActive  $(HOME)/data/convstrat/mdv/rma1/conv_strat&FractionActive  fraction.colors - -5 80 5 cart 1 0
 DbzColMax       DbzColMax       $(HOME)/data/convstrat/mdv/rma1/conv_strat&DbzColMax       dbz.colors - -5 80 5 cart 1 0
