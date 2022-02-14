@@ -1,0 +1,6 @@
+#! /bin/csh
+
+cd ~/git/lrose-test/RadxConvert/params
+
+RadxConvert -v -outdir ~/data/raxpol/cfradial -f ~/data/raxpol/raw/20220129/*nc
+
