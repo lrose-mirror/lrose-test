@@ -1,0 +1,10 @@
+#! /bin/csh
+
+mkdir -p /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/text_table
+
+cd $HOME/git/lrose-test/nexrad/params
+
+SpdbXml2Table -params SpdbXml2Table.sunscan.koun -start "2012 12 20 00 00 00" -end "2012 12 27 00 00 00" > /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/text_table/sunscan.koun.txt
+
+
+
