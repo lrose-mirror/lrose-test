@@ -713,7 +713,7 @@ min_angle_offset_for_noise_power = 2;
 // Type: string
 //
 
-cal_xml_file_path = "./spol_cal.xml";
+cal_xml_file_path = "$(HOME)/git/lrose-test/nexrad/params/spol_cal.xml";
 
 //======================================================================
 //
@@ -1418,7 +1418,7 @@ spdb_output_url = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/spdb";
 // Type: boolean
 //
 
-test_nexrad_processing = TRUE;
+test_nexrad_processing = FALSE;
 
 ///////////// nexrad_text_output_dir //////////////////
 //

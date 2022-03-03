@@ -76,15 +76,19 @@
 DB_BELOW_PEAK DB_BELOW_PEAK  /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&DB_BELOW_PEAK sunscan_dbm_below.colors    dB     -5   80  5  dcont   1 0
 DBM           DBM            /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&DBM     sunscan_dbm.colors    dBm     -5   80  5  dcont   1 0
 DBM-S-grid    DBM-S-grid     /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&DBM     sunscan_dbm.colors    dBm     -5   80  5  cart   1 0
-DBM_H         DBM_H          /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&DBM_H   sunscan_dbm.colors    dBm     -5   80  5  dcont   1 0
-DBM_V         DBM_V          /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&DBM_V   sunscan_dbm.colors    dBm     -5   80  5  dcont   1 0
+DBM_HC        DBM_HC         /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&DBM_HC  sunscan_dbm.colors    dBm     -5   80  5  dcont   1 0
+DBM_VC        DBM_VC         /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&DBM_VC  sunscan_dbm.colors    dBm     -5   80  5  dcont   1 0
 ZDR           ZDR            /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&ZDR     zdr.colors            dB      -5   80  5  dcont   1 0
+NCP           NCP            /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&NCP     ncp.colors            dB      -5   80  5  dcont   1 0
 
-CORR_HV       CORR_HV        /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&CORR_HV sunscan_corr.colors  -     -5   80  5  dcont   1 0
-PHASE_HV      PHASE_HV       /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&PHASE_HV phidp.colors  -     -5   80  5  dcont   1 0
+RHOHV         RHOHV          /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&RHOHV   sunscan_corr.colors  -     -5   80  5  dcont   1 0
+PHIDP         PHIDP          /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&PHIDP   phidp.colors  -     -5   80  5  dcont   1 0
 
-RATIO_V_H     RATIO_V_H      /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&RATIO_V_H   sunscan_ratio.colors - -5 80 5 dcont 1 0
-SS            SS             /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&SS          sunscan_ratio.colors - -5 80 5 dcont 1 0
+CORR_00       CORR_00        /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&CORR_00   sunscan_corr.colors  -     -5   80  5  dcont   1 0
+ARG_00        ARG_00          /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&ARG_00   phidp.colors  -     -5   80  5  dcont   1 0
+
+RATIO_VC_HC   RATIO_VC_HC    /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&RATIO_VC_HC   sunscan_ratio.colors - -5 80 5 dcont 1 0
+SS            SS             /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&SS            sunscan_ratio.colors - -5 80 5 dcont 1 0
 
 AZ AZ  /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&az vel_w_4.colors    deg     -5   80  5  dcont   1 0
 EL EL  /scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/mdv&el vel_w_4.colors    deg     -5   80  5  dcont   1 0
@@ -134,7 +138,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  15:30 12/24/2012
+cidd.demo_time:  15:20 12/24/2012
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -145,7 +149,7 @@ cidd.movie_frame_dir: /tmp
 
 #  This determines how many movie frames are in the loop to start with
 #  Setting this high will cause the X server to hog memory.
-cidd.starting_movie_frames:     24
+cidd.starting_movie_frames:     100
 
 # minutes per movie frame on startup
 # The display will atomatically update every this interval, throwing away its
