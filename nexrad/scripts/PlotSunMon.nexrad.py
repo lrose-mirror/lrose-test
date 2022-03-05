@@ -27,7 +27,10 @@ def main():
 
     global options
     global debug
-
+    global meanLen
+    
+    suncalPathDefault = "/scr/cirrus3/rsfdata/projects/nexrad/sunscans/koun/text_table/sunscan.koun.txt"
+    
     # parse the command line
 
     usage = "usage: %prog [options]"
@@ -40,17 +43,13 @@ def main():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
-    parser.add_option('--sm_file',
-                      dest='smFilePath',
-                      default='../data/pecan/sun_mon.txt',
-                      help='RadxSunMon results file path')
-    parser.add_option('--flux_file',
-                      dest='fluxFilePath',
-                      default='../data/pecan/fluxtable.txt',
-                      help='Solar flux values from Penticton')
+    parser.add_option('--suncal_file',
+                      dest='suncalFilePath',
+                      default=suncalPathDefault,
+                      help='SunCal results text file path')
     parser.add_option('--title',
                       dest='title',
-                      default='SUN SCAN ANALYSIS - PECAN',
+                      default='NEXRAD SUN SCAN ANALYSIS',
                       help='Title for plot')
     parser.add_option('--width',
                       dest='figWidthMm',
@@ -72,26 +71,21 @@ def main():
 
     if (options.debug == True):
         print("Running %prog", file=sys.stderr)
-        print("  smFilePath: ", options.smFilePath, file=sys.stderr)
-        print("  fluxFilePath: ", options.fluxFilePath, file=sys.stderr)
+        print("  suncalFilePath: ", options.suncalFilePath, file=sys.stderr)
 
     # read in column headers for sunscan results
 
-    iret, smHdrs, smData = readColumnHeaders(options.smFilePath)
+    iret, scHdrs, scData = readColumnHeaders(options.suncalFilePath)
     if (iret != 0):
         sys.exit(-1)
 
     # read in data for sunscan results
 
-    (smTimes, smData) = readInputData(options.smFilePath, smHdrs, smData)
-
-    # read in flux table data
-
-    (fluxTimes, fluxData) = readFluxData(options.fluxFilePath);
+    (scTimes, scData) = readInputData(options.suncalFilePath, scHdrs, scData)
 
     # render the plot
     
-    doPlot(smTimes, smData, fluxTimes, fluxData)
+    doPlot(scTimes, scData)
 
     sys.exit(0)
     
@@ -176,69 +170,6 @@ def readInputData(filePath, colHeaders, colData):
     return obsTimes, colData
 
 ########################################################################
-# Read in flux data
-
-def readFluxData(filePath):
-
-    # open file
-
-    fp = open(filePath, 'r')
-    lines = fp.readlines()
-    fp.close()
-
-    # read in column headers from line 0
-
-    colHeaders = []
-    colHeaders = lines[0].lstrip(" ").rstrip("\n").split()
-    if (options.debug == True):
-        print("colHeaders: ", colHeaders, file=sys.stderr)
-
-    # read in a line at a time, set colData
-
-    colData = {}
-    for index, var in enumerate(colHeaders, start=0):
-        colData[var] = []
-        
-    for line in lines:
-        
-        if (line.find("flux") >= 0):
-            continue
-        if (line.find("----") >= 0):
-            continue
-        if (line.find("#") >= 0):
-            continue
-            
-        # data
-        
-        data = line.strip().split()
-        
-        for index, var in enumerate(colHeaders, start=0):
-            if (var == 'fluxdate' or var == 'fluxtime'):
-                colData[var].append(data[index])
-            else:
-                if (isNumber(data[index])):
-                    colData[var].append(float(data[index]))
-
-    # load observation times array
-
-    fdate = colData['fluxdate']
-    ftime = colData['fluxtime']
-
-    obsTimes = []
-    for ii, var in enumerate(fdate, start=0):
-        year = fdate[ii][0:4]
-        month = fdate[ii][4:6]
-        day = fdate[ii][6:8]
-        hour = ftime[ii][0:2]
-        minute = ftime[ii][2:4]
-        sec = ftime[ii][4:6]
-        thisTime = datetime.datetime(int(year), int(month), int(day),
-                                     int(hour), int(minute), int(sec))
-        obsTimes.append(thisTime)
-
-    return obsTimes, colData
-
-########################################################################
 # Check is a number
 
 def isNumber(s):
@@ -264,39 +195,30 @@ def movingAverage(values, filtLen):
 ########################################################################
 # Plot
 
-def doPlot(smTimes, smData, fluxTimes, fluxData):
+def doPlot(scTimes, scData):
 
     # sunscan times
     
-    smtimes = np.array(smTimes).astype(datetime.datetime)
+    stimes = np.array(scTimes).astype(datetime.datetime)
 
-    fileName = options.smFilePath
+    fileName = options.suncalFilePath
     titleStr = "File: " + fileName
     hfmt = dates.DateFormatter('%y/%m/%d')
 
     # sun angle offset - only use values < max valid
 
-    maxValidOffset = 0.40
-    angleOffset = np.array(smData["angleOffset"]).astype(np.double)
-    validAngleOffset = (np.isfinite(angleOffset) & \
-                        (angleOffset < maxValidOffset))
-    meanAngleOffset = np.mean(validAngleOffset)
-
-    elOffset = np.array(smData["elOffset"]).astype(np.double)
-    validElOffset = (np.isfinite(elOffset) & \
-                     (angleOffset < maxValidOffset))
+    elOffset = np.array(scData["centroidElOffset"]).astype(np.double)
+    validElOffset = (np.isfinite(elOffset))
     meanElOffset = np.mean(elOffset[validElOffset])
 
-    azOffset = np.array(smData["azOffset"]).astype(np.double)
-    validAzOffset = (np.isfinite(azOffset) & \
-                     (angleOffset < maxValidOffset))
+    azOffset = np.array(scData["centroidAzOffset"]).astype(np.double)
+    validAzOffset = (np.isfinite(azOffset))
     meanAzOffset = np.mean(azOffset[validAzOffset])
     
     np.set_printoptions(precision=3)
     np.set_printoptions(suppress=False)
 
     if (options.debug):
-        print("  meanAngleOffset: ", meanAngleOffset, file=sys.stderr)
         print("  meanElOffset: ", meanElOffset, file=sys.stderr)
         print("  elOffset: ", elOffset, file=sys.stderr)
         print("  meanAzOffset: ", meanAzOffset, file=sys.stderr)
@@ -304,172 +226,40 @@ def doPlot(smTimes, smData, fluxTimes, fluxData):
 
     # load up power
     
-    maxValidPower = -59.0
-    minValidPower = -64.0
-    powerHc = np.array(smData["correctedDbmHc"]).astype(np.double)
+    maxValidPower = -55.0
+    minValidPower = -70.0
+    powerHc = np.array(scData["maxPowerDbm"]).astype(np.double)
     validPowerHc = (np.isfinite(powerHc) & \
                     (powerHc < maxValidPower) & \
-                    (powerHc > minValidPower) & \
-                    (angleOffset < maxValidOffset))
+                    (powerHc > minValidPower))
+    if (options.debug):
+        print("  powerHc: ", powerHc, file=sys.stderr)
+        print("  validPowerHc: ", validPowerHc, file=sys.stderr)
+
     smoothedPowerHc = movingAverage(powerHc[validPowerHc], int(options.meanLen))
 
-    powerVc = np.array(smData["correctedDbmVc"]).astype(np.double)
+    powerVc = np.array(scData["maxPowerDbm"]).astype(np.double)
     validPowerVc = (np.isfinite(powerVc) & \
                     (powerVc < maxValidPower) & \
-                    (powerVc > minValidPower) & \
-                    (angleOffset < maxValidOffset))
+                    (powerVc > minValidPower))
     smoothedPowerVc = movingAverage(powerVc[validPowerVc], int(options.meanLen))
     
-    powerHx = np.array(smData["correctedDbmHx"]).astype(np.double)
-    validPowerHx = (np.isfinite(powerHx) & \
-                    (powerHx < maxValidPower) & \
-                    (powerHx > minValidPower) & \
-                    (angleOffset < maxValidOffset))
-
-    powerVx = np.array(smData["correctedDbmVx"]).astype(np.double)
-    validPowerVx = (np.isfinite(powerVx) & \
-                    (powerVx < maxValidPower) & \
-                    (powerVx > minValidPower) & \
-                    (angleOffset < maxValidOffset))
+    # load up SS, xpol ratio
     
-    validPowerXpol = (validPowerHx & validPowerVx)
-    smoothedPowerHx = movingAverage(powerHx[validPowerXpol], int(options.meanLen))
-    smoothedPowerVx = movingAverage(powerVx[validPowerXpol], int(options.meanLen))
-
-    # load up S1S2, xpol ratio
+    SS = np.array(scData["SS"]).astype(np.double)
+    validSS = (np.isfinite(SS) & \
+                 (SS < 1.2) & \
+                 (SS > 0.5))
+    smoothedSS = movingAverage(SS[validSS], int(options.meanLen))
     
-    S1S2 = np.array(smData["S1S2"]).astype(np.double)
-    validS1S2 = (np.isfinite(S1S2) & \
-                 (S1S2 < 1.2) & \
-                 (S1S2 > 0.5) & \
-                 (angleOffset < maxValidOffset))
-    smoothedS1S2 = movingAverage(S1S2[validS1S2], int(options.meanLen))
-    
-    XpolR = np.array(smData["XpolRatioDb"]).astype(np.double)
-    #validXpolR = (np.isfinite(XpolR) & (XpolR < 2.0) & (XpolR > -2.0))
+    XpolR = np.array(scData["ratioDbmVcHc"]).astype(np.double)
     validXpolR = np.isfinite(XpolR)
     smoothedXpolR = movingAverage(XpolR[validXpolR], int(options.meanLen))
     
-    ZdrM = np.array(smData["zdrmDb"]).astype(np.double)
-    validZdrM = np.isfinite(ZdrM)
-    smoothedZdrM = movingAverage(ZdrM[validZdrM], int(options.meanLen))
-    #validZdrM = (np.isfinite(ZdrM) & (ZdrCorr < 0.5) & (ZdrCorr > -0.4))
-
-    # load up fluxes for each valid solar result
-
-    fluxObs = np.array(fluxData["fluxobsflux"]).astype(np.double)
-    #for ii, flux in enumerate(fluxObs, start=0):
-    #    if (flux > 150.0):
-    #        fluxObs[ii] = 150.0
-    flTimes = np.array(fluxTimes).astype(datetime.datetime)
-
-    goodTimesHc = smtimes[validPowerHc]
-    goodTimesVc = smtimes[validPowerVc]
+    goodTimesHc = stimes[validPowerHc]
+    goodTimesVc = stimes[validPowerVc]
     powerHcGood = smoothedPowerHc
     powerVcGood = smoothedPowerVc
-
-    fltimesH = []
-    fluxesH = []
-
-    fltimesV = []
-    fluxesV = []
-    
-    for ii, hcTime in enumerate(goodTimesHc, start=0):
-        (fltime, flux) = getClosestFlux(hcTime, fluxTimes, fluxData['fluxobsflux'])
-        fltimesH.append(fltime)
-        fluxesH.append(flux)
-
-    for ii, vcTime in enumerate(goodTimesVc, start=0):
-        (fltime, flux) = getClosestFlux(vcTime, fluxTimes, fluxData['fluxobsflux'])
-        fltimesV.append(fltime)
-        fluxesV.append(flux)
-
-    # beam width correction for solar obs
-
-    solarRadioWidth = 0.57
-    radarBeamWidth = 0.92
-    kk = math.pow((1.0 + 0.18 * math.pow((solarRadioWidth / radarBeamWidth), 2.0)), 2.0)
-
-    # estimated received power given solar flux
-
-    beamWidthRad = (radarBeamWidth * math.pi) / 180.0
-    radarFreqMhz = 2809.0
-    solarFreqMhz = 2800.0
-    radarWavelengthM = (2.99735e8 / (radarFreqMhz * 1.0e6))
-
-    antennaGainHdB = 44.95
-    antennaGainH = math.pow(10.0, antennaGainHdB / 10.0)
-    antennaGainVdB = 45.32
-    antennaGainV = math.pow(10.0, antennaGainVdB / 10.0)
-
-    waveguideGainHdB = -1.16
-    waveguideGainH = math.pow(10.0, waveguideGainHdB / 10.0)
-    waveguideGainVdB = -1.44
-    waveguideGainV = math.pow(10.0, waveguideGainVdB / 10.0)
-
-    # pulse width change
-
-    timeStart1us = datetime.datetime(2015, 6, 8, 0, 0, 0)
-
-    if (options.debug):
-        print(" kk: ", kk, file=sys.stderr)
-        print(" antennaGainH: ", antennaGainH, file=sys.stderr)
-        print(" antennaGainV: ", antennaGainV, file=sys.stderr)
-        print(" radarWavelengthM: ", radarWavelengthM, file=sys.stderr)
-
-    sunPwrsH = []
-    rxGainsHc = []
-    sunPwrsV = []
-    rxGainsVc = []
-    
-    for ii, hcTime in enumerate(goodTimesHc, start=0):
-        noiseBandWidthHz = 1.0e6
-        if (hcTime < timeStart1us):
-            noiseBandWidthHz = noiseBandWidthHz / 1.3
-        hcPower = powerHcGood[ii]
-        flux2800 = fluxesH[ii]
-        flux2809 = (0.0002 * flux2800 - 0.01) * (radarFreqMhz - solarFreqMhz) + flux2800
-        PrHW = ((antennaGainH * waveguideGainH * \
-                 radarWavelengthM * radarWavelengthM * flux2809 * \
-                 1.0e-22 * noiseBandWidthHz) / \
-                (4 * math.pi * 2.0 * kk))
-        PrHdBm = 10.0 * math.log10(PrHW) + 30.0
-        rxGainHcdB = hcPower - PrHdBm
-        if (options.debug):
-            print("================================", file=sys.stderr)
-            print("  hcTime, fltime, flux2800, flux2809: ", \
-                hcTime, fltimesH[ii], flux2800, flux2809, file=sys.stderr)
-            print("  PrHW, PrHdBm, hcPower, rxGainHcDb: ", \
-                PrHW, PrHdBm, hcPower, rxGainHcdB, file=sys.stderr)
-        sunPwrsH.append(PrHdBm)
-        rxGainsHc.append(rxGainHcdB)
-
-    for ii, vcTime in enumerate(goodTimesVc, start=0):
-        noiseBandWidthHz = 1.0e6
-        if (vcTime < timeStart1us):
-            noiseBandWidthHz = noiseBandWidthHz / 1.3
-        vcPower = powerVcGood[ii]
-        flux2800 = fluxesV[ii]
-        flux2809 = (0.0002 * flux2800 - 0.01) * (radarFreqMhz - solarFreqMhz) + flux2800
-        PrVW = ((antennaGainV * waveguideGainV * \
-                 radarWavelengthM * radarWavelengthM * flux2809 * \
-                 1.0e-22 * noiseBandWidthHz) / \
-                (4 * math.pi * 2.0 * kk))
-        PrVdBm = 10.0 * math.log10(PrVW) + 30.0
-        rxGainVcdB = vcPower - PrVdBm
-        if (options.debug):
-            print("================================", file=sys.stderr)
-            print("  vcTime, fltime, flux2800, flux2809: ", \
-                vcTime, fltimesV[ii], flux2800, flux2809, file=sys.stderr)
-            print("  PrVW, PrVdBm, vcPower, rxGainVcDb: ", \
-                PrVW, PrVdBm, vcPower, rxGainVcdB, file=sys.stderr)
-        sunPwrsV.append(PrVdBm)
-        rxGainsVc.append(rxGainVcdB)
-
-    # load up receiver gain etc - axis 4
-    
-    (dailyTimesHc, dailyRxGainsHc) = computeDailyStats(goodTimesHc, rxGainsHc)
-    (dailyTimesVc, dailyRxGainsVc) = computeDailyStats(goodTimesVc, rxGainsVc)
 
     # set up plot structure
 
@@ -483,30 +273,23 @@ def doPlot(smTimes, smData, fluxTimes, fluxData):
     ax4 = fig1.add_subplot(4,1,4,xmargin=0.0)
 
     oneDay = datetime.timedelta(1.0)
-    ax1.set_xlim([smtimes[0] - oneDay, smtimes[-1] + oneDay])
-    ax2.set_xlim([smtimes[0] - oneDay, smtimes[-1] + oneDay])
-    ax3.set_xlim([smtimes[0] - oneDay, smtimes[-1] + oneDay])
-    ax4.set_xlim([smtimes[0] - oneDay, smtimes[-1] + oneDay])
+    ax1.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
+    ax2.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
+    ax3.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
+    ax4.set_xlim([stimes[0] - oneDay, stimes[-1] + oneDay])
     
-    # plot solar flux - axis 1
-    
-    #ax1.plot(fltimesH, fluxesH, \
-    #         label = 'solarFlux', linewidth=1, color='red')
-    ax1.plot(flTimes, fluxObs, \
-             label = 'obsFlux', linewidth=1, color='blue')
-
     # plot power - axis 2
     
-    ax2.plot(smtimes[validPowerHc], smoothedPowerHc, \
+    ax2.plot(stimes[validPowerHc], smoothedPowerHc, \
              label = 'Smoothed Power HC', linewidth=1, color='red')
 
-    ax2.plot(smtimes[validPowerVc], smoothedPowerVc, \
+    ax2.plot(stimes[validPowerVc], smoothedPowerVc, \
              label = 'Smoothed Power VC', linewidth=1, color='blue')
 
-    #ax2.plot(smtimes[validPowerHc], powerHc[validPowerHc], \
+    #ax2.plot(stimes[validPowerHc], powerHc[validPowerHc], \
     #         label = 'Power HC', linewidth=1, color='red')
 
-    #ax2.plot(smtimes[validPowerVc], powerVc[validPowerVc], \
+    #ax2.plot(stimes[validPowerVc], powerVc[validPowerVc], \
     #         label = 'Power VC', linewidth=1, color='blue')
     
     # plot receiver gain etc - axis 3
@@ -520,21 +303,21 @@ def doPlot(smTimes, smData, fluxTimes, fluxData):
     ax3.plot(dailyTimesVc, dailyRxGainsVc, \
              "^", label = 'RxGainVc', color='blue', markersize=10)
 
-    # plot S1S2, xpol ratio - axis 4
+    # plot SS, xpol ratio - axis 4
     
-    ax4.plot(smtimes[validS1S2], smoothedS1S2, \
-             label = 'S1S2', linewidth=1, color='red')
+    ax4.plot(stimes[validSS], smoothedSS, \
+             label = 'SS', linewidth=1, color='red')
     
-    ax4.plot(smtimes[validXpolR], smoothedXpolR, \
+    ax4.plot(stimes[validXpolR], smoothedXpolR, \
              label = 'XpolR', linewidth=1, color='blue')
     
-    ax4.plot(smtimes[validZdrM], smoothedZdrM, \
+    ax4.plot(stimes[validZdrM], smoothedZdrM, \
              label = 'ZdrM', linewidth=1, color='green')
     
-    #ax4.plot(smtimes[validAngleOffset], angleOffset[validAngleOffset], \
+    #ax4.plot(stimes[validAngleOffset], angleOffset[validAngleOffset], \
     #         label = 'AngleOffset (deg)', linewidth=1, color='green')
     
-    #ax4.plot(smtimes[validZdrCorr], ZdrCorr[validZdrCorr], \
+    #ax4.plot(stimes[validZdrCorr], ZdrCorr[validZdrCorr], \
     #         label = 'ZdrCorr', linewidth=1, color='green')
 
     # legends etc
@@ -542,7 +325,7 @@ def doPlot(smTimes, smData, fluxTimes, fluxData):
     ax1.set_title("Solar Flux from Penticton, Canada (Sfu)", fontsize=12)
     ax2.set_title("Solar power as measured by SPOL (dBm)", fontsize=12)
     ax3.set_title("SPOL retrieved receiver gain (dB)", fontsize=12)
-    ax4.set_title("S1S2, X-pol ratio and ZDR bias (dB)", fontsize=12)
+    ax4.set_title("SS, X-pol ratio and ZDR bias (dB)", fontsize=12)
     
     configureAxis(ax1, 90.0, 150.0, "Solar flux (Sfu)", 'upper left')
     configureAxis(ax2, -9999.0, -9999.0, "Receiver power (dBm)", 'upper left')
