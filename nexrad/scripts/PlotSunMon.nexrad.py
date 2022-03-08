@@ -63,6 +63,10 @@ def main():
                       dest='meanLen',
                       default=15,
                       help='Len of moving mean filter')
+    parser.add_option('--overlayDays',
+                      dest='overlayDays', default=False,
+                      action="store_true",
+                      help='Overlay days on top of each other')
     
     (options, args) = parser.parse_args()
     
@@ -161,10 +165,17 @@ def readInputData(filePath, colHeaders, colData):
     minute = colData['min']
     sec = colData['sec']
 
+    startTime = datetime.datetime(year[0], month[0], day[0],
+                                  hour[0], minute[0], sec[0])
+
     obsTimes = []
     for ii, var in enumerate(year, start=0):
-        thisTime = datetime.datetime(year[ii], month[ii], day[ii],
-                                     hour[ii], minute[ii], sec[ii])
+        if (options.overlayDays):
+            thisTime = datetime.datetime(startTime.year, startTime.month, startTime.day,
+                                         hour[ii], minute[ii], sec[ii])
+        else:
+            thisTime = datetime.datetime(year[ii], month[ii], day[ii],
+                                         hour[ii], minute[ii], sec[ii])
         obsTimes.append(thisTime)
 
     return obsTimes, colData
