@@ -285,7 +285,7 @@ def doPlot(scTimes, scData):
     fig1.autofmt_xdate()
 
     plt.tight_layout()
-    fig1.subplots_adjust(bottom=0.10, left=0.06, right=0.97, top=0.92)
+    fig1.subplots_adjust(bottom=0.10, left=0.12, right=0.95, top=0.92)
     plt.show()
 
 ########################################################################
