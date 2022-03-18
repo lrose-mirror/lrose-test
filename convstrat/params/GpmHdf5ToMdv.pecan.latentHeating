@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for ./GpmHdf5ToMdv
+ * TDRP params for GpmHdf5ToMdv
  **********************************************************************/
 
 //======================================================================
@@ -43,7 +43,7 @@ debug = DEBUG_OFF;
 // Type: string
 //
 
-instance = "test";
+instance = "pecan.latentHeating";
 
 ///////////// register_with_procmap ///////////////////
 //
@@ -270,6 +270,20 @@ output_z_levels_km = {
 //
 //======================================================================
  
+///////////// main_dataset_group_name /////////////////
+//
+// Specify the name of the main data group.
+//
+// The groupName params in output_fields will be nested within this 
+//   group. If the groupName is empty, the parent group will be used 
+//   instead.
+//
+//
+// Type: string
+//
+
+main_dataset_group_name = "Swath";
+
 //======================================================================
 //
 // OUTPUT ENCODING AND COMPRESSION.
@@ -301,34 +315,18 @@ output_z_levels_km = {
 
 output_fields = {
   {
-    groupName = "Swath",
+    groupName = "",
     gpmName = "latentHeating",
-    outputName = "LatentHeating",
-    longName = "LatentHeating",
+    outputName = "latentHeating",
+    longName = "latentHeating",
     encoding = ENCODING_FLOAT32
   }
   ,
   {
-    groupName = "Swath",
-    gpmName = "nearSurfacePrecipRate",
-    outputName = "NearSurfacePrecipRate",
-    longName = "NearSurfacePrecipRate",
-    encoding = ENCODING_FLOAT32
-  }
-  ,
-  {
-    groupName = "Swath",
-    gpmName = "rainType2ADPR",
-    outputName = "RainType2ADPR",
-    longName = "RainType2ADPR",
-    encoding = ENCODING_FLOAT32
-  }
-  ,
-  {
-    groupName = "Swath",
-    gpmName = "rainTypeSLH",
-    outputName = "RainTypeSLH",
-    longName = "RainTypeSLH",
+    groupName = "",
+    gpmName = "meltLayerHeight",
+    outputName = "meltLayerHeight",
+    longName = "meltLayerHeight",
     encoding = ENCODING_FLOAT32
   }
 };
@@ -420,7 +418,7 @@ interp_power_parameter = 1;
 // Type: string
 //
 
-output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/latent_heating";
+output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/gpm/pecan/latentHeating";
 
 //======================================================================
 //
