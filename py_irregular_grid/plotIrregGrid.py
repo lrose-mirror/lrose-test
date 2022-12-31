@@ -85,6 +85,15 @@ def main():
     if (options.verbose):
         options.debug = True
 
+    global nPts, minX, maxX, minY, maxY, xRange, yRange
+    nPts = int(options.nPts)
+    minX = float(options.minX)
+    maxX = float(options.maxX)
+    minY = float(options.minY)
+    maxY = float(options.maxY)
+    xRange = maxX - minX
+    yRange = maxY - minY
+
     if (options.debug):
         print("Running %prog", file=sys.stderr)
         print("  minX: ", options.minX, file=sys.stderr)
@@ -108,17 +117,10 @@ def doPlot():
     
     # make up some randomly distributed data
     seed(1234)
-    npts = int(options.nPts)
-    minX = float(options.minX)
-    maxX = float(options.maxX)
-    minY = float(options.minY)
-    maxY = float(options.maxY)
-    x = uniform(minX,maxX,npts)
-    y = uniform(minY,maxY,npts)
+    x = uniform(minX,maxX,nPts)
+    y = uniform(minY,maxY,nPts)
     z = x*np.exp(-x**2-y**2)
     # define grid.
-    xRange = maxX - minX
-    yRange = maxY - minY
     xi = np.linspace(minX - xRange / 100.0,
                      maxX + xRange / 100.0,
                      options.nX)
@@ -135,7 +137,7 @@ def doPlot():
     plt.scatter(x,y,marker='o',c='b',s=5)
     plt.xlim(minX,maxX)
     plt.ylim(minY,maxY)
-    plt.title('griddata test (%d points)' % npts)
+    plt.title('griddata test (%d points)' % nPts)
     plt.show()
 
 ########################################################################
