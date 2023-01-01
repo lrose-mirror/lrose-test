@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 from matplotlib import dates
 import numpy.ma as ma
 from numpy.random import uniform, seed
+import h5py as h5
 import math
 import datetime
 import contextlib
@@ -43,6 +44,10 @@ def main():
                       dest='verbose', default=False,
                       action="store_true",
                       help='Set verbose debugging on')
+    parser.add_option('--file',
+                      dest='hdf5FilePath',
+                      default='/data/dixon/caroline/West_Coast_wave_2005.h5',
+                      help='HDF5 data file')
     parser.add_option('--width',
                       dest='figWidthMm',
                       default=400,
@@ -96,6 +101,7 @@ def main():
 
     if (options.debug):
         print("Running %prog", file=sys.stderr)
+        print("  hdf5FilePath: ", options.hdf5FilePath, file=sys.stderr)
         print("  minX: ", options.minX, file=sys.stderr)
         print("  maxX: ", options.maxX, file=sys.stderr)
         print("  minY: ", options.minY, file=sys.stderr)
@@ -104,16 +110,64 @@ def main():
         print("  nY: ", options.nY, file=sys.stderr)
         print("  nPts: ", options.nPts, file=sys.stderr)
 
-    # render the plot
+    # render the test plot
     
-    doPlot()
+    # doPlotTest()
 
+    # open the file and read in required fields
+
+    global h5File
+    h5File = h5.File(options.hdf5FilePath,'r')
+    h5File.keys()
+    wht = h5File['significant_wave_height']
+    print("  wht: ", wht, file=sys.stderr)
+
+    # plot wave height
+
+    doPlotWaveHeight()
+    
+    # done
+    
     sys.exit(0)
     
 ########################################################################
-# Plot
+# Plot wave height
 
-def doPlot():
+def doPlotWaveHeight():
+    
+    widthIn = float(options.figWidthMm) / 25.4
+    htIn = float(options.figHeightMm) / 25.4
+    fig1 = plt.figure(1, (widthIn, htIn))
+
+    # make up some randomly distributed data
+    seed(1234)
+    x = uniform(minX,maxX,nPts)
+    y = uniform(minY,maxY,nPts)
+    z = x*np.exp(-x**2-y**2)
+    # define grid.
+    xi = np.linspace(minX - xRange / 100.0,
+                     maxX + xRange / 100.0,
+                     options.nX)
+    yi = np.linspace(minY - yRange / 100.0,
+                     maxY + yRange / 100.0,
+                     options.nY)
+    # grid the data.
+    zi = griddata((x, y), z, (xi[None,:], yi[:,None]), method='cubic')
+    # contour the gridded data, plotting dots at the randomly spaced data points.
+    CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
+    CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
+    plt.colorbar() # draw colorbar
+    # plot data points.
+    plt.scatter(x,y,marker='o',c='b',s=5)
+    plt.xlim(minX,maxX)
+    plt.ylim(minY,maxY)
+    plt.title('griddata test (%d points)' % nPts)
+    plt.show()
+
+########################################################################
+# Plot test
+
+def doPlotTest():
     
     # make up some randomly distributed data
     seed(1234)
