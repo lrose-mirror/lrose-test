@@ -119,7 +119,8 @@ def main():
 
     # render the test plot
     
-    # doPlotTest()
+    #doPlotTest()
+    #sys.exit(0)
 
     # open the HDF5 file
 
@@ -146,9 +147,11 @@ def doPlotWaveData(h5File):
     wht = h5File['significant_wave_height']
     print("  wht: ", wht, file=sys.stderr)
 
-    fieldName = 'mean_wave_direction'
+    #fieldName = 'mean_wave_direction'
+    #fieldName = 'spectral_width'
+    fieldName = 'significant_wave_height'
     mwd = h5File[fieldName][:]
-    print("  fieldName: ", mwd, file=sys.stderr)
+    print("  ", fieldName, ": ", mwd, file=sys.stderr)
 
     coords = h5File['coordinates'][:]
 
@@ -176,6 +179,10 @@ def doPlotWaveData(h5File):
     
     mwd_0[mwd_0 == -999] = math.nan
     print(mwd_0)
+    minVal = np.nanmin(mwd_0)
+    maxVal = np.nanmax(mwd_0)
+
+    print("  mwd min, max: ", minVal, maxVal, file=sys.stderr)
 
     minLon = np.min(lons)
     maxLon = np.max(lons)
@@ -209,18 +216,26 @@ def doPlotWaveData(h5File):
     #                  maxY + yRange / 100.0,
     #                  options.nY)
     # grid the data.
-    zi = griddata((lons, lats), mwd_0, (xi[None,:], yi[:,None]), method='cubic')
+    zi = griddata((lons, lats), mwd_0, (xi[None,:], yi[:,None]), method='linear')
+    #zi = griddata((lons, lats), mwd_0, (xi, yi), method='linear')
+    print("  xi.shape: ", xi.shape, file=sys.stderr)
+    print("  xi: ", xi, file=sys.stderr)
+    print("  yi.shape: ", yi.shape, file=sys.stderr)
+    print("  yi: ", yi, file=sys.stderr)
+    print("  zi.shape: ", zi.shape, file=sys.stderr)
+    print("  zi: ", zi, file=sys.stderr)
     # contour the gridded data, plotting dots at the randomly spaced data points.
     #CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
     #CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
-    #CS = ax1.contour(xi,yi,zi)
-    CS = ax1.contourf(xi,yi,zi)
-    fig1.colorbar(CS) # draw colorbar
+    # CS = ax1.contour(xi,yi,zi)
+    CS = ax1.contourf(xi,yi,zi,64,cmap=plt.cm.jet,vmin=minVal,vmax=maxVal)
+    cbar = fig1.colorbar(CS, ax=ax1, shrink=0.9) # draw colorbar
+    #plt.colorbar() # draw colorbar
     # plot data points.
     #plt.scatter(lons,lats,marker='.',c='b',s=5)
     ax1.coastlines('10m', 'orange', linewidth=1, zorder=3)
     ax1.add_feature(cfeature.STATES, linewidth=0.3, edgecolor='brown', zorder=3)
-    ax1.scatter(lons,lats,marker='.',c='b')
+    #ax1.scatter(lons,lats,marker='.',c='b')
     #ax1.coastlines('10m', 'darkgray', linewidth=1, zorder=0)
     plt.xlim(minLon,maxLon)
     plt.ylim(minLat,maxLat)
@@ -277,6 +292,7 @@ def doPlotTest():
                      options.nY)
     # grid the data.
     zi = griddata((x, y), z, (xi[None,:], yi[:,None]), method='cubic')
+    #zi = griddata((x, y), z, (xi, yi), method='cubic')
     # contour the gridded data, plotting dots at the randomly spaced data points.
     CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
     CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
