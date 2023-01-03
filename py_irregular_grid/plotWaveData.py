@@ -17,20 +17,13 @@ import pytz
 from optparse import OptionParser
 import numpy as np
 from scipy.interpolate import griddata
-from numpy import convolve
-from numpy import linalg, array, ones
 import matplotlib.pyplot as plt
 from matplotlib import dates
-import numpy.ma as ma
-from numpy.random import uniform, seed
 import h5py as h5
 import cartopy
 import cartopy.crs as ccrs
-import cartopy.io.shapereader as shpreader
-import cartopy.geodesic as cgds
 from cartopy import feature as cfeature
 from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
-import shapely
 
 def main():
 
@@ -99,11 +92,6 @@ def main():
                       dest='nColors',
                       default=64,
                       help='Number of colors in filled contours')
-    parser.add_option('--test',
-                      dest='plotTest', default=False,
-                      action="store_true",
-                      help='Plot the test data')
-
     (options, args) = parser.parse_args()
     
     if (options.verbose):
@@ -126,12 +114,6 @@ def main():
         print("  nX: ", options.nX, file=sys.stderr)
         print("  nY: ", options.nY, file=sys.stderr)
         print("  nPts: ", options.nPts, file=sys.stderr)
-
-    # render the test plot
-
-    if (options.plotTest):
-        doPlotTest()
-        sys.exit(0)
 
     # open the HDF5 file
 
@@ -346,44 +328,6 @@ def newMap(fig, minLon, maxLon, minLat, maxLat):
     gl.ylabel_style = {'size': 8, 'weight': 'bold'}
 
     return ax
-
-########################################################################
-# Plot test
-
-def doPlotTest():
-    
-    nPts = int(options.nPts)
-    minX = -2.0
-    maxX = 2.0
-    minY = -2.0
-    maxY = 2.0
-    xRange = maxX - minX
-    yRange = maxY - minY
-
-    # make up some randomly distributed data
-    seed(1234)
-    x = uniform(minX,maxX,nPts)
-    y = uniform(minY,maxY,nPts)
-    z = x*np.exp(-x**2-y**2)
-    # define grid.
-    xi = np.linspace(minX - xRange / 100.0,
-                     maxX + xRange / 100.0,
-                     options.nX)
-    yi = np.linspace(minY - yRange / 100.0,
-                     maxY + yRange / 100.0,
-                     options.nY)
-    # grid the data.
-    zi = griddata((x, y), z, (xi[None,:], yi[:,None]), method='cubic')
-    # contour the gridded data, plotting dots at the randomly spaced data points.
-    CS = plt.contour(xi,yi,zi,15,linewidths=0.5,colors='k')
-    CS = plt.contourf(xi,yi,zi,15,cmap=plt.cm.jet)
-    plt.colorbar() # draw colorbar
-    # plot data points.
-    plt.scatter(x,y,marker='o',c='b',s=5)
-    plt.xlim(minX,maxX)
-    plt.ylim(minY,maxY)
-    plt.title('griddata test (%d points)' % nPts)
-    plt.show()
 
 ########################################################################
 # Run a command in a shell, wait for it to complete
