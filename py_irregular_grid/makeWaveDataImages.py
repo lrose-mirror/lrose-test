@@ -15,22 +15,12 @@ import math
 import datetime
 import pytz
 from optparse import OptionParser
-import numpy as np
-from scipy.interpolate import griddata
-import matplotlib.pyplot as plt
-from matplotlib import dates
-import h5py as h5
-import cartopy
-import cartopy.crs as ccrs
-from cartopy import feature as cfeature
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
 def main():
 
 #   globals
 
     global options
-    global debug
 
 # parse the command line
 

@@ -30,7 +30,6 @@ def main():
 #   globals
 
     global options
-    global debug
 
 # parse the command line
 
