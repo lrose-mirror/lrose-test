@@ -24,7 +24,6 @@ from matplotlib import dates
 import numpy.ma as ma
 from numpy.random import uniform, seed
 import h5py as h5
-import contextlib
 import cartopy
 import cartopy.crs as ccrs
 import cartopy.io.shapereader as shpreader
@@ -88,6 +87,18 @@ def main():
                       dest='searchTime',
                       default='2005 01 01 00 00 00',
                       help='Time for plot data')
+    parser.add_option('--contours',
+                      dest='plotContours', default=False,
+                      action="store_true",
+                      help='Plot line contours as well as filled contours')
+    parser.add_option('--nContours',
+                      dest='nContours',
+                      default=16,
+                      help='Number of line contours')
+    parser.add_option('--nColors',
+                      dest='nColors',
+                      default=64,
+                      help='Number of colors in filled contours')
     parser.add_option('--test',
                       dest='plotTest', default=False,
                       action="store_true",
@@ -266,8 +277,18 @@ def doPlotFieldData(h5File, timeIndex):
 
     # plot the gridded data as color-filled contours
 
-    #CS = plt.contour(xLons,yLats,gVals,16,linewidths=0.5,colors='k')
-    CS = ax1.contourf(xLons,yLats,gVals,64,cmap=plt.cm.jet,vmin=minVal,vmax=maxVal)
+    if (options.plotContours):
+        CS = plt.contour(xLons, yLats,
+                         gVals,
+                         int(options.nContours),
+                         linewidths=0.5, colors='k')
+        
+    CS = ax1.contourf(xLons, yLats,
+                      gVals,
+                      int(options.nColors),
+                      cmap=plt.cm.jet,
+                      vmin=minVal, vmax=maxVal)
+
     cbar = fig1.colorbar(CS, ax=ax1, shrink=0.9) # draw colorbar
     
     # plot data points.
