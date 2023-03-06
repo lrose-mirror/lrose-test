@@ -5,7 +5,7 @@
 //======================================================================
 //
 // Iq2Dsr reads raw time-series data, computes the moments and writes 
-//   the contents into a DsRadar FMQ.
+//   the contents into a moments FMQ.
 //
 //======================================================================
  
@@ -75,7 +75,7 @@ instance = "spol";
 // Type: boolean
 //
 
-use_multiple_threads = TRUE;
+use_multiple_threads = FALSE;
 
 ///////////// n_compute_threads ///////////////////////
 //
@@ -499,6 +499,77 @@ angle_interp_debug = FALSE;
 //
 //======================================================================
  
+///////////// platform_type ///////////////////////////
+//
+// Set the platform type.
+//
+// 	PLATFORM_FIXED  - radar is in a fixed location
+// 	PLATFORM_VEHICLE - radar is mounted on a land vehicle
+// 	PLATFORM_SHIP - radar is mounted on a ship
+// 	PLATFORM_AIRCRAFT_FORE - forward-looking on aircraft
+// 	PLATFORM_AIRCRAFT_AFT - backward-looking on aircraft
+// 	PLATFORM_AIRCRAFT_TAIL - tail - e.g. ELDORA
+// 	PLATFORM_AIRCRAFT_BELLY -  belly radar on aircraft
+// 	PLATFORM_AIRCRAFT_ROOF - roof radar on aircraft
+// 	PLATFORM_AIRCRAFT_NOSE - radar in nose radome on aircraft
+// 	PLATFORM_SATELLITE_ORBIT - orbiting satellite
+// 	PLATFORM_SATELLITE_GEOSTAT - geostationary satellite.
+//
+//
+// Type: enum
+// Options:
+//     PLATFORM_FIXED
+//     PLATFORM_VEHICLE
+//     PLATFORM_SHIP
+//     PLATFORM_AIRCRAFT
+//     PLATFORM_AIRCRAFT_FORE
+//     PLATFORM_AIRCRAFT_AFT
+//     PLATFORM_AIRCRAFT_TAIL
+//     PLATFORM_AIRCRAFT_BELLY
+//     PLATFORM_AIRCRAFT_ROOF
+//     PLATFORM_AIRCRAFT_NOSE
+//     PLATFORM_SATELLITE_ORBIT
+//     PLATFORM_SATELLITE_GEOSTAT
+//
+
+platform_type = PLATFORM_FIXED;
+
+///////////// override_primary_axis ///////////////////
+//
+// Option to override primary axis on read. If true, the file will be 
+//   read in, the primary axis will be changed, and then any post-read 
+//   processing will be performed.
+//
+//
+// Type: boolean
+//
+
+override_primary_axis = FALSE;
+
+///////////// primary_axis ////////////////////////////
+//
+// Set the primary axis.
+//
+// 	PRIMARY_AXIS_Z - vertical
+// 	PRIMARY_AXIS_Y - longitudinal axis of platform
+// 	PRIMARY_AXIS_X - lateral axis of platform
+// 	PRIMARY_AXIS_Z_PRIME - inverted vertical
+// 	PRIMARY_AXIS_Y_PRIME - ELDORA, HRD tail
+// 	PRIMARY_AXIS_X_PRIME - translated lateral.
+//
+//
+// Type: enum
+// Options:
+//     PRIMARY_AXIS_Z
+//     PRIMARY_AXIS_Y
+//     PRIMARY_AXIS_X
+//     PRIMARY_AXIS_Z_PRIME
+//     PRIMARY_AXIS_Y_PRIME
+//     PRIMARY_AXIS_X_PRIME
+//
+
+primary_axis = PRIMARY_AXIS_Z;
+
 ///////////// override_radar_name /////////////////////
 //
 // Option to override the radar name.
@@ -1215,7 +1286,7 @@ spectrum_width_method = WIDTH_METHOD_R0R1;
 // Type: string
 //
 
-startup_cal_file = "./spol_cal.xml";
+startup_cal_file = "$(HOME)/git/lrose-test/bomb_snowstorm/params/spol_cal.xml";
 
 ///////////// set_cal_by_pulse_width //////////////////
 //
@@ -1848,6 +1919,33 @@ atmos_atten_db_per_km = 0.012;
 //
 //======================================================================
  
+///////////// clutter_model_width_in_adaptive_filter //
+//
+// Width of clutter, in model used by adaptive filter (m/s).
+//
+// The adaptive filter computes a clutter model with the specified 
+//   width, and uses that model to determing the width of the initial 
+//   notch.
+//
+//
+// Type: double
+//
+
+clutter_model_width_in_adaptive_filter = 0.75;
+
+///////////// init_notch_width_in_adaptive_filter /////
+//
+// Width of initial notch in adaptive filter (m/s).
+//
+// This is the initial notch width used if the clutter model does not 
+//   succeed in providing the notch width.
+//
+//
+// Type: double
+//
+
+init_notch_width_in_adaptive_filter = 1.5;
+
 ///////////// apply_residue_correction_in_adaptive_filter 
 //
 // Option to apply residue correction to adaptive filter.
@@ -3644,19 +3742,32 @@ rhohv_improvement_factor_threshold = 4;
 
 //======================================================================
 //
-// OUTPUT TO DSRADAR FMQ.
+// OUTPUT TO MOMENTS FMQ.
 //
 //======================================================================
  
 ///////////// output_fmq_url //////////////////////////
 //
-// Output URL for DsRadar data via FMQ.
+// Output URL for moments data via FMQ.
 //
 //
 // Type: string
 //
 
 output_fmq_url = "/tmp/fmq/spol/shmem_20000";
+
+///////////// output_moments_in_radx_format ///////////
+//
+// Write output moments in Radx format.
+//
+// If TRUE moments are written as Radx messages. If FALSE moments are 
+//   written as DsRadar messages. .
+//
+//
+// Type: boolean
+//
+
+output_moments_in_radx_format = FALSE;
 
 ///////////// output_fmq_size /////////////////////////
 //
@@ -3724,7 +3835,7 @@ nbeams_for_params_and_calib = 90;
 // Type: boolean
 //
 
-write_blocking = TRUE;
+write_blocking = FALSE;
 
 ///////////// beam_wait_msecs /////////////////////////
 //
@@ -3863,6 +3974,8 @@ beam_wait_msecs = 0;
 //          CLUT_2_WX_RATIO
 //          SPECTRAL_NOISE
 //          SPECTRAL_SNR
+//          NOISE_FLAG
+//          SIGNAL_FLAG
 //          AIQ_HC
 //          NIQ_HC
 //          AIQ_VC
