@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for Iq2Dsr
+ * TDRP params for ./Iq2Dsr
  **********************************************************************/
 
 //======================================================================
@@ -75,7 +75,7 @@ instance = "spol_regr";
 // Type: boolean
 //
 
-use_multiple_threads = TRUE;
+use_multiple_threads = FALSE;
 
 ///////////// n_compute_threads ///////////////////////
 //
@@ -606,7 +606,7 @@ radar_name = "SPOL";
 // Type: boolean
 //
 
-override_radar_location = TRUE;
+override_radar_location = FALSE;
 
 ///////////// radar_latitude_deg //////////////////////
 //
@@ -2172,7 +2172,7 @@ regression_filter_polynomial_order = 5;
 ///////////// regression_filter_determine_order_from_CNR 
 //
 // Option to determine the polynomial order from the 
-//   Clutter-to-Signal-Ratio (CNR).
+//   Clutter-to-Noise-Ratio (CNR).
 //
 // If TRUE, we compute the CNR from the 3 central spectral points. Then, 
 //   using a lookup-table based on CNR, we determine the appropriate order 
@@ -2203,7 +2203,7 @@ regression_filter_notch_edge_power_ratio_threshold_db = -45;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //
-// Min valid CNR - Clutter-to-Signal-Ratio - for applying the filter 
+// Min valid CNR - Clutter-to-Noise-Ratio - for applying the filter 
 //   (dB).
 //
 // As a first step, we compute the CNR using a 3rd order regression fit. 
@@ -3869,7 +3869,8 @@ phidp_sdev_interest_weight = 1;
 // If clutter is present the RHOHV value should increase after 
 //   application of the clutter filter. We can use a RHOHV test to locate 
 //   gates at which CMD fails to identify weak clutter. This allows us to 
-//   improve clutter identification in cases with low CNR.
+//   improve clutter identification in cases with low clutter-to-noise 
+//   ratio.
 //
 //======================================================================
  
@@ -4021,7 +4022,7 @@ nbeams_for_params_and_calib = 90;
 // Type: boolean
 //
 
-write_blocking = TRUE;
+write_blocking = FALSE;
 
 ///////////// beam_wait_msecs /////////////////////////
 //

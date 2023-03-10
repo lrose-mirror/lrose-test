@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for Iq2Dsr
+ * TDRP params for ./Iq2Dsr
  **********************************************************************/
 
 //======================================================================
@@ -606,7 +606,7 @@ radar_name = "SPOL";
 // Type: boolean
 //
 
-override_radar_location = TRUE;
+override_radar_location = FALSE;
 
 ///////////// radar_latitude_deg //////////////////////
 //
@@ -1082,6 +1082,21 @@ control_beam_indexing_from_time_series = FALSE;
 
 discard_non_indexed_beams = FALSE;
 
+///////////// compute_zdr_using_snr ///////////////////
+//
+// Option to compute ZDR using SNR instead of power.
+//
+// If true, we compute ZDR as SNRHC/SNRVC. This method applies the 
+//   receiver gain, and has the effect of taking into account a difference 
+//   in noise floor in each channel. The ZDR correction applied must 
+//   therefore be computed relative to SNR, not power.
+//
+//
+// Type: boolean
+//
+
+compute_zdr_using_snr = FALSE;
+
 ///////////// adjust_dbz_for_measured_xmit_power //////
 //
 // Option to adjust DBZ based on measured transmitter power.
@@ -1096,21 +1111,6 @@ discard_non_indexed_beams = FALSE;
 
 adjust_dbz_for_measured_xmit_power = FALSE;
 
-///////////// compute_zdr_using_snr ///////////////////
-//
-// Option to compute ZDR using SNR instead of power.
-//
-// If true, we compute ZDR as SNRHC/SNRVC. This has the effect of taking 
-//   into account a difference in noise floor in each channel. The ZDR 
-//   correction applied must therefore be computed relatrive to SNR, not 
-//   power.
-//
-//
-// Type: boolean
-//
-
-compute_zdr_using_snr = FALSE;
-
 ///////////// adjust_zdr_for_measured_xmit_power //////
 //
 // Option to adjust ZDR based on measured transmitter power.
@@ -1124,6 +1124,32 @@ compute_zdr_using_snr = FALSE;
 //
 
 adjust_zdr_for_measured_xmit_power = FALSE;
+
+///////////// min_measured_xmit_power_dbm /////////////
+//
+// Min measured xmit power - dBm.
+//
+// If the measured power is below this limit, the previous measured 
+//   value will be used instead.
+//
+//
+// Type: double
+//
+
+min_measured_xmit_power_dbm = 81;
+
+///////////// max_measured_xmit_power_dbm /////////////
+//
+// Max measured xmit power - dBm.
+//
+// If the measured power is above this limit, the previous measured 
+//   value will be used instead.
+//
+//
+// Type: double
+//
+
+max_measured_xmit_power_dbm = 86;
 
 ///////////// check_for_missing_pulses ////////////////
 //
@@ -1744,7 +1770,7 @@ hcr_delta_gain_search_margin_secs = 3600;
 
 ///////////// hcr_v_rx_delta_gain_tag_list ////////////
 //
-// URL for HCR gain correction from SPDB.
+// Tag list for HCR V channel gai correction.
 //
 //
 // Type: string
@@ -1783,6 +1809,149 @@ correct_altitude_for_egm = FALSE;
 //
 
 egm_2008_geoid_file = "./EGM_2008_WGS84_2.5minx2.5min.nc";
+
+//======================================================================
+//
+// CORRECT CALIBRATION RECEIVER GAIN USING MEASURED NOISE VALUES.
+//
+// Noise values are measured using NoiseMon, which computes the noise 
+//   for gates above a designated height, and checks that rays are not 
+//   close to the sun or contain significant reflectivity.
+//
+//======================================================================
+ 
+///////////// noise_mon_correct_cal_rx_gain ///////////
+//
+// Option to correct calibration receiver gains using measured noise 
+//   values.
+//
+// Noise values are measured using NoiseMon.
+//
+//
+// Type: boolean
+//
+
+noise_mon_correct_cal_rx_gain = FALSE;
+
+///////////// noise_mon_spdb_url //////////////////////
+//
+// URL for NoiseMon results in SPDB.
+//
+//
+// Type: string
+//
+
+noise_mon_spdb_url = "$(DATA_DIR)/calibration/spol/noise_mon/sband/spdb";
+
+///////////// noise_mon_search_margin_secs ////////////
+//
+// Search margin for finding NoiseMon data (secs).
+//
+// We search a time period from the radar time minus the margin to the 
+//   radar time plus the margin. We compute the mean value within this 
+//   time range.
+//
+//
+// Type: int
+//
+
+noise_mon_search_margin_secs = 3600;
+
+///////////// noise_mon_tag_main //////////////////////
+//
+// XML tag for noise monitoring section.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_main = "NoiseMonitoring";
+
+///////////// noise_mon_tag_list_zdr //////////////////
+//
+// Tag for noise ZDR.
+//
+// This tag must exist in the noise monitoring XML.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_zdr = "<NoiseMonitoring><meanNoiseZdr>";
+
+///////////// noise_mon_tag_list_dbmhc ////////////////
+//
+// Tag for noise dbm in H co-polar channel.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_dbmhc = "<NoiseMonitoring><meanDbmhc>";
+
+///////////// noise_mon_tag_list_dbmvc ////////////////
+//
+// Tag for noise dbm in V co-polar channel.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_dbmvc = "<NoiseMonitoring><meanDbmvc>";
+
+///////////// noise_mon_tag_list_site_temp ////////////
+//
+// Tag for site temperature.
+//
+//
+// Type: string
+//
+
+noise_mon_tag_list_site_temp = "<SpolStatus><WxStation><tempC>";
+
+///////////// noise_mon_zdrm_corr /////////////////////
+//
+// Correction to estimate ZDRM bias from noise ZDR (dB).
+//
+// Separately from this app, we monitor the ZDRM bias, say using 
+//   vertical pointing scans. We compare the mean ZDRM bias with the mean 
+//   ZDR as computed from noise. Applying this correction allows us to 
+//   compute the ZDRM bias to use in the saved calibration.
+//
+//
+// Type: double
+//
+
+noise_mon_zdrm_corr = 0.52;
+
+///////////// noise_mon_mean_site_temp ////////////////
+//
+// Mean site temperature for ZDR analysis (C).
+//
+// Separately from this app, we determine the dependency of ZDR on site 
+//   temperature. This is the mean temperature from that analysis. We use 
+//   this to determine the ZDR bias from temperature.
+//
+//
+// Type: double
+//
+
+noise_mon_mean_site_temp = 27.34;
+
+///////////// noise_mon_zdr_temp_slope ////////////////
+//
+// Slope of ZDR dependency on temperature (dB/C).
+//
+// Separately from this app, we determine the dependency of ZDR on site 
+//   temperature. This is the slope of the ZDR relationship on temperature 
+//   from that analysis. We use this to determine the ZDR bias from 
+//   temperature.
+//
+//
+// Type: double
+//
+
+noise_mon_zdr_temp_slope = 0.01296;
 
 //======================================================================
 //
@@ -2000,20 +2169,20 @@ use_polynomial_regression_clutter_filter = FALSE;
 
 regression_filter_polynomial_order = 5;
 
-///////////// regression_filter_determine_order_from_CSR 
+///////////// regression_filter_determine_order_from_CNR 
 //
 // Option to determine the polynomial order from the 
-//   Clutter-to-Signal-Ratio (CSR).
+//   Clutter-to-Noise-Ratio (CNR).
 //
-// If TRUE, we compute the CSR from the 3 central spectral points. Then, 
-//   using a lookup-table based on CSR, we determine the appropriate order 
+// If TRUE, we compute the CNR from the 3 central spectral points. Then, 
+//   using a lookup-table based on CNR, we determine the appropriate order 
 //   of the polynomial fit.
 //
 //
 // Type: boolean
 //
 
-regression_filter_determine_order_from_CSR = FALSE;
+regression_filter_determine_order_from_CNR = FALSE;
 
 ///////////// regression_filter_notch_edge_power_ratio_threshold_db 
 //
@@ -2032,20 +2201,20 @@ regression_filter_determine_order_from_CSR = FALSE;
 
 regression_filter_notch_edge_power_ratio_threshold_db = -45;
 
-///////////// regression_filter_min_csr_db ////////////
+///////////// regression_filter_min_cnr_db ////////////
 //
-// Min valid CSR - Clutter-to-Signal-Ratio - for applying the filter 
+// Min valid CNR - Clutter-to-Noise-Ratio - for applying the filter 
 //   (dB).
 //
-// As a first step, we compute the CSR using a 3rd order regression fit. 
-//   If the CSR is below this threshold, we do not apply the filter at 
+// As a first step, we compute the CNR using a 3rd order regression fit. 
+//   If the CNR is below this threshold, we do not apply the filter at 
 //   all, and simply return the unfiltered spectrum.
 //
 //
 // Type: double
 //
 
-regression_filter_min_csr_db = -5;
+regression_filter_min_cnr_db = -5;
 
 ///////////// regression_filter_interp_across_notch ///
 //
@@ -2860,6 +3029,23 @@ censoring_snr_threshold = -1;
 //
 
 censoring_ncp_threshold = 0.15;
+
+///////////// censoring_min_valid_run /////////////////
+//
+// Minimum valid run of non-censored gates.
+//
+// Only active if set to 2 or greater. A check is made to remove short 
+//   runs of noise. Looking along the radial, we compute the number of 
+//   contiguous gates (a 'run') with uncensored data. For the gates in 
+//   this run to be accepted the length of the run must exceed 
+//   censoring_min_valid_run. If the number of gates in a run is less than 
+//   this, then all gates in the run are censored.
+//
+//
+// Type: int
+//
+
+censoring_min_valid_run = 3;
 
 //======================================================================
 //
@@ -3683,7 +3869,8 @@ phidp_sdev_interest_weight = 1;
 // If clutter is present the RHOHV value should increase after 
 //   application of the clutter filter. We can use a RHOHV test to locate 
 //   gates at which CMD fails to identify weak clutter. This allows us to 
-//   improve clutter identification in cases with low CSR.
+//   improve clutter identification in cases with low clutter-to-noise 
+//   ratio.
 //
 //======================================================================
  
@@ -3975,7 +4162,9 @@ beam_wait_msecs = 0;
 //          SPECTRAL_NOISE
 //          SPECTRAL_SNR
 //          NOISE_FLAG
+//          NOISE_INTEREST
 //          SIGNAL_FLAG
+//          SIGNAL_INTEREST
 //          AIQ_HC
 //          NIQ_HC
 //          AIQ_VC

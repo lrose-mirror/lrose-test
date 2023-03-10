@@ -4,6 +4,15 @@
 
 //======================================================================
 //
+// Dsr2Radx program.
+//
+// Dsr2Radx reads radial radar data from an input FMQ, and writes the 
+//   data to files in formats supported by Radx.
+//
+//======================================================================
+ 
+//======================================================================
+//
 // DEBUGGING AND PROCESS CONTROL.
 //
 //======================================================================
@@ -131,7 +140,7 @@ site_name = "marshall";
 // Type: boolean
 //
 
-override_radar_name = TRUE;
+override_radar_name = FALSE;
 
 ///////////// radar_name //////////////////////////////
 //
@@ -343,7 +352,7 @@ override_primary_axis = FALSE;
 
 ///////////// primary_axis ////////////////////////////
 //
-// Platform type.
+// Primary axis.
 //
 // See override_primary_axis.
 //
@@ -1140,6 +1149,19 @@ increment_sweep_num_when_prt_mode_changes = FALSE;
 //
 
 adjust_sur_sweep_limits_using_angles = TRUE;
+
+///////////// adjust_sur_sweep_max_angle_error ////////
+//
+// Max angle error to be used when adjusting sur sweep limits (deg).
+//
+// See 'adjust_sur_sweep_limits_using angles'. We only adjust sweeps for 
+//   which the elevation error is less than this.
+//
+//
+// Type: double
+//
+
+adjust_sur_sweep_max_angle_error = 2;
 
 ///////////// adjust_sector_sweep_limits_using_angles /
 //
@@ -2047,7 +2069,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt-64-all",
+    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
@@ -2360,6 +2382,19 @@ include_subsecs_in_file_name = TRUE;
 //
 
 include_scan_type_in_file_name = TRUE;
+
+///////////// include_scan_name_in_file_name //////////
+//
+// Option to include the scan name in the file name.
+//
+// Default is false. Only applies to CfRadial files. If true, the scan 
+//   name will be included in the file name.
+//
+//
+// Type: boolean
+//
+
+include_scan_name_in_file_name = FALSE;
 
 ///////////// include_vol_num_in_file_name ////////////
 //
