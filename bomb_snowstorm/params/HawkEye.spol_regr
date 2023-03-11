@@ -70,7 +70,7 @@ register_with_procmap = FALSE;
 // Type: string
 //
 
-instance = "test";
+instance = "spol_regr";
 
 //======================================================================
 //
@@ -2104,5 +2104,5 @@ sim_gate_spacing_km = 0.15;
 // Type: string
 //
 
-click_point_fmq_url = "/tmp/fmq/click_point";
+click_point_fmq_url = "/tmp/fmq/click_point/bomb_snowstorm";
 
