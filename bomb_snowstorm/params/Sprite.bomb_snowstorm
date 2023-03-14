@@ -390,7 +390,7 @@ main_window_height = 900;
 // Type: int
 //
 
-main_window_start_x = 30;
+main_window_start_x = 1130;
 
 ///////////// main_window_start_y /////////////////////
 //
@@ -400,7 +400,7 @@ main_window_start_x = 30;
 // Type: int
 //
 
-main_window_start_y = 30;
+main_window_start_y = 0;
 
 ///////////// main_window_title_margin ////////////////
 //
@@ -2005,17 +2005,7 @@ min_snr_db_for_residue_correction = 75;
 
 use_polynomial_regression_clutter_filter = TRUE;
 
-///////////// regression_filter_polynomial_order //////
-//
-// Order of the polynomial fit for the regression filter.
-//
-//
-// Type: int
-//
-
-regression_filter_polynomial_order = 5;
-
-///////////// regression_filter_determine_order_from_CNR 
+///////////// regression_filter_determine_order_from_cnr 
 //
 // Option to determine the polynomial order from the 
 //   Clutter-to-Noise-Ratio (CNR).
@@ -2027,24 +2017,47 @@ regression_filter_polynomial_order = 5;
 // Type: boolean
 //
 
-regression_filter_determine_order_from_CNR = TRUE;
+regression_filter_determine_order_from_cnr = TRUE;
 
-///////////// regression_filter_notch_edge_power_ratio_threshold_db 
+///////////// regression_filter_specified_polynomial_order 
 //
-// Power ratio threshold to determine the edge of the filtered notch 
-//   (dB).
+// Order of the polynomial fit for the regression filter.
 //
-// After the initial application of the regression filter, a notch is 
-//   formed around 0. In order to determine the width of this notch, we 
-//   compute the ratio of the filtered power to the original unfiltered 
-//   power. This is the threshold used to determine where the edge of the 
-//   notch occurs.
+// Used if regression_filter_determine_order_from_CNR is false.
+//
+//
+// Type: int
+//
+
+regression_filter_specified_polynomial_order = 5;
+
+///////////// regression_filter_clutter_width_factor //
+//
+// Width factor used when automatically computing polynomial order.
+//
+// Applies if regression_filter_determine_order_from_CNR it true. 
+//   Default is 1. If less than 1, order will decrease. If more than 1, 
+//   order will increase.
 //
 //
 // Type: double
 //
 
-regression_filter_notch_edge_power_ratio_threshold_db = -45;
+regression_filter_clutter_width_factor = 1;
+
+///////////// regression_filter_cnr_exponent //////////
+//
+// CNR exponent used when automatically computing polynomial order.
+//
+// Applies if regression_filter_determine_order_from_CNR it true. 
+//   Default is 2/3. If less than 2/3, order will decrease. If more than 
+//   2/3, order will increase.
+//
+//
+// Type: double
+//
+
+regression_filter_cnr_exponent = 0.666667;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //
