@@ -55,7 +55,7 @@ beam_count_for_debug_print = 30;
 // Type: string
 //
 
-instance = "spol";
+instance = "spol_adapt";
 
 //======================================================================
 //
@@ -75,7 +75,7 @@ instance = "spol";
 // Type: boolean
 //
 
-use_multiple_threads = FALSE;
+use_multiple_threads = TRUE;
 
 ///////////// n_compute_threads ///////////////////////
 //
@@ -89,7 +89,7 @@ use_multiple_threads = FALSE;
 // Type: int
 //
 
-n_compute_threads = 12;
+n_compute_threads = 4;
 
 //======================================================================
 //
@@ -2230,7 +2230,7 @@ regression_filter_cnr_exponent = 0.666667;
 // Type: double
 //
 
-regression_filter_min_cnr_db = -5;
+regression_filter_min_cnr_db = -6;
 
 ///////////// regression_filter_notch_interp_method ///
 //
@@ -2291,7 +2291,7 @@ use_h_only_for_alt_mode_clutter_vel = TRUE;
 // Type: boolean
 //
 
-write_alt_mode_vel_debug_fields = TRUE;
+write_alt_mode_vel_debug_fields = FALSE;
 
 //======================================================================
 //
@@ -3960,7 +3960,7 @@ output_fmq_url = "/tmp/fmq/spol/shmem_20000";
 // Type: boolean
 //
 
-output_moments_in_radx_format = FALSE;
+output_moments_in_radx_format = TRUE;
 
 ///////////// output_fmq_size /////////////////////////
 //

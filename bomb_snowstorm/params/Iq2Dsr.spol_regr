@@ -89,7 +89,6 @@ use_multiple_threads = TRUE;
 // Type: int
 //
 
-// n_compute_threads = 16;
 n_compute_threads = 4;
 
 //======================================================================
@@ -121,7 +120,7 @@ n_compute_threads = 4;
 //     FMQ
 //
 
-mode = FMQ;
+mode = FILELIST;
 
 ///////////// input_fmq ///////////////////////////////
 //
@@ -3893,7 +3892,7 @@ phidp_sdev_interest_weight = 1;
 // Type: boolean
 //
 
-apply_rhohv_test_after_cmd = TRUE;
+apply_rhohv_test_after_cmd = FALSE;
 
 ///////////// rhohv_test_min_rhohv ////////////////////
 //
@@ -4235,11 +4234,16 @@ beam_wait_msecs = 0;
 //          SDEV_VV
 //          PRT
 //          NUM_PULSES
-//          TEST
+//          TEST0
+//          TEST1
 //          TEST2
 //          TEST3
 //          TEST4
 //          TEST5
+//          TEST6
+//          TEST7
+//          TEST8
+//          TEST9
 //      string name;
 //      string units;
 //      double scale;
