@@ -380,6 +380,24 @@ fields = {
   }
   ,
   {
+    label = "ZDRN",
+    raw_name = "ZDRN",
+    filtered_name = "ZDRN_F",
+    units = "dB",
+    color_map = "zdr.colors",
+    shortcut = "6"
+  }
+  ,
+  {
+   label = "LDRH",
+   raw_name = "LDRH",
+   filtered_name = "LDRH_F",
+   units = "dB",
+   color_map = "ldr.colors",
+   shortcut = "8"
+  }
+  ,
+  {
     label = "PHIDP",
     raw_name = "PHIDP",
     filtered_name = "PHIDP_F",
@@ -389,12 +407,84 @@ fields = {
   }
   ,
   {
+    label = "PHIDPN",
+    raw_name = "PHIDPN",
+    filtered_name = "PHIDPN_F",
+    units = "deg",
+    color_map = "phidp.colors",
+    shortcut = "7"
+  }
+  ,
+  {
+    label = "RHOHV_NNC",
+    raw_name = "RHOHV_NNC",
+    filtered_name = "RHOHV_NNC_F",
+    units = "unitless",
+    color_map = "rhohv.colors",
+    shortcut = "8"
+  }
+  ,
+  {
     label = "RHOHV",
     raw_name = "RHOHV",
     filtered_name = "RHOHV_F",
     units = "unitless",
     color_map = "rhohv.colors",
     shortcut = "8"
+  }
+  ,
+  {
+    label = "RHOHVN",
+    raw_name = "RHOHVN",
+    filtered_name = "RHOHVN_F",
+    units = "unitless",
+    color_map = "rhohv.colors",
+    shortcut = "8"
+  }
+  ,
+  {
+    label = "NCP",
+    raw_name = "NCP",
+    filtered_name = "NCP_F",
+    units = "",
+    color_map = "ncp.colors",
+    shortcut = "f"
+  }
+  ,
+  {
+    label = "SNRHC",
+    raw_name = "SNRHC",
+    filtered_name = "SNRHC_F",
+    units = "dB",
+    color_map = "snr.colors",
+    shortcut = "g"
+  }
+  ,
+  {
+    label = "SNRVC",
+    raw_name = "SNRVC",
+    filtered_name = "SNRVC_F",
+    units = "dB",
+    color_map = "snr.colors",
+    shortcut = "h"
+  }
+  ,
+  {
+    label = "DBMHC",
+    raw_name = "DBMHC",
+    filtered_name = "DBMHC_F",
+    units = "dBm",
+    color_map = "dbm.colors",
+    shortcut = "k"
+  }
+  ,
+  {
+    label = "DBMVC",
+    raw_name = "DBMVC",
+    filtered_name = "DBMVC_F",
+    units = "dBm",
+    color_map = "dbm.colors",
+    shortcut = "l"
   }
   ,
   {
