@@ -44,7 +44,7 @@ debug = DEBUG_NORM;
 // Type: string
 //
 
-instance = "spol_adapt";
+instance = "spol";
 
 ///////////// procmap_register_interval ///////////////
 //
@@ -140,7 +140,7 @@ site_name = "marshall";
 // Type: boolean
 //
 
-override_radar_name = FALSE;
+override_radar_name = TRUE;
 
 ///////////// radar_name //////////////////////////////
 //
@@ -1304,8 +1304,7 @@ trim_surveillance_sweeps_to_360deg = TRUE;
 //     ELAPSED_TIME
 //
 
-// end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
-end_of_vol_decision = END_OF_VOL_FLAG;
+end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
 
 ///////////// last_sweep_in_vol ///////////////////////
 //
@@ -1352,7 +1351,7 @@ write_end_of_vol_when_data_stops = TRUE;
 // Type: int
 //
 
-nsecs_no_data_for_end_of_vol = 3;
+nsecs_no_data_for_end_of_vol = 5;
 
 ///////////// nsecs_per_volume ////////////////////////
 //
@@ -1629,6 +1628,42 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "VEL_ALT",
+    output_name = "VEL_ALT",
+    long_name = "doppler_velocity",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_ALT_F",
+    output_name = "VEL_ALT_F",
+    long_name = "doppler_velocity_filtered",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_HV",
+    output_name = "VEL_HV",
+    long_name = "doppler_velocity",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "VEL_HV_F",
+    output_name = "VEL_HV_F",
+    long_name = "doppler_velocity_filtered",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "WIDTH",
     output_name = "WIDTH",
     long_name = "spectrum_width",
@@ -1658,24 +1693,6 @@ output_fields = {
   {
     dsr_name = "ZDR_F",
     output_name = "ZDR_F",
-    long_name = "differential_reflectivity_filtered",
-    standard_name = "log_differential_reflectivity_hv",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "ZDRN",
-    output_name = "ZDRN",
-    long_name = "differential_reflectivity",
-    standard_name = "log_differential_reflectivity_hv",
-    output_units = "dB",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "ZDRN_F",
-    output_name = "ZDRN_F",
     long_name = "differential_reflectivity_filtered",
     standard_name = "log_differential_reflectivity_hv",
     output_units = "dB",
@@ -1719,24 +1736,6 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "RHOHVN",
-    output_name = "RHOHVN",
-    long_name = "cross_correlation_ratio",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "RHOHVN_F",
-    output_name = "RHOHVN_F",
-    long_name = "cross_correlation_ratio_filtered",
-    standard_name = "cross_correlation_ratio_hv",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
     dsr_name = "PHIDP",
     output_name = "PHIDP",
     long_name = "differential_phase",
@@ -1748,24 +1747,6 @@ output_fields = {
   {
     dsr_name = "PHIDP_F",
     output_name = "PHIDP_F",
-    long_name = "differential_phase_filtered",
-    standard_name = "differential_phase_hv",
-    output_units = "deg",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "PHIDPN",
-    output_name = "PHIDPN",
-    long_name = "differential_phase",
-    standard_name = "differential_phase_hv",
-    output_units = "deg",
-    output_encoding = OUTPUT_SHORT
-  }
-  ,
-  {
-    dsr_name = "PHIDPN_F",
-    output_name = "PHIDPN_F",
     long_name = "differential_phase_filtered",
     standard_name = "differential_phase_hv",
     output_units = "deg",
@@ -1917,30 +1898,30 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "NOISE_FLAG",
-    output_name = "NOISE_FLAG",
-    long_name = "location_of_noise_flag",
-    standard_name = "location_of_noise_flag",
-    output_units = "none",
+    dsr_name = "REGR_CNR",
+    output_name = "REGR_CNR",
+    long_name = "clutter_to_noise_ratio_regr",
+    standard_name = "clutter_to_noise_ratio",
+    output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
     dsr_name = "REGR_ORDER",
     output_name = "REGR_ORDER",
-    long_name = "polynomial_order_for_regression_filter",
-    standard_name = "polynomial_order_for_regression_filter",
-    output_units = "none",
-    output_encoding = OUTPUT_SHORT
+    long_name = "order_of_polynomial_for_regression_filter",
+    standard_name = "order_of_polynomial_for_regression_filter",
+    output_units = "",
+    output_encoding = OUTPUT_FLOAT
   }
   ,
   {
-    dsr_name = "REGR_CNR",
-    output_name = "REGR_CNR",
-    long_name = "clutter_to_noise_ratio_for_regression_filter",
-    standard_name = "clutter_to_noise_ratio_for_regression_filter",
+    dsr_name = "REGR_INTERP_RATIO",
+    output_name = "REGR_INTERP_RATIO",
+    long_name = "power_ratio_after_interoplation_for_regression_filter",
+    standard_name = "power_ratio_after_interoplation_for_regression_filter",
     output_units = "dB",
-    output_encoding = OUTPUT_SHORT
+    output_encoding = OUTPUT_FLOAT
   }
 };
 
@@ -1980,7 +1961,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_adapt",
+    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/spol_regr_auto",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
@@ -2252,7 +2233,7 @@ output_filename_prefix = "";
 // Type: boolean
 //
 
-include_instrument_name_in_file_name = FALSE;
+include_instrument_name_in_file_name = TRUE;
 
 ///////////// include_site_name_in_file_name //////////
 //

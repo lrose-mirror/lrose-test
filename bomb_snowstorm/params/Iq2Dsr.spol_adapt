@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for ./Iq2Dsr
+ * TDRP params for Iq2Dsr
  **********************************************************************/
 
 //======================================================================
@@ -120,7 +120,7 @@ n_compute_threads = 12;
 //     FMQ
 //
 
-mode = FMQ;
+mode = FILELIST;
 
 ///////////// input_fmq ///////////////////////////////
 //
@@ -2088,6 +2088,25 @@ atmos_atten_db_per_km = 0.012;
 //
 //======================================================================
  
+///////////// clutter_filter_type /////////////////////
+//
+// Type of clutter filter to use.
+//
+// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION: 
+//   polynomial filter with specified interpolation. NOTCH: simple notch 
+//   filter of specified width. NONE: cancels clutter filtering.
+//
+//
+// Type: enum
+// Options:
+//     CLUTTER_FILTER_ADAPTIVE
+//     CLUTTER_FILTER_REGRESSION
+//     CLUTTER_FILTER_NOTCH
+//     CLUTTER_FILTER_NONE
+//
+
+clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
+
 ///////////// clutter_model_width_in_adaptive_filter //
 //
 // Width of clutter, in model used by adaptive filter (m/s).
@@ -2144,71 +2163,68 @@ apply_residue_correction_in_adaptive_filter = TRUE;
 
 min_snr_db_for_residue_correction = 75;
 
-///////////// use_polynomial_regression_clutter_filter 
-//
-// Option to apply a regression clutter filter.
-//
-// For the regression filter, a polynomial fit is performed on the I and 
-//   Q data individually. The filtered time series is computed as the 
-//   original minus the regression fit. If true, this takes preference 
-//   over the notch filter.
-//
-//
-// Type: boolean
-//
-
-use_polynomial_regression_clutter_filter = FALSE;
-
-///////////// regression_filter_polynomial_order //////
-//
-// Order of the polynomial fit for the regression filter.
-//
-//
-// Type: int
-//
-
-regression_filter_polynomial_order = 5;
-
-///////////// regression_filter_determine_order_from_CNR 
+///////////// regression_filter_determine_order_from_cnr 
 //
 // Option to determine the polynomial order from the 
 //   Clutter-to-Noise-Ratio (CNR).
 //
 // If TRUE, we compute the CNR from the 3 central spectral points. Then, 
-//   using a lookup-table based on CNR, we determine the appropriate order 
-//   of the polynomial fit.
+//   we compute the order using CNR, antenna speed etc.
 //
 //
 // Type: boolean
 //
 
-regression_filter_determine_order_from_CNR = FALSE;
+regression_filter_determine_order_from_cnr = TRUE;
 
-///////////// regression_filter_notch_edge_power_ratio_threshold_db 
+///////////// regression_filter_specified_polynomial_order 
 //
-// Power ratio threshold to determine the edge of the filtered notch 
-//   (dB).
+// Order of the polynomial fit for the regression filter.
 //
-// After the initial application of the regression filter, a notch is 
-//   formed around 0. In order to determine the width of this notch, we 
-//   compute the ratio of the filtered power to the original unfiltered 
-//   power. This is the threshold used to determine where the edge of the 
-//   notch occurs.
+// Used if regression_filter_determine_order_from_cnr is false.
+//
+//
+// Type: int
+//
+
+regression_filter_specified_polynomial_order = 5;
+
+///////////// regression_filter_clutter_width_factor //
+//
+// Width factor used when automatically computing polynomial order.
+//
+// Applies if regression_filter_determine_order_from_cnr it true. 
+//   Default is 1. If less than 1, order will decrease. If more than 1, 
+//   order will increase.
 //
 //
 // Type: double
 //
 
-regression_filter_notch_edge_power_ratio_threshold_db = -45;
+regression_filter_clutter_width_factor = 1;
+
+///////////// regression_filter_cnr_exponent //////////
+//
+// CNR exponent used when automatically computing polynomial order.
+//
+// Applies if regression_filter_determine_order_from_cnr it true. 
+//   Default is 2/3. If less than 2/3, order will decrease. If more than 
+//   2/3, order will increase.
+//
+//
+// Type: double
+//
+
+regression_filter_cnr_exponent = 0.666667;
 
 ///////////// regression_filter_min_cnr_db ////////////
 //
-// Min valid CNR - Clutter-to-Noise-Ratio - for applying the filter 
+// Min valid CNR - Clutter-to-Signal-Ratio - for applying the filter 
 //   (dB).
 //
-// As a first step, we compute the CNR using a 3rd order regression fit. 
-//   If the CNR is below this threshold, we do not apply the filter at 
-//   all, and simply return the unfiltered spectrum.
+// As a first step, we compute the CNR the central 3 spectral points. If 
+//   the CNR is below this threshold, we do not apply the filter at all, 
+//   and simply return the unfiltered spectrum.
 //
 //
 // Type: double
@@ -2216,34 +2232,24 @@ regression_filter_notch_edge_power_ratio_threshold_db = -45;
 
 regression_filter_min_cnr_db = -5;
 
-///////////// regression_filter_interp_across_notch ///
+///////////// regression_filter_notch_interp_method ///
 //
 // For the regression filter, option to interpolate power across the 
 //   notch.
 //
-// If true, the spectral power in the notch created by the filter will 
-//   be interpolated using values to each side of the notch.
+// If NONE, no interpolation is performed. If LINEAR, a linear 
+//   interpolation is performed across the notch. If GAUSSIAN, an 
+//   iterative Gaussian interpolation is performed across the notch.
 //
 //
-// Type: boolean
-//
-
-regression_filter_interp_across_notch = TRUE;
-
-///////////// use_simple_notch_clutter_filter /////////
-//
-// Option to use a simple notch for clutter filtering.
-//
-// If false, spectral adaptive clutter filtering is used. If true, a 
-//   simple notch is used instead. The width is specified in 
-//   notch_filter_width_mps. The depth of the notch is down to the 
-//   calibrated noise floor.
-//
-//
-// Type: boolean
+// Type: enum
+// Options:
+//     INTERP_METHOD_NONE
+//     INTERP_METHOD_LINEAR
+//     INTERP_METHOD_GAUSSIAN
 //
 
-use_simple_notch_clutter_filter = FALSE;
+regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN;
 
 ///////////// simple_notch_filter_width_mps ///////////
 //
@@ -4022,7 +4028,7 @@ nbeams_for_params_and_calib = 90;
 // Type: boolean
 //
 
-write_blocking = FALSE;
+write_blocking = TRUE;
 
 ///////////// beam_wait_msecs /////////////////////////
 //
@@ -4227,11 +4233,16 @@ beam_wait_msecs = 0;
 //          SDEV_VV
 //          PRT
 //          NUM_PULSES
-//          TEST
+//          TEST0
+//          TEST1
 //          TEST2
 //          TEST3
 //          TEST4
 //          TEST5
+//          TEST6
+//          TEST7
+//          TEST8
+//          TEST9
 //      string name;
 //      string units;
 //      double scale;
@@ -4277,76 +4288,6 @@ output_fields = {
   {
     id = VEL_ALT,
     name = "VEL_ALT",
-    units = "m/s",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = VEL_ALT_FOLD_INTERVAL,
-    name = "VEL_FOLD_INT",
-    units = "",
-    scale = 1,
-    bias = -100,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = VEL_UNFOLD_INTERVAL,
-    name = "VEL_UNFOLD_INT",
-    units = "",
-    scale = 1,
-    bias = -100,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = VEL_ALT_FOLD_CONFIDENCE,
-    name = "VEL_FOLD_CONF",
-    units = "",
-    scale = 0.001,
-    bias = -0.01,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = TEST2,
-    name = "VEL_MEAN_CONF",
-    units = "",
-    scale = 0.001,
-    bias = -0.01,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = TEST3,
-    name = "VEL_MIN_RUN",
-    units = "",
-    scale = 0.001,
-    bias = -0.01,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = TEST4,
-    name = "VEL_MAX_RUN",
-    units = "",
-    scale = 0.001,
-    bias = -0.01,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = TEST5,
-    name = "VEL_UNFOLDED",
     units = "m/s",
     scale = 0.01,
     bias = -320,
@@ -4725,26 +4666,6 @@ output_fields = {
   }
   ,
   {
-    id = NOISE_FLAG,
-    name = "NOISE_FLAG",
-    units = "",
-    scale = 1,
-    bias = -100,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = SIGNAL_FLAG,
-    name = "SIGNAL_FLAG",
-    units = "",
-    scale = 1,
-    bias = -100,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
     id = AIQ_VC,
     name = "AIQ",
     units = "deg",
@@ -4795,266 +4716,6 @@ output_fields = {
   }
   ,
   {
-    id = LAG0_HC_DB,
-    name = "LAG0_HC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -160,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG0_HX_DB,
-    name = "LAG0_HX_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -160,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG0_VC_DB,
-    name = "LAG0_VC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -160,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG0_VX_DB,
-    name = "LAG0_VX_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -160,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG0_HCVX_DB,
-    name = "LAG0_HCVX_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG0_HCVX_PHASE,
-    name = "LAG0_HCVX_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG0_VCHX_DB,
-    name = "LAG0_VCHX_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG0_VCHX_PHASE,
-    name = "LAG0_VCHX_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_HC_DB,
-    name = "LAG1_HC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_HC_PHASE,
-    name = "LAG1_HC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_VC_DB,
-    name = "LAG1_VC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_VC_PHASE,
-    name = "LAG1_VC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_HCVC_DB,
-    name = "LAG1_HCVC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_HCVC_PHASE,
-    name = "LAG1_HCVC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_VCHC_DB,
-    name = "LAG1_VCHC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_VCHC_PHASE,
-    name = "LAG1_VCHC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_VXHX_DB,
-    name = "LAG1_VXHX_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG1_VXHX_PHASE,
-    name = "LAG1_VXHX_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG2_HC_DB,
-    name = "LAG2_HC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG2_HC_PHASE,
-    name = "LAG2_HC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG2_VC_DB,
-    name = "LAG2_VC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG2_VC_PHASE,
-    name = "LAG2_VC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG3_HC_DB,
-    name = "LAG3_HC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG3_HC_PHASE,
-    name = "LAG3_HC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG3_VC_DB,
-    name = "LAG3_VC_DB",
-    units = "dBm",
-    scale = 0.005,
-    bias = -240,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
-    id = LAG3_VC_PHASE,
-    name = "LAG3_VC_PHASE",
-    units = "deg",
-    scale = 0.006,
-    bias = -190,
-    write_unfiltered = TRUE,
-    write_filtered = TRUE
-  }
-  ,
-  {
     id = RVVHH0_DB,
     name = "RVVHH0_DB",
     units = "dBm",
@@ -5085,13 +4746,63 @@ output_fields = {
   }
   ,
   {
-    id = TEST,
-    name = "TEST",
+    id = TEST3,
+    name = "REGR_INTERP_RATIO",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST4,
+    name = "REGR_ORDER",
     units = "",
     scale = 0.01,
     bias = -320,
-    write_unfiltered = FALSE,
+    write_unfiltered = TRUE,
     write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST5,
+    name = "REGR_CNR",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST6,
+    name = "ZDRN",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+   id = TEST7,
+    name = "PHIDPN",
+    units = "deg",
+    scale = 0.06,
+    bias = -200,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST8,
+    name = "RHOHVN",
+    units = "",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
   }
 };
 
