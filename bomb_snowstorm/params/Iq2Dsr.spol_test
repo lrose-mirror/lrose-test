@@ -3947,7 +3947,7 @@ rhohv_improvement_factor_threshold = 4;
 // Type: string
 //
 
-output_fmq_url = "/tmp/fmq/spol/shmem_20000";
+output_fmq_url = "/tmp/fmq/spol/shmem_33000";
 
 ///////////// output_moments_in_radx_format ///////////
 //
