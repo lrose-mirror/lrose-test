@@ -1,0 +1,2 @@
+~/data/bomb_snowstorm/cfradial/spol_regr/sur/20190313/cfrad.20190313_220622.994_to_20190313_220707.946_SUR.nc ~/data/bomb_snowstorm/cfradial/spol_adapt/sur/20190313/cfrad.20190313_220622.994_to_20190313_220707.570_SUR.nc spol_20190313_220622_adapt_cpp_adapt -150 150 -150 150 -30 150 -100 120 nc nc
+~/data/bomb_snowstorm/cfradial/spol_regr/sur/20190313/cfrad.20190313_220622.994_to_20190313_220707.946_SUR.nc ~/data/bomb_snowstorm/tables/SPOL20190313_220622MEDIUM.txt spol_20190313_220622_regr_cpp_fortran -150 150 -150 150 -30 150 -100 120 nc table
