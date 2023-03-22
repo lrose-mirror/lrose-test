@@ -1611,7 +1611,7 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "VEL",
+    dsr_name = "VEL_HV",
     output_name = "VEL",
     long_name = "doppler_velocity",
     standard_name = "radial_velocity_of_scatterers_away_from_instrument",
@@ -1620,7 +1620,7 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "VEL_F",
+    dsr_name = "VEL_HV_F",
     output_name = "VEL_F",
     long_name = "doppler_velocity_filtered",
     standard_name = "radial_velocity_of_scatterers_away_from_instrument",

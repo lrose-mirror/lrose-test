@@ -1,4 +1,4 @@
-function applyColorScale(h,fld,color_map,limits)
+function applyColorScale(hIn,fld,color_map,limits)
 
 col_def1 = nan(size(fld));
 col_def2 = nan(size(fld));
@@ -14,7 +14,7 @@ if ~isequal(size(col_def1),(size(fld)))
 else
     col_def=cat(3,col_def1,col_def2,col_def3);
 end
-h.CData=col_def;
+hIn.CData=col_def;
 
 hcb=colorbar;
 colormap(gca,color_map);
