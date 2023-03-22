@@ -1719,6 +1719,24 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "RHOHV_NNC",
+    output_name = "RHOHV_NNC",
+    long_name = "cross_correlation_ratio",
+    standard_name = "cross_correlation_ratio_hv",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "RHOHV_NNC_F",
+    output_name = "RHOHV_NNC_F",
+    long_name = "cross_correlation_ratio_filtered",
+    standard_name = "cross_correlation_ratio_hv",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "RHOHVN",
     output_name = "RHOHVN",
     long_name = "cross_correlation_ratio",
