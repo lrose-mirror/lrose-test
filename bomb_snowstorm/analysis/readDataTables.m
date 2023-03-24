@@ -38,15 +38,15 @@ for ii=azInd:length(M)
         data.azimuth=cat(1,data.azimuth,str2double(thisStr{2}));
         data.elevation=cat(1,data.elevation,str2double(thisStr{4}));
         if first==0;
-            data.range=cat(2,data.range,rayMat(:,1));
-            data.DBZ_F=cat(2,data.DBZ_F,rayMat(:,2));
-            data.ZDR_F=cat(2,data.ZDR_F,rayMat(:,3));
-            data.VEL_F=cat(2,data.VEL_F,rayMat(:,4));
-            data.PHIDP_F=cat(2,data.PHIDP_F,rayMat(:,5));
-            data.RHOHV_NNC_F=cat(2,data.RHOHV_NNC_F,rayMat(:,6));
-            data.WIDTH_F=cat(2,data.WIDTH_F,rayMat(:,7));
-            data.REGR_ORDER=cat(2,data.REGR_ORDER,rayMat(:,8));
-            data.CMD=cat(2,data.CMD,rayMat(:,9));
+            data.range=cat(1,data.range,rayMat(:,1)');
+            data.DBZ_F=cat(1,data.DBZ_F,rayMat(:,2)');
+            data.ZDR_F=cat(1,data.ZDR_F,rayMat(:,3)');
+            data.VEL_F=cat(1,data.VEL_F,rayMat(:,4)');
+            data.PHIDP_F=cat(1,data.PHIDP_F,rayMat(:,5)');
+            data.RHOHV_NNC_F=cat(1,data.RHOHV_NNC_F,rayMat(:,6)');
+            data.WIDTH_F=cat(1,data.WIDTH_F,rayMat(:,7)');
+            data.REGR_ORDER=cat(1,data.REGR_ORDER,rayMat(:,8)');
+            data.CMD=cat(1,data.CMD,rayMat(:,9)');
         end
         rayMat=[];
     else
@@ -55,13 +55,15 @@ for ii=azInd:length(M)
         first=0;
     end
 end
-data.range=cat(2,data.range,rayMat(:,1));
-data.DBZ_F=cat(2,data.DBZ_F,rayMat(:,2));
-data.ZDR_F=cat(2,data.ZDR_F,rayMat(:,3));
-data.VEL_F=cat(2,data.VEL_F,rayMat(:,4));
-data.PHIDP_F=cat(2,data.PHIDP_F,rayMat(:,5));
-data.RHOHV_NNC_F=cat(2,data.RHOHV_NNC_F,rayMat(:,6));
-data.WIDTH_F=cat(2,data.WIDTH_F,rayMat(:,7));
-data.REGR_ORDER=cat(2,data.REGR_ORDER,rayMat(:,8));
-data.CMD=cat(2,data.CMD,rayMat(:,9));
+data.range=cat(1,data.range,rayMat(:,1)');
+data.DBZ_F=cat(1,data.DBZ_F,rayMat(:,2)');
+data.ZDR_F=cat(1,data.ZDR_F,rayMat(:,3)');
+data.VEL_F=cat(1,data.VEL_F,rayMat(:,4)');
+data.PHIDP_F=cat(1,data.PHIDP_F,rayMat(:,5)');
+data.RHOHV_NNC_F=cat(1,data.RHOHV_NNC_F,rayMat(:,6)');
+data.WIDTH_F=cat(1,data.WIDTH_F,rayMat(:,7)');
+data.REGR_ORDER=cat(1,data.REGR_ORDER,rayMat(:,8)');
+data.CMD=cat(1,data.CMD,rayMat(:,9)');
+
+data.range=data.range(1,:);
 end

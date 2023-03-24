@@ -19,7 +19,7 @@ fileID = fopen('compareFiles.txt');
 inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=1:size(inAll{1,1},1)
+for aa=2:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -46,7 +46,7 @@ for aa=1:size(inAll{1,1},1)
    
     elseif strcmp(fileType{:},'table')
         data1=readDataTables(infile1{:},' ');
-        data1.azimuth=data1.azimuth';
+        data1.azimuth=round(data1.azimuth);
     end
 
     %% Read file 2
@@ -72,7 +72,7 @@ for aa=1:size(inAll{1,1},1)
 
     elseif strcmp(fileType{:},'table')
         data2=readDataTables(infile2{:},' ');
-        data2.azimuth=data2.azimuth';
+        data2.azimuth=round(data2.azimuth);
     end
 
     if isempty(nyquist)

@@ -15,7 +15,7 @@ fileID = fopen('plotFiles.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s');
 fclose(fileID);
 
-for aa=1:size(inAll{1,1},1)
+for aa=3:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -37,7 +37,6 @@ for aa=1:size(inAll{1,1},1)
         data=read_spol(infile{:},data);
     elseif strcmp(fileType{:},'table')
         data=readDataTables(infile{:},' ');
-        data.azimuth=data.azimuth';
     end
 
     %% Cut range
