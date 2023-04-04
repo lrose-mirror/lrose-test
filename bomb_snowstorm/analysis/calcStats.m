@@ -19,7 +19,7 @@ fileID = fopen('compareFiles.txt');
 inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=2:size(inAll{1,1},1)
+for aa=1:size(inAll{1,1},1)
 
     nyquist=[];
 

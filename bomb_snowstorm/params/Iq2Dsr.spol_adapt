@@ -30,7 +30,7 @@
 //     DEBUG_EXTRA_VERBOSE
 //
 
-debug = DEBUG_NORM;
+debug = DEBUG_OFF;
 
 ///////////// beam_count_for_debug_print //////////////
 //
@@ -2092,7 +2092,7 @@ atmos_atten_db_per_km = 0.012;
 //
 // Type of clutter filter to use.
 //
-// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION: 
+// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION 
 //   polynomial filter with specified interpolation. NOTCH: simple notch 
 //   filter of specified width. NONE: cancels clutter filtering.
 //
@@ -2230,7 +2230,7 @@ regression_filter_cnr_exponent = 0.666667;
 // Type: double
 //
 
-regression_filter_min_cnr_db = -6;
+regression_filter_min_cnr_db = -120;
 
 ///////////// regression_filter_notch_interp_method ///
 //
