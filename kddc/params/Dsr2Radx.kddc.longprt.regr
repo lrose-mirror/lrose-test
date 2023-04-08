@@ -23,7 +23,7 @@
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_NORM;
+debug = DEBUG_OFF;
 
 ///////////// instance ////////////////////////////////
 //
@@ -1944,6 +1944,24 @@ output_fields = {
     long_name = "spectral_noise_power",
     standard_name = "spectral_noise_power",
     output_units = "dBm",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "REGR_ORDER",
+    output_name = "REGR_ORDER",
+    long_name = "polynomial_order_for_regression_filter",
+    standard_name = "polynomial_order_for_regression_filter",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "REGR_CNR",
+    output_name = "REGR_CNR",
+    long_name = "clutter_to_noise_ratio_for_regression_filter",
+    standard_name = "clutter_to_noise_ratio_for_regression_filter",
+    output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
 };

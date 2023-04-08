@@ -4640,6 +4640,26 @@ output_fields = {
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
+  ,
+  {
+    id = REGR_FILT_POLY_ORDER,
+    name = "REGR_ORDER",
+    units = "",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = REGR_FILT_CNR_DB,
+    name = "REGR_CNR",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
 };
 
 //======================================================================
