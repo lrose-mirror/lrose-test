@@ -3169,7 +3169,7 @@ phase_decoding_ntrips_save = 2;
 // Type: double
 //
 
-phase_decoding_ncp_threshold = 0.0;
+phase_decoding_ncp_threshold = 0.35;
 
 ///////////// phase_decoding_snr_threshold ////////////
 //
