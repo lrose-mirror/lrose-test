@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for Sprite
+ * TDRP params for ./Sprite
  **********************************************************************/
 
 //======================================================================
@@ -853,7 +853,12 @@ waterfall_n_panels = 4;
 //          FFT_WINDOW_TUKEY_30
 //          FFT_WINDOW_TUKEY_50
 //      int median_filter_len;
-//      boolean use_adaptive_filter;
+//      clutter_filter_type_t clutter_filter_type;
+//        Options:
+//          CLUTTER_FILTER_ADAPTIVE
+//          CLUTTER_FILTER_REGRESSION
+//          CLUTTER_FILTER_NOTCH
+//          CLUTTER_FILTER_NONE
 //      double clutter_model_width_mps;
 //      boolean use_regression_filter;
 //      int regression_order;
@@ -1349,6 +1354,7 @@ iqplots_n_columns = 2;
 //          SPECTRAL_PHASE
 //          SPECTRAL_ZDR
 //          SPECTRAL_PHIDP
+//          SPECTRAL_SZ864
 //          TS_POWER
 //          TS_PHASE
 //          I_VALS
@@ -1372,10 +1378,14 @@ iqplots_n_columns = 2;
 //          FFT_WINDOW_TUKEY_30
 //          FFT_WINDOW_TUKEY_50
 //      int median_filter_len;
-//      boolean use_adaptive_filter;
+//      clutter_filter_type_t clutter_filter_type;
+//        Options:
+//          CLUTTER_FILTER_ADAPTIVE
+//          CLUTTER_FILTER_REGRESSION
+//          CLUTTER_FILTER_NOTCH
+//          CLUTTER_FILTER_NONE
 //      boolean plot_clutter_model;
 //      double clutter_model_width_mps;
-//      boolean use_regression_filter;
 //      int regression_order;
 //      notch_interp_method_t regression_filter_notch_interp_method;
 //        Options:
@@ -1442,7 +1452,7 @@ iq_plots = {
   }
   ,
   {
-    plot_type = SPECTRAL_ZDR,
+    plot_type = SPECTRAL_SZ864,
     rx_channel = CHANNEL_HC,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
@@ -1485,6 +1495,7 @@ iq_plots = {
 //          SPECTRAL_PHASE
 //          SPECTRAL_ZDR
 //          SPECTRAL_PHIDP
+//          SPECTRAL_SZ864
 //          TS_POWER
 //          TS_PHASE
 //          I_VALS
@@ -1972,6 +1983,25 @@ iqplot_plot_legend2 = TRUE;
 //
 //======================================================================
  
+///////////// ascope_clutter_filter_type //////////////
+//
+// Type of clutter filter to use.
+//
+// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION: 
+//   polynomial filter with specified interpolation. NOTCH: simple notch 
+//   filter of specified width. NONE: cancels clutter filtering.
+//
+//
+// Type: enum
+// Options:
+//     CLUTTER_FILTER_ADAPTIVE
+//     CLUTTER_FILTER_REGRESSION
+//     CLUTTER_FILTER_NOTCH
+//     CLUTTER_FILTER_NONE
+//
+
+ascope_clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
+
 ///////////// apply_residue_correction_in_adaptive_filter 
 //
 // Option to apply residue correction to adaptive filter.
@@ -2000,21 +2030,6 @@ apply_residue_correction_in_adaptive_filter = TRUE;
 //
 
 min_snr_db_for_residue_correction = 75;
-
-///////////// use_polynomial_regression_clutter_filter 
-//
-// Option to apply a regression clutter filter.
-//
-// For the regression filter, a polynomial fit is performed on the I and 
-//   Q data individually. The filtered time series is computed as the 
-//   original minus the regression fit. If true, this takes preference 
-//   over the notch filter.
-//
-//
-// Type: boolean
-//
-
-use_polynomial_regression_clutter_filter = TRUE;
 
 ///////////// regression_filter_determine_order_from_cnr 
 //
