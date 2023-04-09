@@ -506,7 +506,8 @@ set_max_range = TRUE;
 // Type: double
 //
 
-max_range_km = 150;
+// max_range_km = 150;
+max_range_km = 322;
 
 //======================================================================
 //
