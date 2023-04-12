@@ -13,7 +13,7 @@ fileID = fopen('plotFiles.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=6:size(inAll{1,1},1)
+for aa=5:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -40,6 +40,7 @@ for aa=6:size(inAll{1,1},1)
         data.PHIDP_F=[];
         data.RHOHV_NNC_F=[];
         data.REGR_ORDER=[];
+        data.CMD=[];
 
         data=read_spol(infile{:},data);
     elseif strcmp(fileType{:},'table')
@@ -178,9 +179,25 @@ for aa=6:size(inAll{1,1},1)
     grid on
     box on
 
+    %% CMD
+
+    s8=subplot(2,4,8);
+    h=surf(XX,YY,data.CMD,'edgecolor','none');
+    view(2);
+    title('CMD')
+    xlabel('km');
+    ylabel('km');
+
+    s8.Colormap=[0,0,1;1,0,0];
+    caxis([0,1]);
+    colorbar('Ticks',[0.25,0.75],'TickLabels',{'0','1'});
+
+    grid on
+    box on
+
     %% Save first zoom
 
-    linkaxes([s1,s2,s3,s4,s5,s6,s7],'xy');
+    linkaxes([s1,s2,s3,s4,s5,s6,s7,s8],'xy');
     outstr=inAll{1,2}(aa);
     outstr=outstr{:};
 
@@ -196,6 +213,7 @@ for aa=6:size(inAll{1,1},1)
     daspect(s5,[1 1 1]);
     daspect(s6,[1 1 1]);
     daspect(s7,[1 1 1]);
+    daspect(s8,[1 1 1]);
        
     print([figdir,outstr,'_zoom1.png'],'-dpng','-r0');
 
@@ -213,7 +231,39 @@ for aa=6:size(inAll{1,1},1)
     daspect(s5,[1 1 1]);
     daspect(s6,[1 1 1]);
     daspect(s7,[1 1 1]);
+    daspect(s8,[1 1 1]);
         
     print([figdir,outstr,'_zoom2.png'],'-dpng','-r0');
 
+    %% Make TRIP plot
+
+    if isfield(data,'TRIP')
+        figure('Position',[200 500 600 500],'DefaultAxesFontSize',12);
+
+        s1=subplot(1,1,1);
+        surf(XX,YY,data.TRIP,'edgecolor','none');
+        view(2);
+        title('TRIP')
+        xlabel('km');
+        ylabel('km');
+        s1.Colormap=[0,0,1;1,0,0];
+        caxis([0,1]);
+        colorbar('Ticks',[0.25,0.75],'TickLabels',{'0','1'});
+
+        grid on
+        box on
+
+        xlim(xlimits1)
+        ylim(ylimits1)
+        daspect(s1,[1 1 1]);
+
+        print([figdir,outstr,'_TRIP_zoom1.png'],'-dpng','-r0');
+
+        xlim(xlimits2)
+        ylim(ylimits2)
+        daspect(s1,[1 1 1]);
+
+        print([figdir,outstr,'_TRIP_zoom2.png'],'-dpng','-r0');
+
+    end
 end

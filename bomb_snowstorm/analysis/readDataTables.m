@@ -12,6 +12,7 @@ data.RHOHV_NNC_F=[];
 data.WIDTH_F=[];
 data.REGR_ORDER=[];
 data.CMD=[];
+data.TRIP=[];
 
 fid=fopen(filename,'r');
 slurp=fscanf(fid,'%c');
@@ -25,7 +26,7 @@ azInd=0;
 searchInd=1;
 while azInd==0
     thisLine=M{searchInd};
-    if strcmp(thisLine(1:3),'az=')
+    if strcmp(thisLine(1:2),'az')
         azInd=searchInd;
     end
     searchInd=searchInd+1;
@@ -33,7 +34,7 @@ end
 
 for ii=azInd:length(M)
     thisLine=M{ii};
-    if strcmp(thisLine(1:3),'az=')
+    if strcmp(thisLine(1:2),'az')
         thisStr=strsplit(thisLine,del1);
         data.azimuth=cat(1,data.azimuth,str2double(thisStr{2}));
         data.elevation=cat(1,data.elevation,str2double(thisStr{4}));
@@ -47,6 +48,9 @@ for ii=azInd:length(M)
             data.WIDTH_F=cat(1,data.WIDTH_F,rayMat(:,7)');
             data.REGR_ORDER=cat(1,data.REGR_ORDER,rayMat(:,8)');
             data.CMD=cat(1,data.CMD,rayMat(:,9)');
+            if size(rayMat,2)==10
+                data.TRIP=cat(1,data.TRIP,rayMat(:,10)');
+            end
         end
         rayMat=[];
     else
@@ -64,6 +68,11 @@ data.RHOHV_NNC_F=cat(1,data.RHOHV_NNC_F,rayMat(:,6)');
 data.WIDTH_F=cat(1,data.WIDTH_F,rayMat(:,7)');
 data.REGR_ORDER=cat(1,data.REGR_ORDER,rayMat(:,8)');
 data.CMD=cat(1,data.CMD,rayMat(:,9)');
+if size(rayMat,2)==10
+    data.TRIP=cat(1,data.TRIP,rayMat(:,10)');
+else
+    data=rmfield(data,'TRIP');
+end
 
 data.range=data.range(1,:);
 end
