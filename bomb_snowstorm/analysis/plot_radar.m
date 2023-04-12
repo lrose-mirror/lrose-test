@@ -7,15 +7,15 @@ addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
 maxRange=[];
 
-figdir=['/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/'];
-
 %% Loop through cases
 
 fileID = fopen('plotFiles.txt');
-inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s');
+inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=3:size(inAll{1,1},1)
+figdir=['/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/'];
+
+for aa=5:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 

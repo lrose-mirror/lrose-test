@@ -160,7 +160,7 @@ position_fmq_at_start = FALSE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/nexrad/time_series/kftg";
+input_dir = "/scr/sleet2/rsfdata/projects/eolbase/time_series/kftg";
 
 ///////////// use_ldata_info_file /////////////////////
 //
