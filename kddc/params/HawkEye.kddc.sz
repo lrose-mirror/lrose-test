@@ -214,7 +214,7 @@ archive_time_span_secs = 3600;
 // Type: string
 //
 
-archive_data_url = "$(HOME)/data/sprite/cfradial/kddc_all_sweeps";
+archive_data_url = "$(HOME)/data/nexrad/cfradial/kddc.sz.adapt";
 
 //======================================================================
 //
@@ -645,7 +645,7 @@ site_name = "MARSHALL";
 // Type: int
 //
 
-main_window_width = 965;
+main_window_width = 1160;
 
 ///////////// main_window_height //////////////////////
 //
@@ -655,7 +655,7 @@ main_window_width = 965;
 // Type: int
 //
 
-main_window_height = 560;
+main_window_height = 650;
 
 ///////////// main_window_start_x /////////////////////
 //
