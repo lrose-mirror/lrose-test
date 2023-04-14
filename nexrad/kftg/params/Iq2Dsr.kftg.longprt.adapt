@@ -1532,7 +1532,7 @@ zdr_correction_db = -0.3;
 // Type: boolean
 //
 
-threshold_zdr_using_snr = FALSE;
+threshold_zdr_using_snr = TRUE;
 
 ///////////// min_snr_db_for_zdr //////////////////////
 //
@@ -1545,7 +1545,7 @@ threshold_zdr_using_snr = FALSE;
 // Type: double
 //
 
-min_snr_db_for_zdr = -7;
+min_snr_db_for_zdr = -2;
 
 ///////////// override_cal_ldr_corrections ////////////
 //
