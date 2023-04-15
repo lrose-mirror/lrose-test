@@ -89,7 +89,7 @@ use_multiple_threads = FALSE;
 // Type: int
 //
 
-n_compute_threads = 12;
+n_compute_threads = 8;
 
 //======================================================================
 //
@@ -976,7 +976,7 @@ moments_params = {
     beam_n_samples = 64,
     beam_angle_deg = 1,
     index_the_beams = TRUE,
-    indexed_resolution = 1.0,
+    indexed_resolution = 1,
     min_antenna_rate_for_indexing = 1,
     window = WINDOW_VONHANN,
     switching_receiver = FALSE,
@@ -3194,7 +3194,7 @@ phase_decoding_snr_threshold = 0;
 // Type: double
 //
 
-phase_decoding_notch_width = 0.5;
+phase_decoding_notch_width = 0.75;
 
 ///////////// sz1_negate_phase_codes //////////////////
 //
@@ -3254,6 +3254,18 @@ sz1_out_of_trip_power_ratio_threshold = 6;
 //
 
 sz1_out_of_trip_power_n_replicas = 3;
+
+///////////// sz1_use_regression_filter ///////////////
+//
+// Option to use regression filter in SZ decoding.
+//
+// If TRUE, a rectangular filter will be applied to SZ decoding.
+//
+//
+// Type: boolean
+//
+
+sz1_use_regression_filter = FALSE;
 
 //======================================================================
 //
