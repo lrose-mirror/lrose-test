@@ -15,7 +15,7 @@ fileID = fopen('plotFiles.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=10:size(inAll{1,1},1)
+for aa=18:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -140,6 +140,11 @@ for aa=10:size(inAll{1,1},1)
     end
 
     %% PHIDP
+
+    if strcmp(inst{:},'kddc')
+        data.PHIDP_F=wrapTo360(data.PHIDP_F);
+        data.PHIDP_F=data.PHIDP_F-90;
+    end
 
     s5=subplot(2,4,5);
     surf(XX,YY,data.PHIDP_F,'edgecolor','none');

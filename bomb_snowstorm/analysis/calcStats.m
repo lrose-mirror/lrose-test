@@ -10,9 +10,9 @@ minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
-censorOnVEL=1;
+censorOnVEL=0;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
-removeZeros=1;
+removeZeros=0;
 
 %% Loop through cases
 
@@ -20,9 +20,9 @@ fileID = fopen('compareFiles.txt');
 inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s');
 fclose(fileID);
 
-showPlot='off';
+showPlot='on';
 
-for aa=7:size(inAll{1,1},1)
+for aa=3:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -177,6 +177,9 @@ for aa=7:size(inAll{1,1},1)
         if strcmp(inFields{jj},'VEL_F')
             [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
             [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
+        elseif strcmp(inFields{jj},'PHIDP_F')
+            [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
+            [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
         else
             [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1);
             [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1);
