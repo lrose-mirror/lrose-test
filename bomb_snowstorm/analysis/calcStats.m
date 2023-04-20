@@ -22,7 +22,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=3:size(inAll{1,1},1)
+for aa=14:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -85,10 +85,24 @@ for aa=3:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data2in=readDataTables(infile2{:},' ');
         data2in.azimuth=round(data2in.azimuth);
+    elseif strcmp(fileType{:},'mat')
+        load(infile2{:});
+        addnan=nan(size(data.REF,1),8);
+        data2in.DBZ_F=cat(2,addnan,data.REF(:,1:end-1));
+        data2in.VEL_F=cat(2,addnan,data.VEL(:,1:end-1));
+        data2in.WIDTH_F=cat(2,addnan,data.SW(:,1:end-1));
+        data2in.ZDR_F=cat(2,addnan,data.ZDR(:,1:end-1));
+        data2in.PHIDP_F=cat(2,addnan,data.PHI(:,1:end-1));
+        data2in.azimuth=data.azimuth;
+        data2in.range=data1in.range;
+
+        data2in.azimuth=floor(data2in.azimuth);
+        data2in.azimuth(2:2:length(data2in.azimuth))=data2in.azimuth(2:2:length(data2in.azimuth))+0.5;
     end
 
     if isempty(nyquist)
-        error('No nyquist velocity found.')
+        warning('No nyquist velocity found. Using 4.1029 m/s')
+        nyquist=4.1029;
     else
         nyquist=mode(nyquist);
     end

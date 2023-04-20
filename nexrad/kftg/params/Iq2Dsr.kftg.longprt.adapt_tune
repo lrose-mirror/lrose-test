@@ -55,7 +55,7 @@ beam_count_for_debug_print = 30;
 // Type: string
 //
 
-instance = "kftg.longprt.regr";
+instance = "kftg.longprt.adapt";
 
 //======================================================================
 //
@@ -160,7 +160,7 @@ position_fmq_at_start = FALSE;
 // Type: string
 //
 
-input_dir = "/scr/cirrus3/rsfdata/projects/nexrad/time_series/kftg";
+input_dir = "/scr/sleet2/rsfdata/projects/eolbase/time_series/kftg";
 
 ///////////// use_ldata_info_file /////////////////////
 //
@@ -973,12 +973,12 @@ moments_params = {
     antenna_rate_lower_limit = 0,
     antenna_rate_upper_limit = 90,
     beam_method = BEAM_SPECIFY_N_SAMPLES,
-    beam_n_samples = 16,
+    beam_n_samples = 32,
     beam_angle_deg = 1,
     index_the_beams = TRUE,
     indexed_resolution = 0.5,
     min_antenna_rate_for_indexing = 1,
-    window = WINDOW_RECT,
+    window = WINDOW_VONHANN,
     switching_receiver = FALSE,
     xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
     apply_clutter_filter = TRUE,
@@ -2138,7 +2138,7 @@ atmos_atten_db_per_km = 0.012;
 //     CLUTTER_FILTER_NONE
 //
 
-clutter_filter_type = CLUTTER_FILTER_REGRESSION;
+clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
 
 ///////////// clutter_model_width_in_adaptive_filter //
 //
@@ -4634,26 +4634,6 @@ output_fields = {
   {
     id = SPECTRAL_SNR,
     name = "SPECTRAL_SNR",
-    units = "dB",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = REGR_FILT_POLY_ORDER,
-    name = "REGR_ORDER",
-    units = "",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = REGR_FILT_CNR_DB,
-    name = "REGR_CNR",
     units = "dB",
     scale = 0.01,
     bias = -320,

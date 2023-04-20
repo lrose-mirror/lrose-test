@@ -1452,7 +1452,7 @@ iq_plots = {
   }
   ,
   {
-    plot_type = SPECTRAL_SZ864,
+    plot_type = SPECTRAL_ZDR,
     rx_channel = CHANNEL_HC,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
