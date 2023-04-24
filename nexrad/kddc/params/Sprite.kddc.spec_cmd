@@ -2852,7 +2852,7 @@ snr_interest_map = {
 // Type: double
 //
 
-snr_interest_weight = 1.0;
+snr_interest_weight = 1;
 
 ///////////// tdbz_interest_map ///////////////////////
 //
@@ -2891,7 +2891,7 @@ tdbz_interest_map = {
 // Type: double
 //
 
-tdbz_interest_weight = 1.0;
+tdbz_interest_weight = 1;
 
 ///////////// zdr_sdev_interest_map ///////////////////
 //
@@ -2965,18 +2965,31 @@ phidp_sdev_interest_map = {
 
 phidp_sdev_interest_weight = 1;
 
-///////////// cmd_threshold_for_clutter ///////////////
+///////////// cmd_threshold_for_detection /////////////
 //
-// Threshold CMD value for identifying clutter.
+// Threshold CMD value for detecting clutter.
 //
-// If the CMD value exceeds this threshold, clutter is assumed to exist 
-//   at that point.
+// If the mean CMD value exceeds this threshold, clutter is assumed to 
+//   exist at that point.
 //
 //
 // Type: double
 //
 
-cmd_threshold_for_clutter = 0.5;
+cmd_threshold_for_detection = 0.9;
+
+///////////// cmd_threshold_for_moments ///////////////
+//
+// Threshold CMD value for computing moments.
+//
+// If CMD at a spectral point exceeds this threshold, it is set to 0 so 
+//   it is not used in the computation of the moments.
+//
+//
+// Type: double
+//
+
+cmd_threshold_for_moments = 0.7;
 
 //======================================================================
 //

@@ -4091,6 +4091,45 @@ spec_cmd_sdev_phidp_kernel_nsamples = 3;
 //
 //======================================================================
  
+///////////// spec_cmd_snr_interest_map ///////////////
+//
+// Interest mapping for SNR in spectral CMD..
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_snr_interest_map = {
+  {
+    value = 0,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 20,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_snr_interest_weight ////////////
+//
+// Weight for SNR interest.
+//
+// This weight is used for combining snr interest into the final 
+//   spectral CMD interest.
+//
+//
+// Type: double
+//
+
+spec_cmd_snr_interest_weight = 1.5;
+
 ///////////// spec_cmd_tdbz_interest_map //////////////
 //
 // Interest mapping for TDBZ.
@@ -4151,7 +4190,7 @@ spec_cmd_zdr_sdev_interest_map = {
   }
   ,
   {
-    value = 5.0,
+    value = 5,
     interest = 1
   }
 };
@@ -4202,18 +4241,58 @@ spec_cmd_phidp_sdev_interest_map = {
 
 spec_cmd_phidp_sdev_interest_weight = 1;
 
-///////////// spec_cmd_threshold_for_clutter //////////
+///////////// spec_cmd_threshold_for_detection ////////
 //
-// Threshold CMD value for identifying clutter.
+// Threshold CMD value for detecting clutter.
 //
-// If the CMD value exceeds this threshold, clutter is assumed to exist 
-//   at that point.
+// This is aimed mainly at wind turbine clutter. If the CMD value 
+//   exceeds this threshold, clutter is assumed detected at the gate.
 //
 //
 // Type: double
 //
 
-spec_cmd_threshold_for_clutter = 0.6;
+spec_cmd_threshold_for_detection = 0.9;
+
+///////////// spec_cmd_threshold_for_moments //////////
+//
+// Threshold CMD value for computing moments.
+//
+// Spectral points with CMD in excess of this threshold are set to 0, so 
+//   that they are not used in the moments calculations.
+//
+//
+// Type: double
+//
+
+spec_cmd_threshold_for_moments = 0.7;
+
+///////////// spec_cmd_fraction_threshold_for_wind_turbine 
+//
+// Threshold of CMD spectral fraction, for wind turbine detection.
+//
+// If the fraction of the CMD spectrum in excess of 
+//   'spec_cmd_threshold_for_detection' exceeds this, we flag the gate as 
+//   having a wind turbine gate.
+//
+//
+// Type: double
+//
+
+spec_cmd_fraction_threshold_for_wind_turbine = 0.7;
+
+///////////// cmd_threshold_for_moments ///////////////
+//
+// Threshold CMD value for computing moments.
+//
+// Spectral points with CMD in excess of this threshold are set to 0, so 
+//   that they are not used in the moments calculations.
+//
+//
+// Type: double
+//
+
+cmd_threshold_for_moments = 0.7;
 
 //======================================================================
 //
