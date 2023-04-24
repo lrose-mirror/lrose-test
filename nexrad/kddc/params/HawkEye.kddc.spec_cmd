@@ -396,6 +396,60 @@ fields = {
     color_map = "rhohv.colors",
     shortcut = "8"
   }
+  ,
+  {
+    label = "SPEC_DBZ",
+    raw_name = "SPEC_DBZ",
+    filtered_name = "SPEC_DBZ_F",
+    units = "dBZ",
+    color_map = "dbz.colors",
+    shortcut = "1"
+  }
+  ,
+  {
+    label = "SPEC_VEL",
+    raw_name = "SPEC_VEL",
+    filtered_name = "SPEC_VEL_F",
+    units = "m/s",
+    color_map = "vel.colors",
+    shortcut = "3"
+  }
+  ,
+  {
+    label = "SPEC_WIDTH",
+    raw_name = "SPEC_WIDTH",
+    filtered_name = "SPEC_WIDTH_F",
+    units = "m/s",
+    color_map = "width.colors",
+    shortcut = "4"
+  }
+  ,
+  {
+    label = "SPEC_ZDR",
+    raw_name = "SPEC_ZDR",
+    filtered_name = "SPEC_ZDR_F",
+    units = "dB",
+    color_map = "zdr.colors",
+    shortcut = "6"
+  }
+  ,
+  {
+    label = "SPEC_PHIDP",
+    raw_name = "SPEC_PHIDP",
+    filtered_name = "SPEC_PHIDP_F",
+    units = "deg",
+    color_map = "phidp.colors",
+    shortcut = "7"
+  }
+  ,
+  {
+    label = "SPEC_RHOHV",
+    raw_name = "SPEC_RHOHV",
+    filtered_name = "SPEC_RHOHV_F",
+    units = "unitless",
+    color_map = "rhohv.colors",
+    shortcut = "8"
+  }
 };
 
 ///////////// background_render_mins //////////////////

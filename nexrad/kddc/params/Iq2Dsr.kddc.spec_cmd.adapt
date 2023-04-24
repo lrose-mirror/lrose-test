@@ -3255,6 +3255,18 @@ sz1_out_of_trip_power_ratio_threshold = 6;
 
 sz1_out_of_trip_power_n_replicas = 3;
 
+///////////// sz1_use_regression_filter ///////////////
+//
+// Option to use regression filter in SZ decoding.
+//
+// If TRUE, a rectangular filter will be applied to SZ decoding.
+//
+//
+// Type: boolean
+//
+
+sz1_use_regression_filter = FALSE;
+
 //======================================================================
 //
 // CMD - CLUTTER MITIGATION DECISION system.
@@ -3968,6 +3980,243 @@ rhohv_improvement_factor_threshold = 4;
 
 //======================================================================
 //
+// SPECTRAL CMD.
+//
+// You have the option of running the spectral version of CMD, to filter 
+//   difficult targets such as wind farms. The moments from this step will 
+//   be stored in variables specifically named for the purpose.
+//
+//======================================================================
+ 
+///////////// run_spectral_cmd ////////////////////////
+//
+// Run the spectral-CMD filtering step.
+//
+// This computes a version of CMD in the FFT space.
+//
+//
+// Type: boolean
+//
+
+run_spectral_cmd = TRUE;
+
+///////////// spec_cmd_tdbz_kernel_ngates /////////////
+//
+// Kernal size in range for computing TDBZ.
+//
+// The standard deviation of DBZ-squared is computed over a rectangular 
+//   kernel, and then the square-root is computed. This is the size of 
+//   that kernel in range.
+//
+//
+// Type: int
+//
+
+spec_cmd_tdbz_kernel_ngates = 5;
+
+///////////// spec_cmd_tdbz_kernel_nsamples ///////////
+//
+// Kernal size in samples for computing sdev of TDBZ.
+//
+// The standard deviation of DBZ-squared is computed over a rectangular 
+//   kernel, and then the square-root is computed. This is the number of 
+//   samples in the kernel.
+//
+//
+// Type: int
+//
+
+spec_cmd_tdbz_kernel_nsamples = 3;
+
+///////////// spec_cmd_sdev_zdr_kernel_ngates /////////
+//
+// Kernal size in range for computing sdev of zdr.
+//
+// The standard deviation of ZDR is computed over a rectangular kernel. 
+//   This is the size of that kernel in range.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_zdr_kernel_ngates = 5;
+
+///////////// spec_cmd_sdev_zdr_kernel_nsamples ///////
+//
+// Kernal size in samples for computing sdev of zdr.
+//
+// The standard deviation of ZDR is computed over a rectangular kernel. 
+//   This is the number of samples in that kernel.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_zdr_kernel_nsamples = 3;
+
+///////////// spec_cmd_sdev_phidp_kernel_ngates ///////
+//
+// Kernal size in range for computing sdev of phidp.
+//
+// The standard deviation of PHIDP is computed over a rectangular 
+//   kernel. This is the size of that kernel in range.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_phidp_kernel_ngates = 5;
+
+///////////// spec_cmd_sdev_phidp_kernel_nsamples /////
+//
+// Kernal size in samples for computing sdev of phidp.
+//
+// The standard deviation of PHIDP is computed over a rectangular 
+//   kernel. This is the number of samples in that kernel.
+//
+//
+// Type: int
+//
+
+spec_cmd_sdev_phidp_kernel_nsamples = 3;
+
+//======================================================================
+//
+// SPECTRAL CMD INTEREST MAPS and WEIGHTS.
+//
+// Each map should hold at least 2 points. The points should be 
+//   increasing in value, i.e. the value should increase for each 
+//   subsequent point. The various interest values are combined using the 
+//   specified weights in a weighted mean to produce the final CMD value.
+//
+//======================================================================
+ 
+///////////// spec_cmd_tdbz_interest_map //////////////
+//
+// Interest mapping for TDBZ.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_tdbz_interest_map = {
+  {
+    value = 25,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 36,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_tdbz_interest_weight ///////////
+//
+// Weight for TDBZ interest.
+//
+// This weight is used for combining tdbz interest into the final CMD 
+//   interest.
+//
+//
+// Type: double
+//
+
+spec_cmd_tdbz_interest_weight = 1;
+
+///////////// spec_cmd_zdr_sdev_interest_map //////////
+//
+// Interest mapping for zdr.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_zdr_sdev_interest_map = {
+  {
+    value = 2.5,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 5.0,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_zdr_sdev_interest_weight ///////
+//
+// Weight for standard deviation of zdr.
+//
+//
+// Type: double
+//
+
+spec_cmd_zdr_sdev_interest_weight = 1;
+
+///////////// spec_cmd_phidp_sdev_interest_map ////////
+//
+// Interest mapping for standard deviation of phidp.
+//
+//
+// Type: struct
+//   typedef struct {
+//      double value;
+//      double interest;
+//   }
+//
+// 1D array - variable length.
+//
+
+spec_cmd_phidp_sdev_interest_map = {
+  {
+    value = 25,
+    interest = 0.0001
+  }
+  ,
+  {
+    value = 35,
+    interest = 1
+  }
+};
+
+///////////// spec_cmd_phidp_sdev_interest_weight /////
+//
+// Weight for standard deviation of phidp.
+//
+//
+// Type: double
+//
+
+spec_cmd_phidp_sdev_interest_weight = 1;
+
+///////////// spec_cmd_threshold_for_clutter //////////
+//
+// Threshold CMD value for identifying clutter.
+//
+// If the CMD value exceeds this threshold, clutter is assumed to exist 
+//   at that point.
+//
+//
+// Type: double
+//
+
+spec_cmd_threshold_for_clutter = 0.5;
+
+//======================================================================
+//
 // OUTPUT TO MOMENTS FMQ.
 //
 //======================================================================
@@ -4322,56 +4571,6 @@ output_fields = {
   }
   ,
   {
-    id = CLUT,
-    name = "CLUT",
-    units = "dB",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = CLUT_2_WX_RATIO,
-    name = "CSR",
-    units = "dB",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = TEST2,
-    name = "WFARM_FLAG",
-    units = "",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = TEST3,
-    name = "WFARM_CLUT",
-    units = "dB",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
-    id = TEST4,
-    name = "DBZ_WFARM",
-    units = "dBZ",
-    scale = 0.01,
-    bias = -320,
-    write_unfiltered = TRUE,
-    write_filtered = FALSE
-  }
-  ,
-  {
     id = ZDR,
     name = "ZDR",
     units = "dB",
@@ -4639,6 +4838,106 @@ output_fields = {
     bias = -320,
     write_unfiltered = TRUE,
     write_filtered = FALSE
+  }
+  ,
+  {
+    id = CLUT,
+    name = "CLUT",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = CLUT_2_WX_RATIO,
+    name = "CSR",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST2,
+    name = "WFARM_FLAG",
+    units = "",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST3,
+    name = "WFARM_CLUT",
+    units = "dB",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST4,
+    name = "SPEC_DBZ",
+    units = "dBZ",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = FALSE
+  }
+  ,
+  {
+    id = TEST5,
+    name = "SPEC_VEL",
+    units = "m/s",
+    scale = 0.01,
+    bias = -320,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST6,
+    name = "SPEC_WIDTH",
+    units = "m/s",
+    scale = 0.001,
+    bias = -0.01,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST7,
+    name = "SPEC_ZDR",
+    units = "dB",
+    scale = 0.001,
+    bias = -32,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST8,
+    name = "SPEC_PHIDP",
+    units = "deg",
+    scale = 0.06,
+    bias = -200,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
+  }
+  ,
+  {
+    id = TEST9,
+    name = "SPEC_RHOHV",
+    units = "",
+    scale = 0.0001,
+    bias = -1,
+    write_unfiltered = TRUE,
+    write_filtered = TRUE
   }
 };
 

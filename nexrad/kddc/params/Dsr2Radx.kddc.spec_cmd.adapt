@@ -1946,6 +1946,60 @@ output_fields = {
     output_units = "dBm",
     output_encoding = OUTPUT_SHORT
   }
+  ,
+  {
+    dsr_name = "SPEC_DBZ_F",
+    output_name = "SPEC_DBZ_F",
+    long_name = "reflectivity",
+    standard_name = "equivalent_reflectivity_factor",
+    output_units = "dBZ",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPEC_VEL_F",
+    output_name = "SPEC_VEL_F",
+    long_name = "doppler_velocity_filtered",
+    standard_name = "radial_velocity_of_scatterers_away_from_instrument",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPEC_WIDTH_F",
+    output_name = "SPEC_WIDTH_F",
+    long_name = "spectrum_width_filtered",
+    standard_name = "doppler_spectrum_width",
+    output_units = "m/s",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPEC_ZDR_F",
+    output_name = "SPEC_ZDR_F",
+    long_name = "differential_reflectivity_filtered",
+    standard_name = "log_differential_reflectivity_hv",
+    output_units = "dB",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPEC_RHOHV_F",
+    output_name = "SPEC_RHOHV_F",
+    long_name = "cross_correlation_ratio",
+    standard_name = "cross_correlation_ratio_hv",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "SPEC_PHIDP_F",
+    output_name = "SPEC_PHIDP_F",
+    long_name = "differential_phase_filtered",
+    standard_name = "differential_phase_hv",
+    output_units = "deg",
+    output_encoding = OUTPUT_SHORT
+  }
 };
 
 //======================================================================
@@ -1984,7 +2038,7 @@ output_fields = {
 
 output_data_set = {
   {
-   output_dir = "$(HOME)/data/nexrad/cfradial/kddc.spec_cmd.adapt",
+   output_dir = "$(HOME)/data/nexrad/cfradial/kddc.spec_cmd.adapt2",
    format = OUTPUT_FORMAT_CFRADIAL
   }
 };
