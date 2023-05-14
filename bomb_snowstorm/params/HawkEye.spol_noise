@@ -399,6 +399,15 @@ fields = {
   }
   ,
   {
+    label = "DBMHC",
+    raw_name = "DBMHC",
+    filtered_name = "DBMHC_F",
+    units = "dB",
+    color_map = "dbm.colors",
+    shortcut = "1"
+  }
+  ,
+  {
     label = "REGR_CPA",
     raw_name = "REGR_CPA",
     filtered_name = "",
@@ -475,7 +484,7 @@ fields = {
     raw_name = "NOISE_INTEREST",
     filtered_name = "",
     units = "unitless",
-    color_map = "interest.colors",
+    color_map = "fraction.colors",
     shortcut = "8"
   }
   ,
