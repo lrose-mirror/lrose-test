@@ -1,5 +1,5 @@
 function data=readDataTables(filename, del1)
-% Reads Mikes txt tables and convert to matlab table
+% Reads John's data tables
 
 data.azimuth=[];
 data.elevation=[];
