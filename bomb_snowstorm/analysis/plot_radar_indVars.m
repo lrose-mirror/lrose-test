@@ -15,7 +15,7 @@ fileID = fopen('plotFiles_indVars.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=2:size(inAll{1,1},1)
+for aa=5:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -203,8 +203,9 @@ for aa=2:size(inAll{1,1},1)
         xlabel('km');
         ylabel('km');
 
-        s1.Colormap=turbo(12);
-        caxis([0.5,12.5]);
+        orderMax=max(data.REGR_ORDER(:));
+        s1.Colormap=turbo(orderMax);
+        caxis([0.5,orderMax+0.5]);
         colorbar;
 
         grid on
@@ -244,6 +245,8 @@ for aa=2:size(inAll{1,1},1)
     colorbar
     if strcmp(inst{:},'bs')
         caxis([-60,92]);
+    elseif strcmp(inst{:},'kftg')
+        caxis([0,114]);
     else
         caxis([-180,180]);
     end

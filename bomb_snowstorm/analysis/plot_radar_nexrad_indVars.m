@@ -219,6 +219,8 @@ for aa=1:size(inAll{1,1},1)
     colorbar
     if strcmp(inst{:},'bs')
         caxis([-60,92]);
+    elseif strcmp(inst{:},'kftg')
+        caxis([0,114]);
     else
         caxis([-180,180]);
     end

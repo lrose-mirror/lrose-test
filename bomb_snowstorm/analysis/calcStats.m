@@ -5,7 +5,7 @@ close all;
 
 addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
 
-minMaxRange=[]; % Range interval [min,max] or leave empty
+minMaxRangeOrig=[]; % Range interval [min,max] or leave empty
 minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
@@ -17,12 +17,12 @@ removeZeros=0;
 %% Loop through cases
 
 fileID = fopen('compareFiles.txt');
-inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s');
+inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s %f');
 fclose(fileID);
 
 showPlot='on';
 
-for aa=14:size(inAll{1,1},1)
+for aa=15:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -55,7 +55,29 @@ for aa=14:size(inAll{1,1},1)
 
         data1in=read_spol(infile1{:},data1in);
         nyquist=ncread(infile1{:},'nyquist_velocity');
-   
+
+    elseif strcmp(fileType{:},'nexrad')
+        data1in=[];
+
+        data1in.DBZ=[];
+        data1in.VEL=[];
+        data1in.WIDTH=[];
+        data1in.ZDR=[];
+        data1in.PHIDP=[];
+        data1in.RHOHV=[];
+
+        data1in=read_spol(infile1{:},data1in);
+        nyquist=ncread(infile1{:},'nyquist_velocity');
+
+        data1in=data1in(inAll{1,15}(aa));
+
+        data1in.DBZ_F=data1in.DBZ;
+        data1in.VEL_F=data1in.VEL;
+        data1in.WIDTH_F=data1in.WIDTH;
+        data1in.ZDR_F=data1in.ZDR;
+        data1in.PHIDP_F=data1in.PHIDP;
+        data1in.RHOHV_NNC_F=data1in.RHOHV;
+
     elseif strcmp(fileType{:},'table')
         data1in=readDataTables(infile1{:},' ');
         data1in.azimuth=round(data1in.azimuth);
@@ -82,9 +104,31 @@ for aa=14:size(inAll{1,1},1)
         data2in=read_spol(infile2{:},data2in);
         nyquist=ncread(infile2{:},'nyquist_velocity');
 
+    elseif strcmp(fileType{:},'nexrad')
+        data2in=[];
+
+        data2in.DBZ=[];
+        data2in.VEL=[];
+        data2in.WIDTH=[];
+        data2in.ZDR=[];
+        data2in.PHIDP=[];
+        data2in.RHOHV=[];
+
+        data1in=read_spol(infile2{:},data2in);
+        nyquist=ncread(infile2{:},'nyquist_velocity');
+
+        data2in=data2in(inAll{1,15}(aa));
+
+        data2in.DBZ_F=data2in.DBZ;
+        data2in.VEL_F=data2in.VEL;
+        data2in.WIDTH_F=data2in.WIDTH;
+        data2in.ZDR_F=data2in.ZDR;
+        data2in.PHIDP_F=data2in.PHIDP;
+        data2in.RHOHV_NNC_F=data2in.RHOHV;
+
     elseif strcmp(fileType{:},'table')
         data2in=readDataTables(infile2{:},' ');
-        data2in.azimuth=round(data2in.azimuth);
+        %data2in.azimuth=round(data2in.azimuth);
     elseif strcmp(fileType{:},'mat')
         load(infile2{:});
         addnan=nan(size(data.REF,1),8);
@@ -111,30 +155,75 @@ for aa=14:size(inAll{1,1},1)
         nyquist=nyquist/2;
     end
 
-    %% Match azimuths and nans
-
-    allAz=1:(data1in.azimuth(2)-data1in.azimuth(1)):360;
-    data1=[];
-    if ~isempty(minMaxAz)
-        data1in.azimuth(data1in.azimuth<minMaxAz(1) | data1in.azimuth>minMaxAz(2))=nan;
-        data2in.azimuth(data2in.azimuth<minMaxAz(1) | data2in.azimuth>minMaxAz(2))=nan;
-    end
-    [~,~,ib1]=intersect(allAz,data1in.azimuth);
-    data1.range=data1in.range;
-    data2=[];
-    [~,~,ib2]=intersect(allAz,data2in.azimuth);
-    data2.range=data2in.range;
-
+    %% Cut range
     inFields1=fields(data1in);
     inFields2=fields(data2in);
     inFields=intersect(inFields1,inFields2);
 
+    if isempty(minMaxRangeOrig)
+        minMaxRange=max([data1in.range(1),data2in.range(1)]);
+        minMaxRange=[minMaxRange,min([data1in.range(end),data2in.range(end)])];
+    else
+        minMaxRange=minMaxRangeOrig;
+    end
+    goodInds1=find(data1in.range>=minMaxRange(1)-0.001 & data1in.range<=minMaxRange(2)+0.001);
+    goodInds2=find(data2in.range>=minMaxRange(1)-0.001 & data2in.range<=minMaxRange(2)+0.001);
+
+    for ii=1:size(inFields,1)
+        if ~(strcmp(inFields{ii},'azimuth') | strcmp(inFields{ii},'elevation') | strcmp(inFields{ii},'time'))
+            data1in.(inFields{ii})=data1in.(inFields{ii})(:,goodInds1);
+            data2in.(inFields{ii})=data2in.(inFields{ii})(:,goodInds2);
+        end
+    end
+
+
+    %% Match azimuths and nans
+
+    azRes=round((data1in.azimuth(2)-data1in.azimuth(1))*10)/10;
+    if azRes==0.5
+        pastDot=data1in.azimuth(1)-floor(data1in.azimuth(1));
+        if (pastDot>=0.2 & pastDot<=0.3) | (pastDot>=0.7 & pastDot<=0.8)
+            allAz=0.25:azRes:360;
+        else
+            allAz=0.5:azRes:360;
+        end
+    else
+        allAz=1:360;
+    end
+
+    if ~isempty(minMaxAz)
+        %         data1in.azimuth(data1in.azimuth<minMaxAz(1) | data1in.azimuth>minMaxAz(2))=nan;
+        %         data2in.azimuth(data2in.azimuth<minMaxAz(1) | data2in.azimuth>minMaxAz(2))=nan;
+        allAz(allAz<minMaxAz(1))=[];
+        allAz(allAz>minMaxAz(2))=[];
+    end
+
+    ib1=[];
+    ib2=[];
+    ibAll=[];
+    for kk=1:length(allAz)
+        [minDiff1,minInd1]=min(abs(data1in.azimuth-allAz(kk)));
+        [minDiff2,minInd2]=min(abs(data2in.azimuth-allAz(kk)));
+        if minDiff1<azRes/2 & minDiff2<azRes/2
+            ib1=cat(1,ib1,minInd1);
+            ib2=cat(1,ib2,minInd2);
+            ibAll=cat(1,ibAll,kk);
+        end
+    end
+
+    data1=[];
+    %[~,~,ib1]=intersect(allAz,data1in.azimuth);
+    data1.range=data1in.range;
+    data2=[];
+    %[~,~,ib2]=intersect(allAz,data2in.azimuth);
+    data2.range=data2in.range;
+
     for ii=1:size(inFields,1)
         if ~strcmp(inFields{ii},'range') & ~strcmp(inFields{ii},'time')
             data1.(inFields{ii})=nan(length(allAz),size(data1in.(inFields{ii}),2));
-            data1.(inFields{ii})(ib1,:)=data1in.(inFields{ii})(ib1,:);
+            data1.(inFields{ii})(ibAll,:)=data1in.(inFields{ii})(ib1,:);
             data2.(inFields{ii})=nan(length(allAz),size(data2in.(inFields{ii}),2));
-            data2.(inFields{ii})(ib2,:)=data2in.(inFields{ii})(ib2,:);
+            data2.(inFields{ii})(ibAll,:)=data2in.(inFields{ii})(ib2,:);
         end
     end
 
@@ -153,19 +242,6 @@ for aa=14:size(inAll{1,1},1)
             % Match nans
             data1.(inFields{ii})(isnan(data2.(inFields{ii})))=nan;
             data2.(inFields{ii})(isnan(data1.(inFields{ii})))=nan;
-        end
-    end
-
-    %% Cut range
-    if ~isempty(minMaxRange)
-
-        goodInds=find(data1.range>=minMaxRange(1) & data1.range<=minMaxRange(2));
-
-        for ii=1:size(inFields,1)
-            if ~(strcmp(inFields{ii},'azimuth') | strcmp(inFields{ii},'elevation') | strcmp(inFields{ii},'time'))
-                data1.(inFields{ii})=data1.(inFields{ii})(:,goodInds);
-                data2.(inFields{ii})=data2.(inFields{ii})(:,goodInds);
-            end
         end
     end
 
@@ -254,7 +330,7 @@ for aa=14:size(inAll{1,1},1)
         title([inFields{jj},' file 2 - file 1'],'Interpreter','none');
         xlabel('km');
         ylabel('km');
-        
+
         grid on
         box on
 
@@ -268,7 +344,7 @@ for aa=14:size(inAll{1,1},1)
         title(['std file 1'],'Interpreter','none');
         xlabel('km');
         ylabel('km');
-        
+
         grid on
         box on
 
@@ -280,7 +356,7 @@ for aa=14:size(inAll{1,1},1)
         title(['std file 2'],'Interpreter','none');
         xlabel('km');
         ylabel('km');
-        
+
         grid on
         box on
 
@@ -300,7 +376,7 @@ for aa=14:size(inAll{1,1},1)
         title(['std file 2 - std file 1'],'Interpreter','none');
         xlabel('km');
         ylabel('km');
-        
+
         grid on
         box on
 
@@ -311,7 +387,7 @@ for aa=14:size(inAll{1,1},1)
 
         %% Save first zoom
 
-        if ~isnan(minMaxRange)
+        if ~isnan(minMaxRangeOrig)
             outstr=[outstr,'_range',num2str(minMaxRange(1)),'to',num2str(minMaxRange(2))];
         end
         if ~isnan(minMaxAz)
@@ -322,7 +398,7 @@ for aa=14:size(inAll{1,1},1)
 
         mkdir(figdir,outstr);
 
-        linkaxes([s1,s2,s3,s5,s6,s7],'xy');        
+        linkaxes([s1,s2,s3,s5,s6,s7],'xy');
 
         xlimits1=[inAll{1,4}(aa),inAll{1,5}(aa)];
         ylimits1=[inAll{1,6}(aa),inAll{1,7}(aa)];
@@ -361,7 +437,7 @@ for aa=14:size(inAll{1,1},1)
         grid on
         box on
         title(['std file 2 - std file 1'],'Interpreter','none');
-       
+
         print([figdir,outstr,'/',outstr,'_',inFields{jj},'_zoom1.png'],'-dpng','-r0');
 
         %% Save second zoom
@@ -377,7 +453,7 @@ for aa=14:size(inAll{1,1},1)
         daspect(s5,[1 1 1]);
         daspect(s6,[1 1 1]);
         daspect(s7,[1 1 1]);
-       
+
         print([figdir,outstr,'/',outstr,'_',inFields{jj},'_zoom2.png'],'-dpng','-r0');
     end
 end
