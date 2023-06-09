@@ -11,6 +11,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
 censorOnVEL=0;
+censorOnCMD=0;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
 
@@ -22,7 +23,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=15:size(inAll{1,1},1)
+for aa=16:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -212,10 +213,8 @@ for aa=15:size(inAll{1,1},1)
     end
 
     data1=[];
-    %[~,~,ib1]=intersect(allAz,data1in.azimuth);
     data1.range=data1in.range;
     data2=[];
-    %[~,~,ib2]=intersect(allAz,data2in.azimuth);
     data2.range=data2in.range;
 
     for ii=1:size(inFields,1)
@@ -224,6 +223,22 @@ for aa=15:size(inAll{1,1},1)
             data1.(inFields{ii})(ibAll,:)=data1in.(inFields{ii})(ib1,:);
             data2.(inFields{ii})=nan(length(allAz),size(data2in.(inFields{ii}),2));
             data2.(inFields{ii})(ibAll,:)=data2in.(inFields{ii})(ib2,:);
+        end
+    end
+
+    % CMD
+    if censorOnCMD
+        cmd=[];
+        if isfield(data1in,'CMD_FLAG')
+            data1in.CMD_FLAG=data1in.CMD_FLAG(:,goodInds1);
+            cmd=data1in.CMD_FLAG(ib1,:);
+        elseif isfield(data2in,'CMD_FLAG')
+            data2in.CMD_FLAG=data2in.CMD_FLAG(:,goodInds2);
+            cmd=data2in.CMD_FLAG(ib2,:);
+        end
+        if isempty(cmd)
+            censorOnCMD=0;
+            disp('No CMD flag found.')
         end
     end
 
@@ -238,6 +253,11 @@ for aa=15:size(inAll{1,1},1)
             if censorOnVEL & size(data1.(inFields{ii}))==size(data1.DBZ_F)
                 data1.(inFields{ii})(data1.VEL_F>-2 & data1.VEL_F<2)=nan;
                 data2.(inFields{ii})(isnan(data2.DBZ_F))=nan;
+            end
+            % Censor on CMD
+            if censorOnCMD & size(data1.(inFields{ii}))==size(data1.DBZ_F)
+                data1.(inFields{ii})(cmd==0)=nan;
+                data2.(inFields{ii})(cmd==0)=nan;
             end
             % Match nans
             data1.(inFields{ii})(isnan(data2.(inFields{ii})))=nan;
@@ -392,6 +412,9 @@ for aa=15:size(inAll{1,1},1)
         end
         if ~isnan(minMaxAz)
             outstr=[outstr,'_az',num2str(minMaxAz(1)),'to',num2str(minMaxAz(2))];
+        end
+        if censorOnCMD
+            outstr=[outstr,'_CMDcensor'];
         end
 
         %outstr=[outstr,'_5-3'];
