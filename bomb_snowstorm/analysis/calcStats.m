@@ -11,7 +11,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
 censorOnVEL=0;
-censorOnCMD=0;
+censorOnCMD=1;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
 
@@ -21,9 +21,9 @@ fileID = fopen('compareFiles.txt');
 inAll=textscan(fileID,'%s %s %s %f %f %f %f %f %f %f %f %s %s %s %f');
 fclose(fileID);
 
-showPlot='on';
+showPlot='off';
 
-for aa=16:size(inAll{1,1},1)
+for aa=15:size(inAll{1,1},1)
 
     nyquist=[];
 
