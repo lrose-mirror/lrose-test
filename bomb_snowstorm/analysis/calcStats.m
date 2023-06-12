@@ -11,7 +11,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
 censorOnVEL=0;
-censorOnCMD=1;
+censorOnCMD=0;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
 
