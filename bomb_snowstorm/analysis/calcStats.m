@@ -11,7 +11,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=1;
 censorOnVEL=0;
-censorOnCMD=1;
+censorOnCMD=0;
 halfNyquist=1; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
 
@@ -23,7 +23,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=17:size(inAll{1,1},1)
+for aa=16:size(inAll{1,1},1)
 
     nyquist=[];
 
