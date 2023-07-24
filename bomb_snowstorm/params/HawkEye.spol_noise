@@ -511,7 +511,7 @@ fields = {
     raw_name = "NOISE_PHASE_CHANGE_ERROR",
     filtered_name = "",
     units = "deg",
-    color_map = "phase_error.colors",
+    color_map = "phase_change_error.colors",
     shortcut = "8"
   }
   ,
@@ -521,6 +521,15 @@ fields = {
     filtered_name = "",
     units = "dB",
     color_map = "sdev_dbm.colors",
+    shortcut = "8"
+  }
+  ,
+  {
+    label = "NCP",
+    raw_name = "NCP",
+    filtered_name = "NCP_F",
+    units = "",
+    color_map = "ncp.colors",
     shortcut = "8"
   }
   ,
