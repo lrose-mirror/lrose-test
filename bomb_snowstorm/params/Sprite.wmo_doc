@@ -57,7 +57,7 @@ register_with_procmap = FALSE;
 // Type: string
 //
 
-instance = "kddc.spec_cmd";
+instance = "regr_test.spol";
 
 ///////////// check_alloc /////////////////////////////
 //
@@ -169,7 +169,7 @@ input_tcp_port = 11000;
 // Type: string
 //
 
-archive_data_dir = "$(HOME)/data/nexrad/time_series/kddc";
+archive_data_dir = "$(HOME)/data/bomb_snowstorm/time_series/spol";
 
 ///////////// archive_start_time //////////////////////
 //
@@ -181,7 +181,7 @@ archive_data_dir = "$(HOME)/data/nexrad/time_series/kddc";
 // Type: string
 //
 
-archive_start_time = "2020 05 25 05 51 29";
+archive_start_time = "2019 03 13 22 06 00 00";
 
 ///////////// archive_time_span_secs //////////////////
 //
@@ -254,7 +254,7 @@ start_azimuth = 0;
 // Type: double
 //
 
-start_range_km = 100;
+start_range_km = 30;
 
 //======================================================================
 //
@@ -354,7 +354,7 @@ set_max_range = TRUE;
 // Type: double
 //
 
-max_range_km = 300;
+max_range_km = 150;
 
 //======================================================================
 //
@@ -370,7 +370,7 @@ max_range_km = 300;
 // Type: int
 //
 
-main_window_width = 2100;
+main_window_width = 1800;
 
 ///////////// main_window_height //////////////////////
 //
@@ -390,7 +390,7 @@ main_window_height = 900;
 // Type: int
 //
 
-main_window_start_x = 1100;
+main_window_start_x = 1130;
 
 ///////////// main_window_start_y /////////////////////
 //
@@ -400,7 +400,7 @@ main_window_start_x = 1100;
 // Type: int
 //
 
-main_window_start_y = 30;
+main_window_start_y = 0;
 
 ///////////// main_window_title_margin ////////////////
 //
@@ -536,7 +536,7 @@ legends_on = TRUE;
 // Type: int
 //
 
-ascope_n_panels = 0;
+ascope_n_panels = 1;
 
 ///////////// ascope_moments //////////////////////////
 //
@@ -563,6 +563,7 @@ ascope_n_panels = 0;
 //
 
 ascope_moments = {
+ DBZ
 };
 
 ///////////// ascope_width ////////////////////////////
@@ -809,7 +810,7 @@ ascope_y_axis_labels_inside = FALSE;
 // Type: int
 //
 
-waterfall_n_panels = 8;
+waterfall_n_panels = 4;
 
 ///////////// waterfall_plots /////////////////////////
 //
@@ -836,17 +837,10 @@ waterfall_n_panels = 8;
 //          WATERFALL_VC
 //          WATERFALL_HX
 //          WATERFALL_VX
-//          WATERFALL_DBZ
-//          WATERFALL_SNR
 //          WATERFALL_ZDR
 //          WATERFALL_PHIDP
-//          WATERFALL_RHOHV
-//          WATERFALL_TDBZ
 //          WATERFALL_SDEV_ZDR
 //          WATERFALL_SDEV_PHIDP
-//          WATERFALL_TDBZ_INT
-//          WATERFALL_SDEV_ZDR_INT
-//          WATERFALL_SDEV_PHIDP_INT
 //          WATERFALL_CMD
 //      fft_window_t fft_window;
 //        Options:
@@ -859,12 +853,7 @@ waterfall_n_panels = 8;
 //          FFT_WINDOW_TUKEY_30
 //          FFT_WINDOW_TUKEY_50
 //      int median_filter_len;
-//      clutter_filter_type_t clutter_filter_type;
-//        Options:
-//          CLUTTER_FILTER_ADAPTIVE
-//          CLUTTER_FILTER_REGRESSION
-//          CLUTTER_FILTER_NOTCH
-//          CLUTTER_FILTER_NONE
+//      boolean use_adaptive_filter;
 //      double clutter_model_width_mps;
 //      boolean use_regression_filter;
 //      int regression_order;
@@ -881,88 +870,44 @@ waterfall_n_panels = 8;
 waterfall_plots = {
   {
     plot_type = WATERFALL_HC,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    fft_window = FFT_WINDOW_VONHANN,
+    median_filter_len = 3,
+    clutter_filter_type = CLUTTER_FILTER_NONE,
     clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
+    use_regression_filter = FALSE,
     regression_order = -1,
     regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
   ,
   {
-    plot_type = WATERFALL_DBZ,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    plot_type = WATERFALL_HC,
+    fft_window = FFT_WINDOW_VONHANN,
+    median_filter_len = 3,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
+    use_regression_filter = FALSE,
     regression_order = -1,
     regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
   ,
   {
-    plot_type = WATERFALL_SNR,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    plot_type = WATERFALL_ZDR,
+    fft_window = FFT_WINDOW_VONHANN,
+    median_filter_len = 3,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
+    use_regression_filter = FALSE,
     regression_order = -1,
     regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
   ,
   {
-    plot_type = WATERFALL_TDBZ,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    plot_type = WATERFALL_PHIDP,
+    fft_window = FFT_WINDOW_VONHANN,
+    median_filter_len = 3,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
-  }
-  ,
-  {
-    plot_type = WATERFALL_RHOHV,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
-    clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
-  }
-  ,
-  {
-    plot_type = WATERFALL_SDEV_PHIDP,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
-    clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
-  }
-  ,
-  {
-    plot_type = WATERFALL_SDEV_ZDR,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
-    clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
-  }
-  ,
-  {
-    plot_type = WATERFALL_CMD,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
-    clutter_model_width_mps = 0.75,
-    use_regression_filter = TRUE,
+    use_regression_filter = FALSE,
     regression_order = -1,
     regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
   }
@@ -979,7 +924,7 @@ waterfall_plots = {
 // Type: int
 //
 
-waterfall_width = 150;
+waterfall_width = 200;
 
 ///////////// waterfall_color_scale_width /////////////
 //
@@ -993,34 +938,6 @@ waterfall_width = 150;
 
 waterfall_color_scale_width = 30;
 
-///////////// waterfall_tdbz_kernel_ngates ////////////
-//
-// Kernal size in range for computing TDBZ.
-//
-// The standard deviation of DBZ-squared is computed over a rectangular 
-//   kernel, and then the square-root is computed. This is the size of 
-//   that kernel in range.
-//
-//
-// Type: int
-//
-
-waterfall_tdbz_kernel_ngates = 7;
-
-///////////// waterfall_tdbz_kernel_nsamples //////////
-//
-// Kernal size in samples for computing sdev of TDBZ.
-//
-// The standard deviation of DBZ-squared is computed over a rectangular 
-//   kernel, and then the square-root is computed. This is the number of 
-//   samples in the kernel.
-//
-//
-// Type: int
-//
-
-waterfall_tdbz_kernel_nsamples = 1;
-
 ///////////// waterfall_sdev_zdr_kernel_ngates ////////
 //
 // Kernal size in range for computing sdev of zdr.
@@ -1032,7 +949,7 @@ waterfall_tdbz_kernel_nsamples = 1;
 // Type: int
 //
 
-waterfall_sdev_zdr_kernel_ngates = 7;
+waterfall_sdev_zdr_kernel_ngates = 5;
 
 ///////////// waterfall_sdev_zdr_kernel_nsamples //////
 //
@@ -1045,7 +962,7 @@ waterfall_sdev_zdr_kernel_ngates = 7;
 // Type: int
 //
 
-waterfall_sdev_zdr_kernel_nsamples = 1;
+waterfall_sdev_zdr_kernel_nsamples = 3;
 
 ///////////// waterfall_sdev_phidp_kernel_ngates //////
 //
@@ -1058,7 +975,7 @@ waterfall_sdev_zdr_kernel_nsamples = 1;
 // Type: int
 //
 
-waterfall_sdev_phidp_kernel_ngates = 7;
+waterfall_sdev_phidp_kernel_ngates = 5;
 
 ///////////// waterfall_sdev_phidp_kernel_nsamples ////
 //
@@ -1071,7 +988,7 @@ waterfall_sdev_phidp_kernel_ngates = 7;
 // Type: int
 //
 
-waterfall_sdev_phidp_kernel_nsamples = 1;
+waterfall_sdev_phidp_kernel_nsamples = 3;
 
 ///////////// color_scale_dir /////////////////////////
 //
@@ -1089,26 +1006,6 @@ waterfall_sdev_phidp_kernel_nsamples = 1;
 //
 
 color_scale_dir = "$(HOME)/git/lrose-displays/color_scales";
-
-///////////// waterfall_dbz_color_scale_name //////////
-//
-// Color scale name for dbz.
-//
-//
-// Type: string
-//
-
-waterfall_dbz_color_scale_name = "dbz.colors";
-
-///////////// waterfall_snr_color_scale_name //////////
-//
-// Color scale name for snr.
-//
-//
-// Type: string
-//
-
-waterfall_snr_color_scale_name = "snr.colors";
 
 ///////////// waterfall_dbm_color_scale_name //////////
 //
@@ -1140,26 +1037,6 @@ waterfall_zdr_color_scale_name = "zdr.colors";
 
 waterfall_phidp_color_scale_name = "phidp.colors";
 
-///////////// waterfall_rhohv_color_scale_name ////////
-//
-// Color scale name for rhohv.
-//
-//
-// Type: string
-//
-
-waterfall_rhohv_color_scale_name = "rhohv.colors";
-
-///////////// waterfall_tdbz_color_scale_name /////////
-//
-// Color scale name for TDBZ.
-//
-//
-// Type: string
-//
-
-waterfall_tdbz_color_scale_name = "dbz.colors";
-
 ///////////// waterfall_sdev_zdr_color_scale_name /////
 //
 // Color scale name for sdev of zdr.
@@ -1179,16 +1056,6 @@ waterfall_sdev_zdr_color_scale_name = "sdzdr_spectra.colors";
 //
 
 waterfall_sdev_phidp_color_scale_name = "sdphidp_spectra.colors";
-
-///////////// waterfall_interest_color_scale_name /////
-//
-// Color scale name for interest values.
-//
-//
-// Type: string
-//
-
-waterfall_interest_color_scale_name = "interest.colors";
 
 ///////////// waterfall_cmd_color_scale_name //////////
 //
@@ -1482,8 +1349,6 @@ iqplots_n_columns = 2;
 //          SPECTRAL_PHASE
 //          SPECTRAL_ZDR
 //          SPECTRAL_PHIDP
-//          SPECTRAL_RHOHV
-//          SPECTRAL_SZ864
 //          TS_POWER
 //          TS_PHASE
 //          I_VALS
@@ -1507,14 +1372,10 @@ iqplots_n_columns = 2;
 //          FFT_WINDOW_TUKEY_30
 //          FFT_WINDOW_TUKEY_50
 //      int median_filter_len;
-//      clutter_filter_type_t clutter_filter_type;
-//        Options:
-//          CLUTTER_FILTER_ADAPTIVE
-//          CLUTTER_FILTER_REGRESSION
-//          CLUTTER_FILTER_NOTCH
-//          CLUTTER_FILTER_NONE
+//      boolean use_adaptive_filter;
 //      boolean plot_clutter_model;
 //      double clutter_model_width_mps;
+//      boolean use_regression_filter;
 //      int regression_order;
 //      notch_interp_method_t regression_filter_notch_interp_method;
 //        Options:
@@ -1624,8 +1485,6 @@ iq_plots = {
 //          SPECTRAL_PHASE
 //          SPECTRAL_ZDR
 //          SPECTRAL_PHIDP
-//          SPECTRAL_RHOHV
-//          SPECTRAL_SZ864
 //          TS_POWER
 //          TS_PHASE
 //          I_VALS
@@ -2113,25 +1972,6 @@ iqplot_plot_legend2 = TRUE;
 //
 //======================================================================
  
-///////////// ascope_clutter_filter_type //////////////
-//
-// Type of clutter filter to use.
-//
-// ADAPTIVE: spectral filter with gaussian interpolation. REGRESSION: 
-//   polynomial filter with specified interpolation. NOTCH: simple notch 
-//   filter of specified width. NONE: cancels clutter filtering.
-//
-//
-// Type: enum
-// Options:
-//     CLUTTER_FILTER_ADAPTIVE
-//     CLUTTER_FILTER_REGRESSION
-//     CLUTTER_FILTER_NOTCH
-//     CLUTTER_FILTER_NONE
-//
-
-ascope_clutter_filter_type = CLUTTER_FILTER_ADAPTIVE;
-
 ///////////// apply_residue_correction_in_adaptive_filter 
 //
 // Option to apply residue correction to adaptive filter.
@@ -2160,6 +2000,21 @@ apply_residue_correction_in_adaptive_filter = TRUE;
 //
 
 min_snr_db_for_residue_correction = 75;
+
+///////////// use_polynomial_regression_clutter_filter 
+//
+// Option to apply a regression clutter filter.
+//
+// For the regression filter, a polynomial fit is performed on the I and 
+//   Q data individually. The filtered time series is computed as the 
+//   original minus the regression fit. If true, this takes preference 
+//   over the notch filter.
+//
+//
+// Type: boolean
+//
+
+use_polynomial_regression_clutter_filter = TRUE;
 
 ///////////// regression_filter_determine_order_from_cnr 
 //
@@ -2534,7 +2389,7 @@ KDP_debug = FALSE;
 // Type: int
 //
 
-n_samples = 32;
+n_samples = 128;
 
 ///////////// indexed_beams ///////////////////////////
 //
@@ -2805,193 +2660,6 @@ fft_window = FFT_WINDOW_VONHANN;
 
 //======================================================================
 //
-// SPECTRAL CMD INTEREST MAPS and WEIGHTS.
-//
-// Each map should hold at least 2 points. The points should be 
-//   increasing in value, i.e. the value should increase for each 
-//   subsequent point. The various interest values are combined using the 
-//   specified weights in a weighted mean to produce the final CMD value.
-//
-//======================================================================
- 
-///////////// snr_interest_map ////////////////////////
-//
-// Interest mapping for SNR.
-//
-//
-// Type: struct
-//   typedef struct {
-//      double value;
-//      double interest;
-//   }
-//
-// 1D array - variable length.
-//
-
-snr_interest_map = {
-  {
-    value = 30,
-    interest = 0.0001
-  }
-  ,
-  {
-    value = 40,
-    interest = 1
-  }
-};
-
-///////////// snr_interest_weight /////////////////////
-//
-// Weight for SNR interest.
-//
-// This weight is used for combining snr interest into the final CMD 
-//   interest.
-//
-//
-// Type: double
-//
-
-snr_interest_weight = 1;
-
-///////////// tdbz_interest_map ///////////////////////
-//
-// Interest mapping for TDBZ.
-//
-//
-// Type: struct
-//   typedef struct {
-//      double value;
-//      double interest;
-//   }
-//
-// 1D array - variable length.
-//
-
-tdbz_interest_map = {
-  {
-    value = 24,
-    interest = 0.0001
-  }
-  ,
-  {
-    value = 30,
-    interest = 1
-  }
-};
-
-///////////// tdbz_interest_weight ////////////////////
-//
-// Weight for TDBZ interest.
-//
-// This weight is used for combining tdbz interest into the final CMD 
-//   interest.
-//
-//
-// Type: double
-//
-
-tdbz_interest_weight = 1;
-
-///////////// zdr_sdev_interest_map ///////////////////
-//
-// Interest mapping for zdr.
-//
-//
-// Type: struct
-//   typedef struct {
-//      double value;
-//      double interest;
-//   }
-//
-// 1D array - variable length.
-//
-
-zdr_sdev_interest_map = {
-  {
-    value = 3,
-    interest = 0.0001
-  }
-  ,
-  {
-    value = 5,
-    interest = 1
-  }
-};
-
-///////////// zdr_sdev_interest_weight ////////////////
-//
-// Weight for standard deviation of zdr.
-//
-//
-// Type: double
-//
-
-zdr_sdev_interest_weight = 1;
-
-///////////// phidp_sdev_interest_map /////////////////
-//
-// Interest mapping for standard deviation of phidp.
-//
-//
-// Type: struct
-//   typedef struct {
-//      double value;
-//      double interest;
-//   }
-//
-// 1D array - variable length.
-//
-
-phidp_sdev_interest_map = {
-  {
-    value = 48,
-    interest = 0.0001
-  }
-  ,
-  {
-    value = 55,
-    interest = 1
-  }
-};
-
-///////////// phidp_sdev_interest_weight //////////////
-//
-// Weight for standard deviation of phidp.
-//
-//
-// Type: double
-//
-
-phidp_sdev_interest_weight = 1;
-
-///////////// cmd_threshold_for_detection /////////////
-//
-// Threshold CMD value for detecting clutter.
-//
-// If the mean CMD value exceeds this threshold, clutter is assumed to 
-//   exist at that point.
-//
-//
-// Type: double
-//
-
-cmd_threshold_for_detection = 0.9;
-
-///////////// cmd_threshold_for_moments ///////////////
-//
-// Threshold CMD value for computing moments.
-//
-// If CMD at a spectral point exceeds this threshold, it is set to 0 so 
-//   it is not used in the computation of the moments.
-//
-//
-// Type: double
-//
-
-cmd_threshold_for_moments = 0.7;
-
-//======================================================================
-//
 // RADAR CALIBRATION.
 //
 //======================================================================
@@ -3040,8 +2708,7 @@ use_cal_from_time_series = FALSE;
 // Type: string
 //
 
-// click_point_fmq_url = "/tmp/fmq/click_point/kddc.spec_cmd";
-click_point_fmq_url = "/tmp/fmq/click_point/kddc";
+click_point_fmq_url = "/tmp/fmq/click_point/bomb_snowstorm";
 
 ///////////// click_point_search_angle_error //////////
 //

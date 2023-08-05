@@ -32,7 +32,7 @@
 //     DEBUG_EXTRA
 //
 
-debug = DEBUG_NORM;
+debug = DEBUG_OFF;
 
 ///////////// instance ////////////////////////////////
 //
@@ -44,7 +44,7 @@ debug = DEBUG_NORM;
 // Type: string
 //
 
-instance = "wmo_doc";
+instance = "pecan.wmo_doc";
 
 ///////////// procmap_register_interval ///////////////
 //
@@ -127,7 +127,7 @@ use_input_scan_mode = TRUE;
 // Type: string
 //
 
-site_name = "marshall";
+site_name = "$(SITE_NAME)";
 
 ///////////// override_radar_name /////////////////////
 //
@@ -140,7 +140,7 @@ site_name = "marshall";
 // Type: boolean
 //
 
-override_radar_name = FALSE;
+override_radar_name = TRUE;
 
 ///////////// radar_name //////////////////////////////
 //
@@ -184,9 +184,9 @@ override_radar_location = FALSE;
 //
 
 radar_location = {
-    latitudeDeg = 0,
-    longitudeDeg = 0,
-    altitudeKm = 0
+    latitudeDeg = 39.9502,
+    longitudeDeg = -105.195,
+    altitudeKm = 1.748
 };
 
 ///////////// apply_azimuth_offset ////////////////////
@@ -407,7 +407,7 @@ apply_georeference_corrections = FALSE;
 // Type: boolean
 //
 
-apply_censoring = TRUE;
+apply_censoring = FALSE;
 
 ///////////// censoring_fields ////////////////////////
 //
@@ -447,17 +447,17 @@ apply_censoring = TRUE;
 censoring_fields = {
   {
     name = "SNRHC",
-    min_valid_value = 3,
+    min_valid_value = 0,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
-  // ,
-  // {
-  //   name = "NCP",
-  //   min_valid_value = 0.1,
-  //   max_valid_value = 1000,
-  //   combination_method = LOGICAL_OR
-  // }
+  ,
+  {
+    name = "NCP",
+    min_valid_value = 0.1,
+    max_valid_value = 1000,
+    combination_method = LOGICAL_OR
+  }
 };
 
 ///////////// censoring_min_valid_run /////////////////
@@ -475,7 +475,7 @@ censoring_fields = {
 // Type: int
 //
 
-censoring_min_valid_run = 3;
+censoring_min_valid_run = 5;
 
 //======================================================================
 //
@@ -662,7 +662,7 @@ specified_sweep_number_list = {
 // Type: boolean
 //
 
-filter_antenna_stationary = FALSE;
+filter_antenna_stationary = TRUE;
 
 ///////////// min_angle_change_for_moving_antenna /////
 //
@@ -690,7 +690,7 @@ min_angle_change_for_moving_antenna = 0.05;
 // Type: boolean
 //
 
-clear_transition_flag_on_all_rays = TRUE;
+clear_transition_flag_on_all_rays = FALSE;
 
 ///////////// filter_antenna_transitions //////////////
 //
@@ -717,7 +717,7 @@ filter_antenna_transitions = FALSE;
 // Type: boolean
 //
 
-filter_when_scan_idle = FALSE;
+filter_when_scan_idle = TRUE;
 
 ///////////// filter_when_scan_pointing ///////////////
 //
@@ -730,7 +730,7 @@ filter_when_scan_idle = FALSE;
 // Type: boolean
 //
 
-filter_when_scan_pointing = FALSE;
+filter_when_scan_pointing = TRUE;
 
 //======================================================================
 //
@@ -790,7 +790,7 @@ convert_to_specified_output_gate_geometry = FALSE;
 // Type: double
 //
 
-output_start_range_km = 0.1;
+output_start_range_km = 0.075;
 
 ///////////// output_gate_spacing_km //////////////////
 //
@@ -802,7 +802,7 @@ output_start_range_km = 0.1;
 // Type: double
 //
 
-output_gate_spacing_km = 0.2;
+output_gate_spacing_km = 0.15;
 
 ///////////// interpolate_to_output_gate_geometry /////
 //
@@ -982,7 +982,7 @@ check_min_rays_in_sweep = FALSE;
 // Type: int
 //
 
-min_rays_in_sweep = 60;
+min_rays_in_sweep = 180;
 
 ///////////// check_min_rays_in_ppi_sweep /////////////
 //
@@ -995,7 +995,7 @@ min_rays_in_sweep = 60;
 // Type: boolean
 //
 
-check_min_rays_in_ppi_sweep = TRUE;
+check_min_rays_in_ppi_sweep = FALSE;
 
 ///////////// min_rays_in_ppi_sweep ///////////////////
 //
@@ -1007,7 +1007,7 @@ check_min_rays_in_ppi_sweep = TRUE;
 // Type: int
 //
 
-min_rays_in_ppi_sweep = 60;
+min_rays_in_ppi_sweep = 180;
 
 ///////////// check_min_rays_in_rhi_sweep /////////////
 //
@@ -1020,7 +1020,7 @@ min_rays_in_ppi_sweep = 60;
 // Type: boolean
 //
 
-check_min_rays_in_rhi_sweep = TRUE;
+check_min_rays_in_rhi_sweep = FALSE;
 
 ///////////// min_rays_in_rhi_sweep ///////////////////
 //
@@ -1057,7 +1057,7 @@ min_rays_in_rhi_sweep = 45;
 // Type: boolean
 //
 
-compute_ppi_fixed_angles_from_measured_elevation = TRUE;
+compute_ppi_fixed_angles_from_measured_elevation = FALSE;
 
 ///////////// compute_rhi_fixed_angles_from_measured_azimuth 
 //
@@ -1304,7 +1304,6 @@ trim_surveillance_sweeps_to_360deg = TRUE;
 //     ELAPSED_TIME
 //
 
-// end_of_vol_decision = CHANGE_IN_SWEEP_NUM;
 end_of_vol_decision = END_OF_VOL_FLAG;
 
 ///////////// last_sweep_in_vol ///////////////////////
@@ -1352,7 +1351,7 @@ write_end_of_vol_when_data_stops = TRUE;
 // Type: int
 //
 
-nsecs_no_data_for_end_of_vol = 3;
+nsecs_no_data_for_end_of_vol = 5;
 
 ///////////// nsecs_per_volume ////////////////////////
 //
@@ -1611,7 +1610,7 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "VEL_ALT",
+    dsr_name = "VEL",
     output_name = "VEL",
     long_name = "doppler_velocity",
     standard_name = "radial_velocity_of_scatterers_away_from_instrument",
@@ -1620,7 +1619,7 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "VEL_ALT_F",
+    dsr_name = "VEL_F",
     output_name = "VEL_F",
     long_name = "doppler_velocity_filtered",
     standard_name = "radial_velocity_of_scatterers_away_from_instrument",
@@ -1665,19 +1664,19 @@ output_fields = {
   }
   ,
   {
-    dsr_name = "LDRH",
-    output_name = "LDRH",
-    long_name = "linear_depolarization_ratio_hc_to_vx",
-    standard_name = "log_linear_depolarization_ratio_h",
+    dsr_name = "ZDRM",
+    output_name = "ZDRM",
+    long_name = "differential_reflectivity_uncalibrated",
+    standard_name = "log_differential_reflectivity_hv",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "LDRH_F",
-    output_name = "LDRH_F",
-    long_name = "linear_depolarization_ratio_ratio_hv_to_vx_filtered",
-    standard_name = "log_linear_depolarization_ratio_h",
+    dsr_name = "ZDRM_F",
+    output_name = "ZDRM_F",
+    long_name = "differential_reflectivity_uncalibrated_filtered",
+    standard_name = "log_differential_reflectivity_hv",
     output_units = "dB",
     output_encoding = OUTPUT_SHORT
   }
@@ -1703,7 +1702,7 @@ output_fields = {
   {
     dsr_name = "RHOHV_NNC",
     output_name = "RHOHV_NNC",
-    long_name = "cross_correlation_ratio",
+    long_name = "cross_correlation_ratio_no_noise_correction",
     standard_name = "cross_correlation_ratio_hv",
     output_units = "none",
     output_encoding = OUTPUT_SHORT
@@ -1712,7 +1711,7 @@ output_fields = {
   {
     dsr_name = "RHOHV_NNC_F",
     output_name = "RHOHV_NNC_F",
-    long_name = "cross_correlation_ratio_filtered",
+    long_name = "cross_correlation_ratio_no_noise_correction_filtered",
     standard_name = "cross_correlation_ratio_hv",
     output_units = "none",
     output_encoding = OUTPUT_SHORT
@@ -1732,6 +1731,24 @@ output_fields = {
     output_name = "PHIDP_F",
     long_name = "differential_phase_filtered",
     standard_name = "differential_phase_hv",
+    output_units = "deg",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "PHIDP0",
+    output_name = "PHIDP0",
+    long_name = "system_differential_phase",
+    standard_name = "system_differential_phase_hv",
+    output_units = "deg",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "PHIDP0_F",
+    output_name = "PHIDP0_F",
+    long_name = "system_differential_phase_filtered",
+    standard_name = "system_differential_phase_hv",
     output_units = "deg",
     output_encoding = OUTPUT_SHORT
   }
@@ -1827,6 +1844,15 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "NOISE_BIAS",
+    output_name = "NOISE_BIAS",
+    long_name = "bias_in_noise_floor_from_thermal_effect",
+    standard_name = "bias_in_noise_floor",
+    output_units = "dB",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "NCP",
     output_name = "NCP",
     long_name = "normalized_coherent_power",
@@ -1854,6 +1880,24 @@ output_fields = {
   }
   ,
   {
+    dsr_name = "AIQ",
+    output_name = "AIQ",
+    long_name = "AIQ",
+    standard_name = "AIQ",
+    output_units = "deg",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "NIQ",
+    output_name = "NIQ",
+    long_name = "NIQ",
+    standard_name = "NIQ",
+    output_units = "dBm",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
     dsr_name = "CLUT",
     output_name = "CLUT",
     long_name = "clutter_power",
@@ -1877,33 +1921,42 @@ output_fields = {
     long_name = "clutter_mitigation_interest_flag",
     standard_name = "clutter_mitigation_decision_flag",
     output_units = "none",
-    output_encoding = OUTPUT_FLOAT
+    output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "NOISE_FLAG",
-    output_name = "NOISE_FLAG",
-    long_name = "location_of_noise_flag",
-    standard_name = "location_of_noise_flag",
+    dsr_name = "TDBZ",
+    output_name = "TDBZ",
+    long_name = "texture_of_reflectivity",
+    standard_name = "texture_of_reflectivity",
     output_units = "none",
     output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "REGR_ORDER",
-    output_name = "REGR_ORDER",
-    long_name = "polynomial_order_for_regression_filter",
-    standard_name = "polynomial_order_for_regression_filter",
+    dsr_name = "SPIN",
+    output_name = "SPIN",
+    long_name = "spin_of_reflectivity",
+    standard_name = "spin_of_reflectivity",
     output_units = "none",
-    output_encoding = OUTPUT_FLOAT
+    output_encoding = OUTPUT_SHORT
   }
   ,
   {
-    dsr_name = "REGR_CNR",
-    output_name = "REGR_CNR",
-    long_name = "clutter_to_noise_ratio_for_regression_filter",
-    standard_name = "clutter_to_noise_ratio_for_regression_filter",
-    output_units = "dB",
+    dsr_name = "ZDR_SDEV",
+    output_name = "ZDR_SDEV",
+    long_name = "standard_deviation_of_zdr",
+    standard_name = "standard_deviation_of_zdr",
+    output_units = "none",
+    output_encoding = OUTPUT_SHORT
+  }
+  ,
+  {
+    dsr_name = "PHIDP_SDEV",
+    output_name = "PHIDP_SDEV",
+    long_name = "standard_deviation_of_phidp",
+    standard_name = "standard_deviation_of_phidp",
+    output_units = "none",
     output_encoding = OUTPUT_SHORT
   }
 };
@@ -1944,7 +1997,7 @@ output_fields = {
 
 output_data_set = {
   {
-    output_dir = "$(HOME)/data/bomb_snowstorm/cfradial/wmo_doc",
+    output_dir = "$(HOME)/data/pecan/cfradial/moments/sband",
     format = OUTPUT_FORMAT_CFRADIAL
   }
 };
@@ -2053,7 +2106,7 @@ surveillance_subdir = "sur";
 // Type: boolean
 //
 
-write_sector_files = TRUE;
+write_sector_files = FALSE;
 
 ///////////// sector_subdir ///////////////////////////
 //
@@ -2131,7 +2184,7 @@ vert_subdir = "vert";
 // Type: double
 //
 
-min_elevation_for_vert_files = 55;
+min_elevation_for_vert_files = 80;
 
 ///////////// min_vert_fraction_for_vert_files ////////
 //
@@ -2216,7 +2269,7 @@ output_filename_prefix = "";
 // Type: boolean
 //
 
-include_instrument_name_in_file_name = FALSE;
+include_instrument_name_in_file_name = TRUE;
 
 ///////////// include_site_name_in_file_name //////////
 //
@@ -2269,7 +2322,7 @@ include_scan_type_in_file_name = TRUE;
 // Type: boolean
 //
 
-include_scan_name_in_file_name = FALSE;
+include_scan_name_in_file_name = TRUE;
 
 ///////////// include_vol_num_in_file_name ////////////
 //
@@ -2317,7 +2370,7 @@ use_hyphen_in_file_name_datetime_part = FALSE;
 // Type: boolean
 //
 
-write_master_ldata_info = TRUE;
+write_master_ldata_info = FALSE;
 
 ///////////// write_individual_ldata_info /////////////
 //
@@ -2332,7 +2385,7 @@ write_master_ldata_info = TRUE;
 // Type: boolean
 //
 
-write_individual_ldata_info = TRUE;
+write_individual_ldata_info = FALSE;
 
 ///////////// register_with_data_mapper ///////////////
 //
@@ -2345,7 +2398,7 @@ write_individual_ldata_info = TRUE;
 // Type: boolean
 //
 
-register_with_data_mapper = TRUE;
+register_with_data_mapper = FALSE;
 
 //======================================================================
 //
@@ -2439,7 +2492,7 @@ output_compression_level = 4;
 // Type: string
 //
 
-ncf_title = "SPOL radar data - marshall";
+ncf_title = "SPOL radar data - $(project)";
 
 ///////////// ncf_institution /////////////////////////
 //
@@ -2459,7 +2512,7 @@ ncf_institution = "EOL/NCAR";
 // Type: string
 //
 
-ncf_references = "marshall";
+ncf_references = "$(project) / $(SITE_NAME)";
 
 ///////////// ncf_source //////////////////////////////
 //
