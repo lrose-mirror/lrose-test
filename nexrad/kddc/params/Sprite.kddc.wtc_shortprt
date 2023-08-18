@@ -3026,7 +3026,7 @@ cmd_threshold_for_moments = 0.7;
 // Type: string
 //
 
-cal_file_path = "$(HOME)/git/lrose-test/bomb_snowstorm/params/spol_cal.xml";
+cal_file_path = "$(HOME)/git/lrose-test/bomb_snowstorm/params/kddc_cal.xml";
 
 ///////////// use_cal_from_time_series ////////////////
 //

@@ -75,7 +75,7 @@ instance = "kddc.shortprt.wtc_remove";
 // Type: boolean
 //
 
-use_multiple_threads = FALSE;
+use_multiple_threads = TRUE;
 
 ///////////// n_compute_threads ///////////////////////
 //
@@ -89,7 +89,7 @@ use_multiple_threads = FALSE;
 // Type: int
 //
 
-n_compute_threads = 12;
+n_compute_threads = 8;
 
 //======================================================================
 //
