@@ -810,7 +810,7 @@ ascope_y_axis_labels_inside = FALSE;
 // Type: int
 //
 
-waterfall_n_panels = 4;
+waterfall_n_panels = 6;
 
 ///////////// waterfall_plots /////////////////////////
 //
@@ -885,7 +885,7 @@ waterfall_plots = {
     plot_type = WATERFALL_HC,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = FALSE,
     regression_order = -1,
@@ -893,7 +893,7 @@ waterfall_plots = {
   }
   ,
   {
-    plot_type = WATERFALL_HC,
+    plot_type = WATERFALL_SNR,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
@@ -916,6 +916,28 @@ waterfall_plots = {
   ,
   {
     plot_type = WATERFALL_PHIDP,
+    fft_window = FFT_WINDOW_VONHANN,
+    median_filter_len = 3,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
+    clutter_model_width_mps = 0.75,
+    use_regression_filter = FALSE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
+  }
+  ,
+  {
+    plot_type = WATERFALL_RHOHV,
+    fft_window = FFT_WINDOW_VONHANN,
+    median_filter_len = 3,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
+    clutter_model_width_mps = 0.75,
+    use_regression_filter = FALSE,
+    regression_order = -1,
+    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN
+  }
+  ,
+  {
+    plot_type = WATERFALL_CMD,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 3,
     clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
@@ -1420,7 +1442,7 @@ iqplots_n_rows = 3;
 // Type: int
 //
 
-iqplots_n_columns = 2;
+iqplots_n_columns = 1;
 
 ///////////// iq_plots ////////////////////////////////
 //
@@ -1534,45 +1556,45 @@ iq_plots = {
     regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
     compute_plot_range_dynamically = TRUE
   }
-  ,
-  {
-    plot_type = SPECTRAL_POWER,
-    rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_RECT,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
-    plot_clutter_model = TRUE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_NONE,
-    compute_plot_range_dynamically = TRUE
-  }
-  ,
-  {
-    plot_type = SPECTRAL_ZDR,
-    rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_VONHANN,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
-    plot_clutter_model = FALSE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
-    compute_plot_range_dynamically = TRUE
-  }
-  ,
-  {
-    plot_type = SPECTRAL_PHIDP,
-    rx_channel = CHANNEL_HC,
-    fft_window = FFT_WINDOW_VONHANN,
-    median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_NONE,
-    plot_clutter_model = FALSE,
-    clutter_model_width_mps = 0.75,
-    regression_order = -1,
-    regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
-    compute_plot_range_dynamically = TRUE
-  }
+  // ,
+  // {
+  //   plot_type = SPECTRAL_POWER,
+  //   rx_channel = CHANNEL_HC,
+  //   fft_window = FFT_WINDOW_RECT,
+  //   median_filter_len = 1,
+  //   clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+  //   plot_clutter_model = TRUE,
+  //   clutter_model_width_mps = 0.75,
+  //   regression_order = -1,
+  //   regression_filter_notch_interp_method = INTERP_METHOD_NONE,
+  //   compute_plot_range_dynamically = TRUE
+  // }
+  // ,
+  // {
+  //   plot_type = SPECTRAL_ZDR,
+  //   rx_channel = CHANNEL_HC,
+  //   fft_window = FFT_WINDOW_VONHANN,
+  //   median_filter_len = 1,
+  //   clutter_filter_type = CLUTTER_FILTER_NONE,
+  //   plot_clutter_model = FALSE,
+  //   clutter_model_width_mps = 0.75,
+  //   regression_order = -1,
+  //   regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
+  //   compute_plot_range_dynamically = TRUE
+  // }
+  // ,
+  // {
+  //   plot_type = SPECTRAL_PHIDP,
+  //   rx_channel = CHANNEL_HC,
+  //   fft_window = FFT_WINDOW_VONHANN,
+  //   median_filter_len = 1,
+  //   clutter_filter_type = CLUTTER_FILTER_NONE,
+  //   plot_clutter_model = FALSE,
+  //   clutter_model_width_mps = 0.75,
+  //   regression_order = -1,
+  //   regression_filter_notch_interp_method = INTERP_METHOD_GAUSSIAN,
+  //   compute_plot_range_dynamically = TRUE
+  // }
 };
 
 ///////////// iq_plot_static_ranges ///////////////////
@@ -2798,12 +2820,12 @@ fft_window = FFT_WINDOW_VONHANN;
 
 snr_interest_map = {
   {
-    value = 0,
+    value = 20,
     interest = 0.0001
   }
   ,
   {
-    value = 20,
+    value = 40,
     interest = 1
   }
 };
@@ -2819,7 +2841,7 @@ snr_interest_map = {
 // Type: double
 //
 
-snr_interest_weight = 1.5;
+snr_interest_weight = 1.0;
 
 ///////////// tdbz_interest_map ///////////////////////
 //
@@ -2837,12 +2859,12 @@ snr_interest_weight = 1.5;
 
 tdbz_interest_map = {
   {
-    value = 30,
+    value = 27,
     interest = 0.0001
   }
   ,
   {
-    value = 40,
+    value = 33,
     interest = 1
   }
 };
