@@ -4185,7 +4185,7 @@ spec_cmd_snr_interest_map = {
 // Type: double
 //
 
-spec_cmd_snr_interest_weight = 1.0;
+spec_cmd_snr_interest_weight = 1;
 
 ///////////// spec_cmd_tdbz_interest_map //////////////
 //
@@ -4298,18 +4298,19 @@ spec_cmd_phidp_sdev_interest_map = {
 
 spec_cmd_phidp_sdev_interest_weight = 0;
 
-///////////// spec_cmd_threshold_for_detection ////////
+///////////// spec_cmd_threshold_for_wtc_detection ////
 //
 // Threshold CMD value for detecting clutter.
 //
-// This is aimed mainly at wind turbine clutter. If the CMD value 
-//   exceeds this threshold, clutter is assumed detected at the gate.
+// This is aimed mainly at wind turbine clutter. If the mean spectral 
+//   CMD exceeds this threshold, wind turbine clutter is assumed detected 
+//   at the gate.
 //
 //
 // Type: double
 //
 
-spec_cmd_threshold_for_detection = 0.9;
+spec_cmd_threshold_for_wtc_detection = 0.8;
 
 ///////////// spec_cmd_threshold_for_moments //////////
 //
@@ -4323,20 +4324,6 @@ spec_cmd_threshold_for_detection = 0.9;
 //
 
 spec_cmd_threshold_for_moments = 0.7;
-
-///////////// spec_cmd_fraction_threshold_for_wind_turbine 
-//
-// Threshold of CMD spectral fraction, for wind turbine detection.
-//
-// If the fraction of the CMD spectrum in excess of 
-//   'spec_cmd_threshold_for_detection' exceeds this, we flag the gate as 
-//   having a wind turbine gate.
-//
-//
-// Type: double
-//
-
-spec_cmd_fraction_threshold_for_wind_turbine = 0.6;
 
 //======================================================================
 //
@@ -4716,36 +4703,6 @@ output_fields = {
     write_unfiltered = TRUE,
     write_filtered = FALSE
   }
-  // ,
-  // {
-  //   id = TEST2,
-  //   name = "WFARM_FLAG",
-  //   units = "",
-  //   scale = 0.01,
-  //   bias = -320,
-  //   write_unfiltered = TRUE,
-  //   write_filtered = FALSE
-  // }
-  // ,
-  // {
-  //   id = TEST3,
-  //   name = "WFARM_CLUT",
-  //   units = "dB",
-  //   scale = 0.01,
-  //   bias = -320,
-  //   write_unfiltered = TRUE,
-  //   write_filtered = FALSE
-  // }
-  // ,
-  // {
-  //   id = TEST4,
-  //   name = "DBZ_WFARM",
-  //   units = "dBZ",
-  //   scale = 0.01,
-  //   bias = -320,
-  //   write_unfiltered = TRUE,
-  //   write_filtered = FALSE
-  // }
   ,
   {
     id = ZDR,

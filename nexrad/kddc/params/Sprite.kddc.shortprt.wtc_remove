@@ -969,7 +969,7 @@ waterfall_plots = {
   }
   ,
   {
-    plot_type = WATERFALL_CMD_FRAC,
+    plot_type = WATERFALL_CMD_MEAN,
     fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
     clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
@@ -1220,7 +1220,7 @@ waterfall_cmd_color_scale_name = "cmd_spectra.colors";
 // Type: string
 //
 
-waterfall_cmd_frac_color_scale_name = "cmd_frac.colors";
+waterfall_cmd_mean_color_scale_name = "cmd_spectral_mean.colors";
 
 ///////////// waterfall_title_font_size ///////////////
 //

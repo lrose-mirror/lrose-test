@@ -4,4 +4,5 @@
 
 cd $HOME/git/lrose-test/nexrad/kddc/params
 
-Sprite -params Sprite.kddc.wtc_shortprt
+Sprite -params Sprite.kddc.shortprt.wtc_remove
+

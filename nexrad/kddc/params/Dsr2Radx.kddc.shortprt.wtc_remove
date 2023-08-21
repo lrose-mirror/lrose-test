@@ -398,7 +398,7 @@ apply_georeference_corrections = FALSE;
 // Type: boolean
 //
 
-apply_censoring = FALSE;
+apply_censoring = TRUE;
 
 ///////////// censoring_fields ////////////////////////
 //
@@ -437,18 +437,18 @@ apply_censoring = FALSE;
 
 censoring_fields = {
   {
-    name = "SNRHC",
-    min_valid_value = 0,
+    name = "DBZ",
+    min_valid_value = 4.5,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
-  ,
-  {
-    name = "NCP",
-    min_valid_value = 0.1,
-    max_valid_value = 1000,
-    combination_method = LOGICAL_OR
-  }
+  // ,
+  // {
+  //   name = "NCP",
+  //   min_valid_value = 0.1,
+  //   max_valid_value = 1000,
+  //   combination_method = LOGICAL_OR
+  // }
 };
 
 ///////////// censoring_min_valid_run /////////////////

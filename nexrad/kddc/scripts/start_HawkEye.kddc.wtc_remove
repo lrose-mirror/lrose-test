@@ -1,0 +1,8 @@
+#! /bin/csh
+
+# start HawkEye
+
+cd $HOME/git/lrose-test/nexrad/kddc/params
+
+HawkEye -params ../params/HawkEye.kddc.wtc_remove -f ~/data/nexrad/cfradial/kddc.shortprt.wtc_remove/20200525/*nc >& /dev/null &
+
