@@ -354,7 +354,7 @@ set_max_range = TRUE;
 // Type: double
 //
 
-max_range_km = 300;
+max_range_km = 240;
 
 //======================================================================
 //
@@ -881,9 +881,9 @@ waterfall_n_panels = 6;
 waterfall_plots = {
   // {
   //   plot_type = WATERFALL_HC,
-  //   fft_window = FFT_WINDOW_RECT,
+  //   fft_window = FFT_WINDOW_VONHANN,
   //   median_filter_len = 1,
-  //   clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+  //   clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
   //   clutter_model_width_mps = 0.75,
   //   use_regression_filter = TRUE,
   //   regression_order = -1,
@@ -892,9 +892,9 @@ waterfall_plots = {
   // ,
   {
     plot_type = WATERFALL_DBZ,
-    fft_window = FFT_WINDOW_RECT,
+    fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = -1,
@@ -903,9 +903,9 @@ waterfall_plots = {
   ,
   {
     plot_type = WATERFALL_SNR,
-    fft_window = FFT_WINDOW_RECT,
+    fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = -1,
@@ -914,9 +914,9 @@ waterfall_plots = {
   ,
   {
     plot_type = WATERFALL_TDBZ,
-    fft_window = FFT_WINDOW_RECT,
+    fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = -1,
@@ -925,9 +925,9 @@ waterfall_plots = {
   // ,
   // {
   //   plot_type = WATERFALL_RHOHV,
-  //   fft_window = FFT_WINDOW_RECT,
+  //   fft_window = FFT_WINDOW_VONHANN,
   //   median_filter_len = 1,
-  //   clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+  //   clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
   //   clutter_model_width_mps = 0.75,
   //   use_regression_filter = TRUE,
   //   regression_order = -1,
@@ -936,9 +936,9 @@ waterfall_plots = {
   ,
   {
     plot_type = WATERFALL_SDEV_PHIDP,
-    fft_window = FFT_WINDOW_RECT,
+    fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = -1,
@@ -947,9 +947,9 @@ waterfall_plots = {
   ,
   {
     plot_type = WATERFALL_SDEV_ZDR,
-    fft_window = FFT_WINDOW_RECT,
+    fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = -1,
@@ -958,9 +958,9 @@ waterfall_plots = {
   ,
   {
     plot_type = WATERFALL_CMD,
-    fft_window = FFT_WINDOW_RECT,
+    fft_window = FFT_WINDOW_VONHANN,
     median_filter_len = 1,
-    clutter_filter_type = CLUTTER_FILTER_REGRESSION,
+    clutter_filter_type = CLUTTER_FILTER_ADAPTIVE,
     clutter_model_width_mps = 0.75,
     use_regression_filter = TRUE,
     regression_order = -1,
