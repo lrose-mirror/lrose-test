@@ -16,9 +16,11 @@ def check_ready(rqst_id, wait_interval=300): # Check every 300s=5min
 # Control dict for subsetting. Describes which data is being downloaded.
 control = { 
     'dataset' : 'ds633.0', # Dataset ID from the RDA website
-    'date':'202011010000/to/202011302359', # Start and end date
+    'date':'202102010000/to/202102282359', # Start and end date
     'datetype':'init',
-    'param':'T/R/Z', # Variables. Temperature (T), relative humidity (R), geopotential height (Z).
+    # Variables. Geopotential height (Z), U wind (U), V wind (V), vertical wind (W)
+    # divergence (D), spec hum (Q), rel hum (R), temperature (T).
+    'param':'Z/U/V/W/D/Q/R/T',
     # The levels below are named in a strange way. These are pressure levels.
     #The first number is the RDA level ID and the second number is the pressure level in hPa.
     #I.e., we are downloading all levels from 100 hPa to 1000 hPa.

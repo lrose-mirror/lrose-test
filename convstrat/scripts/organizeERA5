@@ -7,7 +7,7 @@ set OUT_DIR="/scr/cirrus2/rsfdata/projects/nexrad-mrms/ERA5/levelFiles"
 
 # Process one month at a time. (Not more.)
 set YEAR="2020"
-set MONTH="11"
+set MONTH="12"
 
 # Go to input directory
 cd $IN_DIR
@@ -35,6 +35,16 @@ rename $ORDER_NUM.T T $ORDER_NUM.T*.nc
 rename $ORDER_NUM.Z Z $ORDER_NUM.Z*.nc
 # Relative humidity files
 rename $ORDER_NUM.R R $ORDER_NUM.R*.nc
+# Specific humidity files
+rename $ORDER_NUM.Q Q $ORDER_NUM.Q*.nc
+# Divergence files
+rename $ORDER_NUM.D D $ORDER_NUM.D*.nc
+# U files
+rename $ORDER_NUM.U U $ORDER_NUM.U*.nc
+# V files
+rename $ORDER_NUM.V V $ORDER_NUM.V*.nc
+# W files
+rename $ORDER_NUM.W W $ORDER_NUM.W*.nc
 
 # Rename levels from the RDA level ID to hPa
 echo Renaming levels ...
