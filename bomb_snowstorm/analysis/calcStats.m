@@ -9,11 +9,11 @@ minMaxRangeOrig=[]; % Range interval [min,max] or leave empty
 minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
-censorOnDBZ=1;
+censorOnDBZ=0;
 censorOnVEL=0;
 censorOnCMD=1;
 %%%%%%%%%%%%%%
-censorOnSNR=10; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
@@ -26,7 +26,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=20:size(inAll{1,1},1)
+for aa=22:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -85,8 +85,10 @@ for aa=20:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data1in=readDataTables(infile1{:},' ');
         data1in.azimuth=round(data1in.azimuth);
-        data1in.SNR=data1in.TRIP;
-        data1in=rmfield(data1in,'TRIP');
+        if isfield(data1in,'TRIP')
+            data1in.SNR=data1in.TRIP;
+            data1in=rmfield(data1in,'TRIP');
+        end
     end
 
     %% Read file 2
@@ -135,8 +137,10 @@ for aa=20:size(inAll{1,1},1)
     elseif strcmp(fileType{:},'table')
         data2in=readDataTables(infile2{:},' ');
         %data2in.azimuth=round(data2in.azimuth);
-        data2in.SNR=data2in.TRIP;
-        data2in=rmfield(data2in,'TRIP');
+        if isfield(data2in,'TRIP')
+            data2in.SNR=data2in.TRIP;
+            data2in=rmfield(data2in,'TRIP');
+        end
     elseif strcmp(fileType{:},'mat')
         load(infile2{:});
         addnan=nan(size(data.REF,1),8);
@@ -153,8 +157,8 @@ for aa=20:size(inAll{1,1},1)
     end
 
     if isempty(nyquist)
-        warning('No nyquist velocity found. Using 4.1029 m/s')
-        nyquist=4.1029;
+        warning('No nyquist velocity found. Using 26.675 m/s')
+        nyquist=26.675;
     else
         nyquist=mode(nyquist);
     end
@@ -235,13 +239,13 @@ for aa=20:size(inAll{1,1},1)
 
     % CMD
     if censorOnCMD
-        cmd=[];
+        cmd=zeros(size(data1.DBZ_F));
         if isfield(data1in,'CMD_FLAG')
             data1in.CMD_FLAG=data1in.CMD_FLAG(:,goodInds1);
-            cmd=data1in.CMD_FLAG(ib1,:);
+            cmd(ibAll,:)=data1in.CMD_FLAG(ib1,:);
         elseif isfield(data2in,'CMD_FLAG')
             data2in.CMD_FLAG=data2in.CMD_FLAG(:,goodInds2);
-            cmd=data2in.CMD_FLAG(ib2,:);
+            cmd(ibAll,:)=data2in.CMD_FLAG(ib2,:);
         end
         if isempty(cmd)
             censorOnCMD=0;
@@ -251,13 +255,13 @@ for aa=20:size(inAll{1,1},1)
 
     % SNR
     if ~isempty(censorOnSNR)
-        snr=[];
+        snr=zeros(size(data1.DBZ_F));
         if isfield(data1in,'SNR')
             data1in.SNR=data1in.SNR(:,goodInds1);
-            snr=data1in.SNR(ib1,:);
+            snr(ibAll,:)=data1in.SNR(ib1,:);
         elseif isfield(data2in,'SNR')
             data2in.SNR=data2in.SNR(:,goodInds2);
-            snr=data2in.SNR(ib2,:);
+            snr(ibAll,:)=data2in.SNR(ib2,:);
         end
         if isempty(snr)
             censorOnSNR=0;
