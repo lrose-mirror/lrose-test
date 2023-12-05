@@ -15,7 +15,7 @@ fileID = fopen('plotFiles.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=19:size(inAll{1,1},1)
+for aa=10:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -252,7 +252,7 @@ for aa=19:size(inAll{1,1},1)
     %% Make TRIP plot
 
     if isfield(data,'TRIP')
-        figure('Position',[200 500 600 500],'DefaultAxesFontSize',12,'visible',showPlot);
+        figure('Position',[200 500 1200 1200],'DefaultAxesFontSize',12,'visible',showPlot);
 
         s1=subplot(1,1,1);
         surf(XX,YY,data.TRIP,'edgecolor','none');
