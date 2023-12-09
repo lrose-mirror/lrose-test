@@ -282,14 +282,14 @@ rename_output_fields = TRUE;
 output_fields = {
   {
     input_field_name = "D",
-    output_field_name = "div",
+    output_field_name = "DIV",
     output_long_name = "divergence_of_wind",
     output_units = "1/s"
   }
   ,
   {
     input_field_name = "Q",
-    output_field_name = "spec_hum",
+    output_field_name = "SH",
     output_long_name = "specific_humidity",
     output_units = "kg/kg"
   }
@@ -303,9 +303,9 @@ output_fields = {
   ,
   {
     input_field_name = "T",
-    output_field_name = "temp",
+    output_field_name = "TEMP",
     output_long_name = "air_temperature",
-    output_units = "K"
+    output_units = "C"
   }
   ,
   {

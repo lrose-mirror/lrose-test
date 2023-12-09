@@ -462,7 +462,7 @@ vert_levels_type = VERT_LEVELS_BY_TEMP;
 // Type: string
 //
 
-temp_profile_url = "/scr/sleet1/rsfdata/projects/eolbase/mdv/ruc";
+temp_profile_url = "/scr/cirrus2/rsfdata/projects/nexrad-mrms/ERA5/mdv";
 
 ///////////// temp_profile_field_name /////////////////
 //
@@ -473,7 +473,7 @@ temp_profile_url = "/scr/sleet1/rsfdata/projects/eolbase/mdv/ruc";
 // Type: string
 //
 
-temp_profile_field_name = "TMP";
+temp_profile_field_name = "TEMP";
 
 ///////////// temp_profile_search_margin //////////////
 //
@@ -639,7 +639,7 @@ min_strat_fraction_for_strat_below = 0.9;
 // Type: string
 //
 
-output_url = "/scr/cirrus1/rsfdata/projects/convstrat/mdv/mrmsConus3D/conv_strat";
+output_url = "/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus";
 
 ///////////// write_partition /////////////////////////
 //
@@ -663,7 +663,7 @@ write_partition = TRUE;
 // Type: boolean
 //
 
-write_texture = TRUE;
+write_texture = FALSE;
 
 ///////////// write_convectivity //////////////////////
 //
@@ -711,7 +711,7 @@ write_col_max_dbz = TRUE;
 // Type: boolean
 //
 
-write_convective_dbz = TRUE;
+write_convective_dbz = FALSE;
 
 ///////////// write_tops //////////////////////////////
 //
@@ -723,7 +723,7 @@ write_convective_dbz = TRUE;
 // Type: boolean
 //
 
-write_tops = TRUE;
+write_tops = FALSE;
 
 ///////////// write_fraction_active ///////////////////
 //
@@ -735,7 +735,7 @@ write_tops = TRUE;
 // Type: boolean
 //
 
-write_fraction_active = TRUE;
+write_fraction_active = FALSE;
 
 ///////////// write_height_grids //////////////////////
 //
@@ -747,7 +747,7 @@ write_fraction_active = TRUE;
 // Type: boolean
 //
 
-write_height_grids = TRUE;
+write_height_grids = FALSE;
 
 ///////////// write_temperature ///////////////////////
 //
