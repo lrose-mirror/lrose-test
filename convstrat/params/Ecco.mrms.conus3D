@@ -723,7 +723,7 @@ write_convective_dbz = FALSE;
 // Type: boolean
 //
 
-write_tops = FALSE;
+write_tops = TRUE;
 
 ///////////// write_fraction_active ///////////////////
 //
@@ -747,7 +747,7 @@ write_fraction_active = FALSE;
 // Type: boolean
 //
 
-write_height_grids = FALSE;
+write_height_grids = TRUE;
 
 ///////////// write_temperature ///////////////////////
 //

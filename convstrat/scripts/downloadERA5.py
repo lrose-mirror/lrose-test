@@ -5,7 +5,7 @@ import time
 def check_ready(rqst_id, wait_interval=300): # Check every 300s=5min
     for i in range(288): # 288 is arbitrary. Total wait time for request is 24 hours (300s*288)
         res = rc.get_status(rqst_id)
-        request_status = res['result']['status']
+        request_status = res['data']['status']
         if request_status == 'Completed':
             return True
         print(request_status)
@@ -16,7 +16,7 @@ def check_ready(rqst_id, wait_interval=300): # Check every 300s=5min
 # Control dict for subsetting. Describes which data is being downloaded.
 control = { 
     'dataset' : 'ds633.0', # Dataset ID from the RDA website
-    'date':'202306010000/to/202306302359', # Start and end date
+    'date':'202309010000/to/202309302359', # Start and end date
     'datetype':'init',
     # Variables. Geopotential height (Z), U wind (U), V wind (V), vertical wind (W)
     # divergence (D), spec hum (Q), rel hum (R), temperature (T).
@@ -37,7 +37,7 @@ control = {
 # Submit a request and check if it went through without an error.
 response = rc.submit_json(control)
 assert response['status'] == 'ok'
-rqst_id = response['result']['request_id']
+rqst_id = response['data']['request_id']
 
 print(response)
 

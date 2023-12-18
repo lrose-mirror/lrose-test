@@ -97,17 +97,17 @@ field_list = {
 
 # MRMS mosaic
 
-DBZ_2D     DBZ_2D  /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&DbzComp dbz.colors      dBZ -5 80 5 cart,comp 1 0
-DBZ_3D     DBZ_3D  /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&Dbz3D dbz.colors      dBZ -5 80 5 cart 1 0
+DBZ_2D     DBZ_2D  mdvp:://localhost:0:/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&DbzComp dbz.colors      dBZ -5 80 5 cart,comp 1 0
+DBZ_3D     DBZ_3D  mdvp:://localhost:0:/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&Dbz3D dbz.colors      dBZ -5 80 5 cart 1 0
 
-Convectivity_2D  Convectivity_2D  /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&ConvectivityComp convectivity.colors - -5 80 5 cart,comp 1 0
-Convectivity_3D  Convectivity_3D  /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
+Convectivity_2D  Convectivity_2D  mdvp:://localhost:0:/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&ConvectivityComp convectivity.colors - -5 80 5 cart,comp 1 0
+Convectivity_3D  Convectivity_3D  mdvp:://localhost:0:/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&Convectivity3D convectivity.colors - -5 80 5 cart 1 0
 
-EchoType_2D  EchoType_2D  /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&EchoType3D conv_strat3.colors - -5 80 5 cart 1 0
-EchoType_3D  EchoType_3D  /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&EchoTypeComp conv_strat3.colors - -5 80 5 cart,comp 1 0
+EchoType_2D  EchoType_2D  mdvp:://localhost:0:/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&EchoTypeComp conv_strat4.colors - -5 80 5 cart,comp 1 0
+EchoType_3D  EchoType_3D  mdvp:://localhost:0:/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&EchoType3D conv_strat4.colors - -5 80 5 cart 1 0
 
 ========      =========  /tmp/spacer&junk  none.colors   m   -5   80  5  dcont   1 0
-Temp_3D      Temp_3D      /scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&TEMP       temp.colors C -5 80 5 cart 1 0
+Temp_3D      Temp_3D      mdvp:://localhost:0:/scr/cirrus2/rsfdata/projects/nexrad-mrms/ecco_conus&TEMP       temp.colors C -5 80 5 cart 1 0
 
 
 </GRIDS>
@@ -212,7 +212,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  00:00 11/01/2020
+cidd.demo_time:  10:00 11/15/2020
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
@@ -399,7 +399,7 @@ cidd.always_get_full_domain:  0
 # ration for all zooms. Ratio is Width/Height.
 # If set <= 0.0, CIDD will compute the aspect ratio based on the extent of the
 # first domain.
-cidd.aspect_ratio:   1.0
+cidd.aspect_ratio:   1.5
 
 # Switch to enable the status window. 0 = off
 cidd.enable_status_window: 0
@@ -473,9 +473,9 @@ cidd.level4_max_ykm:                46
 #
 cidd.level5_label:                  CONUS
 cidd.level5_min_xkm:                -130
-cidd.level5_min_ykm:                22
-cidd.level5_max_xkm:                -62
-cidd.level5_max_ykm:                58
+cidd.level5_min_ykm:                20
+cidd.level5_max_xkm:                -60
+cidd.level5_max_ykm:                55
 #
 cidd.level6_label:                  WORLD
 cidd.level6_min_xkm:                -180
@@ -500,7 +500,7 @@ cidd.level6_max_ykm:                90
 #  
 cidd.min_ht:               0.0
 cidd.max_ht:               20.0
-cidd.start_ht:             1.7
+cidd.start_ht:             3.0
 
 # Radial data Limits
 cidd.min_rkm:                0.0
@@ -694,7 +694,7 @@ cidd.horiz_legends_delta_y:  30
 #
 # WINDOW SIZE PARAMS
 #
-cidd.horiz_default_height:    1300
+cidd.horiz_default_height:    1000
 cidd.horiz_min_height:        400
 cidd.horiz_min_width:         400
 cidd.horiz_default_x_pos:     0
