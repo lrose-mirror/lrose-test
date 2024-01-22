@@ -19,3 +19,4 @@
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN_V3.txt spol_20190313_220622_wnFortran_INDX_CMD_RHV_GAUSS_V3 -150 150 -150 150 -20 100 -20 100 table bs
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN128_V3.txt spol_20190313_220622_wnFortran_INDX_CMD_RHV_GAUSS_WN128_V3 -150 150 -150 150 -20 100 -20 100 table bs
 /scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_UNFILTERED.txt spol_20190313_220622_UNFILTERED -150 150 -150 150 -20 100 -20 100 table bs
+/scr/cirrus1/rsfdata/projects/bomb_snowstorm/tables/SPOL20190313_220622_INDX_CMD_RHV_GAUSS_WN_V3_1.txt spol_20190313_220622_regrFortran_INDX_CMD_RHV_GAUSS_WN_V3_1 -150 150 -150 150 -20 100 -20 100 table bs
