@@ -34,8 +34,8 @@ ang_p = deg2rad(90-dataWN.azimuth);
 
 angMat=repmat(ang_p,size(dataWN.range,1),1);
 
-xlimits1=[-120,60];
-ylimits1=[-110,70];
+xlimits1=[-200,200];
+ylimits1=[-200,200];
 
 XX = (dataWN.range.*cos(angMat));
 YY = (dataWN.range.*sin(angMat));
@@ -47,6 +47,7 @@ angMat2=repmat(ang_p2,size(dataR.range,1),1);
 XX2 = (dataR.range.*cos(angMat2));
 YY2 = (dataR.range.*sin(angMat2));
 
+
 %% Plot
 close all
 
@@ -57,11 +58,11 @@ s1=nexttile(1);
 hold on
 surf(XX,YY,dataWN.DBZ,'edgecolor','none');
 view(2);
-clim([-3 47])
+clim([-10 65])
 title('(a) Reflectivity Level2 (dBZ)')
 ylabel('km');
 s1.Colormap=dbz_default2;
-cb1=colorbar('XTick',-5:2:45);
+cb1=colorbar('XTick',-10:3:65);
 
 grid on
 box on
@@ -70,24 +71,23 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s1,[1 1 1]);
 
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-%scatter(0,0,90,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
-%text(-20,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
+text(-27,28,['KFTG'],'Color','k','FontSize',12,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
-% ZDR WN
+% Velocity
 
 s2=nexttile(2);
-h2=surf(XX,YY,dataWN.ZDR,'edgecolor','none');
+h2=surf(XX,YY,dataWN.VEL,'edgecolor','none');
 view(2);
-title('(c) Z_{DR} Level2 (dB)')
+title('(c) Velocity Level2 WN (m s^{-1})')
 
 grid on
 box on
 
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h2,dataWN.ZDR,zdr_default,colLims);
+colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
+applyColorScale(h2,dataWN.VEL,vel_default2,colLims);
 
 grid on
 box on
@@ -96,22 +96,18 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s2,[1 1 1]);
 
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-
-s2.SortMethod='childorder';
-
-% Refl. Reg.
+% CMD
 
 s3=nexttile(3);
-hold on
-surf(XX2,YY2,dataR.DBZ_F,'edgecolor','none');
+h=surf(XX2,YY2,dataR.CMD_FLAG,'edgecolor','none');
 view(2);
-clim([-3 47])
-title('(b) Reflectivity Regression (dBZ)')
+title('(b) CMD flag')
 xlabel('km');
 ylabel('km');
-s3.Colormap=dbz_default2;
-cb1=colorbar('XTick',-3:2:47);
+
+s3.Colormap=[0,0,1;1,0,0];
+clim([0,1]);
+colorbar('Ticks',[0.25,0.75],'TickLabels',{'0','1'});
 
 grid on
 box on
@@ -120,23 +116,20 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s3,[1 1 1]);
 
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-
-s3.SortMethod='childorder';
-
-% ZDR Reg.
+% ORDER
 
 s4=nexttile(4);
-h4=surf(XX2,YY2,dataR.ZDR_F,'edgecolor','none');
+dataR.REGR_ORDER(dataR.CMD_FLAG==0)=nan;
+h=surf(XX2,YY2,dataR.REGR_ORDER,'edgecolor','none');
 view(2);
-title('(d) Z_{DR} Regression (dB)')
+title('(d) Polynomial order')
 xlabel('km');
 
-grid on
-box on
-
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h4,dataR.ZDR_F,zdr_default,colLims);
+orderMax=max(dataR.REGR_ORDER(:),[],'omitmissing');
+orderMin=min(dataR.REGR_ORDER(:),[],'omitmissing');
+s4.Colormap=cat(1,turbo(orderMax-orderMin+1));
+clim([orderMin-0.5,orderMax+0.5]);
+colorbar('Ticks',2:11,'TickLabels',{'2','3','4','5','6','7','8','9','10','11'});
 
 grid on
 box on
@@ -145,8 +138,4 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s4,[1 1 1]);
 
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-
-s4.SortMethod='childorder';
-
-print([figdir,'figure22.png'],'-dpng','-r0');
+print([figdir,'figure21.png'],'-dpng','-r0');

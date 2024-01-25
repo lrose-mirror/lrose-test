@@ -55,13 +55,14 @@ t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
 
 s1=nexttile(1);
 hold on
-surf(XX,YY,dataWN.DBZ,'edgecolor','none');
+h1=surf(XX,YY,dataWN.PHIDP,'edgecolor','none');
 view(2);
-clim([-3 47])
-title('(a) Reflectivity Level2 (dBZ)')
+clim([0,114]);
+title(['(a) \phi_{DP} Level2 (',char(176),')'])
 ylabel('km');
-s1.Colormap=dbz_default2;
-cb1=colorbar('XTick',-5:2:45);
+s1.Colormap=phidp_default;
+cb1=colorbar;
+cb1.Ticks=0:9:120;
 
 grid on
 box on
@@ -70,24 +71,24 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s1,[1 1 1]);
 
-%rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
-%scatter(0,0,90,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
-%text(-20,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
+% rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
+% scatter(0,0,90,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
+% text(-20,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
-% ZDR WN
+% Rho WN
 
 s2=nexttile(2);
-h2=surf(XX,YY,dataWN.ZDR,'edgecolor','none');
+h2=surf(XX,YY,dataWN.RHOHV,'edgecolor','none');
 view(2);
-title('(c) Z_{DR} Level2 (dB)')
+title('(c) \rho_{HV} Level2')
 
 grid on
 box on
 
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h2,dataWN.ZDR,zdr_default,colLims);
+colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
+applyColorScale(h2,dataWN.RHOHV,rhohv_default,colLims);
 
 grid on
 box on
@@ -100,18 +101,19 @@ daspect(s2,[1 1 1]);
 
 s2.SortMethod='childorder';
 
-% Refl. Reg.
+% Width Reg.
 
 s3=nexttile(3);
 hold on
-surf(XX2,YY2,dataR.DBZ_F,'edgecolor','none');
+h3=surf(XX2,YY2,dataR.PHIDP_F,'edgecolor','none');
 view(2);
-clim([-3 47])
-title('(b) Reflectivity Regression (dBZ)')
+clim([0,114]);
+title(['(b) \phi_{DP} Regression (',char(176),')'])
 xlabel('km');
 ylabel('km');
-s3.Colormap=dbz_default2;
-cb1=colorbar('XTick',-3:2:47);
+s3.Colormap=phidp_default;
+cb3=colorbar;
+cb3.Ticks=0:9:120;
 
 grid on
 box on
@@ -127,16 +129,16 @@ s3.SortMethod='childorder';
 % ZDR Reg.
 
 s4=nexttile(4);
-h4=surf(XX2,YY2,dataR.ZDR_F,'edgecolor','none');
+h4=surf(XX2,YY2,dataR.RHOHV_NNC_F,'edgecolor','none');
 view(2);
-title('(d) Z_{DR} Regression (dB)')
+title('(d) \rho_{HV} Regression')
 xlabel('km');
 
 grid on
 box on
 
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h4,dataR.ZDR_F,zdr_default,colLims);
+colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
+applyColorScale(h4,dataR.RHOHV_NNC_F,rhohv_default,colLims);
 
 grid on
 box on
@@ -149,4 +151,4 @@ daspect(s4,[1 1 1]);
 
 s4.SortMethod='childorder';
 
-print([figdir,'figure22.png'],'-dpng','-r0');
+print([figdir,'figure23.png'],'-dpng','-r0');
