@@ -13,7 +13,7 @@ censorOnDBZ=0;
 censorOnVEL=0;
 censorOnCMD=1;
 %%%%%%%%%%%%%%
-censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+censorOnSNR=10; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
@@ -26,7 +26,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=25:size(inAll{1,1},1)
+for aa=27:size(inAll{1,1},1)
 
     nyquist=[];
 

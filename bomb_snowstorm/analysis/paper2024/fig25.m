@@ -188,106 +188,114 @@ angMat=repmat(ang_p,size(data1.range,1),1);
 XX = (data1.range.*cos(angMat));
 YY = (data1.range.*sin(angMat));
 
+
 %% Loop through fields
+for jj=1:length(inFields)
 
-jj=1;
-inFields{jj}='DBZ_F';
+    if strcmp(inFields{jj},'azimuth') | strcmp(inFields{jj},'elevation') | ...
+            strcmp(inFields{jj},'range') | strcmp(inFields{jj},'time')
+        continue
+    end
 
-%% Standard deviations
 
-if strcmp(inFields{jj},'VEL_F')
-    [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
-    [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
-elseif strcmp(inFields{jj},'PHIDP_F')
-    [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
-    [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
-else
-    [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1);
-    [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1);
+    % Standard deviations
+
+    if strcmp(inFields{jj},'VEL_F')
+        [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist(1));
+        [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist(1));
+    elseif strcmp(inFields{jj},'PHIDP_F')
+        [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
+        [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',180);
+    else
+        [stdVar1,~]=fast_nd_std(data1.(inFields{jj}),kernel,'mode','partial','nan_std',1);
+        [stdVar2,~]=fast_nd_std(data2.(inFields{jj}),kernel,'mode','partial','nan_std',1);
+    end
+
+    stdVar1(isnan(data1.(inFields{jj})))=nan;
+    stdVar2(isnan(data2.(inFields{jj})))=nan;
+
+    stdVar1(stdVar1==Inf)=nan;
+    stdVar2(stdVar2==Inf)=nan;
+
+    diffField.(inFields{jj})=stdVar2-stdVar1;
+
 end
-
-stdVar1(isnan(data1.(inFields{jj})))=nan;
-stdVar2(isnan(data2.(inFields{jj})))=nan;
-
-stdVar1(stdVar1==Inf)=nan;
-stdVar2(stdVar2==Inf)=nan;
 
 %% Plot
 close all
 
-figure('Position',[200 500 1000 855],'DefaultAxesFontSize',12);
+figure('Position',[200 500 350 885],'DefaultAxesFontSize',12);
 colormap('jet');
-t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
+t = tiledlayout(3,1,'TileSpacing','tight','Padding','tight');
 
 s1=nexttile(1);
 hold on
-surf(XX,YY,stdVar1,'edgecolor','none');
-view(2);
-clim([0,15]);
-colorbar;
-title('(a) Reflectivity st. dev. Level2 (dB)');
-ylabel('km');
+spacing=0.025;
+edges=-0.4:spacing:0.4;
+hc=histcounts(diffField.ZDR_F(:),edges);
+bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
+xlim([-0.4,0.4]);
+
+xlabel('St. dev. Reg. - st. dev. Level2 (dB)');
+ylabel('Percent of data points (%)');
+
+xticks(-2:0.1:2);
+xtickangle(0);
+
+ylims=s1.YLim;
+plot([0,0],ylims,'-r','LineWidth',2);
+
+s1.SortMethod='childorder';
+title('(a) Z_{DR} (dB)')
 
 grid on
 box on
 
-xlim(xlimits1)
-ylim(ylimits1)
 
 s2=nexttile(2);
 hold on
-surf(XX,YY,stdVar2,'edgecolor','none');
-view(2);
-clim([0,15]);
-colorbar;
-title('(b) Reflectivity st. dev. Regression (dB)');
-
-grid on
-box on
-
-xlim(xlimits1)
-ylim(ylimits1)
-
-s3=nexttile(3);
-diffField=stdVar2-stdVar1;
-surf(XX,YY,diffField,'edgecolor','none');
-view(2);
-clim([-10,10]);
-s3.Colormap=velCols;
-colorbar;
-title('(c) St. dev. Reg. - st. dev. Level2 (dB)');
-xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-xlim(xlimits1)
-ylim(ylimits1)
-
-daspect(s1,[1 1 1]);
-daspect(s2,[1 1 1]);
-daspect(s3,[1 1 1]);
-
-s4=nexttile(4);
-
-hold on
-spacing=0.1;
-edges=-1.5:spacing:1.5;
-hc=histcounts(diffField(:),edges);
+spacing=0.2;
+edges=-3:spacing:3;
+hc=histcounts(diffField.PHIDP_F(:),edges);
 bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
-xlim([-1.5,1.5]);
+xlim([-3,3]);
 
-xlabel('Difference (dB)');
+xlabel(['St. dev. Reg. - st. dev. Level2 (',char(176),')']);
 ylabel('Percent of data points (%)');
 
-ylims=s4.YLim;
-plot([0,0],ylims,'-r','LineWidth',2);
+xticks(-3:3);
+xtickangle(0);
 
-s4.SortMethod='childorder';
-title('(d) St. dev. Reg. - st. dev. Level2 (dB)')
+ylims=s2.YLim;
+plot([0,0],ylims+[0,1],'-r','LineWidth',2);
+
+s2.SortMethod='childorder';
+title(['(b) \phi_{DP} (',char(176),')'])
 
 grid on
 box on
 
-print([figdir,'figure24.png'],'-dpng','-r0');
+s3=nexttile(3);
+hold on
+spacing=0.001;
+edges=-0.015:spacing:0.015;
+hc=histcounts(diffField.RHOHV_NNC_F(:),edges);
+bar(edges(1:end-1)+spacing/2,hc/sum(hc)*100,1)
+xlim([-0.015,0.015]);
+
+xlabel('St. dev. Reg. - st. dev. Level2');
+ylabel('Percent of data points (%)');
+
+xticks(-1:0.005:1);
+xtickangle(0);
+
+ylims=s3.YLim;
+plot([0,0],ylims,'-r','LineWidth',2);
+
+s3.SortMethod='childorder';
+title('(c) \rho_{HV}')
+
+grid on
+box on
+
+print([figdir,'figure25.png'],'-dpng','-r0');
