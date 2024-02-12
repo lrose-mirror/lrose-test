@@ -2,7 +2,7 @@
 
 #===========================================================================
 #
-# Make plots to monitor S-Pol data
+# Process MRMS ECCO output
 #
 #===========================================================================
 
@@ -122,7 +122,7 @@ def main():
     outfile=options.outDir+'mrmsStats_'+startTime.strftime("%Y%m%d")+'_to_'+endTime.strftime("%Y%m%d")+'.pickle'
     with open(outfile, 'wb') as handle:
         pickle.dump(echoType2D, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
+    
 ########################################################################
 # Run - entry point
 
