@@ -11,9 +11,9 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=0;
 censorOnVEL=0;
-censorOnCMD=1;
+censorOnCMD=0;
 %%%%%%%%%%%%%%
-censorOnSNR=10; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
@@ -26,7 +26,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=27:size(inAll{1,1},1)
+for aa=32:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -82,6 +82,28 @@ for aa=27:size(inAll{1,1},1)
         data1in.PHIDP_F=data1in.PHIDP;
         data1in.RHOHV_NNC_F=data1in.RHOHV;
 
+    elseif strcmp(fileType{:},'nexradLevel2')
+        data1in=[];
+
+        data1in.REF=[];
+        data1in.VEL=[];
+        data1in.SW=[];
+        data1in.ZDR=[];
+        data1in.PHI=[];
+        data1in.RHO=[];
+
+        data1in=read_spol(infile1{:},data1in);
+        nyquist=ncread(infile1{:},'nyquist_velocity');
+
+        data1in=data1in(inAll{1,15}(aa));
+
+        data1in.DBZ_F=data1in.REF;
+        data1in.VEL_F=data1in.VEL;
+        data1in.WIDTH_F=data1in.SW;
+        data1in.ZDR_F=data1in.ZDR;
+        data1in.PHIDP_F=data1in.PHI;
+        data1in.RHOHV_NNC_F=data1in.RHO;
+
     elseif strcmp(fileType{:},'table')
         data1in=readDataTables(infile1{:},' ');
         data1in.azimuth=round(data1in.azimuth);
@@ -133,6 +155,28 @@ for aa=27:size(inAll{1,1},1)
         data2in.ZDR_F=data2in.ZDR;
         data2in.PHIDP_F=data2in.PHIDP;
         data2in.RHOHV_NNC_F=data2in.RHOHV;
+
+    elseif strcmp(fileType{:},'nexradLevel2')
+        data2in=[];
+
+        data2in.REF=[];
+        data2in.VEL=[];
+        data2in.SW=[];
+        data2in.ZDR=[];
+        data2in.PHI=[];
+        data2in.RHO=[];
+
+        data2in=read_spol(infile1{:},data2in);
+        nyquist=ncread(infile1{:},'nyquist_velocity');
+
+        data2in=data2in(inAll{1,15}(aa));
+
+        data2in.DBZ_F=data2in.REF;
+        data2in.VEL_F=data2in.VEL;
+        data2in.WIDTH_F=data2in.SW;
+        data2in.ZDR_F=data2in.ZDR;
+        data2in.PHIDP_F=data2in.PHI;
+        data2in.RHOHV_NNC_F=data2in.RHO;
 
     elseif strcmp(fileType{:},'table')
         data2in=readDataTables(infile2{:},' ');
