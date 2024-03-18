@@ -618,7 +618,7 @@ fields = {
     raw_name = "RHOHV_TEST_IMPROV",
     filtered_name = "",
     units = "",
-    color_map = "rhohv.colors",
+    color_map = "rhohv_test_improv.colors",
     shortcut = "8"
   }
 };

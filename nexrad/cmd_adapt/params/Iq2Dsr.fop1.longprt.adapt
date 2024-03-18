@@ -1343,7 +1343,7 @@ dbz_correction = 0;
 //
 // Type: boolean
 
-override_cal_zdr_correction = FALSE;
+override_cal_zdr_correction = TRUE;
 
 ///////////// zdr_correction_db ///////////////////////
 //
@@ -1353,7 +1353,7 @@ override_cal_zdr_correction = FALSE;
 //
 // Type: double
 
-zdr_correction_db = 0.1;
+zdr_correction_db = -1.2;
 
 ///////////// threshold_zdr_using_snr /////////////////
 //

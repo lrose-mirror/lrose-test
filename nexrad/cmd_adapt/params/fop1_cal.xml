@@ -17,10 +17,10 @@
   <kSquaredWater>0.93</kSquaredWater>
   <radarConstH>68.8858</radarConstH>
   <radarConstV>68.3858</radarConstV>
-  <noiseDbmHc>-82.2283</noiseDbmHc>
-  <noiseDbmHx>-82.2339</noiseDbmHx>
-  <noiseDbmVc>-82.3707</noiseDbmVc>
-  <noiseDbmVx>-82.2729</noiseDbmVx>
+  <noiseDbmHc>-79.2283</noiseDbmHc>
+  <noiseDbmHx>-79.2339</noiseDbmHx>
+  <noiseDbmVc>-79.3707</noiseDbmVc>
+  <noiseDbmVx>-79.2729</noiseDbmVx>
   <i0DbmHc>-114.169</i0DbmHc>
   <i0DbmHx>-114.211</i0DbmHx>
   <i0DbmVc>-114.361</i0DbmVc>
@@ -52,7 +52,7 @@
   <couplerForwardLossDbH>36.9</couplerForwardLossDbH>
   <couplerForwardLossDbV>36.7</couplerForwardLossDbV>
   <dbzCorrection>0</dbzCorrection>
-  <zdrCorrectionDb>0.5</zdrCorrectionDb>
+  <zdrCorrectionDb>-1.2</zdrCorrectionDb>
   <ldrCorrectionDbH>0</ldrCorrectionDbH>
   <ldrCorrectionDbV>0</ldrCorrectionDbV>
   <systemPhidpDeg>0</systemPhidpDeg>
