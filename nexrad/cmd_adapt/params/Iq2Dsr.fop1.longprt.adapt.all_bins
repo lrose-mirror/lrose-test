@@ -872,7 +872,7 @@ moments_params = {
     antenna_rate_upper_limit = 90,
     beam_method = BEAM_SPECIFY_ANGLE,
     beam_n_samples = 16,
-    beam_angle_deg = 1,
+    beam_angle_deg = 0.5,
     index_the_beams = TRUE,
     indexed_resolution = 0.5,
     min_antenna_rate_for_indexing = 1,
@@ -3840,7 +3840,7 @@ spec_cmd_threshold_for_moments = 0.7;
 //
 // Type: string
 
-output_fmq_url = "/tmp/fmq/fop1/shmem_44200";
+output_fmq_url = "/tmp/fmq/fop1/shmem_44300";
 
 ///////////// output_moments_in_radx_format ///////////
 //

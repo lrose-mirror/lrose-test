@@ -2091,7 +2091,7 @@ include_site_name_in_file_name = FALSE;
 //
 // Type: boolean
 
-include_subsecs_in_file_name = TRUE;
+include_subsecs_in_file_name = FALSE;
 
 ///////////// include_scan_type_in_file_name //////////
 //
