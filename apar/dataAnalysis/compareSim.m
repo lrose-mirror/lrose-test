@@ -7,13 +7,13 @@ addpath(genpath('~/git/lrose-test/apar/dataAnalysis/utils/'));
 
 showPlot='on';
 
-startTime=datetime(2024,5,21,15,41,0);
-endTime=datetime(2024,5,21,15,50,0);
+startTime=datetime(2024,5,27,21,31,0);
+endTime=datetime(2024,5,27,21,33,30);
 
 whichPulse='long'; % long or short pulse
 
-indirRad=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/',whichPulse,'_pulse/'];
-indirSim='/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/aesa_simulator/';
+indirRad=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved/',whichPulse,'_pulse/'];
+indirSim='/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved/aesa_simulator/';
 
 figdir='/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/figures/';
 
@@ -40,7 +40,8 @@ for bb=1:size(fileListSim,1)
     end
 end
 
-for aa=2:size(fileListRad,1)
+%% Loop through radar files
+for aa=1:size(fileListRad,1)
 
     %% Read radar
     infileR=fileListRad{aa};
@@ -54,6 +55,8 @@ for aa=2:size(fileListRad,1)
     dataR.VEL=[];
     dataR.WIDTH=[];
     dataR.ZDR=[];
+
+    dataFields=fields(dataR);
 
     dataS=dataR;
 
@@ -82,9 +85,60 @@ for aa=2:size(fileListRad,1)
 
     dataS=read_apar(infileS,dataS);
 
+    %% Loop through scans
+
+    dataVars=fields(dataR);
+
+    for cc=1:size(dataR,2)
+        % Round azimuth and elevation
+        if length(dataR(cc).azimuth)==1
+            continue
+        end
+        if strcmp(dataR(1).sweepMode,'rhi')
+            % Check that azimuths match
+            if abs(median(dataR(cc).azimuth)-median(dataS(cc).azimuth))>0.1
+                disp('Azimuths do not match')
+                continue
+            end
+            angR=round(dataR(cc).elevation,1);
+            angS=round(dataS(cc).elevation,1);
+        elseif strcmp(dataR(1).sweepMode,'sector')
+            % Check that elevations match
+            if abs(median(dataR(cc).elevation)-median(dataS(cc).elevation))>0.1
+                disp('Elevations do not match')
+                continue
+            end
+            angR=round(dataR(cc).azimuth,1);
+            angS=round(dataS(cc).azimuth,1);
+        end
+
+        % Find matching azimuth or elevation inds
+        [bothAngs,ia,ib]=intersect(angR,angS);
+
+        for dd=1:length(dataVars)
+            if ~strcmp(dataVars{dd},'range') & ~strcmp(dataVars{dd},'sweepMode')
+                dataRinds.(dataVars{dd})=dataR(cc).(dataVars{dd})(ia,:);
+                dataSinds.(dataVars{dd})=dataS(cc).(dataVars{dd})(ib,:);
+            end
+        end
+
+        dataRinds.range=dataR.range;
+        dataSinds.range=dataS.range;
+
+        % Match range and nans
+        [bothRange,ia,ib]=intersect(dataRinds.range,dataSinds.range);
+        for dd=1:length(dataFields)
+
+            !!!!!!!!!!!!!!!! Add range matching
+            dataRinds.(dataFields{dd})(isnan(dataSinds.(dataFields{dd})))=nan;
+            dataSinds.(dataFields{dd})(isnan(dataRinds.(dataFields{dd})))=nan;
+        end
+    end
+
+
     %% Plot preparation
 
-    % ang_p = deg2rad(90-dataR.azimuth);
+    %ang_p = deg2rad(90-dataR.azimuth);
     % 
     % angMat=repmat(ang_p,size(dataR.range,1),1);
     % 
