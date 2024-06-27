@@ -58,18 +58,16 @@ text(-20,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
-% Rho WN
+% Width Reg.
 
 s2=nexttile(2);
-h2=surf(XX,YY,dataWN.RHOHV_NNC_F,'edgecolor','none');
+hold on
+h3=surf(XX,YY,dataR.PHIDP_F,'edgecolor','none');
 view(2);
-title('(c) \rho_{HV} WN')
-
-grid on
-box on
-
-colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
-applyColorScale(h2,dataWN.RHOHV_NNC_F,rhohv_default,colLims);
+clim([-60 92])
+title(['(b) \phi_{DP} Regression (',char(176),')'])
+s2.Colormap=phidp_default;
+colorbar
 
 grid on
 box on
@@ -82,18 +80,20 @@ rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 
 s2.SortMethod='childorder';
 
-% Width Reg.
+% Rho WN
 
 s3=nexttile(3);
-hold on
-h3=surf(XX,YY,dataR.PHIDP_F,'edgecolor','none');
+h2=surf(XX,YY,dataWN.RHOHV_NNC_F,'edgecolor','none');
 view(2);
-clim([-60 92])
-title(['(b) \phi_{DP} Regression (',char(176),')'])
+title('(c) \rho_{HV} WN')
 xlabel('km');
 ylabel('km');
-s3.Colormap=phidp_default;
-colorbar
+
+grid on
+box on
+
+colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
+applyColorScale(h2,dataWN.RHOHV_NNC_F,rhohv_default,colLims);
 
 grid on
 box on

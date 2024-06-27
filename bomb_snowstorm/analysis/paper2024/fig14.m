@@ -59,18 +59,17 @@ text(-20,2,['S-Pol'],'Color','k','FontSize',12,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
-% ZDR WN
+% Width Reg.
 
 s2=nexttile(2);
-h2=surf(XX,YY,dataWN.ZDR_F,'edgecolor','none');
+hold on
+h3=surf(XX,YY,dataR.WIDTH_F,'edgecolor','none');
 view(2);
-title('(c) Z_{DR} WN (dB)')
+clim([-3 47])
+title('(b) Spectrum width Regression (m s^{-1})')
 
-grid on
-box on
-
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h2,dataWN.ZDR_F,zdr_default,colLims);
+colLims=[-inf,0,0.5,1,1.5,2,2.5,3,4,5,6,7,8,10,12.5,15,20,25,50,inf];
+applyColorScale(h3,dataR.WIDTH_F,width_default,colLims);
 
 grid on
 box on
@@ -83,19 +82,21 @@ rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 
 s2.SortMethod='childorder';
 
-% Width Reg.
+
+% ZDR WN
 
 s3=nexttile(3);
-hold on
-h3=surf(XX,YY,dataR.WIDTH_F,'edgecolor','none');
+h2=surf(XX,YY,dataWN.ZDR_F,'edgecolor','none');
 view(2);
-clim([-3 47])
-title('(b) Spectrum width Regression (m s^{-1})')
+title('(c) Z_{DR} WN (dB)')
 xlabel('km');
 ylabel('km');
 
-colLims=[-inf,0,0.5,1,1.5,2,2.5,3,4,5,6,7,8,10,12.5,15,20,25,50,inf];
-applyColorScale(h3,dataR.WIDTH_F,width_default,colLims);
+grid on
+box on
+
+colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
+applyColorScale(h2,dataWN.ZDR_F,zdr_default,colLims);
 
 grid on
 box on

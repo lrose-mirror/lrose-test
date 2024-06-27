@@ -67,6 +67,9 @@ cb1.Ticks=0:9:120;
 grid on
 box on
 
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
+text(-10,7,['KFTG'],'Color','w','FontSize',12,'FontWeight','bold');
+
 xlim(xlimits1)
 ylim(ylimits1)
 daspect(s1,[1 1 1]);
@@ -77,21 +80,22 @@ daspect(s1,[1 1 1]);
 
 s1.SortMethod='childorder';
 
-% Rho WN
+% Width Reg.
 
 s2=nexttile(2);
-h2=surf(XX,YY,dataWN.RHOHV,'edgecolor','none');
+hold on
+h3=surf(XX2,YY2,dataR.PHIDP_F,'edgecolor','none');
 view(2);
-title('(c) \rho_{HV} Level2')
+clim([0,114]);
+title(['(b) \phi_{DP} Regression (',char(176),')'])
+s2.Colormap=phidp_default;
+cb3=colorbar;
+cb3.Ticks=0:9:120;
 
 grid on
 box on
 
-colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
-applyColorScale(h2,dataWN.RHOHV,rhohv_default,colLims);
-
-grid on
-box on
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
 
 xlim(xlimits1)
 ylim(ylimits1)
@@ -101,19 +105,23 @@ daspect(s2,[1 1 1]);
 
 s2.SortMethod='childorder';
 
-% Width Reg.
+% Rho WN
 
 s3=nexttile(3);
 hold on
-h3=surf(XX2,YY2,dataR.PHIDP_F,'edgecolor','none');
+h2=surf(XX,YY,dataWN.RHOHV,'edgecolor','none');
 view(2);
-clim([0,114]);
-title(['(b) \phi_{DP} Regression (',char(176),')'])
+title('(c) \rho_{HV} Level2')
 xlabel('km');
 ylabel('km');
-s3.Colormap=phidp_default;
-cb3=colorbar;
-cb3.Ticks=0:9:120;
+
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
+
+grid on
+box on
+
+colLims=[-inf,0,0.7,0.8,0.85,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.975,0.98,0.985,0.99,0.995,1.1,inf];
+applyColorScale(h2,dataWN.RHOHV,rhohv_default,colLims);
 
 grid on
 box on
@@ -129,6 +137,7 @@ s3.SortMethod='childorder';
 % ZDR Reg.
 
 s4=nexttile(4);
+hold on
 h4=surf(XX2,YY2,dataR.RHOHV_NNC_F,'edgecolor','none');
 view(2);
 title('(d) \rho_{HV} Regression')
@@ -142,6 +151,8 @@ applyColorScale(h4,dataR.RHOHV_NNC_F,rhohv_default,colLims);
 
 grid on
 box on
+
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
 
 xlim(xlimits1)
 ylim(ylimits1)

@@ -3,7 +3,7 @@
 clear all;
 close all;
 
-addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/utils/'));
+addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/'));
 
 figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/paper2024/';
 
@@ -14,7 +14,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnCMD=1;
 %%%%%%%%%%%%%%
-censorOnSNR=4; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 
@@ -155,7 +155,7 @@ if ~isempty(censorOnSNR)
         data2in.SNR=data2in.SNR(:,goodInds2);
         snr(ibAll,:)=data2in.SNR(ib2,:);
     end
-    if isempty(snr)
+    if max(snr(:),[],1,'includemissing')==0
         censorOnSNR=0;
         disp('No SNR found.')
     end

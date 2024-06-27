@@ -9,13 +9,13 @@ minMaxRangeOrig=[]; % Range interval [min,max] or leave empty
 minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
-censorOnDBZ=1;
+censorOnDBZ=0;
 censorOnVEL=0;
-censorOnCMD=1;
+censorOnCMD=0;
 censorOnTRIP=0; % Only use weak trip (0).
 %%%%%%%%%%%%%%
-tripToSnr=1; % The last (10th) variable that is read in John's files is TRIP. Sometimes it is actually SNR.
-censorOnSNR=3; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
+tripToSnr=0; % The last (10th) variable that is read in John's files is TRIP. Sometimes it is actually SNR.
+censorOnSNR=[]; % Set to empty if not used !!!!!!! Only use areas with SNR above XX dB
 %%%%%%%%%%%%%%
 halfNyquist=0; % In some files the nyquist needs to be divided by 2
 removeZeros=0;
@@ -28,7 +28,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=41:size(inAll{1,1},1)
+for aa=43:size(inAll{1,1},1)
 
     nyquist=[];
 
