@@ -58,11 +58,11 @@ s1=nexttile(1);
 hold on
 surf(XX,YY,dataWN.DBZ,'edgecolor','none');
 view(2);
-clim([-10 65])
+clim([-3 63])
+s1.Colormap=dbz_default3;
+cb1=colorbar('XTick',-3:4:67);
 title('(a) Reflectivity Level2 (dBZ)')
 ylabel('km');
-s1.Colormap=dbz_default2;
-cb1=colorbar('XTick',-10:3:65);
 
 grid on
 box on
@@ -76,18 +76,16 @@ text(-27,28,['KFTG'],'Color','k','FontSize',12,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
-% Velocity
+% CMD
 
 s2=nexttile(2);
-h2=surf(XX,YY,dataWN.VEL,'edgecolor','none');
+h=surf(XX2,YY2,dataR.CMD_FLAG,'edgecolor','none');
 view(2);
-title('(c) Velocity Level2 WN (m s^{-1})')
+title('(b) CMD flag')
 
-grid on
-box on
-
-colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
-applyColorScale(h2,dataWN.VEL,vel_default2,colLims);
+s2.Colormap=[0,0,1;1,0,0];
+clim([0,1]);
+colorbar('Ticks',[0.25,0.75],'TickLabels',{'0','1'});
 
 grid on
 box on
@@ -96,18 +94,21 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s2,[1 1 1]);
 
-% CMD
+
+% Velocity
 
 s3=nexttile(3);
-h=surf(XX2,YY2,dataR.CMD_FLAG,'edgecolor','none');
+h2=surf(XX,YY,dataWN.VEL,'edgecolor','none');
 view(2);
-title('(b) CMD flag')
+title('(c) Velocity Level2 WN (m s^{-1})')
 xlabel('km');
 ylabel('km');
 
-s3.Colormap=[0,0,1;1,0,0];
-clim([0,1]);
-colorbar('Ticks',[0.25,0.75],'TickLabels',{'0','1'});
+grid on
+box on
+
+colLims=[-inf,-30,-26,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,26,30,inf];
+applyColorScale(h2,dataWN.VEL,vel_default2,colLims);
 
 grid on
 box on

@@ -36,11 +36,11 @@ s1=nexttile(1);
 hold on
 surf(XX,YY,dataWN.DBZ_F,'edgecolor','none');
 view(2);
-clim([-3 47])
+clim([-3 63])
+s1.Colormap=dbz_default3;
+cb1=colorbar('XTick',-3:4:67);
 xlabel('km');
 ylabel('km');
-s1.Colormap=dbz_default2;
-cb1=colorbar('XTick',-5:2:45);
 
 xlim(xlimits1);
 ylim(ylimits1);
@@ -48,6 +48,12 @@ ylim(ylimits1);
 daspect(s1,[1 1 1]);
 
 title('Reflectivity (dBZ)')
+
+xlabel('km');
+ylabel('km');
+
+scatter(0,0,90,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
+text(-15,0,['S-Pol'],'Color','w','FontSize',12,'FontWeight','bold');
 
 %rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
 

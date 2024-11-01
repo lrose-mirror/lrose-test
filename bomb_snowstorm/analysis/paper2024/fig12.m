@@ -42,11 +42,11 @@ s1=nexttile(1);
 hold on
 surf(XX,YY,dataUF.DBZ_F,'edgecolor','none');
 view(2);
-clim([-10 65])
+clim([-3 63])
+s1.Colormap=dbz_default3;
+cb1=colorbar('XTick',-3:4:67);
 title('(a) Reflectivity (dBZ)')
 ylabel('km');
-s1.Colormap=dbz_default2;
-cb1=colorbar('XTick',-10:3:65);
 
 grid on
 box on
@@ -62,20 +62,19 @@ text(5,0,['S-Pol'],'Color','w','FontSize',16,'FontWeight','bold');
 
 s1.SortMethod='childorder';
 
-% Notch width
+% CMD
 
 s2=nexttile(2);
-dataWN.REGR_ORDER(dataR.CMD_FLAG==0)=nan;
-dataWN.REGR_ORDER(dataWN.REGR_ORDER==0)=nan;
-h=surf(XX,YY,dataWN.REGR_ORDER,'edgecolor','none');
+h=surf(XX,YY,dataR.CMD_FLAG,'edgecolor','none');
 view(2);
-title('(c) Notch width')
+title('(b) CMD flag')
 
-orderMax=max(dataWN.REGR_ORDER(:),[],'omitmissing');
-orderMin=min(dataWN.REGR_ORDER(:),[],'omitmissing');
-s2.Colormap=turbo(orderMax-orderMin+1);
-clim([orderMin-0.5,orderMax+0.5]);
-colorbar('Ticks',5:17,'TickLabels',{'5','6','7','8','9','10','11','12','13','14','15','16','17'});
+s2.Colormap=[0,0,1;1,0,0];
+clim([0,1]);
+colorbar('Ticks',[0.25,0.75],'TickLabels',{'0','1'});
+
+rectangle('Position',[5 -17 40 55],'EdgeColor','w','LineWidth',1.5);
+s2.SortMethod='childorder';
 
 grid on
 box on
@@ -84,18 +83,23 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s2,[1 1 1]);
 
-% CMD
+
+% Notch width
 
 s3=nexttile(3);
-h=surf(XX,YY,dataR.CMD_FLAG,'edgecolor','none');
+dataWN.REGR_ORDER(dataR.CMD_FLAG==0)=nan;
+dataWN.REGR_ORDER(dataWN.REGR_ORDER==0)=nan;
+h=surf(XX,YY,dataWN.REGR_ORDER,'edgecolor','none');
 view(2);
-title('(b) CMD flag')
+title('(c) Notch width')
 xlabel('km');
 ylabel('km');
 
-s3.Colormap=[0,0,1;1,0,0];
-clim([0,1]);
-colorbar('Ticks',[0.25,0.75],'TickLabels',{'0','1'});
+orderMax=max(dataWN.REGR_ORDER(:),[],'omitmissing');
+orderMin=min(dataWN.REGR_ORDER(:),[],'omitmissing');
+s3.Colormap=turbo(orderMax-orderMin+1);
+clim([orderMin-0.5,orderMax+0.5]);
+colorbar('Ticks',5:17,'TickLabels',{'5','6','7','8','9','10','11','12','13','14','15','16','17'});
 
 grid on
 box on

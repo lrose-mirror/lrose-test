@@ -57,11 +57,14 @@ s1=nexttile(1);
 hold on
 surf(XX,YY,dataWN.DBZ,'edgecolor','none');
 view(2);
-clim([-3 47])
+clim([-3 63])
+s1.Colormap=dbz_default3;
+cb1=colorbar('XTick',-3:4:67);
 title('(a) Reflectivity Level2 (dBZ)')
 ylabel('km');
-s1.Colormap=dbz_default2;
-cb1=colorbar('XTick',-5:2:45);
+
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
+text(-10,7,['KFTG'],'Color','w','FontSize',12,'FontWeight','bold');
 
 grid on
 box on
@@ -76,18 +79,18 @@ daspect(s1,[1 1 1]);
 
 s1.SortMethod='childorder';
 
-% ZDR WN
+% Refl. Reg.
 
 s2=nexttile(2);
-h2=surf(XX,YY,dataWN.ZDR,'edgecolor','none');
+hold on
+surf(XX2,YY2,dataR.DBZ_F,'edgecolor','none');
 view(2);
-title('(c) Z_{DR} Level2 (dB)')
+clim([-3 63])
+s2.Colormap=dbz_default3;
+cb1=colorbar('XTick',-3:4:67);
+title('(b) Reflectivity Regression (dBZ)')
 
-grid on
-box on
-
-colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
-applyColorScale(h2,dataWN.ZDR,zdr_default,colLims);
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
 
 grid on
 box on
@@ -100,21 +103,24 @@ daspect(s2,[1 1 1]);
 
 s2.SortMethod='childorder';
 
-% Refl. Reg.
+
+% ZDR WN
 
 s3=nexttile(3);
 hold on
-surf(XX2,YY2,dataR.DBZ_F,'edgecolor','none');
+h3=surf(XX,YY,dataWN.ZDR,'edgecolor','none');
 view(2);
-clim([-3 47])
-title('(b) Reflectivity Regression (dBZ)')
+title('(c) Z_{DR} Level2 (dB)')
 xlabel('km');
 ylabel('km');
-s3.Colormap=dbz_default2;
-cb1=colorbar('XTick',-3:2:47);
 
 grid on
 box on
+
+colLims=[-inf,-20,-2,-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.5,2,2.5,3,4,5,6,8,10,15,20,50,99,inf];
+applyColorScale(h3,dataWN.ZDR,zdr_default,colLims);
+
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
 
 xlim(xlimits1)
 ylim(ylimits1)
@@ -127,6 +133,7 @@ s3.SortMethod='childorder';
 % ZDR Reg.
 
 s4=nexttile(4);
+hold on
 h4=surf(XX2,YY2,dataR.ZDR_F,'edgecolor','none');
 view(2);
 title('(d) Z_{DR} Regression (dB)')
@@ -140,6 +147,8 @@ applyColorScale(h4,dataR.ZDR_F,zdr_default,colLims);
 
 grid on
 box on
+
+scatter(0,0,60,'filled','MarkerFaceColor','w','MarkerEdgeColor','k');
 
 xlim(xlimits1)
 ylim(ylimits1)
