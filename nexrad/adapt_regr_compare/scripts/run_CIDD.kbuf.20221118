@@ -9,6 +9,6 @@ setenv RADAR_NAME KBUF
 setenv CASE_DATE 20221118
 setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
 
-CIDD -p CIDD.adapt_vs_regr -t 20221118083000
+CIDD -font fixed -p CIDD.adapt_vs_regr -t 20221118083000
 
 

@@ -1,0 +1,35 @@
+#! /bin/csh -f
+
+# Run Iq2Dsr on all cases
+
+cd $HOME/git/lrose-test/nexrad/adapt_regr_compare/scripts
+
+run_Iq2Dsr.kbuf.20221118.adapt
+run_Iq2Dsr.kbuf.20221118.regr
+sleep 20
+run_Iq2Dsr.kiwa.20110531.adapt
+run_Iq2Dsr.kiwa.20110531.regr
+sleep 20
+run_Iq2Dsr.kmhx.20110626.adapt
+run_Iq2Dsr.kmhx.20110626.regr
+sleep 20
+run_Iq2Dsr.koun.20100417.adapt
+run_Iq2Dsr.koun.20100417.regr
+sleep 20
+run_Iq2Dsr.koun.20110408.adapt
+run_Iq2Dsr.koun.20110408.regr
+sleep 20
+run_Iq2Dsr.koun.20110415.adapt
+run_Iq2Dsr.koun.20110415.regr
+sleep 20
+run_Iq2Dsr.koun.20110524.adapt
+run_Iq2Dsr.koun.20110524.regr
+sleep 20
+run_Iq2Dsr.kriw.20170124.adapt
+run_Iq2Dsr.kriw.20170124.regr
+sleep 20
+run_Iq2Dsr.ktbw.20220928.adapt
+run_Iq2Dsr.ktbw.20220928.regr
+sleep 20
+run_Iq2Dsr.nop4.20130520.adapt
+run_Iq2Dsr.nop4.20130520.regr
