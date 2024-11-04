@@ -17,10 +17,10 @@
   <kSquaredWater>0.93</kSquaredWater>
   <radarConstH>68.8858</radarConstH>
   <radarConstV>68.3858</radarConstV>
-  <noiseDbmHc>-81.886</noiseDbmHc>
-  <noiseDbmHx>-81.886</noiseDbmHx>
-  <noiseDbmVc>-82.470>/noiseDbmVc>
-  <noiseDbmVx>-82.470</noiseDbmVx>
+  <noiseDbmHc>-81.000</noiseDbmHc>
+  <noiseDbmHx>-81.000</noiseDbmHx>
+  <noiseDbmVc>-81.300>/noiseDbmVc>
+  <noiseDbmVx>-81.300</noiseDbmVx>
   <i0DbmHc>-114.169</i0DbmHc>
   <i0DbmHx>-114.211</i0DbmHx>
   <i0DbmVc>-114.361</i0DbmVc>
