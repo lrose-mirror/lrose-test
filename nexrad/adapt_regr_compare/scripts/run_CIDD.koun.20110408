@@ -9,5 +9,5 @@ setenv RADAR_NAME KOUN
 setenv CASE_DATE 20110408
 setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
 
-CIDD -p CIDD.koun.adapt_vs_regr -t 20110408130500
+CIDD -p CIDD.adapt_vs_regr -t 20110408130500
 
