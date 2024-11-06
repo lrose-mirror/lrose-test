@@ -28,7 +28,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=12:size(inAll{1,1},1)
+for aa=11:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -102,7 +102,7 @@ for aa=12:size(inAll{1,1},1)
 
     elseif strcmp(fileType{:},'table')
         data1in=readDataTables(infile1{:},' ');
-        data1in.azimuth=round(data1in.azimuth);
+        %data1in.azimuth=round(data1in.azimuth);
         data1in.RHOHV_F=data1in.RHOHV_NNC_F;
         if tripToSnr
             data1in.SNR=data1in.TRIP;
@@ -259,10 +259,12 @@ for aa=12:size(inAll{1,1},1)
     for kk=1:length(allAz)
         [minDiff1,minInd1]=min(abs(data1in.azimuth-allAz(kk)));
         [minDiff2,minInd2]=min(abs(data2in.azimuth-allAz(kk)));
-        if minDiff1<azRes/2 & minDiff2<azRes/2
+        if minDiff1<azRes/2-0.01 & minDiff2<azRes/2-0.01
             ib1=cat(1,ib1,minInd1);
             ib2=cat(1,ib2,minInd2);
             ibAll=cat(1,ibAll,kk);
+        else
+            error('Azimuths do not match.')
         end
     end
 
@@ -387,7 +389,7 @@ for aa=12:size(inAll{1,1},1)
      for jj=1:length(inFields)
 
         if strcmp(inFields{jj},'azimuth') | strcmp(inFields{jj},'elevation') | ...
-                strcmp(inFields{jj},'range') | strcmp(inFields{jj},'time')
+                strcmp(inFields{jj},'range') | strcmp(inFields{jj},'time') | strcmp(inFields{jj},'CMD_FLAG')
             continue
         end
 

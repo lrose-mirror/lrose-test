@@ -20,3 +20,4 @@
 /scr/cirrus1/rsfdata/projects/nexrad/cfradial/adapt_vs_regr/nop4.regr/20130520/cfrad.20130520_201914_to_20130520_201931_NOP4_SUR_0.53.nc regr.20130520_201914_to_20130520_201931_NOP4 -300 300 -300 300 -100 100 -100 100 nc
 /scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KBUF-lprt20221118_082103.txt regrFortran.KBUF-lprt20221118_082103 -300 300 -300 300 -100 100 -100 100 table
 /scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/NOP4-lprt-20130520_201351-jh.txt regrFortran.NOP4-lprt-20130520_201351-jh -300 300 -300 300 -100 100 -100 100 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/NOP4-lprt-20130520_201912_1.88_178.67-jh.txt regrFortran.NOP4-lprt-20130520_201912_1.88_178.67-jh -300 300 -300 300 -100 100 -100 100 table

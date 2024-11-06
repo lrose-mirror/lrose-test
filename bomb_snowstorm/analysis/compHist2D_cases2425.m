@@ -28,7 +28,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=12:size(inAll{1,1},1)
+for aa=1:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -102,7 +102,7 @@ for aa=12:size(inAll{1,1},1)
 
     elseif strcmp(fileType{:},'table')
         data1in=readDataTables(infile1{:},' ');
-        data1in.azimuth=round(data1in.azimuth);
+        % data1in.azimuth=round(data1in.azimuth);
         data1in.RHOHV_F=data1in.RHOHV_NNC_F;
         if tripToSnr
             data1in.SNR=data1in.TRIP;
@@ -259,7 +259,7 @@ for aa=12:size(inAll{1,1},1)
     for kk=1:length(allAz)
         [minDiff1,minInd1]=min(abs(data1in.azimuth-allAz(kk)));
         [minDiff2,minInd2]=min(abs(data2in.azimuth-allAz(kk)));
-        if minDiff1<azRes/2 & minDiff2<azRes/2
+        if minDiff1<azRes/2-0.01 & minDiff2<azRes/2-0.01
             ib1=cat(1,ib1,minInd1);
             ib2=cat(1,ib2,minInd2);
             ibAll=cat(1,ibAll,kk);
@@ -385,14 +385,14 @@ for aa=12:size(inAll{1,1},1)
     outParts=strsplit(outDots{1},'VS');
 
     edges.DBZ_F=[-60:1:60];
-    edges.VEL_F=[-50:1:50];
-    edges.WIDTH_F=[0:0.2:15];
+    edges.VEL_F=[-50:0.25:50];
+    edges.WIDTH_F=[0:0.1:15];
     edges.PHIDP_F=[0:5:360];
     edges.RHOHV_F=[0.9:0.001:1.1];
     edges.ZDR_F=[-10:0.1:10];
 
     close all
-    f1 = figure('Position',[200 500 1200 750],'DefaultAxesFontSize',12);
+    f1 = figure('Position',[200 500 1200 750],'DefaultAxesFontSize',12,'visible',showPlot);
     t = tiledlayout(2,3,'TileSpacing','tight','Padding','tight');
     colormap('jet');
 
