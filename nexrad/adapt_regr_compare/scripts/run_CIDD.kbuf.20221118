@@ -8,6 +8,8 @@ setenv radar_name kbuf
 setenv RADAR_NAME KBUF
 setenv CASE_DATE 20221118
 setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
+setenv CIDD_ORIGIN_LON -78.7368
+setenv CIDD_ORIGIN_LAT 42.9488
 
 CIDD -font fixed -p CIDD.adapt_vs_regr -t 20221118083000
 

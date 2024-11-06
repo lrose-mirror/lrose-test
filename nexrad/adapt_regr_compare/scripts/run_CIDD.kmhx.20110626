@@ -8,6 +8,8 @@ setenv radar_name kmhx
 setenv RADAR_NAME KMHX
 setenv CASE_DATE 20110626
 setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
+setenv CIDD_ORIGIN_LON -76.8761
+setenv CIDD_ORIGIN_LAT 34.7761
 
 CIDD -p CIDD.adapt_vs_regr -t 20110626100000
 

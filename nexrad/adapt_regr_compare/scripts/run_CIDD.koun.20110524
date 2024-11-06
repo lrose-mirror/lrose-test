@@ -8,6 +8,8 @@ setenv radar_name koun
 setenv RADAR_NAME KOUN
 setenv CASE_DATE 20110524
 setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
+setenv CIDD_ORIGIN_LON -97.4622
+setenv CIDD_ORIGIN_LAT 35.2361
 
 CIDD -p CIDD.adapt_vs_regr -t 20110524211400
 

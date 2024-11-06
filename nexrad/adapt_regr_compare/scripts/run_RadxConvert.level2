@@ -1,0 +1,13 @@
+#! /bin/csh -f
+
+# Run RadxConvert on all level2 files
+
+cd /scr/cirrus1/rsfdata/projects/nexrad/level2
+
+RadxConvert -params ~/git/lrose-test/nexrad/adapt_regr_compare/params/RadxConvert.level2 -debug -outdir ../cfradial/adapt_vs_regr/koun.level2 -f KOUN/*/KOUN*
+RadxConvert -params ~/git/lrose-test/nexrad/adapt_regr_compare/params/RadxConvert.level2 -debug -outdir ../cfradial/adapt_vs_regr/kriw.level2 -f KRIW/*/KRIW*
+RadxConvert -params ~/git/lrose-test/nexrad/adapt_regr_compare/params/RadxConvert.level2 -debug -outdir ../cfradial/adapt_vs_regr/kbuf.level2 -f KBUF/*/KBUF*
+RadxConvert -params ~/git/lrose-test/nexrad/adapt_regr_compare/params/RadxConvert.level2 -debug -outdir ../cfradial/adapt_vs_regr/nop4.level2 -f NOP4/*/NOP4*
+RadxConvert -params ~/git/lrose-test/nexrad/adapt_regr_compare/params/RadxConvert.level2 -debug -outdir ../cfradial/adapt_vs_regr/kiwa.level2 -f KIWA/*/KIWA*
+RadxConvert -params ~/git/lrose-test/nexrad/adapt_regr_compare/params/RadxConvert.level2 -debug -outdir ../cfradial/adapt_vs_regr/kmhx.level2 -f KMHX/*/KMHX*
+RadxConvert -params ~/git/lrose-test/nexrad/adapt_regr_compare/params/RadxConvert.level2 -debug -outdir ../cfradial/adapt_vs_regr/ktbw.level2 -f KTBW/*/KTBW*

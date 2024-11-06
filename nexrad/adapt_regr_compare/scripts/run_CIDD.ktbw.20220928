@@ -8,6 +8,8 @@ setenv radar_name ktbw
 setenv RADAR_NAME KTBW
 setenv CASE_DATE 20220928
 setenv DATA_DIR /scr/cirrus1/rsfdata/projects/nexrad
+setenv CIDD_ORIGIN_LON -82.4017
+setenv CIDD_ORIGIN_LAT 27.7056
 
 CIDD -p CIDD.adapt_vs_regr -t 20220928155500
 

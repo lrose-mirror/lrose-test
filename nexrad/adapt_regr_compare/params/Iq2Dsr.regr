@@ -534,7 +534,7 @@ radar_name = "$(RADAR_NAME)";
 //
 // Type: boolean
 
-override_radar_location = TRUE;
+override_radar_location = FALSE;
 
 ///////////// radar_latitude_deg //////////////////////
 //
@@ -927,7 +927,7 @@ max_n_samples = 128;
 //
 // Type: boolean
 
-specify_pulse_width = FALSE;
+specify_fixed_pulse_width = FALSE;
 
 ///////////// fixed_pulse_width_us ////////////////////
 //
@@ -1257,38 +1257,11 @@ set_cal_by_pulse_width = FALSE;
 pulse_width_cals = {
   {
     pulse_width_us = 1,
-    cal_dir = "$(PROJ_DIR)/calibration/results/cal.sband.1.0us.alt",
-    check_xmit_rcv_mode = TRUE,
-    xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
-    zdr_correction_db = -0.4,
-    system_phidp_deg = 55
-  }
-  ,
-  {
-    pulse_width_us = 1,
-    cal_dir = "$(PROJ_DIR)/calibration/results/cal.sband.1.0us.sim",
-    check_xmit_rcv_mode = TRUE,
-    xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
-    zdr_correction_db = 0.09,
-    system_phidp_deg = 40
-  }
-  ,
-  {
-    pulse_width_us = 1.5,
-    cal_dir = "$(PROJ_DIR)/calibration/results/cal.sband.1.5us.alt",
+    cal_dir = "not-set",
     check_xmit_rcv_mode = TRUE,
     xmit_rcv_mode = DP_ALT_HV_CO_CROSS,
     zdr_correction_db = 0,
     system_phidp_deg = 55
-  }
-  ,
-  {
-    pulse_width_us = 1.5,
-    cal_dir = "$(PROJ_DIR)/calibration/results/cal.sband.1.5us.sim",
-    check_xmit_rcv_mode = TRUE,
-    xmit_rcv_mode = DP_SIM_HV_FIXED_HV,
-    zdr_correction_db = 0.09,
-    system_phidp_deg = 40
   }
 };
 
@@ -1344,7 +1317,7 @@ dbz_correction = 0;
 //
 // Type: boolean
 
-override_cal_zdr_correction = TRUE;
+override_cal_zdr_correction = FALSE;
 
 ///////////// zdr_correction_db ///////////////////////
 //
@@ -1354,7 +1327,7 @@ override_cal_zdr_correction = TRUE;
 //
 // Type: double
 
-zdr_correction_db = -1.2;
+zdr_correction_db = 0;
 
 ///////////// threshold_zdr_using_snr /////////////////
 //
