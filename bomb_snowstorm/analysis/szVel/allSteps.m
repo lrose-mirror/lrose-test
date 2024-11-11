@@ -192,7 +192,7 @@ s3=nexttile(3);
 regCensoredVRAD=regInVrad.VEL;
 h1=surf(XX,YY,regCensoredVRAD,'edgecolor','none');
 view(2);
-title('VEL regression censored (m s^{-1})');
+title('VEL regression VRAD input (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -516,3 +516,66 @@ daspect(s7,[1 1 1]);
 daspect(s8,[1 1 1]);
 
 print([figdir,radar,'_stDev_zoom.png'],'-dpng','-r0');
+
+%% Histograms
+
+phPix=isnan(lev2.VEL) & ~isnan(vradLeg.VEL);
+
+vradPH=vradLeg.VEL(phPix==1);
+regPH=reg.VEL(phPix==1);
+regVradPH=regVradFilled(phPix==1);
+
+% Plot
+
+f1 = figure('Position',[200 500 700 1100],'DefaultAxesFontSize',12,'visible',showPlot);
+t = tiledlayout(3,1,'TileSpacing','tight','Padding','compact');
+s1=nexttile(1);
+
+hold on
+edges=-20.25:0.5:20.25;
+hc=histcounts(regPH-vradPH,edges);
+bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc/sum(hc)*100,1)
+xlim([-20,20]);
+
+title('Regression minus level2/VRAD')
+
+xlabel('Velocity (m s^{-1})')
+ylabel('Percent (%)')
+
+grid on
+box on
+
+s2=nexttile(2);
+
+hold on
+edges=-20.25:0.5:20.25;
+hc=histcounts(regVradPH-vradPH,edges);
+bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc/sum(hc)*100,1)
+xlim([-20,20]);
+
+title('Regression/VRAD minus level2/VRAD')
+
+xlabel('Velocity (m s^{-1})')
+ylabel('Percent (%)')
+
+grid on
+box on
+
+s3=nexttile(3);
+hold on
+edges=-20.25:0.5:20.25;
+hc1=histcounts(regPH-vradPH,edges);
+stairs(edges(1:end-1)+(edges(2)-edges(1))/2,hc1,'LineWidth',2)
+hc2=histcounts(regVradPH-vradPH,edges);
+stairs(edges(1:end-1)+(edges(2)-edges(1))/2,hc2,'LineWidth',2)
+xlim([-20,20]);
+
+legend({'Regression - level2/VRAD','Regression/VRAD - level2/VRAD'},'Orientation','horizontal','Location','northoutside');
+
+xlabel('Velocity (m s^{-1})')
+ylabel('Count')
+
+grid on
+box on
+
+print([figdir,radar,'_histPurpleHaze.png'],'-dpng','-r0');
