@@ -9,17 +9,19 @@ figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/paper2024_2/';
 
 indir='/scr/sci/romatsch/forJohn/ams22plots/';
 
-infileList={'Block34Ov4Ord17Wth4.txt';
-    'Block34Ov4Ord24Wth4.txt'};
+infileList={'37-6svel.txt';
+    '47-6svel.txt';
+    'svelSachi-6.dat'};
 
-titles={'(a) Order 17';
-    '(b) Order 24'};
+titles={'(a) Order 37';
+    '(b) Order 47';
+    '(c) Legacy'};
 
 cm=turbo(32);
 
-figure('Position',[200 500 360 570],'DefaultAxesFontSize',12);
+figure('Position',[200 500 360 850],'DefaultAxesFontSize',12);
 colormap(flipud(cm));
-t = tiledlayout(2,1,'TileSpacing','compact','Padding','compact');
+t = tiledlayout(3,1,'TileSpacing','compact','Padding','compact');
 
 xtickLoc=2:2:16;
 xtickLab={'1','2','3','4','5','6','7','8'};
@@ -65,7 +67,7 @@ ax.SortMethod = 'childorder';
 xlim([0.5,16.5]);
 ylim([0.5,26.5]);
 
-if kk==2
+if kk==3
 xlabel('W_1 (m s^{-1})')
 end
 

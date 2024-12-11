@@ -9,31 +9,17 @@ figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/paper2024_2/';
 
 indir='/scr/sci/romatsch/forJohn/ams22plots/';
 
-infileList={'35-4svel.txt';
-    '37-4svel.txt';
-    '39-4svel.txt';
-    '41-4svel.txt';
-    '43-4svel.txt';
-    '45-4svel.txt';
-    '47-4svel.txt';
-    '49-4svel.txt';
-    'svelSachi-4.txt'};
+infileList={'Block34Ov4Ord17Wth4.txt';
+    'Block34Ov4Ord24Wth4.txt'};
 
-titles={'(a) Order 35';
-    '(b) Order 37';
-    '(c) Order 39';
-    '(d) Order 41';
-    '(e) Order 43';
-    '(f) Order 45';
-    '(g) Order 47';
-    '(h) Order 49';
-    '(i) Legacy'};
+titles={'(a) Order 17';
+    '(b) Order 24'};
 
 cm=turbo(32);
 
-figure('Position',[200 500 850 850],'DefaultAxesFontSize',12);
+figure('Position',[200 500 360 570],'DefaultAxesFontSize',12);
 colormap(flipud(cm));
-t = tiledlayout(3,3,'TileSpacing','compact','Padding','compact');
+t = tiledlayout(2,1,'TileSpacing','compact','Padding','compact');
 
 xtickLoc=2:2:16;
 xtickLab={'1','2','3','4','5','6','7','8'};
@@ -57,7 +43,7 @@ set(gca,'Ytick',ytickLoc);
 set(gca,'YtickLabel',ytickLab);
 clim([1 5]);
 
-if kk==6
+if kk==2
     cb=colorbar;
     cb.Title.String='m s^{-1}';
 end
@@ -79,12 +65,12 @@ ax.SortMethod = 'childorder';
 xlim([0.5,16.5]);
 ylim([0.5,26.5]);
 
-if kk==7 | kk==8 | kk==9
+if kk==2
 xlabel('W_1 (m s^{-1})')
 end
-if kk==1 | kk==4 | kk==7
+
 ylabel('P_1/P_2 (dB)');
-end
+
 
 title(titles{kk})
 % ax.Position=[0.123,0.14,0.75,0.84];
@@ -93,4 +79,4 @@ cb.Layout.Tile = 'east';
 %cb.Position=[0.945,0.3,0.02,0.6];
 
 set(gcf,'PaperPositionMode','auto')
-print([figdir,'figure4.png'],'-dpng','-r0')
+print([figdir,'figureA1.png'],'-dpng','-r0')

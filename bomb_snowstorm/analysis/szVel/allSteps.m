@@ -354,7 +354,7 @@ view(2);
 s2.Colormap=velCols;
 clim(diffLims);
 colorbar
-title('St. dev. VRAD - St. dev. level 2 (m s^{-1})');
+title('St. dev. VRAD/lev. 2 - St. dev. level 2 (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -383,7 +383,7 @@ s3.SortMethod='childorder';
 
 grid on
 box on
-title('St. dev. VRAD - St. dev. level 2 (m s^{-1})');
+title('St. dev. VRAD/lev. 2 - St. dev. level 2 (m s^{-1})');
 
 % VRAD
 s4=nexttile(4);
@@ -393,7 +393,7 @@ view(2);
 s4.Colormap=jet;
 clim(stdLims);
 colorbar
-title('St. dev. VRAD (m s^{-1})');
+title('St. dev. VRAD/lev. 2 (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -412,7 +412,7 @@ view(2);
 s5.Colormap=velCols;
 clim(diffLims);
 colorbar
-title('St. dev. VRAD/REGR - St. dev. VRAD (m s^{-1})');
+title('St. dev. VRAD/REGR - St. dev. VRAD/lev. 2 (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -441,7 +441,7 @@ s6.SortMethod='childorder';
 
 grid on
 box on
-title('St. dev. VRAD/REGR - St. dev. VRAD (m s^{-1})');
+title('St. dev. VRAD/REGR - St. dev. VRAD/lev. 2 (m s^{-1})');
 
 % VRAD Regr
 s7=nexttile(7);
@@ -451,7 +451,7 @@ view(2);
 s7.Colormap=jet;
 clim(stdLims);
 colorbar
-title('St. dev. VRAD/REGR 2 (m s^{-1})');
+title('St. dev. VRAD/REGR (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -537,7 +537,7 @@ hc=histcounts(regPH-vradPH,edges);
 bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc/sum(hc)*100,1)
 xlim([-20,20]);
 
-title('Regression minus level2/VRAD')
+title('Regression minus VRAD/level 2')
 
 xlabel('Velocity (m s^{-1})')
 ylabel('Percent (%)')
@@ -553,7 +553,7 @@ hc=histcounts(regVradPH-vradPH,edges);
 bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc/sum(hc)*100,1)
 xlim([-20,20]);
 
-title('Regression/VRAD minus level2/VRAD')
+title('Regression/VRAD minus VRAD/level 2')
 
 xlabel('Velocity (m s^{-1})')
 ylabel('Percent (%)')
@@ -570,7 +570,7 @@ hc2=histcounts(regVradPH-vradPH,edges);
 stairs(edges(1:end-1)+(edges(2)-edges(1))/2,hc2,'LineWidth',2)
 xlim([-20,20]);
 
-legend({'Regression - level2/VRAD','Regression/VRAD - level2/VRAD'},'Orientation','horizontal','Location','northoutside');
+legend({'Regression - VRAD/level 2','Regression/VRAD - VRAD/level 2'},'Orientation','horizontal','Location','northoutside');
 
 xlabel('Velocity (m s^{-1})')
 ylabel('Count')
@@ -579,3 +579,72 @@ grid on
 box on
 
 print([figdir,radar,'_histPurpleHaze.png'],'-dpng','-r0');
+
+%% Plot purple haze
+
+vradPHsurf=vradLeg.VEL;
+vradPHsurf(phPix==0)=nan;
+regPHsurf=reg.VEL;
+regPHsurf(phPix==0)=nan;
+regVradPHsurf=regVradFilled;
+regVradPHsurf(phPix==0)=nan;
+
+f1 = figure('Position',[200 500 500 1200],'DefaultAxesFontSize',12,'visible',showPlot);
+t = tiledlayout(3,1,'TileSpacing','tight','Padding','compact');
+s1=nexttile(1);
+
+h1=surf(XX,YY,vradPHsurf,'edgecolor','none');
+view(2);
+view(2);
+title('VRAD/level 2 (m s^{-1})');
+xlabel('km');
+ylabel('km');
+
+grid on
+box on
+
+applyColorScale(h1,vradPHsurf,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s1,[1 1 1]);
+
+s2=nexttile(2);
+
+h1=surf(XX,YY,regPHsurf,'edgecolor','none');
+view(2);
+view(2);
+title('Regression (m s^{-1})');
+xlabel('km');
+ylabel('km');
+
+grid on
+box on
+
+applyColorScale(h1,regPHsurf,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s2,[1 1 1]);
+
+s3=nexttile(3);
+
+h1=surf(XX,YY,regVradPHsurf,'edgecolor','none');
+view(2);
+view(2);
+title('Regression/VRAD (m s^{-1})');
+xlabel('km');
+ylabel('km');
+
+grid on
+box on
+
+applyColorScale(h1,regVradPHsurf,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s3,[1 1 1]);
+
+linkaxes([s1,s2,s3],'xy');
+
+print([figdir,radar,'_purpleHaze.png'],'-dpng','-r0');
