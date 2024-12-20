@@ -10,25 +10,22 @@ addpath(genpath('~/git/lrose-test/apar/dataAnalysis/utils/'));
 % User parameters can be specified in this block. The rest of the script
 % should generally be left alone.
 
+event='hurricane';
+%event='squall_line';
+%event='supercell';
+
 % Display and save plot or just save it
 showPlot='on'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
 
-% Specify the pulse length of the input data
-whichPulse='long'; % 'long' or 'short'
-
-% Specify the start and end time (yyyy,mm,dd,HH,MM,SS)
-startTime=datetime(2024,5,30,20,28,0);
-endTime=datetime(2024,5,30,20,35,30);
-
 % Specify minimum range (to ignore erroneous data near the radar)
-minRange=6; % Minimum range in km
+minRange=0; % Minimum range in km
 
 % Data directories for the input data
-indirRad=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved','/',whichPulse,'_pulse/'];
-indirSim=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved/aesa_simulator/'];
+indirRad=['/scr/virga1/rsfdata/projects/apar/events/',event,'/sim-ts_thru_rsp_moments/'];
+indirSim=['/scr/virga1/rsfdata/projects/apar/events/',event,'/truth_moments/'];
 
 % Ouptut directory for the figures
-figdir=['/scr/virga1/rsfdata/projects/apar/sim/cfradial/moments/interleaved/figures/'];
+figdir=['/scr/virga1/rsfdata/projects/apar/events/',event,'/figures/'];
 
 % Specify lower and upper limits of the color scales for each variable
 colLims.DBZ=[-10,65];
@@ -39,12 +36,13 @@ colLims.ZDR=[-5,5];
 % Specify plot frequency
 % When running over a long(ish) time period, it is desirable not to plot every
 % single file. The plot frequency can be specified below. E.g. plotFreq=5
-% will plot every 5th file.
-plotFreq=5;
+% will plot every 5th file. The overall statistics plot will include all
+% data not matter what is specified here.
+plotFreq=1;
 
 %% List files in input directories
-fileListRad=makeFileList(indirRad,startTime,endTime,'xxxxxx20YYMMDDxhhmmss',1);
-fileListSim=makeFileList(indirSim,startTime,endTime,'xxxxxx20YYMMDDxhhmmss',1);
+fileListRad=dir([indirRad,'*.nc']);
+fileListSim=dir([indirSim,'*.nc']);
 
 %% Sort Sim files into RHIs and PPIs
 timeS_PPI=[];
@@ -53,7 +51,7 @@ indS_PPI=[];
 indS_RHI=[];
 
 for bb=1:size(fileListSim,1)
-    thisFile=fileListSim{bb};
+    thisFile=[indirSim,fileListSim(bb).name];
     thisSplit=split(thisFile,["."]);
     if strcmp(thisFile(end-5:end-3),'PPI')
         timeS_PPI=[timeS_PPI;datetime(str2num(thisSplit{2}(1:4)),str2num(thisSplit{2}(5:6)),str2num(thisSplit{2}(7:8)), ...
@@ -79,7 +77,7 @@ dataComp.ZDR=[];
 for aa=1:size(fileListRad,1) % Loop through each file
 
     %% Read radar data
-    infileR=fileListRad{aa};
+    infileR=[indirRad,fileListRad(aa).name];
     
     disp(['File ',num2str(aa), ' of ',num2str(size(fileListRad,1))]);
     disp(infileR);
@@ -95,7 +93,11 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
     dataS=dataR;
 
-    dataR=read_apar(infileR,dataR);
+    try
+        dataR=read_apar(infileR,dataR);
+    catch
+        continue
+    end
 
     %% Find matching simulator file
     timeR=dataR(1).time(1);
@@ -103,18 +105,30 @@ for aa=1:size(fileListRad,1) % Loop through each file
     if strcmp(dataR(1).sweepMode,'sector') % PPI
         [minDiff,sInd]=min(abs(timeS_PPI-timeR));
         if minDiff<seconds(5)
-            infileS=fileListSim{indS_PPI(sInd)};
+            infileS=[indirSim,fileListSim(indS_PPI(sInd)).name];
         else
             disp('No matching file found.')
             continue
         end
+        for kk=1:size(dataR,2)
+            sweepM=dataR(kk).sweepMode;
+            if ~strcmp(sweepM,'sector')
+                dataR(kk)=[];
+            end
+        end
     elseif strcmp(dataR(1).sweepMode,'rhi') % RHI
         [minDiff,sInd]=min(abs(timeS_RHI-timeR));
         if minDiff<seconds(5)
-            infileS=fileListSim{indS_RHI(sInd)};
+            infileS=[indirSim,fileListSim(indS_RHI(sInd)).name];
         else
             disp('No matching file found.')
             continue
+        end
+        for kk=1:size(dataR,2)
+            sweepM=dataR(kk).sweepMode;
+            if ~strcmp(sweepM,'rhi')
+                dataR(kk)=[];
+            end
         end
     else
         continue
@@ -200,9 +214,10 @@ for aa=1:size(fileListRad,1) % Loop through each file
 
     ii=ii+1;
 
+    % Plot if part of specified plot frequency
     if ismember(ii,plotInds)
         %% Plot preparation
-        plotRange=75;
+        
         if strcmp(dataR(1).sweepMode,'sector')
             [phi_plt,r2] = meshgrid(deg2rad(dataRinds(1).azimuth),dataRinds(1).range);
             xlimits=[-50,50];
@@ -213,7 +228,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
             ylimits=[0,20];
         end
 
-        [X,Y] = pol2cart(phi_plt,r2);
+        [X,Y]=pol2cart(phi_plt,r2);
         
         for dd=1:length(dataFields)
             if all(isnan(dataRinds(1).(dataFields{dd})(:)))
@@ -229,7 +244,6 @@ for aa=1:size(fileListRad,1) % Loop through each file
             s1=nexttile(1);
 
             p=surf(X,Y,dataRinds(1).(dataFields{dd})', 'EdgeColor','none');
-            %axis('equal')
             view(2)
 
             xlim(xlimits)
@@ -249,7 +263,6 @@ for aa=1:size(fileListRad,1) % Loop through each file
             s2=nexttile(2);
 
             p=surf(X,Y,dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
-            %axis('equal')
             view(2)
 
             xlim(xlimits)
@@ -268,7 +281,6 @@ for aa=1:size(fileListRad,1) % Loop through each file
             s3=nexttile(3);
 
             p=surf(X,Y,dataRinds(1).(dataFields{dd})'-dataSinds(1).(dataFields{dd})', 'EdgeColor','none');
-            %axis('equal')
             view(2)
 
             xlim(xlimits)
@@ -309,7 +321,7 @@ for aa=1:size(fileListRad,1) % Loop through each file
             s4.XLim=xlimG;
             s4.YLim=ylimG;
 
-            print([figdir,'vars/',(dataFields{dd}),'_',datestr(fileTime,'yyyymmdd_HHMMSS'),'_',whichPulse,'.png'],'-dpng','-r0');
+            print([figdir,'vars/',(dataFields{dd}),'_',datestr(fileTime,'yyyymmdd_HHMMSS'),'.png'],'-dpng','-r0');
         end
     end
 end
@@ -385,4 +397,4 @@ for dd=1:length(dataFields)
     ss=ss+1;
 end
 
-print([figdir,'scatterStats_',whichPulse,'.png'],'-dpng','-r0');
+print([figdir,'scatterStats.png'],'-dpng','-r0');
