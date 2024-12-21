@@ -10,9 +10,9 @@ addpath(genpath('~/git/lrose-test/apar/dataAnalysis/utils/'));
 % User parameters can be specified in this block. The rest of the script
 % should generally be left alone.
 
-event='hurricane';
+%event='hurricane';
 %event='squall_line';
-%event='supercell';
+event='supercell';
 
 % Display and save plot or just save it
 showPlot='on'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
@@ -25,7 +25,7 @@ indirRad=['/scr/virga1/rsfdata/projects/apar/events/',event,'/sim-ts_thru_rsp_mo
 indirSim=['/scr/virga1/rsfdata/projects/apar/events/',event,'/truth_moments/'];
 
 % Ouptut directory for the figures
-figdir=['/scr/virga1/rsfdata/projects/apar/events/',event,'/figures/'];
+figdir=['/scr/virga1/rsfdata/projects/apar/events/figures/',event,'/'];
 
 % Specify lower and upper limits of the color scales for each variable
 colLims.DBZ=[-10,65];
