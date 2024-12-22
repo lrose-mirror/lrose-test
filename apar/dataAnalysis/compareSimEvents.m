@@ -15,7 +15,7 @@ event='hurricane';
 %event='supercell';
 
 % Display and save plot or just save it
-showPlot='off'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
+showPlot='on'; % If 'on', plots will be displayed and saved, if 'off' they will only be saved
 
 % Specify minimum range (to ignore erroneous data near the radar)
 minRange=0; % Minimum range in km
