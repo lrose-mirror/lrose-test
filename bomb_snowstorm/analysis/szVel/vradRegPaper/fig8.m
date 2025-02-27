@@ -6,6 +6,7 @@ close all;
 addpath(genpath('~/git/lrose-test/bomb_snowstorm/analysis/'));
 
 showPlot='on';
+radar='KLWX';
 
 figdir='/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/vradRegPaper/';
 
@@ -16,8 +17,10 @@ nyquist=25.7428;
 regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/DOPklwx20230807_220627.txt';
 regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KLWX_Regression_and_VRAD_Filt_12.mat';
 vradLegFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KLWX_VRAD_Legacy.mat';
-xlimits1=[50,170];
-ylimits1=[60,179.9];
+xlimits1=[-260,200];
+ylimits1=[-170,270];
+xlimits2=[50,170];
+ylimits2=[60,180];
 censThreshStd=7;
 
 %% Read regressino data
@@ -129,142 +132,229 @@ angMat=repmat(ang_p',size(reg.range,1),1);
 XX = (reg.range.*cos(angMat));
 YY = (reg.range.*sin(angMat));
 
+% %% Plot
+% 
+% close all
+% f1 = figure('Position',[200 500 1800 1000],'DefaultAxesFontSize',12,'visible',showPlot);
+% colLims=[-inf,-40,-27,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,27,40,inf];
+% 
+% t = tiledlayout(2,3,'TileSpacing','tight','Padding','tight');
+% 
+% % NEXRAD level 2
+% s1=nexttile(1);
+% 
+% h1=surf(XX,YY,lev2.VEL,'edgecolor','none');
+% view(2);
+% title('VEL NEXRAD level 2 (m s^{-1})');
+% xlabel('km');
+% ylabel('km');
+% 
+% grid on
+% box on
+% 
+% applyColorScale(h1,lev2.VEL,vel_default2,colLims);
+% 
+% xlim(xlimits1)
+% ylim(ylimits1)
+% daspect(s1,[1 1 1]);
+% 
+% % Regression original
+% s2=nexttile(2);
+% 
+% h1=surf(XX,YY,reg.VEL,'edgecolor','none');
+% view(2);
+% title('VEL regression (m s^{-1})');
+% xlabel('km');
+% ylabel('km');
+% 
+% grid on
+% box on
+% 
+% applyColorScale(h1,reg.VEL,vel_default2,colLims);
+% 
+% xlim(xlimits1)
+% ylim(ylimits1)
+% daspect(s2,[1 1 1]);
+% 
+% % Regression censored
+% s3=nexttile(3);
+% regCensoredVRAD=regInVrad.VEL;
+% h1=surf(XX,YY,regCensoredVRAD,'edgecolor','none');
+% view(2);
+% title('VEL regression censored (m s^{-1})');
+% xlabel('km');
+% ylabel('km');
+% 
+% grid on
+% box on
+% 
+% applyColorScale(h1,regCensoredVRAD,vel_default2,colLims);
+% 
+% xlim(xlimits1)
+% ylim(ylimits1)
+% daspect(s3,[1 1 1]);
+% 
+% % VRAD legacy
+% s4=nexttile(4);
+% 
+% h1=surf(XX,YY,vradLeg.VEL,'edgecolor','none');
+% view(2);
+% title('VEL VRAD NEXRAD level 2 (m s^{-1})');
+% xlabel('km');
+% ylabel('km');
+% 
+% grid on
+% box on
+% 
+% applyColorScale(h1,vradLeg.VEL,vel_default2,colLims);
+% 
+% xlim(xlimits1)
+% ylim(ylimits1)
+% daspect(s4,[1 1 1]);
+% 
+% % VRAD and regression
+% s5=nexttile(5);
+% 
+% h1=surf(XX,YY,regVrad.VEL,'edgecolor','none');
+% view(2);
+% title('VEL VRAD and regression (m s^{-1})');
+% xlabel('km');
+% ylabel('km');
+% 
+% grid on
+% box on
+% 
+% applyColorScale(h1,regVrad.VEL,vel_default2,colLims);
+% 
+% xlim(xlimits1)
+% ylim(ylimits1)
+% daspect(s5,[1 1 1]);
+% 
+% % VRAD and regression filled
+% s6=nexttile(6);
+% 
+% h1=surf(XX,YY,regVradFilled,'edgecolor','none');
+% view(2);
+% title('VEL VRAD and regression filled (m s^{-1})');
+% xlabel('km');
+% ylabel('km');
+% 
+% grid on
+% box on
+% 
+% applyColorScale(h1,regVradFilled,vel_default2,colLims);
+% 
+% xlim(xlimits1)
+% ylim(ylimits1)
+% daspect(s6,[1 1 1]);
+% 
+% linkaxes([s1,s2,s3,s4,s5,s6],'xy');
+% 
+% print([figdir,radar,'_PPIs.png'],'-dpng','-r0');
+% 
+% % Second zoom
+% s1.XLim=xlimits2;
+% s1.YLim=ylimits2;
+% daspect(s1,[1 1 1]);
+% daspect(s2,[1 1 1]);
+% daspect(s3,[1 1 1]);
+% daspect(s4,[1 1 1]);
+% daspect(s5,[1 1 1]);
+% daspect(s6,[1 1 1]);
+% 
+% print([figdir,radar,'_PPIs_zoom.png'],'-dpng','-r0');
+
+% %% Area coverage
+% 
+% pixNum=[sum(~isnan(lev2.VEL(:))),sum(~isnan(vradLeg.VEL(:))),sum(~isnan(regVradFilled(:)))];
+% pixPerc=pixNum./pixNum(1).*100;
+% 
+% %close all
+% f1 = figure('Position',[200 500 600 500],'DefaultAxesFontSize',12,'visible',showPlot);
+% 
+% t = tiledlayout(1,1,'TileSpacing','tight','Padding','compact');
+% s1=nexttile(1);
+% 
+% bar(pixPerc,1);
+% xlim([0.5,3.5]);
+% 
+% ylabel('Percent (%)')
+% xticklabels({'Level 2';'Level 2 + VRAD';'Regression + VRAD'});
+% xtickangle(0);
+% 
+% title('Increase in coverage')
+% 
+% print([figdir,radar,'_coverageIncrease.png'],'-dpng','-r0');
+
+%% Smoothness
+
+vradCensLev2=vradLeg.VEL;
+vradCensLev2(isnan(lev2.VEL))=nan;
+vradRegCensLev2=regVradFilled;
+vradRegCensLev2(isnan(lev2.VEL))=nan;
+vradRegCensVrad=regVradFilled;
+vradRegCensVrad(isnan(vradLeg.VEL))=nan;
+
+[stdLev2,~]=fast_nd_std(lev2.VEL,kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
+[stdVradLeg,~]=fast_nd_std(vradLeg.VEL,kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
+[stdVradLegClev2,~]=fast_nd_std(vradCensLev2,kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
+[stdVradRegVrad,~]=fast_nd_std(vradRegCensVrad,kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
+[stdVradRegClev2,~]=fast_nd_std(vradRegCensLev2,kernel,'mode','partial','nan_std',1,'circ_std',1,'nyq',nyquist);
+
+stdLev2(isnan(lev2.VEL))=nan;
+stdVradLegClev2(isnan(lev2.VEL))=nan;
+stdVradRegClev2(isnan(lev2.VEL))=nan;
+stdVradLeg(isnan(vradLeg.VEL))=nan;
+stdVradRegVrad(isnan(vradLeg.VEL))=nan;
+
 %% Plot
-tickXY=-300:20:300;
-
 close all
-f1 = figure('Position',[200 500 930 1200],'DefaultAxesFontSize',12,'visible',showPlot);
-colLims=[-inf,-40,-27,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,27,40,inf];
 
-t = tiledlayout(3,2,'TileSpacing','tight','Padding','tight');
+stdLims=[0,7];
+diffLims=[-3,3];
 
-% NEXRAD level 2
+% close all
+f1 = figure('Position',[200 500 600 1000],'DefaultAxesFontSize',12,'visible',showPlot);
+
+t = tiledlayout(2,1,'TileSpacing','tight','Padding','compact');
+
 s1=nexttile(1);
-hold on
-h1=surf(XX,YY,lev2.VEL,'edgecolor','none');
+vradRegMinVrad=stdVradRegVrad-stdVradLeg;
+
+h1=surf(XX,YY,vradRegMinVrad,'edgecolor','none');
 view(2);
-title('(a) Legacy velocity (m s^{-1})');
-%xlabel('km');
+s1.Colormap=velCols;
+clim(diffLims);
+colorbar
+title('(a) SD VRAD-REG - SD VRAD legacy (m s^{-1})');
+xlabel('km');
 ylabel('km');
 
 grid on
 box on
-
-applyColorScale(h1,lev2.VEL,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
 daspect(s1,[1 1 1]);
 
-s1.XTick=tickXY;
-s1.YTick=tickXY;
-
-% Regression original
 s2=nexttile(2);
 
-h1=surf(XX,YY,reg.VEL,'edgecolor','none');
-view(2);
-title('(b) REG velocity (m s^{-1})');
-% xlabel('km');
-% ylabel('km');
+hold on
+edges=-4:0.08:4;
+hc=histcounts(vradRegMinVrad(:),edges);
+bar(edges(1:end-1)+(edges(2)-edges(1))/2,hc/sum(hc)*100,1)
+xlim([-0.7,0.7]);
+
+ylims=s2.YLim;
+plot([0,0],ylims,'-r','LineWidth',2);
+
+xlabel('Velocity (m s^{-1})')
+ylabel('Percent (%)')
+
+s2.SortMethod='childorder';
 
 grid on
 box on
-
-applyColorScale(h1,reg.VEL,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s2,[1 1 1]);
-
-s2.XTick=tickXY;
-s2.YTick=tickXY;
-
-% Regression censored
-s3=nexttile(3);
-regCensoredVRAD=regInVrad.VEL;
-h1=surf(XX,YY,regCensoredVRAD,'edgecolor','none');
-view(2);
-title('(c) REG velocity censored for VRAD (m s^{-1})');
-%xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-applyColorScale(h1,regCensoredVRAD,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s3,[1 1 1]);
-
-s3.XTick=tickXY;
-s3.YTick=tickXY;
-
-% VRAD legacy
-s4=nexttile(4);
-
-h1=surf(XX,YY,vradLeg.VEL,'edgecolor','none');
-view(2);
-title('(d) VRAD legacy velocity (m s^{-1})');
-% xlabel('km');
-% ylabel('km');
-
-grid on
-box on
-
-applyColorScale(h1,vradLeg.VEL,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s4,[1 1 1]);
-
-s4.XTick=tickXY;
-s4.YTick=tickXY;
-
-% VRAD and regression
-s5=nexttile(5);
-
-h1=surf(XX,YY,regVrad.VEL,'edgecolor','none');
-view(2);
-title('(e) VRAD-REG velocity (m s^{-1})');
-xlabel('km');
-ylabel('km');
-
-grid on
-box on
-
-applyColorScale(h1,regVrad.VEL,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s5,[1 1 1]);
-
-s5.XTick=tickXY;
-s5.YTick=tickXY;
-
-% VRAD and regression filled
-s6=nexttile(6);
-
-h1=surf(XX,YY,regVradFilled,'edgecolor','none');
-view(2);
-title('(f) VRAD-REG filled velocity (m s^{-1})');
-xlabel('km');
-%ylabel('km');
-
-grid on
-box on
-
-applyColorScale(h1,regVradFilled,vel_default2,colLims);
-
-xlim(xlimits1)
-ylim(ylimits1)
-daspect(s6,[1 1 1]);
-
-s6.XTick=tickXY;
-s6.YTick=tickXY;
-
-linkaxes([s1,s2,s3,s4,s5,s6],'xy');
+title('(b) SD VRAD-REG - SD VRAD legacy (m s^{-1})');
 
 print([figdir,'figure8.png'],'-dpng','-r0');
-

@@ -29,7 +29,7 @@ dataLev2=dataLev2(1);
 nyquist=ncread(lev2File,'nyquist_velocity');
 dataLev2.VEL(dataLev2.PURPLE_HAZE==1)=-99;
 
-load(unfoldedFile);
+%load(unfoldedFile);
 
 %% Censor regression
 

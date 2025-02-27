@@ -17,10 +17,8 @@ nyquist=25.7428;
 regFile='/scr/cirrus1/rsfdata/projects/nexrad/tables/KFTG_SZ_20220329_190532_0.48_272.92_O37_64pts_V5.txt';
 regVradFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KFTG_Regression_and_VRAD_Filt_13.mat';
 vradLegFile='/scr/cirrus1/rsfdata/projects/nexrad/matFiles/KFTG_VRAD_Legacy.mat';
-xlimits1=[-200,260];
-ylimits1=[-220,220];
-xlimits2=[50,150];
-ylimits2=[70,170];
+xlimits1=[50,150];
+ylimits1=[70,170];
 censThreshStd=7;
 
 %% Read regressino data
@@ -133,45 +131,43 @@ XX = (reg.range.*cos(angMat));
 YY = (reg.range.*sin(angMat));
 
 %% Plot
+tickXY=-300:20:300;
 
 close all
-f1 = figure('Position',[200 500 1130 1000],'DefaultAxesFontSize',12,'visible',showPlot);
+f1 = figure('Position',[200 500 930 1200],'DefaultAxesFontSize',12,'visible',showPlot);
 colLims=[-inf,-40,-27,-21,-17,-13,-10,-8,-6,-4,-2,-1,0,1,2,4,6,8,10,13,17,21,27,40,inf];
 
-t = tiledlayout(2,2,'TileSpacing','tight','Padding','tight');
+t = tiledlayout(3,2,'TileSpacing','tight','Padding','tight');
 
-% Regression censored
+% NEXRAD level 2
 s1=nexttile(1);
-hold on
-regCensoredVRAD=regInVrad.VEL;
-h1=surf(XX,YY,regCensoredVRAD,'edgecolor','none');
+
+h1=surf(XX,YY,lev2.VEL,'edgecolor','none');
 view(2);
-title('(a) REG velocity censored for VRAD (m s^{-1})');
+title('(a) Legacy velocity (m s^{-1})');
 %xlabel('km');
 ylabel('km');
-
-plot(xlimits2,[ylimits2(1),ylimits2(1)],'-k','LineWidth',2);
-plot(xlimits2,[ylimits2(2),ylimits2(2)],'-k','LineWidth',2);
-plot([xlimits2(1),xlimits2(1)],ylimits2,'-k','LineWidth',2);
-plot([xlimits2(2),xlimits2(2)],ylimits2,'-k','LineWidth',2);
 
 grid on
 box on
 
-applyColorScale(h1,regCensoredVRAD,vel_default2,colLims);
+applyColorScale(h1,lev2.VEL,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
 daspect(s1,[1 1 1]);
+
+s1.XTick=tickXY;
+s1.YTick=tickXY;
 
 % VRAD legacy
 s2=nexttile(2);
 
 h1=surf(XX,YY,vradLeg.VEL,'edgecolor','none');
 view(2);
-title('(b) VRAD legacy velocity (m s^{-1})');
-%xlabel('km');
-%ylabel('km');
+title('(b) VRAD Legacy velocity (m s^{-1})');
+% xlabel('km');
+% ylabel('km');
 
 grid on
 box on
@@ -182,12 +178,58 @@ xlim(xlimits1)
 ylim(ylimits1)
 daspect(s2,[1 1 1]);
 
-% VRAD and regression
+s2.XTick=tickXY;
+s2.YTick=tickXY;
+
+% Regression original
 s3=nexttile(3);
+
+h1=surf(XX,YY,reg.VEL,'edgecolor','none');
+view(2);
+title('(c) REG velocity (m s^{-1})');
+% xlabel('km');
+ylabel('km');
+
+grid on
+box on
+
+applyColorScale(h1,reg.VEL,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s3,[1 1 1]);
+
+s3.XTick=tickXY;
+s3.YTick=tickXY;
+
+% Regression censored
+s4=nexttile(4);
+regCensoredVRAD=regInVrad.VEL;
+h1=surf(XX,YY,regCensoredVRAD,'edgecolor','none');
+view(2);
+title('(d) REG velocity censored for VRAD (m s^{-1})');
+%xlabel('km');
+%ylabel('km');
+
+grid on
+box on
+
+applyColorScale(h1,regCensoredVRAD,vel_default2,colLims);
+
+xlim(xlimits1)
+ylim(ylimits1)
+daspect(s4,[1 1 1]);
+
+s4.XTick=tickXY;
+s4.YTick=tickXY;
+
+
+% VRAD and regression
+s5=nexttile(5);
 
 h1=surf(XX,YY,regVrad.VEL,'edgecolor','none');
 view(2);
-title('(c) VRAD-REG velocity (m s^{-1})');
+title('(e) VRAD-REG velocity (m s^{-1})');
 xlabel('km');
 ylabel('km');
 
@@ -198,14 +240,17 @@ applyColorScale(h1,regVrad.VEL,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s3,[1 1 1]);
+daspect(s5,[1 1 1]);
+
+s5.XTick=tickXY;
+s5.YTick=tickXY;
 
 % VRAD and regression filled
-s4=nexttile(4);
+s6=nexttile(6);
 
 h1=surf(XX,YY,regVradFilled,'edgecolor','none');
 view(2);
-title('(d) VRAD-REG filled velocity (m s^{-1})');
+title('(f) VRAD-REG filled velocity (m s^{-1})');
 xlabel('km');
 %ylabel('km');
 
@@ -216,8 +261,12 @@ applyColorScale(h1,regVradFilled,vel_default2,colLims);
 
 xlim(xlimits1)
 ylim(ylimits1)
-daspect(s4,[1 1 1]);
+daspect(s6,[1 1 1]);
 
-linkaxes([s1,s2,s1,s2,s3,s4],'xy');
+s6.XTick=tickXY;
+s6.YTick=tickXY;
+
+linkaxes([s1,s3,s4,s2,s5,s6],'xy');
 
 print([figdir,'figure5.png'],'-dpng','-r0');
+
