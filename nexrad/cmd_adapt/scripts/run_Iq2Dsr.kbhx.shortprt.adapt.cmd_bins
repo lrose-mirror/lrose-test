@@ -1,0 +1,14 @@
+#! /bin/csh -f
+
+# Run Iq2Dsr, writing moments data to fmq
+
+cd $HOME/git/lrose-test/nexrad/cmd_adapt/params
+
+Dsr2Radx -params Dsr2Radx.kbhx.shortprt.adapt.cmd_bins -debug >& /tmp/Dsr2Radx.kbhx.shortprt.adapt.cmd_bins.log &
+
+Iq2Dsr -params Iq2Dsr.kbhx.shortprt.adapt.cmd_bins -debug -f /scr/cirrus1/rsfdata/projects/nexrad/time_series/kbhx/20240823/KBHX.20240824.000023.206.vcp215.15.H+V.137
+
+sleep 11
+
+snuff "Dsr2Radx -params Dsr2Radx.kbox.shortprt.adapt.cmd_bins"
+
