@@ -9,7 +9,7 @@ minMaxRangeOrig=[]; % Range interval [min,max] or leave empty
 minMaxAz=[]; % Azimuth interval [min,max] or leave empty
 kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
-censorOnDBZ=0;
+censorOnDBZ=1;
 censorOnVEL=0;
 censorOnCMD=0;
 censorOnTRIP=0; % Only use weak trip (0).
@@ -28,7 +28,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=43:size(inAll{1,1},1)
+for aa=44:size(inAll{1,1},1)
 
     nyquist=[];
 
@@ -40,10 +40,8 @@ for aa=43:size(inAll{1,1},1)
     inst=inAll{1,14}(aa);
     if strcmp(inst{:},'bs')
         figdir=['/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/statsCompare/'];
-    elseif strcmp(inst{:},'kddc')
-        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/kddc/statsCompare/'];
-    elseif strcmp(inst{:},'kftg')
-        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/kftg/statsCompare/'];
+    else
+        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/',inst{:},'/statsCompare/'];
     end
 
     fileType=inAll{1,12}(aa);

@@ -15,7 +15,7 @@ fileID = fopen('plotFiles.txt');
 inAll=textscan(fileID,'%s %s %f %f %f %f %f %f %f %f %s %s');
 fclose(fileID);
 
-for aa=33:size(inAll{1,1},1)
+for aa=34:size(inAll{1,1},1)
 
     infile=inAll{1,1}(aa);
 
@@ -25,10 +25,8 @@ for aa=33:size(inAll{1,1},1)
     inst=inAll{1,12}(aa);
     if strcmp(inst{:},'bs')
         figdir=['/scr/cirrus1/rsfdata/projects/bomb_snowstorm/figures/'];
-    elseif strcmp(inst{:},'kddc')
-        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/kddc/'];
-    elseif strcmp(inst{:},'kftg')
-        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/kftg/'];
+    else
+        figdir=['/scr/cirrus1/rsfdata/projects/nexrad/figures/',inst{:},'/'];
     end
 
     fileType=inAll{1,11}(aa);
