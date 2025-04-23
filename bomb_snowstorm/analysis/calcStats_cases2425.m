@@ -11,7 +11,7 @@ kernel=[9,5]; % Az and range of std kernel. Default: [9,5]
 
 censorOnDBZ=0;
 censorOnVEL=0;
-censorOnCMD=1;
+censorOnCMD=0;
 censorOnTRIP=0; % Only use weak trip (0).
 %%%%%%%%%%%%%%
 tripToSnr=0; % The last (10th) variable that is read in John's files is TRIP. Sometimes it is actually SNR.
@@ -29,7 +29,7 @@ fclose(fileID);
 
 showPlot='on';
 
-for aa=43:size(inAll{1,1},1)
+for aa=42:size(inAll{1,1},1)
 %for aa=13:32
 
     nyquist=[];

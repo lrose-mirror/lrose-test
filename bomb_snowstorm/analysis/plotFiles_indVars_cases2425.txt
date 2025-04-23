@@ -59,5 +59,5 @@
 /scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KTBWLPRT20220928_155511_0.49_238.38.txt regrFortran.20220928_155512_KTBW -400 400 -400 400 -200 400 -300 400 table
 /scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/NOP4-WN-lprt-20130520_201912_1.88_178.67-jh.txt wnFortran.20130520_201914_NOP4 -400 400 -400 400 -300 300 -400 400
 /scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/NOP4-lprt-20130520_201912_1.88_178.67-jh.txt regrFortran.20130520_201914_NOP4 -400 400 -400 400 -300 300 -400 400
-/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/ wnFortranVSregrFortran.20110531_111309_KIWA -400 400 -400 400 -150 150 -150 150 table
+/scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KIWA-WN-lprt20110531_111308_0.24_270.15.txt wnFortran.20110531_111309_KIWA -400 400 -400 400 -150 150 -150 150 table
 /scr/cirrus1/rsfdata/projects/nexrad/tables/cases2425/KIWAlprt20110531_111308_0.24_270.15.txt regrFortran.20110531_111309_KIWA -400 400 -400 400 -150 150 -150 150 table
