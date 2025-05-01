@@ -1,20 +1,33 @@
 clear all
 close all
 
+figdir='/scr/virga1/rsfdata/projects/qft/';
+
 % Initialize
 d=5;
 nMax=10;
-vecIn=(0:nMax)';
 
-w=1;
-lambda=1;
+w=1:0.1:10;
+lambda=1.3;
 delta=1/d;
-m2=1;
+m1=(-4.2:0.1:-3.6);
+m2=m1.^2;
+
+cutoff=[];
 
 %% Create pregens
 
-% Create combinations, sort and unique
-C=table2array(combinations(vecIn,vecIn,vecIn,vecIn,vecIn));
+% Create combinations
+vecIn=(0:nMax)';
+matIn=repmat(vecIn,1,d);
+cellIn=num2cell(matIn,1);
+sub=cell(1,numel(cellIn));
+[sub{:}]=ndgrid(cellIn{:});
+sub=cellfun(@(x)x(:),sub,'UniformOutput', false);
+allPerms = cell2mat(sub);
+C=fliplr(allPerms);
+
+% sort and unique
 uSorted=sort(C,2);
 uC=unique(uSorted,'rows');
 
@@ -35,68 +48,77 @@ for ii=1:size(sC,1)
     end
 end
 
-%% Evens
+%% Loop over m2
+minAllE=nan(1,length(m2));
+minAllO=nan(1,length(m2));
 
-% Create state vectors
-evens=evensS(:,1:end-1);
+for jj=1:length(m2)
 
-stateVe={};
-normFe=nan(size(evens,1),1);
+    disp(['Loop over m: ',num2str(jj),' of ',num2str(length(m2))]);
 
-for ii=1:size(evens,1)
-    stateVe{end+1}=unique(perms(evens(ii,:)),'rows');
-    normFe(ii)=size(stateVe{end},1);
-end
+    disp('Even');
+    % Evens
+    matOutE=calcMatrix(evensS,d,w',lambda,delta,m2(jj),cutoff);
 
-cutoff=length(stateVe);
+    % Eigen values
+    minE=nan(1,length(w));
 
-% Calculate matrix elements
-matOut=zeros(cutoff);
-
-parfor ii=1:cutoff
-    for jj=1:cutoff
-        normOut=1/sqrt(normFe(ii)*normFe(jj));
-        stII=stateVe{ii};
-        stJJ=stateVe{jj};
-
-        for kk=1:size(stII,1)
-            for ll=1:size(stJJ,1)
-                diffIJ=stII(kk,:)-stJJ(ll,:);
-                
-                nonZeroAll=diffIJ~=0;
-                nonZero=sum(nonZeroAll);
-                indNZ=find(nonZeroAll==1);
-
-                if nonZero==0 % Zero
-                    matOut(ii,jj)=matOut(ii,jj)+sum((stII(kk,:)+1/2).*(w/2+(m2+2./delta.^2)/(2.*w))+ ...
-                        (3.*lambda.*(1+2.*stII(kk,:)+2.*stII(kk,:).^2))/(4.*delta.*w.^2));
-                elseif nonZero==1 % One
-                    diff1=stII(kk,indNZ)-stJJ(ll,indNZ);
-                    n=min([stII(kk,indNZ),stJJ(ll,indNZ)]);
-                    if abs(diff1)==2
-                        matOut(ii,jj)=matOut(ii,jj)+sqrt((n+1)*(n+2))/(2*w)*(m2/2+1/delta^2-w^2/2+3* ...
-                            lambda/(delta*w)+2*lambda*n/(delta*w));
-                    elseif abs(diff1)==4
-                        matOut(ii,jj)=matOut(ii,jj)+lambda/(4*delta*w^2)*sqrt((n+1)*(n+2)*(n+3)*(n+4));
-                    end
-                elseif nonZero==2 % Two
-                    diffDist=indNZ(2)-indNZ(1);
-                    if abs(diffDist)==1
-                        n=min([stII(kk,indNZ(1)),stJJ(ll,indNZ(1))]);
-                        m=min([stII(kk,indNZ(2)),stJJ(ll,indNZ(2))]);
-                        diff2=stII(kk,indNZ(1))-stJJ(ll,indNZ(1));
-                        diff3=stII(kk,indNZ(2))-stJJ(ll,indNZ(2));
-                        if abs(diff2)==1 & abs(diff3)==1
-                            matOut(ii,jj)=matOut(ii,jj)-1/(2*w*delta^2)*sqrt(n*m);
-                        end
-
-                    end
-                end
-            end
-        end
+    for ii=1:length(w)
+        ee=eig(matOutE(:,:,ii));
+        ee=sort(ee);
+        minE(ii)=min(ee);
     end
+
+    minAllE(jj)=min(minE);
+
+    disp('Odd');
+    % Odds
+    matOutO=calcMatrix(oddsS,d,w',lambda,delta,m2(jj),cutoff);
+
+    % Eigen values
+    minO=nan(1,length(w));
+
+    for ii=1:length(w)
+        eo=eig(matOutO(:,:,ii));
+        eo=sort(eo);
+        minO(ii)=min(eo);
+    end
+
+    minAllO(jj)=min(minO);
 end
 
-% Eigen values
-ee=eig(matOut);
-ee=sort(ee);
+diffEO=abs(minAllE-minAllO);
+
+[minDiffEO,minInd]=min(diffEO);
+
+%% Plot
+
+yUp=max([minAllE,minAllO]);
+yDown=min([minAllE,minAllO]);
+
+close all
+f1 = figure('Position',[200 500 600 600],'DefaultAxesFontSize',12);
+
+hold on
+plot(m1,minAllE,'-b','LineWidth',2);
+plot(m1,minAllO,'-k','LineWidth',2);
+
+xlabel('m');
+ylabel('Minimum');
+
+xlim([m1(1),m1(end)]);
+ylim([floor(yDown),ceil(yUp)+1]);
+
+legend('Even','Odd');
+
+text(m1(1)+0.02,ceil(yUp),['Minimum difference: ',num2str(minDiffEO),' at m=',num2str(m1(minInd))],'FontSize',12);
+
+grid on
+box on
+
+print([figdir,'qft_variations.png'],'-dpng','-r0');
+
+%% Stop parallel pool
+
+poolobj=gcp('nocreate');
+delete(poolobj);
