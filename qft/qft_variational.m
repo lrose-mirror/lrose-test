@@ -4,16 +4,16 @@ close all
 figdir='/scr/virga1/rsfdata/projects/qft/';
 
 % Initialize
-d=5;
+d=6;
 nMax=10;
 
-w=1:0.1:10;
-lambda=1.3;
+w=1:0.25:10;
+lambda=1;
 delta=1/d;
-m1=(-4.2:0.1:-3.6);
-m2=m1.^2;
+m2=-(fliplr(10:1:20));
+%m2=-16;
 
-cutoff=[];
+cutoffAll=100:100:2000;
 
 %% Create pregens
 
@@ -52,73 +52,102 @@ end
 minAllE=nan(1,length(m2));
 minAllO=nan(1,length(m2));
 
-for jj=1:length(m2)
+for kk=1:length(cutoffAll)
+    cutoff=cutoffAll(kk);
 
-    disp(['Loop over m: ',num2str(jj),' of ',num2str(length(m2))]);
+    disp(['Cutoff: ',num2str(cutoff)]);
 
-    disp('Even');
-    % Evens
-    matOutE=calcMatrix(evensS,d,w',lambda,delta,m2(jj),cutoff);
+    for jj=1:length(m2)
 
-    % Eigen values
-    minE=nan(1,length(w));
+        disp(['Loop over m: ',num2str(jj),' of ',num2str(length(m2))]);
 
-    for ii=1:length(w)
-        ee=eig(matOutE(:,:,ii));
-        ee=sort(ee);
-        minE(ii)=min(ee);
+        disp('Even');
+        % Evens
+        matOutE=calcMatrix(evensS,d,w',lambda,delta,m2(jj),cutoff);
+        %matOutE2=calcMatrix_working(evensS,d,w(2),lambda,delta,m2(jj));
+
+        % Eigen values
+        minE=nan(1,length(w));
+
+        for ii=1:length(w)
+            ee=eig(matOutE(:,:,ii));
+            ee=sort(ee);
+            minE(ii)=min(ee);
+        end
+
+        minAllE(jj)=min(minE);
+
+        disp('Odd');
+        % Odds
+        matOutO=calcMatrix(oddsS,d,w',lambda,delta,m2(jj),cutoff);
+
+        % Eigen values
+        minO=nan(1,length(w));
+
+        for ii=1:length(w)
+            eo=eig(matOutO(:,:,ii));
+            eo=sort(eo);
+            minO(ii)=min(eo);
+        end
+
+        minAllO(jj)=min(minO);
     end
 
-    minAllE(jj)=min(minE);
+    diffEO=abs(minAllE-minAllO);
 
-    disp('Odd');
-    % Odds
-    matOutO=calcMatrix(oddsS,d,w',lambda,delta,m2(jj),cutoff);
+    [minDiffEO,minInd]=min(diffEO);
 
-    % Eigen values
-    minO=nan(1,length(w));
+    %% Plot
 
-    for ii=1:length(w)
-        eo=eig(matOutO(:,:,ii));
-        eo=sort(eo);
-        minO(ii)=min(eo);
-    end
+    yUp=max([minAllE,minAllO]);
+    yDown=min([minAllE,minAllO]);
 
-    minAllO(jj)=min(minO);
+    close all
+    f1 = figure('Position',[200 500 600 1000],'DefaultAxesFontSize',12);
+
+    t = tiledlayout(2,1,'TileSpacing','tight','Padding','tight');
+
+    s1=nexttile(1);
+
+    hold on
+    plot(m2,minAllE,'-b','LineWidth',2);
+    plot(m2,minAllO,'-g','LineWidth',2);
+
+    xlabel('m2');
+    ylabel('Minimum');
+
+    xlim([m2(1),m2(end)]);
+    ylim([floor(yDown),ceil(yUp)+1]);
+
+    legend('Even','Odd');
+
+    text(m2(1)+0.02,ceil(yUp),['Minimum difference: ',num2str(minDiffEO),' at m2=',num2str(m2(minInd))],'FontSize',12);
+
+    grid on
+    box on
+
+    s2=nexttile(2);
+
+    hold on
+    plot(m2,minAllO-minAllE,'-k','LineWidth',2);
+
+    xlabel('m2');
+    ylabel('Minimum difference');
+
+    xlim([m2(1),m2(end)]);
+    %ylim([floor(yDown),ceil(yUp)+1]);
+
+    legend('Odd minus even');
+
+    %text(m2(1)+0.02,ceil(yUp),['Minimum difference: ',num2str(minDiffEO),' at m2=',num2str(m2(minInd))],'FontSize',12);
+
+    grid on
+    box on
+
+    print([figdir,'qft_variations_cutoff',num2str(cutoff),'.png'],'-dpng','-r0');
+
 end
-
-diffEO=abs(minAllE-minAllO);
-
-[minDiffEO,minInd]=min(diffEO);
-
-%% Plot
-
-yUp=max([minAllE,minAllO]);
-yDown=min([minAllE,minAllO]);
-
-close all
-f1 = figure('Position',[200 500 600 600],'DefaultAxesFontSize',12);
-
-hold on
-plot(m1,minAllE,'-b','LineWidth',2);
-plot(m1,minAllO,'-k','LineWidth',2);
-
-xlabel('m');
-ylabel('Minimum');
-
-xlim([m1(1),m1(end)]);
-ylim([floor(yDown),ceil(yUp)+1]);
-
-legend('Even','Odd');
-
-text(m1(1)+0.02,ceil(yUp),['Minimum difference: ',num2str(minDiffEO),' at m=',num2str(m1(minInd))],'FontSize',12);
-
-grid on
-box on
-
-print([figdir,'qft_variations.png'],'-dpng','-r0');
-
 %% Stop parallel pool
-
-poolobj=gcp('nocreate');
-delete(poolobj);
+%
+% poolobj=gcp('nocreate');
+% delete(poolobj);

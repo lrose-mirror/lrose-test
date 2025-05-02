@@ -1,4 +1,4 @@
-function matOutE=calcMatrix(evensS,d,w,lambda,delta,m2)
+function matOutE=calcMatrix_working(evensS,d,w,lambda,delta,m2)
 
 % Create state vectors
 evens=evensS(:,1:end-1);
@@ -12,7 +12,7 @@ for ii=1:size(evens,1)
 end
 
 %cutoff=length(stateVe);
-cutoff=120;
+cutoff=50;
 
 % Calculate matrix elements
 matOutE=zeros(cutoff);
