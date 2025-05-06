@@ -18,8 +18,8 @@ end
 % Calculate matrix elements
 matOut=zeros(cutoff,cutoff,length(w));
 
-%parfor ii=1:cutoff
-for ii=1:cutoff
+parfor ii=1:cutoff
+%for ii=1:cutoff
     for jj=1:cutoff
         normOut=1/sqrt(normF(ii)*normF(jj));
         stII=stateV{ii};

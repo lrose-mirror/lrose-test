@@ -1,4 +1,4 @@
-function [matOut1,matOut2,matOut3]=calcMatrix(inS,d,w,lambda,delta,m2,cutoff)
+function [matOut1,matOut2,matOut3]=calcMatrix(inS,d,w,delta,cutoff)
 
 % Create state vectors
 inCut=inS(:,1:end-1);
@@ -20,8 +20,8 @@ matOut1=zeros(cutoff,cutoff,length(w));
 matOut2=zeros(cutoff,cutoff,length(w));
 matOut3=zeros(cutoff,cutoff,length(w));
 
-%parfor ii=1:cutoff
-for ii=1:cutoff
+parfor ii=1:cutoff
+%for ii=1:cutoff
     for jj=1:cutoff
         normOut=1/sqrt(normF(ii)*normF(jj));
         stII=stateV{ii};

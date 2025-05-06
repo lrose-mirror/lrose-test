@@ -4,16 +4,16 @@ close all
 figdir='/scr/virga1/rsfdata/projects/qft/';
 
 % Initialize
-d=6;
+d=5;
 nMax=10;
 
 w=1:0.25:10;
 lambda=1;
 delta=1/d;
-m2=-(fliplr(10:1:20));
+m2=-(fliplr(10:1:18));
 %m2=-16;
 
-cutoffAll=800:100:2000;
+cutoffAll=100:100:1000;
 
 %% Create pregens
 
@@ -63,7 +63,7 @@ for kk=1:length(cutoffAll)
 
         disp('Even');
         % Evens
-        matOutE=calcMatrix(evensS,d,w',lambda,delta,m2(jj),cutoff);
+        matOutE=calcMatrix1(evensS,d,w',lambda,delta,m2(jj),cutoff);
         %matOutE2=calcMatrix_working(evensS,d,w(2),lambda,delta,m2(jj));
 
         % Eigen values
@@ -79,7 +79,7 @@ for kk=1:length(cutoffAll)
 
         disp('Odd');
         % Odds
-        matOutO=calcMatrix(oddsS,d,w',lambda,delta,m2(jj),cutoff);
+        matOutO=calcMatrix1(oddsS,d,w',lambda,delta,m2(jj),cutoff);
 
         % Eigen values
         minO=nan(1,length(w));
@@ -94,8 +94,13 @@ for kk=1:length(cutoffAll)
     end
 
     diffEO=abs(minAllE-minAllO);
+    diffEOrel=(minAllE-minAllO)./minAllE;
 
     [minDiffEO,minInd]=min(diffEO);
+
+    firstBelow=find(diffEOrel<0.02,1);
+
+    %<0.02;
 
     %% Plot
 
@@ -129,17 +134,16 @@ for kk=1:length(cutoffAll)
     s2=nexttile(2);
 
     hold on
-    plot(m2,minAllO-minAllE,'-k','LineWidth',2);
+    plot(m2,minAllE-minAllO,'-k','LineWidth',2);
+    plot(m2,diffEOrel,'-r','LineWidth',2);
+    scatter(m2(firstBelow),diffEOrel(firstBelow),60,'cyan','filled','MarkerEdgeColor','k')
 
     xlabel('m2');
     ylabel('Minimum difference');
 
     xlim([m2(1),m2(end)]);
-    %ylim([floor(yDown),ceil(yUp)+1]);
-
-    legend('Odd minus even');
-
-    %text(m2(1)+0.02,ceil(yUp),['Minimum difference: ',num2str(minDiffEO),' at m2=',num2str(m2(minInd))],'FontSize',12);
+    
+    legend('even-odd','(even-odd)/even',['m2=',num2str(m2(firstBelow))]);
 
     grid on
     box on

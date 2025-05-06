@@ -9,12 +9,10 @@ nMax=10;
 
 w=1:0.25:10;
 lambda=1;
-delta=1/d;
+delta=1/5;
 m2=-(fliplr(0:2:20));
-%m2=-16;
 
-%cutoffAll=800:100:2000;
-cutoffAll=100;
+cutoffAll=100:100:1000;
 
 %% Create pregens
 
@@ -49,7 +47,18 @@ for ii=1:size(sC,1)
     end
 end
 
-%% Loop over m2
+close all
+f1 = figure('Position',[200 500 600 600],'DefaultAxesFontSize',12);
+
+t = tiledlayout(1,1,'TileSpacing','tight','Padding','tight');
+s1=nexttile(1);
+colmap=turbo(length(cutoffAll));
+
+hold on
+
+%% Loop over cutoff
+
+bc=nan(length(cutoffAll),length(m2));
 
 for kk=1:length(cutoffAll)
     cutoff=cutoffAll(kk);
@@ -59,23 +68,19 @@ for kk=1:length(cutoffAll)
     minAllE=nan(1,length(m2));
     minAllEw=nan(1,length(m2));
     vecAllE=nan(cutoff,length(m2));
-    minAllO=nan(1,length(m2));
-    % minAllOw=nan(1,length(m2));
-    % vecAllO=nan(cutoff,length(m2));
     x2exE=nan(1,length(m2));
     x4exE=nan(1,length(m2));
+
+    [matOutE1,matOutE2,matOutE3]=calcMatrix(evensS,d,w',delta,cutoff);
 
     for jj=1:length(m2)
 
         disp(['Loop over m: ',num2str(jj),' of ',num2str(length(m2))]);
 
-        disp('Even');
         % Evens
-        [matOutE1,matOutE2,matOutE3]=calcMatrix(evensS,d,w',lambda,delta,m2(jj),cutoff);
+        
         matOutE=matOutE1+matOutE2.*(m2(jj)+2./delta.^2)./2+matOutE3.*lambda./delta;
-        %matOutE=calcMatrix1(evensS,d,w',lambda,delta,m2(jj),cutoff);
-        %matOutE2=calcMatrix_working(evensS,d,w(2),lambda,delta,m2(jj));
-
+       
         % Eigen values
         minE=nan(1,length(w));
         vE=nan(cutoff,length(w));
@@ -94,79 +99,31 @@ for kk=1:length(cutoffAll)
         matThisE2=matOutE2(:,:,minAllEind);
         x2exE(jj)=vecAllE(:,jj)'*matThisE2*vecAllE(:,jj)/2;
         matThisE3=matOutE3(:,:,minAllEind);
-        x4exE(jj)=vecAllE(:,jj)'*matThisE3*vecAllE(:,jj)/2;
+        x4exE(jj)=vecAllE(:,jj)'*matThisE3*vecAllE(:,jj);
 
-        % disp('Odd');
-        % % Odds
-        % matOutO=calcMatrix(oddsS,d,w',lambda,delta,m2(jj),cutoff);
-        % 
-        % % Eigen values
-        % minO=nan(1,length(w));
-        % 
-        % for ii=1:length(w)
-        %     eo=eig(matOutO(:,:,ii));
-        %     eo=sort(eo);
-        %     minO(ii)=min(eo);
-        % end
-        % 
-        % minAllO(jj)=min(minO);
     end
 
-    bc=1-x4exE./x2exE.^2./3./d;
-    % diffEO=abs(minAllE-minAllO);
-    % 
-    % [minDiffEO,minInd]=min(diffEO);
-    % 
-    % %% Plot
-    % 
-    % yUp=max([minAllE,minAllO]);
-    % yDown=min([minAllE,minAllO]);
-
-    close all
-    f1 = figure('Position',[200 500 600 1000],'DefaultAxesFontSize',12);
-
-    t = tiledlayout(2,1,'TileSpacing','tight','Padding','tight');
-
-    s1=nexttile(1);
-
-    hold on
-    plot(m2,bc,'-b','LineWidth',2);
-    % plot(m2,minAllO,'-g','LineWidth',2);
-    % 
-    % xlabel('m2');
-    % ylabel('Minimum');
-    % 
-    % xlim([m2(1),m2(end)]);
-    % ylim([floor(yDown),ceil(yUp)+1]);
-    % 
-    % legend('Even','Odd');
-    % 
-    % text(m2(1)+0.02,ceil(yUp),['Minimum difference: ',num2str(minDiffEO),' at m2=',num2str(m2(minInd))],'FontSize',12);
-    % 
-    % grid on
-    % box on
-    % 
-    % s2=nexttile(2);
-    % 
-    % hold on
-    % plot(m2,minAllO-minAllE,'-k','LineWidth',2);
-    % 
-    % xlabel('m2');
-    % ylabel('Minimum difference');
-    % 
-    % xlim([m2(1),m2(end)]);
-    % %ylim([floor(yDown),ceil(yUp)+1]);
-    % 
-    % legend('Odd minus even');
-    % 
-    % %text(m2(1)+0.02,ceil(yUp),['Minimum difference: ',num2str(minDiffEO),' at m2=',num2str(m2(minInd))],'FontSize',12);
-    % 
-    % grid on
-    % box on
-    % 
-    % print([figdir,'qft_variations_cutoff',num2str(cutoff),'.png'],'-dpng','-r0');
-
+    bc(kk,:)=1-x4exE./x2exE.^2./3;
+   
+    plot(m2,bc(kk,:),'-','LineWidth',2,'Color',colmap(kk,:));
+    drawnow
 end
+
+%% Finish plot
+xlabel('m2');
+ylabel('bc');
+
+xlim([m2(1),m2(end)]);
+
+legend(string(cutoffAll));
+
+grid on
+box on
+
+print([figdir,'qft_variations_bc_d',num2str(d),'.png'],'-dpng','-r0');
+
+save([figdir,'qft_variations_bc_d',num2str(d),'.mat'],'bc','m2');
+
 %% Stop parallel pool
 
 poolobj=gcp('nocreate');
