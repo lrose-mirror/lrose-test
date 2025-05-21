@@ -1,2 +1,3 @@
 # lrose-test
-Test suite for LROSE
+Test suite for LROSE.
+
