@@ -3,18 +3,20 @@ close all
 
 tic
 
-figdir='/scr/virga1/rsfdata/projects/qft/d5_deltaVaries_lambda1/';
+figdir='/scr/virga1/rsfdata/projects/qft/dVaries_delta1overD_lambda2/';
 %figdir='/scr/virga1/rsfdata/projects/qft/d/';
 
 % Initialize
-d=8;
+d=5;
 nMax=10;
 
 w=1:0.25:10;
-lambda=1;
+lambda=2;
 delta=1/d;
 %delta=0.05:0.05:1;
-m2=-(fliplr(0:2:20));
+%m2=-(fliplr(0:2:20));
+m2=-(fliplr(0:4:40));
+%m2=-(fliplr(0:8:80));
 %m2=-(fliplr(12:1:16));
 %m2=-14;
 
