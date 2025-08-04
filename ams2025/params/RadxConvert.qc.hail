@@ -38,7 +38,7 @@ debug = DEBUG_OFF;
 //
 // Type: string
 
-instance = "qc";
+instance = "qc.hail";
 
 //======================================================================
 //
@@ -54,7 +54,7 @@ instance = "qc";
 //
 // Type: string
 
-input_dir = "$(HOME)/data/ams2025/canada/cfradial/derecho";
+input_dir = "$(HOME)/data/ams2025/canada/cfradial/hail";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -1826,7 +1826,7 @@ censoring_fields = {
   ,
   {
     name = "SQIH",
-    min_valid_value = 0.30,
+    min_valid_value = 0.3,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
@@ -1869,6 +1869,37 @@ specify_fields_to_be_censored = FALSE;
 fields_to_be_censored = {
  "LDR"
 };
+
+///////////// censoring_limit_elev_angles /////////////
+//
+// Limit censoring to a specified range of elevation angles.
+//
+// If TRUE, censoring will only be applied for elevation angles between 
+//   the specified limits.
+//
+// Type: boolean
+
+censoring_limit_elev_angles = TRUE;
+
+///////////// censoring_min_elev_deg //////////////////
+//
+// Minimum elevation angle for censoring (deg).
+//
+// Only applies if 'censoring_limit_elev_angles' is true.
+//
+// Type: double
+
+censoring_min_elev_deg = 0;
+
+///////////// censoring_max_elev_deg //////////////////
+//
+// Maximum elevation angle for censoring (deg).
+//
+// Only applies if 'censoring_limit_elev_angles' is true.
+//
+// Type: double
+
+censoring_max_elev_deg = 2.0;
 
 ///////////// censor_test_pulse_ring //////////////////
 //
@@ -1975,7 +2006,7 @@ SNR_field_name = "SNR";
 //
 // Type: double
 
-noise_dbz_at_100km = 0.0;
+noise_dbz_at_100km = 0;
 
 //======================================================================
 //
@@ -2214,7 +2245,7 @@ compression_level = 4;
 //
 // Type: string
 
-output_dir = "$(HOME)/data/ams2025/canada/qc/cfradial/derecho";
+output_dir = "$(HOME)/data/ams2025/canada/qc/cfradial/hail";
 
 ///////////// output_filename_mode ////////////////////
 //

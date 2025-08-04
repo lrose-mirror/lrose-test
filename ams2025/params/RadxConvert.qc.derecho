@@ -38,7 +38,7 @@ debug = DEBUG_OFF;
 //
 // Type: string
 
-instance = "raw";
+instance = "qc.derecho";
 
 //======================================================================
 //
@@ -54,7 +54,7 @@ instance = "raw";
 //
 // Type: string
 
-input_dir = "$(HOME)/data/ams2025/canada/raw/hail";
+input_dir = "$(HOME)/data/ams2025/canada/cfradial/derecho";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -1682,6 +1682,18 @@ output_fields = {
     output_scale = 0.01,
     output_offset = 0
   }
+  ,
+  {
+    input_field_name = "SNR",
+    output_field_name = "SNR",
+    long_name = "signal_to_noise_ratio",
+    standard_name = "signal_to_noise_ratio_copolar_hc",
+    output_units = "",
+    encoding = OUTPUT_ENCODING_INT16,
+    output_scaling = SCALING_DYNAMIC,
+    output_scale = 0.01,
+    output_offset = 0
+  }
 };
 
 ///////////// write_other_fields_unchanged ////////////
@@ -1769,7 +1781,7 @@ output_encoding = OUTPUT_ENCODING_ASIS;
 //
 // Type: boolean
 
-apply_censoring = FALSE;
+apply_censoring = TRUE;
 
 ///////////// censoring_fields ////////////////////////
 //
@@ -1807,14 +1819,14 @@ apply_censoring = FALSE;
 censoring_fields = {
   {
     name = "SNR",
-    min_valid_value = 0,
+    min_valid_value = 30,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
   ,
   {
-    name = "NCP",
-    min_valid_value = 0.15,
+    name = "SQIH",
+    min_valid_value = 0.3,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
@@ -1867,7 +1879,7 @@ fields_to_be_censored = {
 //
 // Type: boolean
 
-censoring_limit_elev_angles = FALSE;
+censoring_limit_elev_angles = TRUE;
 
 ///////////// censoring_min_elev_deg //////////////////
 //
@@ -1887,7 +1899,7 @@ censoring_min_elev_deg = 0;
 //
 // Type: double
 
-censoring_max_elev_deg = 90;
+censoring_max_elev_deg = 1.15;
 
 ///////////// censor_test_pulse_ring //////////////////
 //
@@ -2233,7 +2245,7 @@ compression_level = 4;
 //
 // Type: string
 
-output_dir = "$(HOME)/data/ams2025/canada/cfradial/hail";
+output_dir = "$(HOME)/data/ams2025/canada/qc/cfradial/derecho";
 
 ///////////// output_filename_mode ////////////////////
 //
