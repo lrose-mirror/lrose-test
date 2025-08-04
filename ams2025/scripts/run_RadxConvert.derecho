@@ -1,8 +1,0 @@
-#! /bin/csh
-
-cd $HOME/git/lrose-test/ams2025/params
-
-RadxConvert -params RadxConvert.raw -debug -f ~/data/ams2025/canada/raw/derecho/202205211*h5 -outdir ~/data/ams2025/canada/cfradial/derecho
-
-
-

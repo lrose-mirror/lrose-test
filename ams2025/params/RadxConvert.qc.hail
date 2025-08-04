@@ -54,7 +54,7 @@ instance = "qc.hail";
 //
 // Type: string
 
-input_dir = "$(HOME)/data/ams2025/canada/cfradial/hail";
+input_dir = "$(DATA_DIR)/raw/hail";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -2245,7 +2245,7 @@ compression_level = 4;
 //
 // Type: string
 
-output_dir = "$(HOME)/data/ams2025/canada/qc/cfradial/hail";
+output_dir = "$(DATA_DIR)/cfradial/qc/hail";
 
 ///////////// output_filename_mode ////////////////////
 //
