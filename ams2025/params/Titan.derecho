@@ -40,7 +40,7 @@ debug = DEBUG_OFF;
 //
 // Type: string
 
-instance = "hail";
+instance = "derecho";
 
 //======================================================================
 //
@@ -148,7 +148,7 @@ restart_overlap_period = 3600;
 //
 // Type: string
 
-input_url = "$(DATA_DIR)/radar/cart/qc/Strathmore";
+input_url = "$(DATA_DIR)/radar/cart/qc/KingCity";
 
 ///////////// max_realtime_valid_age //////////////////
 //
@@ -1134,7 +1134,7 @@ specified_sounding = {
 //
 // Type: string
 
-sounding_spdb_url = "$(DATA_DIR)/ERA5/spdb/Strathmore";
+sounding_spdb_url = "$(DATA_DIR)/ERA5/spdb/KingCity";
 
 ///////////// sounding_search_time_margin_secs ////////
 //
@@ -1381,7 +1381,7 @@ FOKR_cat4_zmax_thresh = 65;
 //
 // Type: string
 
-storm_data_dir = "$(DATA_DIR)/radar/titan/Strathmore";
+storm_data_dir = "$(DATA_DIR)/radar/titan/KingCity";
 
 ///////////// store_storm_runs ////////////////////////
 //
