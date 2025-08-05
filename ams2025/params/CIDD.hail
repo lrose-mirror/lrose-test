@@ -244,7 +244,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  03:00 08/06/2024
+cidd.demo_time:  00:00 08/06/2024
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    300
@@ -264,7 +264,7 @@ cidd.max_time_list_span: 365
 
 #  This determines how many movie frames are in the loop to start with
 #  Setting this high will cause the X server to hog memory.
-cidd.starting_movie_frames:     16
+cidd.starting_movie_frames:     72
 
 # Minutes per movie frame on startup
 # The display will automatically update every this interval, throwing away its
