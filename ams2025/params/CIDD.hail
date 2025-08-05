@@ -251,7 +251,6 @@ TREC    mdvp:://tundra::dia/mdv/ctrec/ftg&  #1 #2 None  m/s  0      yellow
 #------------------------------------------------------------------------------------------
 
 Coasts      Coasts         coasts.map             2  0.0 10000.0  white
-
 COUNTIES          US_Counties           us_counties.map      1      0.0 1000.0     blue 
 STATES            State_Borders         usa.map              1      0.0 10000.0     green 
 
