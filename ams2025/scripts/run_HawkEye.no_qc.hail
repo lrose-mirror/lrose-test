@@ -1,10 +1,10 @@
 #! /bin/csh
 
-setenv DATA_DIR $HOME/data/ams2025/canada
+setenv DATA_DIR $HOME/data/ams2025
 
 cd $HOME/git/lrose-test/ams2025/params
 
-HawkEye -params HawkEye.ams2025 -f ${DATA_DIR}/cfradial/no_qc/hail/*/*nc
+HawkEye -params HawkEye.ams2025 -f ${DATA_DIR}/radar/cfradial/no_qc/Strathmore/20240806/*nc
 
 
 

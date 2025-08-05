@@ -4,8 +4,7 @@ setenv DATA_DIR $HOME/data/ams2025
 
 cd $HOME/git/lrose-test/ams2025/params
 
-HawkEye -params HawkEye.ams2025 -f ${DATA_DIR}/radar/cfradial/no_qc/KingCity/20220521/*nc
-
+CIDD -p CIDD.derecho
 
 
 

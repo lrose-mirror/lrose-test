@@ -186,7 +186,7 @@ archive_time_span_secs = 3600;
 //
 // Type: string
 
-archive_data_url = "$(DATA_DIR)/cfradial/hail";
+archive_data_url = "$(DATA_DIR)/radar/cfradial";
 
 //======================================================================
 //

@@ -1,8 +1,8 @@
 #! /bin/csh
 
-setenv DATA_DIR $HOME/data/ams2025/canada
+setenv DATA_DIR $HOME/data/ams2025
 
 cd $HOME/git/lrose-test/ams2025/params
 
-RadxConvert -params RadxConvert.no_qc -debug -f ${DATA_DIR}/raw/derecho/202205211*CASKR.h5 -outdir ${DATA_DIR}/cfradial/no_qc/derecho -name KingCity
+RadxConvert -params RadxConvert.no_qc.derecho -debug -f ${DATA_DIR}/radar/raw/derecho/202205211*CASKR.h5
 

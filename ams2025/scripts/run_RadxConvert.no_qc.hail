@@ -1,7 +1,7 @@
 #! /bin/csh
 
-setenv DATA_DIR $HOME/data/ams2025/canada
+setenv DATA_DIR $HOME/data/ams2025
 
 cd $HOME/git/lrose-test/ams2025/params
 
-RadxConvert -params RadxConvert.no_qc -debug -f ${DATA_DIR}/raw/hail/202408060*h5 -outdir ${DATA_DIR}/cfradial/no_qc/hail -name Strathmore
+RadxConvert -params RadxConvert.no_qc.hail -debug -f ${DATA_DIR}/radar/raw/hail/202408060*h5

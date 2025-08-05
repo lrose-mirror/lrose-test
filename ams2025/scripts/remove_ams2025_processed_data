@@ -1,7 +1,8 @@
 #! /bin/csh
 
-setenv DATA_DIR $HOME/data/ams2025/canada
+setenv DATA_DIR $HOME/data/ams2025
 
 cd $DATA_DIR
 
-/bin/rm -rf cfradial
+/bin/rm -rf radar/cfradial
+

@@ -105,45 +105,45 @@ field_list = {
 #Label    Label       URL           Colorscale Units Cont-lo-hi-interv Format Display_in_menu Bkgnd_Render
 #----------------------------------------------------------------------------------------------------------
 
-DBZ_QC         DBZ_QC         cfradial/qc/derecho&DBZ         dbz.colors      dbz    0 0 0   cart  1 0
-DBZ_TOT_QC     DBZ_TOT_QC     cfradial/qc/derecho&DBZ_TOT     dbz.colors      dbz    0 0 0   cart  1 0
-VEL_QC         VEL_QC         cfradial/qc/derecho&VEL         vel.colors      m/s    0 0 0   cart  1 0
-WIDTH_QC       WIDTH_QC       cfradial/qc/derecho&WIDTH       width.colors    m/s    0 0 0   cart  1 0
+DBZ_QC         DBZ_QC         radar/cfradial/qc/KingCity&DBZ         dbz.colors      dbz    0 0 0   cart  1 0
+DBZ_TOT_QC     DBZ_TOT_QC     radar/cfradial/qc/KingCity&DBZ_TOT     dbz.colors      dbz    0 0 0   cart  1 0
+VEL_QC         VEL_QC         radar/cfradial/qc/KingCity&VEL         vel.colors      m/s    0 0 0   cart  1 0
+WIDTH_QC       WIDTH_QC       radar/cfradial/qc/KingCity&WIDTH       width.colors    m/s    0 0 0   cart  1 0
 
-SNR_QC         SNR_QC         cfradial/qc/derecho&SNR         snr.colors      dB     0 0 0   cart  1 0
-ZDR_QC         ZDR_QC         cfradial/qc/derecho&ZDR         zdr.colors      dB     0 0 0   cart  1 0
-PHIDP_QC       PHIDP_QC       cfradial/qc/derecho&PHIDP       phidp_360.colors    deg    0 0 0   cart  1 0
-UPHIDP_QC      UPHIDP_QC      cfradial/qc/derecho&UPHIDP      phidp_360.colors    deg    0 0 0   cart  1 0
+SNR_QC         SNR_QC         radar/cfradial/qc/KingCity&SNR         snr.colors      dB     0 0 0   cart  1 0
+ZDR_QC         ZDR_QC         radar/cfradial/qc/KingCity&ZDR         zdr.colors      dB     0 0 0   cart  1 0
+PHIDP_QC       PHIDP_QC       radar/cfradial/qc/KingCity&PHIDP       phidp_360.colors    deg    0 0 0   cart  1 0
+UPHIDP_QC      UPHIDP_QC      radar/cfradial/qc/KingCity&UPHIDP      phidp_360.colors    deg    0 0 0   cart  1 0
 
-RHOHV_QC       RHOHV_QC       cfradial/qc/derecho&RHOHV       rhohv.colors    -      0 0 0   cart  1 0
-KDP_QC         KDP_QC         cfradial/qc/derecho&KDP         kdp.colors      deg/km 0 0 0   cart  1 0
-NCP_QC         NCP_QC         cfradial/qc/derecho&NCP         ncp.colors      -      0 0 0   cart  1 0
-====           ====           cfradial/qc/derecho&none        none.colors     -      0 0 0   cart  1 0
+RHOHV_QC       RHOHV_QC       radar/cfradial/qc/KingCity&RHOHV       rhohv.colors    -      0 0 0   cart  1 0
+KDP_QC         KDP_QC         radar/cfradial/qc/KingCity&KDP         kdp.colors      deg/km 0 0 0   cart  1 0
+NCP_QC         NCP_QC         radar/cfradial/qc/KingCity&NCP         ncp.colors      -      0 0 0   cart  1 0
+====           ====           radar/cfradial/qc/KingCity&none        none.colors     -      0 0 0   cart  1 0
 
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
 
-DBZ_NO_QC      DBZ_NO_QC      cfradial/no_qc/derecho&DBZ      dbz.colors      dbz    0 0 0   cart  1 0
-DBZ_TOT_NO_QC  DBZ_TOT_NO_QC  cfradial/no_qc/derecho&DBZ_TOT  dbz.colors      dbz    0 0 0   cart  1 0
-VEL_NO_QC      VEL_NO_QC      cfradial/no_qc/derecho&VEL      vel.colors      m/s    0 0 0   cart  1 0
-WIDTH_NO_QC    WIDTH_NO_QC    cfradial/no_qc/derecho&WIDTH    width.colors    m/s    0 0 0   cart  1 0
+DBZ_NO_QC      DBZ_NO_QC      radar/cfradial/no_qc/KingCity&DBZ      dbz.colors      dbz    0 0 0   cart  1 0
+DBZ_TOT_NO_QC  DBZ_TOT_NO_QC  radar/cfradial/no_qc/KingCity&DBZ_TOT  dbz.colors      dbz    0 0 0   cart  1 0
+VEL_NO_QC      VEL_NO_QC      radar/cfradial/no_qc/KingCity&VEL      vel.colors      m/s    0 0 0   cart  1 0
+WIDTH_NO_QC    WIDTH_NO_QC    radar/cfradial/no_qc/KingCity&WIDTH    width.colors    m/s    0 0 0   cart  1 0
 
-SNR_NO_QC      SNR_NO_QC      cfradial/no_qc/derecho&SNR      snr.colors      dB     0 0 0   cart  1 0
-ZDR_NO_QC      ZDR_NO_QC      cfradial/no_qc/derecho&ZDR      zdr.colors      dB     0 0 0   cart  1 0
-PHIDP_NO_QC    PHIDP_NO_QC    cfradial/no_qc/derecho&PHIDP    phidp_360.colors    deg    0 0 0   cart  1 0
-UPHIDP_NO_QC   UPHIDP_NO_QC   cfradial/no_qc/derecho&UPHIDP   phidp_360.colors    deg    0 0 0   cart  1 0
+SNR_NO_QC      SNR_NO_QC      radar/cfradial/no_qc/KingCity&SNR      snr.colors      dB     0 0 0   cart  1 0
+ZDR_NO_QC      ZDR_NO_QC      radar/cfradial/no_qc/KingCity&ZDR      zdr.colors      dB     0 0 0   cart  1 0
+PHIDP_NO_QC    PHIDP_NO_QC    radar/cfradial/no_qc/KingCity&PHIDP    phidp_360.colors    deg    0 0 0   cart  1 0
+UPHIDP_NO_QC   UPHIDP_NO_QC   radar/cfradial/no_qc/KingCity&UPHIDP   phidp_360.colors    deg    0 0 0   cart  1 0
 
-RHOHV_NO_QC    RHOHV_NO_QC    cfradial/no_qc/derecho&RHOHV    rhohv.colors    -      0 0 0   cart  1 0
-KDP_NO_QC      KDP_NO_QC      cfradial/no_qc/derecho&KDP      kdp.colors      deg/km 0 0 0   cart  1 0
-NCP_NO_QC      NCP_NO_QC      cfradial/no_qc/derecho&NCP      ncp.colors      -      0 0 0   cart  1 0
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
+RHOHV_NO_QC    RHOHV_NO_QC    radar/cfradial/no_qc/KingCity&RHOHV    rhohv.colors    -      0 0 0   cart  1 0
+KDP_NO_QC      KDP_NO_QC      radar/cfradial/no_qc/KingCity&KDP      kdp.colors      deg/km 0 0 0   cart  1 0
+NCP_NO_QC      NCP_NO_QC      radar/cfradial/no_qc/KingCity&NCP      ncp.colors      -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
 
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
-====           ====           cfradial/no_qc/derecho&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
+====           ====           radar/cfradial/no_qc/KingCity&none     none.colors     -      0 0 0   cart  1 0
 
 #
 </GRIDS>

@@ -38,7 +38,7 @@ debug = DEBUG_OFF;
 //
 // Type: string
 
-instance = "qc.derecho";
+instance = "no_qc.derecho";
 
 //======================================================================
 //
@@ -1781,7 +1781,7 @@ output_encoding = OUTPUT_ENCODING_ASIS;
 //
 // Type: boolean
 
-apply_censoring = TRUE;
+apply_censoring = FALSE;
 
 ///////////// censoring_fields ////////////////////////
 //
@@ -1879,7 +1879,7 @@ fields_to_be_censored = {
 //
 // Type: boolean
 
-censoring_limit_elev_angles = TRUE;
+censoring_limit_elev_angles = FALSE;
 
 ///////////// censoring_min_elev_deg //////////////////
 //
@@ -1899,7 +1899,7 @@ censoring_min_elev_deg = 0;
 //
 // Type: double
 
-censoring_max_elev_deg = 1.15;
+censoring_max_elev_deg = 90;
 
 ///////////// censor_test_pulse_ring //////////////////
 //
@@ -2245,7 +2245,7 @@ compression_level = 4;
 //
 // Type: string
 
-output_dir = "$(DATA_DIR)/radar/cfradial/qc/KingCity";
+output_dir = "$(DATA_DIR)/radar/cfradial/no_qc/KingCity";
 
 ///////////// output_filename_mode ////////////////////
 //

@@ -54,7 +54,7 @@ instance = "qc.hail";
 //
 // Type: string
 
-input_dir = "$(DATA_DIR)/raw/hail";
+input_dir = "$(DATA_DIR)/radar/raw/hail";
 
 ///////////// mode ////////////////////////////////////
 //
@@ -562,7 +562,7 @@ gate_spacing_km = 0.0075;
 //
 // Type: boolean
 
-override_instrument_name = FALSE;
+override_instrument_name = TRUE;
 
 ///////////// instrument_name /////////////////////////
 //
@@ -572,7 +572,7 @@ override_instrument_name = FALSE;
 //
 // Type: string
 
-instrument_name = "unknown";
+instrument_name = "Strathmore";
 
 ///////////// override_site_name //////////////////////
 //
@@ -1819,7 +1819,7 @@ apply_censoring = TRUE;
 censoring_fields = {
   {
     name = "SNR",
-    min_valid_value = 30,
+    min_valid_value = 25,
     max_valid_value = 1000,
     combination_method = LOGICAL_OR
   }
@@ -2245,7 +2245,7 @@ compression_level = 4;
 //
 // Type: string
 
-output_dir = "$(DATA_DIR)/cfradial/qc/hail";
+output_dir = "$(DATA_DIR)/radar/cfradial/qc/Strathmore";
 
 ///////////// output_filename_mode ////////////////////
 //
