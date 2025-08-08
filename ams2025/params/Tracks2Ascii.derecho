@@ -317,7 +317,7 @@ print_level_properties = FALSE;
 //
 // Type: boolean
 
-print_polygons = FALSE;
+print_polygons = TRUE;
 
 ///////////// initial_props_nscans ////////////////////
 //
