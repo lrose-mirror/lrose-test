@@ -1,7 +1,8 @@
 #! /bin/csh
 
-setenv DATA_DIR $HOME/data/ams2025
+source ./set_env_vars
 
 cd $HOME/git/lrose-test/ams2025/params
 
-Lucid -params Lucid.derecho
+Lucid -params Lucid.derecho |& grep -v QPixmap
+
