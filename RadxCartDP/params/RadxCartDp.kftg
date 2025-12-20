@@ -216,6 +216,18 @@ radar_field_names = {
   }
 };
 
+///////////// noise_dbz_at_100km //////////////////////
+//
+// The noise value, represented as dBZ at a range of 100km.
+//
+// This is used for computing the SNR from the DBZ field. It is only 
+//   used if SNR_available is FALSE. The SNR will be computed by 
+//   range-correcting this value and using it as the noise value.
+//
+// Type: double
+
+noise_dbz_at_100km = 0;
+
 //======================================================================
 //
 // MODEL FOR ENVIRONMENTAL FIELDS.
@@ -370,99 +382,6 @@ bblock_field_names = {
 // Type: string
 
 output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg";
-
-//======================================================================
-//
-// INPUT FIELD INFORMATION for computing KDP, PID and RATE.
-//
-// Names of fields in the input file. The following fields are required: 
-//   SNR, DBZ, ZDR, PHIDP and RHOHV. If SNR is not available, it is 
-//   computed from DBZ.
-//
-//======================================================================
- 
-///////////// SNR_available ///////////////////////////
-//
-// Is SNR data available?.
-//
-// If not, SNR will be computed from the DBZ field. See 
-//   'noise_dbz_at_100km'.
-//
-// Type: boolean
-
-SNR_available = FALSE;
-
-///////////// SNR_field_name //////////////////////////
-//
-// Field name for SNR.
-//
-// Signal-to-noise ratio (dB).
-//
-// Type: string
-
-SNR_field_name = "SNR";
-
-///////////// noise_dbz_at_100km //////////////////////
-//
-// The noise value, represented as dBZ at a range of 100km.
-//
-// This is used for computing the SNR from the DBZ field. It is only 
-//   used if SNR_available is FALSE. The SNR will be computed by 
-//   range-correcting this value and using it as the noise value.
-//
-// Type: double
-
-noise_dbz_at_100km = 0;
-
-///////////// DBZ_field_name //////////////////////////
-//
-// Field name for DBZ.
-//
-// Horizontally-polarized reflectivity factor.
-//
-// Type: string
-
-DBZ_field_name = "DBZ";
-
-///////////// ZDR_field_name //////////////////////////
-//
-// Field name for ZDR.
-//
-// Type: string
-
-ZDR_field_name = "ZDR";
-
-///////////// PHIDP_field_name ////////////////////////
-//
-// Field name for PHIDP.
-//
-// Type: string
-
-PHIDP_field_name = "PHIDP";
-
-///////////// RHOHV_field_name ////////////////////////
-//
-// Field name for RHOHV.
-//
-// Type: string
-
-RHOHV_field_name = "RHOHV";
-
-///////////// LDR_available ///////////////////////////
-//
-// Is LDR data available?.
-//
-// Type: boolean
-
-LDR_available = TRUE;
-
-///////////// LDR_field_name //////////////////////////
-//
-// Field name for LDR.
-//
-// Type: string
-
-LDR_field_name = "LDR";
 
 //======================================================================
 //
@@ -729,7 +648,7 @@ pid_output_fields = {
     long_name = "final_interest_value_for_pid_decision",
     standard_name = "final_interest_value_for_pid_decision",
     units = "",
-    do_write = FALSE
+    do_write = TRUE
   }
   ,
   {
@@ -738,7 +657,16 @@ pid_output_fields = {
     long_name = "temperature_for_computing_pid",
     standard_name = "temperature",
     units = "C",
-    do_write = FALSE
+    do_write = TRUE
+  }
+  ,
+  {
+    id = SD_ZDR,
+    name = "SD_ZDR",
+    long_name = "sdev_of_zdr_for_computing_pid",
+    standard_name = "sdev_zdr",
+    units = "dB",
+    do_write = TRUE
   }
   ,
   {
@@ -756,7 +684,7 @@ pid_output_fields = {
     long_name = "kdp_conditioned_using_ZZDR_self_consistency",
     standard_name = "specific_differential_phase_hv",
     units = "deg/km",
-    do_write = FALSE
+    do_write = TRUE
   }
   ,
   {
