@@ -1,0 +1,8 @@
+#! /bin/csh
+
+cd ~/git/lrose-test/fmq/params
+
+FmqTest -params FmqTest.64bit -verbose
+
+
+

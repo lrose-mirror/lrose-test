@@ -87,7 +87,7 @@ write_sleep_msecs = 100;
 //
 // Type: string
 
-output_fmq_url = "/tmp/fmq/test/64_bit_in";
+output_fmq_url = "/tmp/fmq/test/32_bit_in";
 
 ///////////// output_compress /////////////////////////
 //
