@@ -53,7 +53,7 @@ instance = "64bit";
 //
 // Type: string
 
-input_file_path = "$(HOME)/Downloads/fmq_test/fmq_test_msg.txt";
+input_file_path = "$(HOME)/git/lrose-test/fmq/params/fmq_test_msg.txt";
 
 ///////////// write_count /////////////////////////////
 //
