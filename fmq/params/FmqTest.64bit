@@ -1,5 +1,5 @@
 /**********************************************************************
- * TDRP params for ./FmqTest
+ * TDRP params for FmqTest
  **********************************************************************/
 
 //======================================================================
@@ -55,6 +55,17 @@ instance = "64bit";
 
 input_file_path = "$(HOME)/git/lrose-test/fmq/params/fmq_test_msg.txt";
 
+///////////// append_count_and_time_to_msg ////////////
+//
+// Option to append count an time to the message.
+//
+// If TRUE, the app will make a string containing the index count and 
+//   time, and append that to the buffer for identification purposes.
+//
+// Type: boolean
+
+append_count_and_time_to_msg = TRUE;
+
 ///////////// write_count /////////////////////////////
 //
 // Number of times to write the file contents to the FMQ.
@@ -73,7 +84,7 @@ write_count = 1000;
 //
 // Type: int
 
-write_sleep_msecs = 100;
+write_sleep_msecs = 10;
 
 //======================================================================
 //
@@ -87,7 +98,7 @@ write_sleep_msecs = 100;
 //
 // Type: string
 
-output_fmq_url = "/tmp/fmq/test/64_bit_in";
+output_fmq_url = "/tmp/fmq/test/32_bit_in";
 
 ///////////// output_compress /////////////////////////
 //
