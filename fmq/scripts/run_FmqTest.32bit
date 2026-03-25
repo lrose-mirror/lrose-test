@@ -2,7 +2,7 @@
 
 cd ~/git/lrose-test/fmq/params
 
-~/fmq32/bin/FmqTest -params FmqTest.32bit -verbose
+~/lrose_32/bin/FmqTest -params FmqTest.32bit -verbose
 
 
 

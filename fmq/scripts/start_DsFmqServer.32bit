@@ -1,0 +1,12 @@
+#! /bin/csh
+
+snuff DsFmqServer.32bit
+
+cd ~/git/lrose-test/fmq/params
+
+~/lrose_32/bin/DsFmqServer -params DsFmqServer.32bit -verbose >& /tmp/fmq/test/DsFmqServer.32bit.log &
+
+
+
+
+
