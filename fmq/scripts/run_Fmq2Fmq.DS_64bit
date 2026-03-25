@@ -2,7 +2,7 @@
 
 cd ~/git/lrose-test/fmq/params
 
-Fmq2Fmq -params Fmq2Fmq.64bit -verbose
+Fmq2Fmq -params Fmq2Fmq.DS_64bit -verbose
 
 
 

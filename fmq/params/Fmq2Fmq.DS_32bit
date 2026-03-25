@@ -45,7 +45,7 @@ debug = DEBUG_VERBOSE;
 // Type: string
 //
 
-instance = "64bit_test";
+instance = "DS_32bit";
 
 //======================================================================
 //
@@ -61,7 +61,7 @@ instance = "64bit_test";
 // Type: string
 //
 
-input_url = "/tmp/fmq/test/64_bit_in";
+input_url = "/tmp/fmq/test/32bit_1";
 
 ///////////// msecs_sleep_blocking ////////////////////
 //
@@ -92,9 +92,9 @@ msecs_sleep_blocking = 1;
 //
 
 output_urls = {
-  "/tmp/fmq/test/64_bit_out"
+  "fmqp:://localhost:0:/tmp/fmq/test/32bit_2"
 };
-// "fmqp:://eol-wavelet.eol.ucar.edu:0:/tmp/fmq/test/64_bit_out"
+
 
 ///////////// data_mapper_report_interval /////////////
 //

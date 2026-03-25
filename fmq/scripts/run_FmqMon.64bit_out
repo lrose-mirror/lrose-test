@@ -1,6 +1,0 @@
-#! /bin/csh
-
-FmqMon -mode ASCII_PRINT -fmq /tmp/fmq/test/64_bit_out -verbose
-
-
-

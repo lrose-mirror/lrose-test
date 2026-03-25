@@ -1,7 +1,0 @@
-#! /bin/csh
-
-~/fmq32/bin/FmqMon -mode ASCII_PRINT -fmq /tmp/fmq/test/32_bit_in -verbose
-
-
-
-

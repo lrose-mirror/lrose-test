@@ -1,0 +1,8 @@
+#! /bin/csh
+
+cd ~/git/lrose-test/fmq/params
+
+~/fmq32/bin/Fmq2Fmq -params Fmq2Fmq.DS_32bit -verbose
+
+
+

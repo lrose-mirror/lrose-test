@@ -14,7 +14,7 @@
 //
 // Type: string
 
-instance = "64bit_test";
+instance = "test";
 
 ///////////// debug ///////////////////////////////////
 //

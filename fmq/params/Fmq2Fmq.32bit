@@ -45,7 +45,7 @@ debug = DEBUG_VERBOSE;
 // Type: string
 //
 
-instance = "DS_64bit_test";
+instance = "32bit";
 
 //======================================================================
 //
@@ -61,7 +61,7 @@ instance = "DS_64bit_test";
 // Type: string
 //
 
-input_url = "/tmp/fmq/test/64_bit_in";
+input_url = "/tmp/fmq/test/32bit_1";
 
 ///////////// msecs_sleep_blocking ////////////////////
 //
@@ -92,9 +92,8 @@ msecs_sleep_blocking = 1;
 //
 
 output_urls = {
-  "fmqp:://localhost:0:/tmp/fmq/test/64_bit_out"
+  "/tmp/fmq/test/32bit_2"
 };
-
 
 ///////////// data_mapper_report_interval /////////////
 //
