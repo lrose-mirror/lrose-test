@@ -145,6 +145,27 @@ SPOL_DBMHX       SPOL_DBMHX     mdvp:://localhost:0:$(HOME)/data/pecan/cfradial/
 SPOL_DBMVX_F     SPOL_DBMVX_F   mdvp:://localhost:0:$(HOME)/data/pecan/cfradial/spol/sur&DBMVX_F  dbmlow.colors dBm -5 80 5 radial 1 0
 SPOL_DBMVX       SPOL_DBMVX     mdvp:://localhost:0:$(HOME)/data/pecan/cfradial/spol/sur&DBMVX    dbmlow.colors dBm -5 80 5 radial 1 0
 
+#############################################
+# SPOL CART MOMENTS
+
+SPOL_CART_DBZ_F       SPOL_CART_DBZ_F     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&DBZ_F     dbz.colors   dBZ -5 80 5 radial 1 0
+SPOL_CART_DBZ         SPOL_CART_DBZ       mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&DBZ       dbz.colors   dBZ -5 80 5 radial 1 0
+SPOL_CART_VEL_F       SPOL_CART_VEL_F     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&VEL_F     vel.colors   m/s -5 80 5 radial 1 0
+SPOL_CART_VEL         SPOL_CART_VEL       mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&VEL       vel.colors   m/s -5 80 5 radial 1 0
+SPOL_CART_WIDTH_F     SPOL_CART_WIDTH_F   mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&WIDTH_F   width.colors m/s -5 80 5 radial 1 0
+SPOL_CART_WIDTH       SPOL_CART_WIDTH     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&WIDTH     width.colors m/s -5 80 5 radial 1 0
+SPOL_CART_PHIDP_F     SPOL_CART_PHIDP_F   mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&PHIDP_F   phidp_alt.colors deg -5 80 5 radial 1 0
+SPOL_CART_PHIDP       SPOL_CART_PHIDP     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&PHIDP     phidp_alt.colors deg -5 80 5 radial 1 0
+
+SPOL_CART_ZDR_F       SPOL_CART_ZDR_F     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&ZDR_F     zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_CART_ZDR         SPOL_CART_ZDR       mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&ZDR       zdr.colors   dB  -5 80 5 radial 1 0
+SPOL_CART_RHOHV_F     SPOL_CART_RHOHV_F   mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&RHOHV_F   rhohv.colors   -  -5 80 5 radial 1 0
+SPOL_CART_RHOHV       SPOL_CART_RHOHV     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&RHOHV     rhohv.colors   -  -5 80 5 radial 1 0
+SPOL_CART_KDP_F       SPOL_CART_KDP_F     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&KDP_F     kdp.colors   deg/km -5 80 5 radial 1 0
+SPOL_CART_KDP         SPOL_CART_KDP       mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&KDP       kdp.colors   deg/km  -5 80 5 radial 1 0
+SPOL_CART_SNRHC_F     SPOL_CART_SNRHC_F   mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&SNRHC_F   snr.colors   dB  -5 80 5 radial 1 0
+SPOL_CART_SNRHC       SPOL_CART_SNRHC     mdvp:://localhost:0:$(HOME)/data/pecan/mdv/radarCart/spol&SNRHC     snr.colors   dB  -5 80 5 radial 1 0
+
 </GRIDS>
 
 <MAPS>
@@ -257,7 +278,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  00:05 06/26/2015
+cidd.demo_time:  00:10 06/26/2015
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1

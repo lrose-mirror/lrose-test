@@ -1,0 +1,7 @@
+#! /bin/csh
+
+running "DsServerMgr"
+if ($status == 1) then
+    DsServerMgr -instance primary -qmax -1 >& /dev/null &
+endif
+
