@@ -310,7 +310,7 @@ PID_use_soundings_from_spdb = FALSE;
 // Type: string
 //
 
-PID_sounding_spdb_url = "$(HOME)/data/pecan/spdb/sounding/gfs";
+PID_sounding_spdb_url = "$(HOME)/data/pecan/spdb/sounding/ruc";
 
 ///////////// PID_sounding_search_time_margin_secs ////
 //
@@ -336,7 +336,7 @@ PID_sounding_search_time_margin_secs = 86400;
 // Type: string
 //
 
-PID_sounding_location_name = "SPOL";
+PID_sounding_location_name = "KFTG";
 
 ///////////// PID_sounding_check_pressure_range ///////
 //

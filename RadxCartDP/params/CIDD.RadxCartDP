@@ -115,6 +115,15 @@ SCALAR_RHOHV SCALAR_RHOHV  $(HOME)/data/pecan/cfradial/kftg/scalars&RHOHV       
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
+TEMPC     TEMPC      $(HOME)/data/pecan/cfradial/kftg/scalars&TEMPC   temp.colors C -5 80 5 radial 1 0
+TEMP     TEMP      $(HOME)/data/pecan/cfradial/kftg/scalars&TEMP_FOR_PID   temp.colors C -5 80 5 radial 1 0
+BEAM_HT   BEAM_HT     $(HOME)/data/pecan/cfradial/kftg/scalars&BEAM_HT  number.colors km -5 80 5 radial 1 0
+ELEV     ELEV     $(HOME)/data/pecan/cfradial/kftg/scalars&ELEV  number.colors deg -5 80 5 radial 1 0
+RANGE    RANGE    $(HOME)/data/pecan/cfradial/kftg/scalars&RANGE  number_250.colors km -5 80 5 radial 1 0
+DBZ_SMOOTHED DBZ_SMOOTHED  $(HOME)/data/pecan/cfradial/kftg/scalars&DBZ_SMOOTHED  dbz.colors   dBZ -5 80 5 radial 1 0
+RHOHV_SMOOTHED RHOHV_SMOOTHED  $(HOME)/data/pecan/cfradial/kftg/scalars&RHOHV_SMOOTHED  rhohv.colors - -5 80 5 radial 1 0
+SD_ZDR   SD_ZDR    $(HOME)/data/pecan/cfradial/kftg/scalars&SD_ZDR       sdzdr.colors   dB -5 80 5 radial 1 0
+
 DBZ_SMOOTHED DBZ_SMOOTHED  $(HOME)/data/pecan/cfradial/kftg/scalars&DBZ_SMOOTHED  dbz.colors   dBZ -5 80 5 radial 1 0
 RHOHV_SMOOTHED RHOHV_SMOOTHED  $(HOME)/data/pecan/cfradial/kftg/scalars&RHOHV_SMOOTHED  rhohv.colors - -5 80 5 radial 1 0
 SD_ZDR   SD_ZDR    $(HOME)/data/pecan/cfradial/kftg/scalars&SD_ZDR       sdzdr.colors   dB -5 80 5 radial 1 0
@@ -261,7 +270,7 @@ cidd.debug2_flag:           0
 #  System will startup using field 0, requesting data closest to the
 # demo time. The movie frame will be centered on the time after applying
 # temporal rounding. 
-cidd.demo_time:  00:00 06/26/2015
+cidd.demo_time:  00:03 06/26/2015
 
 # Set times to the nearest value divisible by the number of seconds
 cidd.temporal_rounding:    1
