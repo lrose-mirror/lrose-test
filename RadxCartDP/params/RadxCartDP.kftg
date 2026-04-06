@@ -34,7 +34,7 @@
 //     DEBUG_VERBOSE
 //     DEBUG_EXTRA
 
-debug = DEBUG_NORM;
+debug = DEBUG_OFF;
 
 //======================================================================
 //
