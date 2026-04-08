@@ -1,3 +1,12 @@
+##############################################################
+# Thresholds for NEXRAD
+#
+# NOTE: GSH and GRR reflectivity range has been extended at the
+# upper end from 55 dbz to 60 dbz, to prevent missing results.
+#
+# Mike Dixon, April 2026
+###############################################################
+#
 # ---------------------------------
 # begin comments with the "#" sign
 # the mnemonics are forced to lower case so
