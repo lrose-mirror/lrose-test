@@ -155,12 +155,12 @@ RATE_HYBRID_FILT  RATE_HYBRID_FILT $(HOME)/data/pecan/mdv/radarCart/kftg&RATE_HY
 
 INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP  temp.colors   C   -5   80  5  dcont   1 0
 INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors   %   -5   80  5  dcont   1 0
-Terrain    Terrain    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&terrain_ht  terrain_front.colors   m   -5   80  5  cart   1 0
-BEAM_E     BEAM_E     mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&BEAM_E     extinction.colors   m   -5   80  5  cart   1 0
-BEAM_E     BEAM_E     mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&BEAM_E     beamb.colors   m   -5   80  5  cart   1 0
-Terrain    Terrain    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/cart_terrain&terrain_ht  terrain_front.colors   m   -5   80  5  cart   1 0
-HiRes      HiRes      mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/cart_terrain&terrain_hi_res  terrain_front.colors   m   -5   80  5  cart   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+Terrain    Terrain    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/&terrain_ht  terrain_front.colors   m   -5   80  5  cart   1 0
+HiRes      HiRes      mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/&terrain_hi_res  terrain_front.colors   m   -5   80  5  cart   1 0
+BEAM_E     BEAM_E     mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
+Elev       Elev       mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&elevation elevation.colors   deg  -5   80  5  cart   1 0
 
 # Cart data low res
 
@@ -197,7 +197,16 @@ HiRes      HiRes      mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBloc
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 2Terrain    2Terrain    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg2&terrain_ht  terrain_front.colors   m   -5   80  5  cart   1 0
 2HiRes      2HiRes      mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg2&terrain_hi_res  terrain_front.colors   m   -5   80  5  cart   1 0
-2BEAM_E     2BEAM_E     mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg2&BEAM_E     fraction.colors   m   -5   80  5  cart   1 0
+2BEAM_E     2BEAM_E     mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg2&extinction     fraction.colors   m   -5   80  5  cart   1 0
+2Elev       2Elev       mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg2&elevation elevation.colors   deg  -5   80  5  cart   1 0
+
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
 </GRIDS>
