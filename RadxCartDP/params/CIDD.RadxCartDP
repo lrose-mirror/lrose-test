@@ -110,7 +110,7 @@ CART_KFTG_WIDTH CART_KFTG_WIDTH  $(HOME)/data/pecan/mdv/radarCart/kftg&WIDTH    
 
 PID_KFTG_DBZ   PID_KFTG_DBZ    $(HOME)/data/pecan/mdv/radarCart/kftg&DBZ_FOR_PID       dbz.colors   dBZ -5 80 5 cart 1 0
 PID_KFTG_ZDR   PID_KFTG_ZDR    $(HOME)/data/pecan/mdv/radarCart/kftg&ZDR_FOR_PID       zdr.colors   dB  -5 80 5 cart 1 0
-PID_KFTG_PHIDP PID_KFTG_PHIDP  $(HOME)/data/pecan/mdv/radarCart/kftg&PHIDP_FOR_PID       phidp.colors deg -5 80 5 cart 1 0
+PID_KFTG_PHIDP PID_KFTG_PHIDP  $(HOME)/data/pecan/mdv/radarCart/kftg&PHIDP_FOR_PID       phidp.colors deg -5 80 5 cart 1 0a
 PID_KFTG_RHOHV PID_KFTG_RHOHV  $(HOME)/data/pecan/mdv/radarCart/kftg&RHOHV_FOR_PID       rhohv.colors -   -5 80 5 cart 1 0
 PID_KFTG_SNR   PID_KFTG_SNR    $(HOME)/data/pecan/mdv/radarCart/kftg&SNR_FOR_PID       snr.colors   dB -5 80 5 cart 1 0
 PID_KFTG_KDP   PID_KFTG_KDP    $(HOME)/data/pecan/mdv/radarCart/kftg&KDP_FOR_PID        kdp.colors -   -5 80 5 cart 1 0
@@ -128,15 +128,15 @@ RATE_HYBRID_FILT  RATE_HYBRID_FILT $(HOME)/data/pecan/mdv/radarCart/kftg&RATE_HY
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
-# Temp, RH, Terrain
+# Temp, RH, Terrain, beam blockage
 
 INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP  temp.colors   C   -5   80  5  dcont   1 0
 INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors   %   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-Terrain    Terrain    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/&terrain_ht  terrain_front.colors   m   -5   80  5  cart   1 0
+Extinct    Extinct    $(HOME)/data/pecan/mdv/radarCart/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
+TerrainHt  TerrainHt  $(HOME)/data/pecan/mdv/radarCart/kftg&terrain_ht     terrain_front.colors   m   -5   80  5  cart   1 0
+ExtinctRef ExtinctRef mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
+TerrainRef TerrainRef mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/&terrain_ht  terrain_front.colors   m   -5   80  5  cart   1 0
 HiRes      HiRes      mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/&terrain_hi_res  terrain_front.colors   m   -5   80  5  cart   1 0
-BEAM_E     BEAM_E     mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
 Elev       Elev       mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&elevation elevation.colors   deg  -5   80  5  cart   1 0
 
 # environmental and geometry

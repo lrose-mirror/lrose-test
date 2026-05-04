@@ -360,7 +360,7 @@ model_field_names = {
 //
 // Type: boolean
 
-read_beam_blockage = TRUE;
+read_beam_blockage = FALSE;
 
 ///////////// beam_block_input_file_path //////////////
 //
@@ -370,7 +370,7 @@ read_beam_blockage = TRUE;
 //
 // Type: string
 
-beam_block_input_file_path = "$(HOME)/data/pecan/mdv/beamBlock/kftg/20000101/20000101_000000.mdv.cf.nc";
+beam_block_input_file_path = "mdv/beamBlock/radar_name/20000101/20000101_000000.mdv.cf.nc";
 
 ///////////// beam_block_field_names //////////////////
 //
@@ -394,14 +394,14 @@ beam_block_input_file_path = "$(HOME)/data/pecan/mdv/beamBlock/kftg/20000101/200
 beam_block_field_names = {
   {
     field_type = BEAME,
-    input_name = "extinction",
-    output_name = "extinction"
+    input_name = "BEAME",
+    output_name = "BEAME"
   }
   ,
   {
     field_type = TERRAIN_HT,
-    input_name = "terrain_ht",
-    output_name = "terrain_ht"
+    input_name = "Terrain",
+    output_name = "Terrain"
   }
 };
 
@@ -419,7 +419,7 @@ beam_block_field_names = {
 //
 // Type: string
 
-output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg";
+output_dir = "$(HOME)/data/pecan/mdv/radarCart/kftg/no_blockage";
 
 //======================================================================
 //
