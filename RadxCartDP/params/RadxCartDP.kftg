@@ -407,6 +407,72 @@ beam_block_field_names = {
 
 //======================================================================
 //
+// QPE - QUANTATIVE PRECIPITATION ESTIMATION.
+//
+// QPE needs the beam blockage and terrain_ht data from the BEAM 
+//   BLOCKAGE section above.
+//
+//======================================================================
+ 
+///////////// add_qpe_field ///////////////////////////
+//
+// Add in the QPE field.
+//
+// This is a 2D field with the best estimate of precipitation rate at 
+//   the surface. It depends on beam blockage and terrain height.
+//
+// Type: boolean
+
+add_qpe_field = TRUE;
+
+///////////// qpe_max_extinction_fraction /////////////
+//
+// Max extinction value from the beam blockage calculations - see above.
+//
+// To get QPE, at each (x, y) location we look for the lowest grid point 
+//   with a blockage extinction value less than this threshold. If the 
+//   extinction exceeds this threshold at a Cartesian point, we look above 
+//   to get the precip rate estimate from a grid point with less blockage.
+//
+// Type: double
+
+qpe_max_extinction_fraction = 0.5;
+
+///////////// qpe_ht_margin_above_terrain_km //////////
+//
+// Minimum height margin above terrain for a valid precip estimate (km).
+//
+// We require the QPE rate estimate to be drawn from a grid cell clear 
+//   of the terrain. So for each (x, y) location we only accept precip 
+//   rates from grid points with a height that exceeds the terrain by at 
+//   least this margin.
+//
+// Type: double
+
+qpe_ht_margin_above_terrain_km = 1;
+
+///////////// qpe_hybrid_field_name ///////////////////
+//
+// Field name for QPE hybrid rate.
+//
+// This 2D field will be written to the output MDV file.
+//
+// Type: string
+
+qpe_hybrid_field_name = "QPE_HYBRID";
+
+///////////// qpe_zr_field_name ///////////////////////
+//
+// Field name for QPE ZR rate.
+//
+// This 2D field will be written to the output MDV file.
+//
+// Type: string
+
+qpe_zr_field_name = "QPE_ZR";
+
+//======================================================================
+//
 // OUTPUT DATA DIRECTORY.
 //
 //======================================================================
@@ -608,8 +674,8 @@ RATE_median_filter_kernel_size = 5;
 //
 // The output_encoding apply to CfRadial output only. 
 //
-// 	RATE_ZH: Precip rate from ZH
-// 	RATE_ZH_SNOW: Precip rate from ZH in dry snow
+// 	RATE_ZR: Precip rate from ZR
+// 	RATE_ZR_SNOW: Precip rate from ZR in dry snow
 // 	RATE_Z_ZDR: Precip rate from Z and ZDR
 // 	RATE_KDP: Precip rate from KDP
 // 	RATE_KDP_ZDR: Precip rate from KDP and ZDR
@@ -631,8 +697,8 @@ RATE_median_filter_kernel_size = 5;
 //   typedef struct {
 //      output_field_id_t id;
 //        Options:
-//          RATE_ZH
-//          RATE_ZH_SNOW
+//          RATE_ZR
+//          RATE_ZR_SNOW
 //          RATE_Z_ZDR
 //          RATE_KDP
 //          RATE_KDP_ZDR
@@ -662,8 +728,8 @@ RATE_median_filter_kernel_size = 5;
 
 output_fields = {
   {
-    id = RATE_ZH,
-    name = "RATE_ZH",
+    id = RATE_ZR,
+    name = "RATE_ZR",
     long_name = "precip_rate_from_z",
     standard_name = "precip_rate_from_z",
     units = "mm/hr",
@@ -671,8 +737,8 @@ output_fields = {
   }
   ,
   {
-    id = RATE_ZH_SNOW,
-    name = "RATE_ZH_SNOW",
+    id = RATE_ZR_SNOW,
+    name = "RATE_ZR_SNOW",
     long_name = "precip_rate_from_z_for_snow",
     standard_name = "precip_rate_from_z_for_snow",
     units = "mm/hr",
