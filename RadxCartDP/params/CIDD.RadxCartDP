@@ -130,24 +130,34 @@ QPE_HYBRID QPE_HYBRID $(HOME)/data/pecan/mdv/radarCart/kftg&QPE_HYBRID precip.co
 
 # Temp, RH, Terrain, beam blockage
 
-INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP  temp.colors   C   -5   80  5  dcont   1 0
-INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors   %   -5   80  5  dcont   1 0
+cont   1 0
 Extinct    Extinct    $(HOME)/data/pecan/mdv/radarCart/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
 TerrainHt  TerrainHt  $(HOME)/data/pecan/mdv/radarCart/kftg&terrain_ht     terrain_front.colors   m   -5   80  5  cart   1 0
 ExtinctRef ExtinctRef mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
 TerrainRef TerrainRef mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/&terrain_ht  terrain_front.colors   m   -5   80  5  cart   1 0
 HiRes      HiRes      mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg/&terrain_hi_res  terrain_front.colors   m   -5   80  5  cart   1 0
-Elev       Elev       mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&elevation elevation.colors   deg  -5   80  5  cart   1 0
+Elev          Elev    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&elevation elevation.colors   deg  -5   80  5  cart   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+
+INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP temp.colors   C   -5   80  5  dcont  1 0
+INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors     %   -5   80  5  dcont  1 0
+ConvStrat ConvStrat $(HOME)/data/pecan/mdv/radarCart/kftg&ConvStrat  conv_strat.colors - -5 80 5
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
 # environmental and geometry
 
 RUC-temp   RUC-temp   $(HOME)/data/pecan/mdv/ruc&TMP  temp.colors   C   -5   80  5  dcont   1 0
 RUC-RH     RUC-RH     $(HOME)/data/pecan/mdv/ruc&RH   rh.colors   %   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 BEAM_HT   BEAM_HT     $(HOME)/data/pecan/cfradial/kftg/debug&BEAM_HT  number.colors km -5 80 5 radial 1 0
 ELEV     ELEV     $(HOME)/data/pecan/cfradial/kftg/debug&ELEV  number.colors deg -5 80 5 radial 1 0
 RANGE    RANGE    $(HOME)/data/pecan/cfradial/kftg/debug&RANGE  number_250.colors km -5 80 5 radial 1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
 # Polar

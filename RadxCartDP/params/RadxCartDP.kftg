@@ -372,38 +372,21 @@ read_beam_blockage = TRUE;
 
 beam_block_input_file_path = "$(HOME)/data/pecan/mdv/beamBlock/kftg/20000101/20000101_000000.mdv.cf.nc";
 
-///////////// beam_block_field_names //////////////////
+///////////// beam_extinction_field_name //////////////
 //
-// Converts field type to string.
+// Name of extinction field in beam block data set.
 //
-// If input_field is empty the field is assumed to not exist in the 
-//   input data set.
-//
-// Type: struct
-//   typedef struct {
-//      beam_block_field_type_t field_type;
-//        Options:
-//          TERRAIN_HT
-//          BEAME
-//      string input_name;
-//      string output_name;
-//   }
-//
-// 1D array - fixed length - 2 elements.
+// Type: string
 
-beam_block_field_names = {
-  {
-    field_type = BEAME,
-    input_name = "extinction",
-    output_name = "extinction"
-  }
-  ,
-  {
-    field_type = TERRAIN_HT,
-    input_name = "terrain_ht",
-    output_name = "terrain_ht"
-  }
-};
+beam_extinction_field_name = "extinction";
+
+///////////// terrain_ht_field_name ///////////////////
+//
+// Name of terrain height field in beam block data set.
+//
+// Type: string
+
+terrain_ht_field_name = "terrain_ht";
 
 //======================================================================
 //
@@ -2082,13 +2065,11 @@ echo_orientation_n_points_sdev_v = 3;
 
 //======================================================================
 //
-// OPTION TO IDENTIFY THE CONVECTIVE/STRATIFORM SPLIT.
-//
-// Applies only to INTERP_MODE_CART.
+// CONVECTIVE/STRATIFORM PARTITION.
 //
 //======================================================================
  
-///////////// identify_convective_stratiform_split ////
+///////////// identify_conv_strat_partition ///////////
 //
 // Option to identify the convective / stratiform split.
 //
@@ -2098,108 +2079,19 @@ echo_orientation_n_points_sdev_v = 3;
 //
 // Type: boolean
 
-identify_convective_stratiform_split = FALSE;
+identify_conv_strat_partition = TRUE;
 
-///////////// conv_strat_dbz_field_name ///////////////
+///////////// conv_strat_params_file_path /////////////
 //
-// Name of reflectivity field in input data.
+// Path for parameters for computing convective-stratiform partition, if 
+//   specified.
 //
-// This is used for computing reflectivity texture.
+// If set to use-defaults, no parameter file will be read in, and the 
+//   default parameters will be used.
 //
 // Type: string
 
-conv_strat_dbz_field_name = "DBZ";
-
-///////////// conv_strat_min_valid_height /////////////
-//
-// Min height used in analysis (km).
-//
-// Only data at or above this altitude is used.
-//
-// Type: double
-
-conv_strat_min_valid_height = 0;
-
-///////////// conv_strat_max_valid_height /////////////
-//
-// Max height used in analysis (km).
-//
-// Only data at or below this altitude is used.
-//
-// Type: double
-
-conv_strat_max_valid_height = 25;
-
-///////////// conv_strat_min_valid_dbz ////////////////
-//
-// Minimum reflectivity threshold for this analysis (dBZ).
-//
-// Reflectivity below this threshold is set to missing.
-//
-// Type: double
-
-conv_strat_min_valid_dbz = 10;
-
-///////////// conv_strat_texture_radius_km ////////////
-//
-// Radius for texture analysis (km).
-//
-// We determine the reflectivity 'texture' at a point by computing the 
-//   standard deviation of the square of the reflectivity, for all grid 
-//   points within this radius of the central point. We then compute the 
-//   square root of that sdev.
-//
-// Type: double
-
-conv_strat_texture_radius_km = 7;
-
-///////////// conv_strat_min_valid_fraction_for_texture 
-//
-// Minimum fraction of surroundingpoints for texture computations.
-//
-// For a valid computation of texture, we require at least this fraction 
-//   of points around the central point to have reflectivity in excess of 
-//   min_valid_dbz.
-//
-// Type: double
-
-conv_strat_min_valid_fraction_for_texture = 0.33;
-
-///////////// conv_strat_min_convectivity_for_convective 
-//
-// Minimum convectivity for convective at a point.
-//
-// If the convectivity at a point exceeds this value, we set the 
-//   convective flag at this point.
-//
-// Type: double
-
-conv_strat_min_convectivity_for_convective = 0.5;
-
-///////////// conv_strat_max_convectivity_for_stratiform 
-//
-// Maximum convectivity for stratiform at a point.
-//
-// If the convectivity at a point is less than this value, we set the 
-//   stratiform flag at this point. If it is above this but less than 
-//   min_convectivity_for_convective we flag the point as MIXED.
-//
-// Type: double
-
-conv_strat_max_convectivity_for_stratiform = 0.4;
-
-///////////// conv_strat_min_overlap_for_convective_clumps 
-//
-// Minimum grid overlap in convective regions.
-//
-// A convective region is identified as a series of adjacent 'runs' of 
-//   grid cells data in the EW direction. When testing for overlap, some 
-//   minimum number of overlap grids must be used. This is that minimum 
-//   overlap in grid units.
-//
-// Type: int
-
-conv_strat_min_overlap_for_convective_clumps = 3;
+conv_strat_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/conv_strat_params.nexrad";
 
 ///////////// conv_strat_write_partition //////////////
 //
