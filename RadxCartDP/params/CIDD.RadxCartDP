@@ -130,7 +130,6 @@ QPE_HYBRID QPE_HYBRID $(HOME)/data/pecan/mdv/radarCart/kftg&QPE_HYBRID precip.co
 
 # Temp, RH, Terrain, beam blockage
 
-cont   1 0
 Extinct    Extinct    $(HOME)/data/pecan/mdv/radarCart/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
 TerrainHt  TerrainHt  $(HOME)/data/pecan/mdv/radarCart/kftg&terrain_ht     terrain_front.colors   m   -5   80  5  cart   1 0
 ExtinctRef ExtinctRef mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBlock/kftg&extinction     fraction.colors   m   -5   80  5  cart   1 0
@@ -142,11 +141,11 @@ Elev          Elev    mdvp::terrain//localhost:0:$(HOME)/data/pecan/mdv/beamBloc
 
 INTERP-temp   INTERP-temp   $(HOME)/data/pecan/mdv/radarCart/kftg&TEMP temp.colors   C   -5   80  5  dcont  1 0
 INTERP-RH     INTERP-RH     $(HOME)/data/pecan/mdv/radarCart/kftg&RH   rh.colors     %   -5   80  5  dcont  1 0
-ConvStrat ConvStrat $(HOME)/data/pecan/mdv/radarCart/kftg&ConvStrat  conv_strat.colors - -5 80 5
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
-========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
+EchoType      EchoType      mdvp::pid//localhost:0:$(HOME)/data/pecan/mdv/radarCart/kftg&EchoType3D  conv_strat4.colors - -5 80 5
+Convectivity  Convectivity  $(HOME)/data/pecan/mdv/radarCart/kftg&Convectivity3D  convectivity.colors - -5 80 5
+DbzTexture  DbzTexture  $(HOME)/data/pecan/mdv/radarCart/kftg&DbzTexture3D  dbz.colors - -5 80 5
+ShallowHt  ShallowHt  $(HOME)/data/pecan/mdv/radarCart/kftg&ShallowHt heightkm.colors km -5 80 5
+DeepHt  DeepHt  $(HOME)/data/pecan/mdv/radarCart/kftg&DeepHt heightkm.colors km -5 80 5
 ========   =========  $(HOME)/data/pecan/junk&junk  none.colors   m   -5   80  5  dcont   1 0
 
 # environmental and geometry

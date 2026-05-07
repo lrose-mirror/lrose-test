@@ -2097,22 +2097,21 @@ conv_strat_params_file_path = "$(HOME)/git/lrose-test/RadxCartDP/params/conv_str
 //
 // Option to write out the convective/stratiform partition.
 //
-// If true, the 2-D partition will be added to the output file.
+// If true, the 3-D partition will be added to the output file.
 //
 // Type: boolean
 
 conv_strat_write_partition = TRUE;
 
-///////////// conv_strat_write_max_texture ////////////
+///////////// conv_strat_write_convectivity ///////////
 //
-// Option to write out the max texture.
+// Option to write out the convective/stratiform partition.
 //
-// If true, the mean texture will be written to the output file. This is 
-//   a 2-D field - the max over height of the 3-D texture fields.
+// If true, the 3-D convectivity field will be added to the output file.
 //
 // Type: boolean
 
-conv_strat_write_max_texture = FALSE;
+conv_strat_write_convectivity = TRUE;
 
 ///////////// conv_strat_write_convective_dbz /////////
 //
@@ -2123,15 +2122,26 @@ conv_strat_write_max_texture = FALSE;
 //
 // Type: boolean
 
-conv_strat_write_convective_dbz = FALSE;
+conv_strat_write_convective_dbz = TRUE;
+
+///////////// conv_strat_write_echo_tops //////////////
+//
+// Option to write out echo tops fields.
+//
+// If true, the echo tops and convective echo tops will be written to 
+//   the output file.
+//
+// Type: boolean
+
+conv_strat_write_echo_tops = TRUE;
 
 ///////////// conv_strat_write_debug_fields ///////////
 //
 // Option to write out the intermediate fields for debug purposes.
 //
-// If true, the intermdiate fields will be written to the output file.
+// If true, the intermediate fields will be written to the output file.
 //
 // Type: boolean
 
-conv_strat_write_debug_fields = FALSE;
+conv_strat_write_debug_fields = TRUE;
 
